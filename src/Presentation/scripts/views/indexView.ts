@@ -29,8 +29,8 @@ export const AddGameToMatchList = function (game): void {
     const gameUrl: string = Game.getGameUrl(game.id);  
     const markup: string = `<li><a href="${gameUrl}">${game.name}</a></li>`; // jezeli nie ma hasla to taki link
 
-    // jak jest halslo to zrob buttona ktory ma ikonki klodki, odpala promt i sprawdza haslo, jezeli sie zgadza do kierujesz go do
-    // gamehubn i szukasz gre z danymi context.id hosta i hasla, zwracasz url i wchodzisz do gry. zaczynasz nasluchiwac buttona po swotrzeniu go.
+    // TODO:  jak jest halslo to zrob buttona ktory ma ikonki klodki, odpala promt i sprawdza haslo, jezeli sie zgadza do kierujesz go do gamehuba i szukasz gre z danymi context.id hosta i hasla, zwracasz url i wchodzisz do gry. zaczynasz nasluchiwac buttona po swotrzeniu go.
+     
 
 
     elements.matchList.insertAdjacentHTML('afterbegin', markup);
