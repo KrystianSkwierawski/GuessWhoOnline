@@ -35,6 +35,7 @@ namespace Presentation.Hubs
                 Id = id,
                 Name = name,
                 Password = password,
+                HostPlayerConnectionId = Context.ConnectionId
             };
 
             _games.Add(game);

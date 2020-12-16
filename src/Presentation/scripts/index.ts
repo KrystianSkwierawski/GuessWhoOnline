@@ -2,6 +2,7 @@
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameHub from './gameHub.js';
+import * as Game from './models/Game.js';
 
 elements.showFindMatch__button.addEventListener('click', (): void => {
     indexView.showFindMatch__container();
@@ -25,14 +26,15 @@ elements.createMatch_backButton.addEventListener('click', (): void => {
     indexView.hideCreateMatch__container();
 });
 
-elements.createMatch__button.addEventListener('click', (): void => {
+elements.createMatch__button.addEventListener('click', async (): Promise<void> => {
+    const id: string = indexView.getIdMatch__inputValue();
     const name: string = indexView.getNameMatch__inputValue();
     const password: string = indexView.getPasswordMatch__inputValue();
-    const id: string = indexView.getIdMatch__inputValue();
+    
+    await gameHub.createGame(id, name, password);
 
-    console.log(name, password, id);
-    //gameHub dodaj
-    //idz do linku
+    const gameUrl: string = Game.getGameUrl(id);
+    window.location.href = gameUrl;
 });
 
 

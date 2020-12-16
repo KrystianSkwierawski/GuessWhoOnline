@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Password { get; set; }
 
-        //public string hostplayerid { get; set; }
-        //public string questplayerid { get; set; }
+        public string HostPlayerConnectionId { get; set; }
+        public string GuestPlayerConnectionId { get; set; }
     }
 }
