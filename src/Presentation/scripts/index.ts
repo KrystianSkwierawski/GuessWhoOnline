@@ -22,3 +22,5 @@ elements.createMatchButton.addEventListener('click', (): void => {
 elements.createMatch_backButton.addEventListener('click', (): void => { 
     indexView.hideCreateMatchContainer();
 });
+
+
