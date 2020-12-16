@@ -12,7 +12,7 @@ elements.showFindMatch__button.addEventListener('click', (): void => {
 elements.showCreateMatch__button.addEventListener('click', (): void => {
     const id: string = Guid.newGuid();
     indexView.setIdMatch__inputValue(id);
-    indexView.setNameMatch__inputValue(id);
+    indexView.setNameMatch__inputValue(id); //the name of the game is id by default
 
     indexView.hideFindMatch__container();
     indexView.showCreateMatch__container();

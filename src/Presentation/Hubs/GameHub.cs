@@ -16,7 +16,9 @@ namespace Presentation.Hubs
         public override async Task OnConnectedAsync()
         {
             _connections.Add(Context);
-  
+
+            // TODO: wyslij liste gier i zaakktualizuj ja w widoku
+
             await base.OnConnectedAsync();
         }
 
