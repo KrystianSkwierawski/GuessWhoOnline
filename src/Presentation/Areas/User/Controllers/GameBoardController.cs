@@ -5,10 +5,17 @@ using System.Diagnostics;
 namespace Presentation.Areas.User.Controllers
 {
     [Area("User")]
-    public class HomeController : BaseController
+    public class GameBoardController : BaseController
     {
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [Route("game/{id}", Name = "Game")]
+        public IActionResult Game()
+        {
+
             return View();
         }
 

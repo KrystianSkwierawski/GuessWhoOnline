@@ -12,8 +12,8 @@ elements.findMatch__backButton.addEventListener('click', (): void => {
 });
 
 elements.createMatchButton.addEventListener('click', (): void => {
-    const guid: string = Guid.newGuid();
-    (<HTMLInputElement>elements.nameMatchInput).value = guid;
+    //const guid: string = Guid.newGuid();
+    //(<HTMLInputElement>elements.nameMatchInput).value = guid;
 
     indexView.showCreateMatchContainer();
     indexView.hideFindMatchContainer();

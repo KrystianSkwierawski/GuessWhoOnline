@@ -1,16 +1,20 @@
 ﻿<button class="find-match-button">Find match</button>
 <button class="create-match-button">Create match</button>
 
+@{ 
+    string _guid = Guid.NewGuid().ToString();
+}
+
 <div class="create-match">
     <div class="container mb-2">
-        <form method="post">
             <div class="form-row py-2">
                 <div class="col mb-2">
                     <label for="name">Name match</label>
                     <input class="form-control name-match-input"
                            id="name"
                            type="text"
-                           required />
+                           required
+                           value="@_guid"/>
                 </div>
             </div>
 
@@ -28,10 +32,9 @@
                     <button type="button" class="btn btn-primary px-4 py-2 create-match__back-button">Back</button>
                 </div>
                 <div class="col text-center">
-                    <button type="submit" class="btn btn-primary px-4 py-2">Create</button>
+                    <a href="@Url.RouteUrl("Game", new { id = @_guid })" class="btn btn-primary px-4 py-2">Create</a>
                 </div>
             </div>
-        </form>
     </div>
 </div>
 

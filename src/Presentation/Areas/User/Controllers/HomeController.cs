@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace Presentation.Areas.User.Controllers
 {
     [Area("User")]
-    public class GameBoardController : BaseController
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {
