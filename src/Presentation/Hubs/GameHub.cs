@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Domain.Models;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace Presentation.Hubs
     public class GameHub : Hub
     { 
         static List<HubCallerContext> _connections = new List<HubCallerContext>();
+        static List<Game> _games = new List<Game>();
 
- 
+
         public override async Task OnConnectedAsync()
         {
             _connections.Add(Context);
@@ -24,6 +26,20 @@ namespace Presentation.Hubs
            
 
             await base.OnDisconnectedAsync(exception);
+        }
+
+        public async Task CreateGame(string id, string name, string password)
+        {
+            Game game = new Game
+            {
+                Id = id,
+                Name = name,
+                Password = password,
+            };
+
+            _games.Add(game);
+
+            await Clients.All.SendAsync("RefreshListOfGames", game);
         }
 
         private void TryRemoveConnection()
