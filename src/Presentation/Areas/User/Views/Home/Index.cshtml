@@ -1,8 +1,53 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<button class="find-match-button">Find match</button>
+<button class="create-match-button">Create match</button>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="create-match">
+    <div class="container mb-2">
+        <form method="post">
+            <div class="form-row py-2">
+                <div class="col mb-2">
+                    <label for="name">Name match</label>
+                    <input class="form-control name-match-input"
+                           id="name"
+                           type="text"
+                           required />
+                </div>
+            </div>
+
+            <div class="form-row py-2">
+                <div class="col mb-2">
+                    <label for="password">Password match</label>
+                    <input class="form-control"
+                           id="password"
+                           type="password" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col text-center mb-2">
+                    <button type="button" class="btn btn-primary px-4 py-2 create-match__back-button">Back</button>
+                </div>
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary px-4 py-2">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="find-match">
+    <ul>
+        <li><button>bezi's match</button></li>
+        <li><button>kosia's match</button></li>
+        <li><button>bezi's match</button></li>
+        <li><button>kosia's match</button></li>
+        <li><button>bezi's match</button></li>
+        <li><button>kosia's match</button></li>
+        <li><button>bezi's match</button></li>
+        <li><button>kosia's match</button></li>
+        <li><button>bezi's match</button></li>
+        <li><button>kosia's match</button></li>
+    </ul>
+
+    <button class="find-match__back-button">Back</button>
 </div>

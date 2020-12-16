@@ -1,0 +1,15 @@
+﻿.create-match {
+    flex-direction: column;
+    height: auto;
+    display: none;
+    width: 60%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+}
+
+.create-match_active {
+    display: block;
+}

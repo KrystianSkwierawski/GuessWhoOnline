@@ -352,3 +352,40 @@ table {
 td,
 th {
   padding: 0; }
+
+.find-match {
+  flex-direction: column;
+  display: none;
+  height: 40%;
+  width: 60%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: grey; }
+  .find-match ul {
+    overflow: auto;
+    flex-grow: 1; }
+    .find-match ul li {
+      list-style: none;
+      margin-top: 10px; }
+
+.find-match__back-button {
+  height: auto; }
+
+.find-match_active {
+  display: flex; }
+
+.create-match {
+  flex-direction: column;
+  height: auto;
+  display: none;
+  width: 60%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke; }
+
+.create-match_active {
+  display: block; }
