@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Presentation.Hubs;
 using System.Reflection;
 
 namespace Presentation
@@ -55,6 +56,7 @@ namespace Presentation
                     name: "default",
                     pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<GameHub>("/gamehub");
             });
         }
     }
