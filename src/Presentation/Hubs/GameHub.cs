@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Presentation.Hubs
 {
     public class GameHub : Hub
-    { 
+    {
         static List<HubCallerContext> _connections = new List<HubCallerContext>();
         static List<Game> _games = new List<Game>();
 
@@ -17,17 +17,23 @@ namespace Presentation.Hubs
         {
             _connections.Add(Context);
 
-            // TODO: wyslij liste gier i zaakktualizuj ja w widoku
-
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
             TryRemoveConnection();
-           
+
 
             await base.OnDisconnectedAsync(exception);
+        }
+
+        public async Task GetListOfGames()
+        {
+            if (_games.Count > 0)
+            {
+                await Clients.Client(Context.ConnectionId).SendAsync("RecieveListOfGames", _games);
+            }
         }
 
         public async Task CreateGame(string id, string name, string password)
@@ -41,9 +47,8 @@ namespace Presentation.Hubs
             };
 
             _games.Add(game);
-
-            await Clients.All.SendAsync("RefreshListOfGames", game);
         }
+
 
         private void TryRemoveConnection()
         {

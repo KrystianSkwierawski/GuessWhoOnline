@@ -11,11 +11,12 @@ import * as indexView from './views/indexView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameHub from './gameHub.js';
-import * as Game from './models/Game.js';
-elements.showFindMatch__button.addEventListener('click', () => {
+import { getGameUrl } from './models/Game.js';
+elements.showFindMatch__button.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield gameHub.getListOfGames();
     indexView.showFindMatch__container();
     indexView.hideCreateMatch__container();
-});
+}));
 elements.showCreateMatch__button.addEventListener('click', () => {
     const id = Guid.newGuid();
     indexView.setIdMatch__inputValue(id);
@@ -30,11 +31,18 @@ elements.createMatch_backButton.addEventListener('click', () => {
     indexView.hideCreateMatch__container();
 });
 elements.createMatch__button.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    const id = indexView.getIdMatch__inputValue();
-    const name = indexView.getNameMatch__inputValue();
-    const password = indexView.getPasswordMatch__inputValue();
-    yield gameHub.createGame(id, name, password);
-    const gameUrl = Game.getGameUrl(id);
+    const gameId = indexView.getIdMatch__inputValue();
+    const gameName = indexView.getNameMatch__inputValue();
+    const gamePassword = indexView.getPasswordMatch__inputValue();
+    const game = {
+        id: gameId,
+        name: gameName,
+        password: gamePassword,
+        hostPlayerConnectionId: null,
+        guestPlayerhostConnectionId: null
+    };
+    yield gameHub.createGame(game);
+    const gameUrl = getGameUrl(gameId);
     window.location.href = gameUrl;
 }));
 //# sourceMappingURL=index.js.map

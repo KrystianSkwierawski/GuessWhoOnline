@@ -11,14 +11,17 @@ import * as indexView from './views/indexView.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
-hub.on('RefreshListOfGames', (game) => __awaiter(void 0, void 0, void 0, function* () {
-    indexView.AddGameToMatchList(game);
-}));
+hub.on('RecieveListOfGames', (games) => {
+    indexView.renderGamesInMatchList(games);
+});
 hub.start().then(function () {
 }).catch(function (err) {
     return console.error(err.toString());
 });
-export const createGame = (id, name = id, password) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('CreateGame', id, name, password);
+export const createGame = (game) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('CreateGame', game.id, game.name, game.password);
+});
+export const getListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('GetListOfGames');
 });
 //# sourceMappingURL=gameHub.js.map

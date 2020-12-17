@@ -1,14 +1,14 @@
 ﻿import * as indexView from './views/indexView.js';
+import { Game } from './models/Game.js';
 declare var signalR: any
 
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
 
-hub.on('RefreshListOfGames', async game => {
-    indexView.AddGameToMatchList(game);
+hub.on('RecieveListOfGames', (games: Array<Game>) => {
+    indexView.renderGamesInMatchList(games);
 });
-
 
 hub.start().then(function () {
 }).catch(function (err) {
@@ -16,7 +16,10 @@ hub.start().then(function () {
 });
 
 
-export const createGame = async (id: string, name: string = id, password: string): Promise<void> => {
-    await hub.invoke('CreateGame', id, name, password);
+export const createGame = async (game: Game): Promise<void> => {
+    await hub.invoke('CreateGame', game.id, game.name, game.password);
 };
 
+export const getListOfGames = async (): Promise<void> => {
+    await hub.invoke('GetListOfGames');
+};
