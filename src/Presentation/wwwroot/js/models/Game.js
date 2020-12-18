@@ -1,4 +1,4 @@
-export const getGameUrl = function (gameId) {
+export const getGameFullUrl = function (gameId) {
     const currentUrl = window.location.href;
     return `${currentUrl}game/${gameId}`;
 };

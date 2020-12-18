@@ -23,12 +23,10 @@
         overflow: auto;
         flex-grow: 1;
 
-
         li {
             list-style: none;
             margin-top: 10px;
             background-color: white;
-            padding: 5px;
             box-shadow: 1px 1px 3px;
         }
 
@@ -36,6 +34,18 @@
             color: black;
             text-decoration: none;
             display: block;
+            height: 100%;
+            width: 100%;
+            padding: 5px;
+        }
+
+        li button {
+            @include reset-button;
+            color: black;
+            height: 100%;
+            width: 100%;
+            text-align: left;
+            padding: 5px;
         }
     }
 }
@@ -58,6 +68,6 @@
 }
 
 .find-match__refresh-list{
-    @include reset-button;
-    
+    @include reset-button;   
 }
+

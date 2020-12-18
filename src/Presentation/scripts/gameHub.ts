@@ -17,7 +17,7 @@ hub.start().then(function () {
 
 
 export const createGame = async (game: Game): Promise<void> => {
-    await hub.invoke('CreateGame', game.id, game.name, game.password);
+    await hub.invoke('CreateGame', game);
 };
 
 export const refreshListOfGames = async (): Promise<void> => {

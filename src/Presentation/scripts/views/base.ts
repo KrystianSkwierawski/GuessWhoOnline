@@ -10,10 +10,11 @@
     passwordMatchInput: document.querySelector('.password-match-input'),
     matchList: document.querySelector('.match-list'),
     createMatchButton: document.querySelector('.create-match-button'),
+    urlMatchInput: document.querySelector('.url-match-input'),
     idMatchInput: document.querySelector('.id-match-input'),
     findMatch__refreshList: document.querySelector('.find-match__refresh-list')
 };
 
 export const elementStrings = {
-  
+    tryJoinToMatchButton: 'try-join-to-match-button'
 };

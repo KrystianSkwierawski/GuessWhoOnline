@@ -1,5 +1,5 @@
 import { elements } from './base.js';
-import { getGameUrl } from '../models/Game.js';
+import { getGameFullUrl } from '../models/Game.js';
 export const showFindMatchContainer = function () {
     elements.findMatch.classList.add('find-match_active');
 };
@@ -19,26 +19,36 @@ export const getPasswordMatchInputValue = () => {
     return elements.passwordMatchInput.value;
 };
 export const addGameToMatchList = (game) => {
-    const gameUrl = getGameUrl(game.id);
+    const gameFullUrl = getGameFullUrl(game.url);
     const gameHasPassword = (game.password === "") ? false : true;
     let markup;
     if (gameHasPassword) {
-        markup = `<li><a href="${gameUrl}">${game.name}</a></li>`;
-        // TODO:  jak jest halslo to zrob buttona ktory ma ikonki klodki, odpala promt i sprawdza haslo, jezeli sie zgadza do kierujesz go do gamehuba i szukasz gre z danymi context.id hosta i hasla, zwracasz url i wchodzisz do gry. zaczynasz nasluchiwac buttona po swotrzeniu go.
+        markup = `<li><button id="${game.id}">${game.name}  <i class="fas fa-lock"></i></button></li>`;
+        elements.matchList.insertAdjacentHTML('afterbegin', markup);
+        document.getElementById(game.id).addEventListener('click', () => {
+            // zrob promt o haslo
+            // Call GameHub czy haslo sie zgadza jezeli tak wysylasz bool ze sie zgadza razem z linkiem jezeli sie nie zgadza to zrob toastr z blednym haslem
+        });
     }
     else {
-        markup = `<li><a href="${gameUrl}">${game.name}</a></li>`;
+        markup = `<li><a href="${gameFullUrl}">${game.name}</a></li>`;
+        elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }
-    elements.matchList.insertAdjacentHTML('afterbegin', markup);
 };
 export const setIdMatchInputValue = (id) => {
     elements.idMatchInput.value = id;
 };
-export const setNameMatchInputValue = (id) => {
-    elements.nameMatchInput.value = id;
-};
 export const getIdMatchInputValue = () => {
     return elements.idMatchInput.value;
+};
+export const setUrlMatchInputValue = (url) => {
+    elements.urlMatchInput.value = url;
+};
+export const setNameMatchInputValue = (name) => {
+    elements.nameMatchInput.value = name;
+};
+export const getUrlMatchInputValue = () => {
+    return elements.urlMatchInput.value;
 };
 export const renderGamesInMatchList = (games) => {
     elements.matchList.innerHTML = "";

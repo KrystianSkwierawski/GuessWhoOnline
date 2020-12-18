@@ -19,7 +19,7 @@ hub.start().then(function () {
     return console.error(err.toString());
 });
 export const createGame = (game) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('CreateGame', game.id, game.name, game.password);
+    yield hub.invoke('CreateGame', game);
 });
 export const refreshListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('GetListOfGames');

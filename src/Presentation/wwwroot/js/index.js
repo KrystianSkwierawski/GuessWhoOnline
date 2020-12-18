@@ -11,7 +11,7 @@ import * as indexView from './views/indexView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameHub from './gameHub.js';
-import { getGameUrl } from './models/Game.js';
+import { getGameFullUrl } from './models/Game.js';
 elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameHub.refreshListOfGames();
     indexView.showFindMatchContainer();
@@ -19,8 +19,10 @@ elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, v
 }));
 elements.showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
+    const url = Guid.newGuid();
     indexView.setIdMatchInputValue(id);
-    indexView.setNameMatchInputValue(id); //the name of the game is id by default
+    indexView.setUrlMatchInputValue(url);
+    indexView.setNameMatchInputValue(url); //the name of the game is id by default
     indexView.hideFindMatchContainer();
     indexView.showCreateMatchContainer();
 });
@@ -32,18 +34,20 @@ elements.createMatch_backButton.addEventListener('click', () => {
 });
 elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     const gameId = indexView.getIdMatchInputValue();
+    const gameUrl = indexView.getUrlMatchInputValue();
     const gameName = indexView.getNameMatchInputValue();
     const gamePassword = indexView.getPasswordMatchInputValue();
     const game = {
         id: gameId,
+        url: gameUrl,
         name: gameName,
         password: gamePassword,
         hostPlayerConnectionId: null,
         guestPlayerhostConnectionId: null
     };
     yield gameHub.createGame(game);
-    const gameUrl = getGameUrl(gameId);
-    window.location.href = gameUrl;
+    const fullGameUrl = getGameFullUrl(gameUrl);
+    window.location.href = fullGameUrl;
 }));
 elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameHub.refreshListOfGames();

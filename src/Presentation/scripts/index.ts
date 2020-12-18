@@ -2,7 +2,7 @@
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameHub from './gameHub.js';
-import { getGameUrl, Game } from './models/Game.js';
+import { getGameFullUrl, Game } from './models/Game.js';
 
 elements.showFindMatchButton.addEventListener('click', async (): Promise<void> => {
     await gameHub.refreshListOfGames()
@@ -13,8 +13,11 @@ elements.showFindMatchButton.addEventListener('click', async (): Promise<void> =
 
 elements.showCreateMatchButton.addEventListener('click', (): void => {
     const id: string = Guid.newGuid();
+    const url: string = Guid.newGuid();
+
     indexView.setIdMatchInputValue(id);
-    indexView.setNameMatchInputValue(id); //the name of the game is id by default
+    indexView.setUrlMatchInputValue(url);
+    indexView.setNameMatchInputValue(url); //the name of the game is id by default
 
     indexView.hideFindMatchContainer();
     indexView.showCreateMatchContainer();
@@ -30,11 +33,13 @@ elements.createMatch_backButton.addEventListener('click', (): void => {
 
 elements.createMatchButton.addEventListener('click', async (): Promise<void> => {
     const gameId: string = indexView.getIdMatchInputValue();
+    const gameUrl: string = indexView.getUrlMatchInputValue();
     const gameName: string = indexView.getNameMatchInputValue();
     const gamePassword: string = indexView.getPasswordMatchInputValue();
 
     const game: Game = {
         id: gameId,
+        url: gameUrl,
         name: gameName,
         password: gamePassword,
         hostPlayerConnectionId: null,
@@ -43,8 +48,8 @@ elements.createMatchButton.addEventListener('click', async (): Promise<void> => 
 
     await gameHub.createGame(game);
 
-    const gameUrl: string = getGameUrl(gameId);
-    window.location.href = gameUrl;
+    const fullGameUrl: string = getGameFullUrl(gameUrl);
+    window.location.href = fullGameUrl;
 });
 
 elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {

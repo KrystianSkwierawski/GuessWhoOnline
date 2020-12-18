@@ -36,15 +36,8 @@ namespace Presentation.Hubs
             }
         }
 
-        public async Task CreateGame(string id, string name, string password)
+        public async Task CreateGame(Game game)
         {
-            Game game = new Game
-            {
-                Id = id,
-                Name = name,
-                Password = password,
-                HostPlayerConnectionId = Context.ConnectionId
-            };
 
             _games.Add(game);
         }
