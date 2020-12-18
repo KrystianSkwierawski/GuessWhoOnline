@@ -362,24 +362,26 @@ th {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: grey;
-  padding: 2%; }
+  background-color: white;
+  padding: 2%;
+  box-shadow: 2px 2px 20px;
+  border-radius: 8px; }
   @media screen and (min-width: 768px) {
     .find-match {
       width: 60%;
       height: 60%; } }
   .find-match ul {
-    background-color: white;
     padding: 10px;
     overflow: auto;
     flex-grow: 1; }
     .find-match ul li {
       list-style: none;
       margin-top: 10px;
-      background-color: gray;
-      padding: 5px; }
+      background-color: white;
+      padding: 5px;
+      box-shadow: 1px 1px 3px; }
     .find-match ul li a {
-      color: white;
+      color: black;
       text-decoration: none;
       display: block; }
 
@@ -396,7 +398,7 @@ th {
 .find-match__top-container {
   display: flex;
   justify-content: space-between;
-  color: white; }
+  color: black; }
 
 .find-match__refresh-list {
   border: 0;
@@ -411,7 +413,9 @@ th {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: whitesmoke; }
+  background-color: white;
+  box-shadow: 2px 2px 20px;
+  border-radius: 8px; }
 
 .create-match_active {
   display: block; }
