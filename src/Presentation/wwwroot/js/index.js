@@ -22,7 +22,7 @@ elements.showCreateMatchButton.addEventListener('click', () => {
     const url = Guid.newGuid();
     indexView.setIdMatchInputValue(id);
     indexView.setUrlMatchInputValue(url);
-    indexView.setNameMatchInputValue(url); //the name of the game is id by default
+    indexView.setNameMatchInputValue(id); //the name of the game is id by default
     indexView.hideFindMatchContainer();
     indexView.showCreateMatchContainer();
 });

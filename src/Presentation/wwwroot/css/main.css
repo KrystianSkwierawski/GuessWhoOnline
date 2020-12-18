@@ -408,7 +408,9 @@ th {
 .find-match__top-container {
   display: flex;
   justify-content: space-between;
-  color: black; }
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px; }
 
 .find-match__refresh-list {
   border: 0;
@@ -418,7 +420,7 @@ th {
   flex-direction: column;
   height: auto;
   display: none;
-  width: 60%;
+  width: 90%;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -426,6 +428,9 @@ th {
   background-color: white;
   box-shadow: 2px 2px 20px;
   border-radius: 8px; }
+  @media screen and (min-width: 768px) {
+    .create-match {
+      width: 60%; } }
 
 .create-match_active {
   display: block; }

@@ -2,7 +2,7 @@
     flex-direction: column;
     height: auto;
     display: none;
-    width: 60%;
+    width: 90%;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -10,6 +10,10 @@
     background-color: white;
     box-shadow: 2px 2px 20px;
     border-radius: 8px;
+
+    @include respond-to(medium) {
+        width: 60%;
+    }
 }
 
 .create-match_active {

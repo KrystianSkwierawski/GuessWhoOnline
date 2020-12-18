@@ -17,7 +17,7 @@ elements.showCreateMatchButton.addEventListener('click', (): void => {
 
     indexView.setIdMatchInputValue(id);
     indexView.setUrlMatchInputValue(url);
-    indexView.setNameMatchInputValue(url); //the name of the game is id by default
+    indexView.setNameMatchInputValue(id); //the name of the game is id by default
 
     indexView.hideFindMatchContainer();
     indexView.showCreateMatchContainer();

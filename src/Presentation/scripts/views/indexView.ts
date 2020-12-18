@@ -35,7 +35,10 @@ export const addGameToMatchList = (game: Game): void => {
         markup = `<li><button id="${game.id}">${game.name}  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
 
+        // zrob osobna funkcje z tego event listenera
         document.getElementById(game.id).addEventListener('click', (): void => {
+            
+
             // zrob promt o haslo
 
             // Call GameHub czy haslo sie zgadza jezeli tak wysylasz bool ze sie zgadza razem z linkiem jezeli sie nie zgadza to zrob toastr z blednym haslem
