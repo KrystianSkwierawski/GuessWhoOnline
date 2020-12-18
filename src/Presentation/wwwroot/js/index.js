@@ -12,28 +12,28 @@ import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameHub from './gameHub.js';
 import { getGameUrl } from './models/Game.js';
-elements.showFindMatch__button.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    yield gameHub.getListOfGames();
-    indexView.showFindMatch__container();
-    indexView.hideCreateMatch__container();
+elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield gameHub.refreshListOfGames();
+    indexView.showFindMatchContainer();
+    indexView.hideCreateMatchContainer();
 }));
-elements.showCreateMatch__button.addEventListener('click', () => {
+elements.showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
-    indexView.setIdMatch__inputValue(id);
-    indexView.setNameMatch__inputValue(id); //the name of the game is id by default
-    indexView.hideFindMatch__container();
-    indexView.showCreateMatch__container();
+    indexView.setIdMatchInputValue(id);
+    indexView.setNameMatchInputValue(id); //the name of the game is id by default
+    indexView.hideFindMatchContainer();
+    indexView.showCreateMatchContainer();
 });
 elements.findMatch__backButton.addEventListener('click', () => {
-    indexView.hideFindMatch__container();
+    indexView.hideFindMatchContainer();
 });
 elements.createMatch_backButton.addEventListener('click', () => {
-    indexView.hideCreateMatch__container();
+    indexView.hideCreateMatchContainer();
 });
-elements.createMatch__button.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    const gameId = indexView.getIdMatch__inputValue();
-    const gameName = indexView.getNameMatch__inputValue();
-    const gamePassword = indexView.getPasswordMatch__inputValue();
+elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    const gameId = indexView.getIdMatchInputValue();
+    const gameName = indexView.getNameMatchInputValue();
+    const gamePassword = indexView.getPasswordMatchInputValue();
     const game = {
         id: gameId,
         name: gameName,
@@ -44,5 +44,8 @@ elements.createMatch__button.addEventListener('click', () => __awaiter(void 0, v
     yield gameHub.createGame(game);
     const gameUrl = getGameUrl(gameId);
     window.location.href = gameUrl;
+}));
+elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield gameHub.refreshListOfGames();
 }));
 //# sourceMappingURL=index.js.map

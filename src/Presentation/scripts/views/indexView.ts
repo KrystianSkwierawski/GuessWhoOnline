@@ -1,28 +1,28 @@
 ﻿import { elements, elementStrings } from './base.js';
 import { getGameUrl, Game } from '../models/Game.js';
 
-export const showFindMatch__container = function (): void {
+export const showFindMatchContainer = function (): void {
     elements.findMatch.classList.add('find-match_active');
 };
 
-export const hideFindMatch__container = (): void => {
+export const hideFindMatchContainer = (): void => {
     elements.findMatch.classList.remove('find-match_active');
 };
 
-export const showCreateMatch__container = (): void => {
+export const showCreateMatchContainer = (): void => {
     elements.createMatch.classList.add('create-match_active');
 };
 
-export const hideCreateMatch__container = (): void  =>{
+export const hideCreateMatchContainer = (): void  =>{
     elements.createMatch.classList.remove('create-match_active');
 };
 
-export const getNameMatch__inputValue = (): string => {
-    return (<HTMLInputElement>elements.nameMatch__input).value;
+export const getNameMatchInputValue = (): string => {
+    return (<HTMLInputElement>elements.nameMatchInput).value;
 }
 
-export const getPasswordMatch__inputValue = (): string => {
-    return (<HTMLInputElement>elements.passwordMatch__input).value;
+export const getPasswordMatchInputValue = (): string => {
+    return (<HTMLInputElement>elements.passwordMatchInput).value;
 };
 
 export const addGameToMatchList = (game: Game): void => {
@@ -42,16 +42,16 @@ export const addGameToMatchList = (game: Game): void => {
     elements.matchList.insertAdjacentHTML('afterbegin', markup);
 };
 
-export const setIdMatch__inputValue = (id: string): void => {
-    (<HTMLInputElement>elements.idMatch__input).value = id;
+export const setIdMatchInputValue = (id: string): void => {
+    (<HTMLInputElement>elements.idMatchInput).value = id;
 };
 
-export const setNameMatch__inputValue = (id: string): void => {
-    (<HTMLInputElement>elements.nameMatch__input).value = id;
+export const setNameMatchInputValue = (id: string): void => {
+    (<HTMLInputElement>elements.nameMatchInput).value = id;
 };
 
-export const getIdMatch__inputValue = (): string => {
-    return (<HTMLInputElement>elements.idMatch__input).value;
+export const getIdMatchInputValue = (): string => {
+    return (<HTMLInputElement>elements.idMatchInput).value;
 };
 
 export const renderGamesInMatchList = (games: Array<Game>): void => {

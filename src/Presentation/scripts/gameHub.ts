@@ -6,7 +6,7 @@ var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
 
-hub.on('RecieveListOfGames', (games: Array<Game>) => {
+hub.on('RecieveAndRenderListOfMatches', (games: Array<Game>) => {
     indexView.renderGamesInMatchList(games);
 });
 
@@ -20,6 +20,6 @@ export const createGame = async (game: Game): Promise<void> => {
     await hub.invoke('CreateGame', game.id, game.name, game.password);
 };
 
-export const getListOfGames = async (): Promise<void> => {
+export const refreshListOfGames = async (): Promise<void> => {
     await hub.invoke('GetListOfGames');
 };

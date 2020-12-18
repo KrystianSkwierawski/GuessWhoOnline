@@ -1,50 +1,54 @@
-﻿<button class="show-find-match__button">Find match</button>
-<button class="show-create-match__button">Create match</button>
-
-@{ 
+﻿@{
     string _guid = Guid.NewGuid().ToString();
 }
 
+
+<button class="show-find-match-button">Find match</button>
+<button class="show-create-match-button">Create match</button>
+
 <div class="create-match">
     <div class="container mb-2">
-        <input class="id-match__input" type="hidden"/>
+        <input class="id-match-input" type="hidden" />
 
-            <div class="form-row py-2">
-                <div class="col mb-2">
-                    <label for="name">Name match</label>
-                    <input class="form-control name-match__input"
-                           id="name"
-                           type="text"
-                           required/>
-                </div>
+        <div class="form-row py-2">
+            <div class="col mb-2">
+                <label for="name">Name match</label>
+                <input class="form-control name-match-input"
+                       id="name"
+                       type="text"
+                       required />
             </div>
+        </div>
 
-            <div class="form-row py-2">
-                <div class="col mb-2">
-                    <label for="password">Password match</label>
-                    <input class="form-control password-match__input"
-                           id="password"
-                           type="password" />
-                </div>
+        <div class="form-row py-2">
+            <div class="col mb-2">
+                <label for="password">Password match</label>
+                <input class="form-control password-match-input"
+                       id="password"
+                       type="password" />
             </div>
+        </div>
 
-            <div class="form-row">
-                <div class="col text-center mb-2">
-                    <button type="button" class="btn btn-primary px-4 py-2 create-match__back-button">Back</button>
-                </div>
-                <div class="col text-center">
-                    <button class="btn btn-primary px-4 py-2 create-match__button">Create</button>
-                </div>
+        <div class="form-row">
+            <div class="col text-center mb-2">
+                <button type="button" class="btn btn-primary px-4 py-2 create-match__back-button">Back</button>
             </div>
+            <div class="col text-center">
+                <button class="btn btn-primary px-4 py-2 create-match-button">Create</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="find-match">
+    <div class="find-match__top-container">
+        <h2>Match list</h2>
+        <button class="find-match__refresh-list"><i class="fas fa-redo-alt"></i></button>
+    </div>
     <ul class="match-list">
-        
     </ul>
 
-    <button class="find-match__back-button">Back</button>
+    <button class="find-match__back-button btn">Back</button> 
 </div>
 
 <script type="module" src="~/js/index.js"></script>

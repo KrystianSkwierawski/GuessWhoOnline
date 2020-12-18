@@ -32,7 +32,7 @@ namespace Presentation.Hubs
         {
             if (_games.Count > 0)
             {
-                await Clients.Client(Context.ConnectionId).SendAsync("RecieveListOfGames", _games);
+                await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", _games);
             }
         }
 

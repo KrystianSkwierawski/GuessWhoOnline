@@ -356,25 +356,51 @@ th {
 .find-match {
   flex-direction: column;
   display: none;
-  height: 40%;
-  width: 60%;
+  height: 70%;
+  width: 90%;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: grey; }
+  background-color: grey;
+  padding: 2%; }
+  @media screen and (min-width: 768px) {
+    .find-match {
+      width: 60%;
+      height: 60%; } }
   .find-match ul {
+    background-color: white;
+    padding: 10px;
     overflow: auto;
     flex-grow: 1; }
     .find-match ul li {
       list-style: none;
-      margin-top: 10px; }
+      margin-top: 10px;
+      background-color: gray;
+      padding: 5px; }
+    .find-match ul li a {
+      color: white;
+      text-decoration: none;
+      display: block; }
 
 .find-match__back-button {
+  border: 0;
+  background: none;
+  background-color: #007bff;
+  color: white;
   height: auto; }
 
 .find-match_active {
   display: flex; }
+
+.find-match__top-container {
+  display: flex;
+  justify-content: space-between;
+  color: white; }
+
+.find-match__refresh-list {
+  border: 0;
+  background: none; }
 
 .create-match {
   flex-direction: column;

@@ -11,7 +11,7 @@ import * as indexView from './views/indexView.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
-hub.on('RecieveListOfGames', (games) => {
+hub.on('RecieveAndRenderListOfMatches', (games) => {
     indexView.renderGamesInMatchList(games);
 });
 hub.start().then(function () {
@@ -21,7 +21,7 @@ hub.start().then(function () {
 export const createGame = (game) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('CreateGame', game.id, game.name, game.password);
 });
-export const getListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
+export const refreshListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('GetListOfGames');
 });
 //# sourceMappingURL=gameHub.js.map
