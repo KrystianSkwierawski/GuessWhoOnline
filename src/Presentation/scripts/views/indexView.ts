@@ -31,7 +31,10 @@ export const getPasswordMatchInputValue = (): string => {
 const addEventListenerToMatchButton =  (gameId: string): void => {
     document.getElementById(gameId).addEventListener('click', async (): Promise<void> => {
         const password = prompt('Password:');
-        await tryJoinMatch(gameId, password);
+
+        if (password) {
+            await tryJoinMatch(gameId, password);
+        }     
     });
 };
 

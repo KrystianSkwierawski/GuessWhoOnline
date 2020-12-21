@@ -31,7 +31,9 @@ export const getPasswordMatchInputValue = () => {
 const addEventListenerToMatchButton = (gameId) => {
     document.getElementById(gameId).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
         const password = prompt('Password:');
-        yield tryJoinMatch(gameId, password);
+        if (password) {
+            yield tryJoinMatch(gameId, password);
+        }
     }));
 };
 export const addGameToMatchList = (game) => {
