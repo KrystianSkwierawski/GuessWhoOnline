@@ -36,6 +36,21 @@ namespace Presentation.Hubs
             }
         }
 
+        public async Task TryJoinMatch(string id, string password)
+        {
+            Game game = _games.FirstOrDefault(x => x.Id == id);
+
+            bool isPasswordCorrect = (game.Password == password) ? true : false;
+            if (isPasswordCorrect)
+            {
+                await Clients.Caller.SendAsync("RecieveGameUrl", game.Url);
+            }
+            else
+            {
+                await Clients.Caller.SendAsync("DisplayNotification");
+            }
+        }
+
         public async Task CreateGame(Game game)
         {
 

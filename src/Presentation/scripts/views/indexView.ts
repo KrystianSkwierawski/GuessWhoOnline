@@ -1,5 +1,8 @@
-﻿import { elements, elementStrings } from './base.js';
+﻿declare var toastr: any
+import { elements, elementStrings } from './base.js';
 import { getGameFullUrl, Game } from '../models/Game.js';
+import { tryJoinMatch } from '../gameHub.js';
+
 
 export const showFindMatchContainer = function (): void {
     elements.findMatch.classList.add('find-match_active');
@@ -25,6 +28,13 @@ export const getPasswordMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.passwordMatchInput).value;
 };
 
+const addEventListenerToMatchButton =  (gameId: string): void => {
+    document.getElementById(gameId).addEventListener('click', async (): Promise<void> => {
+        const password = prompt('Password:');
+        await tryJoinMatch(gameId, password);
+    });
+};
+
 export const addGameToMatchList = (game: Game): void => {
     const gameFullUrl: string = getGameFullUrl(game.url);
 
@@ -35,20 +45,15 @@ export const addGameToMatchList = (game: Game): void => {
         markup = `<li><button id="${game.id}">${game.name}  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
 
-        // zrob osobna funkcje z tego event listenera
-        document.getElementById(game.id).addEventListener('click', (): void => {
-            
-
-            // zrob promt o haslo
-
-            // Call GameHub czy haslo sie zgadza jezeli tak wysylasz bool ze sie zgadza razem z linkiem jezeli sie nie zgadza to zrob toastr z blednym haslem
-        });
+        addEventListenerToMatchButton(game.id);      
     }
     else {
         markup = `<li><a href="${gameFullUrl}">${game.name}</a></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }  
 };
+
+
 
 export const setIdMatchInputValue = (id: string): void => {
     (<HTMLInputElement>elements.idMatchInput).value = id;
@@ -77,6 +82,10 @@ export const renderGamesInMatchList = (games: Array<Game>): void => {
     games.forEach(game => {
         addGameToMatchList(game);
     });
+};
+
+export const displayNotificationAboutIncorrectPassword = (): void => {
+    toastr["warning"]('Incorrect password');
 };
 
 

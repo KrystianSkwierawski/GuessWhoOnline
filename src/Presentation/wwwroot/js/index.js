@@ -46,10 +46,13 @@ elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, voi
         guestPlayerhostConnectionId: null
     };
     yield gameHub.createGame(game);
-    const fullGameUrl = getGameFullUrl(gameUrl);
-    window.location.href = fullGameUrl;
+    navigateToGameUrl(gameUrl);
 }));
 elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameHub.refreshListOfGames();
 }));
+export const navigateToGameUrl = (url) => {
+    const fullGameUrl = getGameFullUrl(url);
+    window.location.href = fullGameUrl;
+};
 //# sourceMappingURL=index.js.map

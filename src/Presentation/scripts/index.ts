@@ -47,13 +47,16 @@ elements.createMatchButton.addEventListener('click', async (): Promise<void> => 
     };
 
     await gameHub.createGame(game);
-
-    const fullGameUrl: string = getGameFullUrl(gameUrl);
-    window.location.href = fullGameUrl;
+    navigateToGameUrl(gameUrl); 
 });
 
 elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {
     await gameHub.refreshListOfGames();
 });
+
+export const navigateToGameUrl = (url: string): void => {
+    const fullGameUrl: string = getGameFullUrl(url);
+    window.location.href = fullGameUrl;
+};
 
 

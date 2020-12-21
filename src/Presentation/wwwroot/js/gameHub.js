@@ -8,9 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as indexView from './views/indexView.js';
+import { navigateToGameUrl } from './index.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
+hub.on('DisplayNotification', () => {
+    indexView.displayNotificationAboutIncorrectPassword();
+});
+hub.on('RecieveGameUrl', (url) => {
+    navigateToGameUrl(url);
+});
 hub.on('RecieveAndRenderListOfMatches', (games) => {
     indexView.renderGamesInMatchList(games);
 });
@@ -23,5 +30,8 @@ export const createGame = (game) => __awaiter(void 0, void 0, void 0, function* 
 });
 export const refreshListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('GetListOfGames');
+});
+export const tryJoinMatch = (id, password) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('TryJoinMatch', id, password);
 });
 //# sourceMappingURL=gameHub.js.map
