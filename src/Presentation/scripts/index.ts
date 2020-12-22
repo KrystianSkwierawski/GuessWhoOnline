@@ -1,11 +1,11 @@
 ﻿import * as indexView from './views/indexView.js';
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
-import * as gameHub from './gameHub.js';
+import * as gameCreatorHub from './gameCreatorHub';
 import { getGameFullUrl, Game } from './models/Game.js';
 
 elements.showFindMatchButton.addEventListener('click', async (): Promise<void> => {
-    await gameHub.refreshListOfGames()
+    await gameCreatorHub.refreshListOfGames()
 
     indexView.showFindMatchContainer();
     indexView.hideCreateMatchContainer();
@@ -46,12 +46,12 @@ elements.createMatchButton.addEventListener('click', async (): Promise<void> => 
         guestPlayerhostConnectionId: null
     };
 
-    await gameHub.createGame(game);
+    await gameCreatorHub.createGame(game);
     navigateToGameUrl(gameUrl); 
 });
 
 elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {
-    await gameHub.refreshListOfGames();
+    await gameCreatorHub.refreshListOfGames();
 });
 
 export const navigateToGameUrl = (url: string): void => {

@@ -1,7 +1,7 @@
 ﻿declare var toastr: any
 import { elements, elementStrings } from './base.js';
 import { getGameFullUrl, Game } from '../models/Game.js';
-import { tryJoinMatch } from '../gameHub.js';
+import { tryJoinMatch } from '../gameCreatorHub';
 
 
 export const showFindMatchContainer = function (): void {

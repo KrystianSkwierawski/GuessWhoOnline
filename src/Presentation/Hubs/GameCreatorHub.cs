@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Hubs
 {
-    public class GameHub : Hub
+    public class GameCreatorHub : Hub
     {
         static List<HubCallerContext> _connections = new List<HubCallerContext>();
         static List<Game> _games = new List<Game>();

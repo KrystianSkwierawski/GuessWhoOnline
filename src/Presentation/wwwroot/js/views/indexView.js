@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { elements } from './base.js';
 import { getGameFullUrl } from '../models/Game.js';
-import { tryJoinMatch } from '../gameHub.js';
+import { tryJoinMatch } from '../gameCreatorHub';
 export const showFindMatchContainer = function () {
     elements.findMatch.classList.add('find-match_active');
 };

@@ -10,10 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import * as indexView from './views/indexView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
-import * as gameHub from './gameHub.js';
+import * as gameCreatorHub from './gameCreatorHub';
 import { getGameFullUrl } from './models/Game.js';
 elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    yield gameHub.refreshListOfGames();
+    yield gameCreatorHub.refreshListOfGames();
     indexView.showFindMatchContainer();
     indexView.hideCreateMatchContainer();
 }));
@@ -45,11 +45,11 @@ elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, voi
         hostPlayerConnectionId: null,
         guestPlayerhostConnectionId: null
     };
-    yield gameHub.createGame(game);
+    yield gameCreatorHub.createGame(game);
     navigateToGameUrl(gameUrl);
 }));
 elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    yield gameHub.refreshListOfGames();
+    yield gameCreatorHub.refreshListOfGames();
 }));
 export const navigateToGameUrl = (url) => {
     const fullGameUrl = getGameFullUrl(url);
