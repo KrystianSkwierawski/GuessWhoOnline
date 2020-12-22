@@ -4,8 +4,9 @@
     <div class="game-panel">
         <h1>Wait for enemy</h1>
 
+        <p>Your character:</p>
         <img class="game-panel__your-character" src="~/images/characters/square.jpg" />
-        <h2>Name</h2>
+        <p>Name</p>
 
         <p class="game-panel__turn-time">1:00</p>
         <button class="btn btn-primary game-panel__skip-turn-button">Skip turn</button>
@@ -16,21 +17,11 @@
                 <option value="name">Name</option>
             }
         </select>
-        <button class="game-panel__check-type-button btn btn-primary">Check</button>
-
-        @*
-            1. game status: {wait for enemy, your turn, enemy turn}
-            2. czas
-            3. przycisk do skipowania
-            4. your type
-            5. check
-        *@
+        <button class="game-panel__check-type-button btn btn-danger">Check</button>
 
         @*  gora na mobilnej
             prawo na desktop
         *@
-
-
     </div>
 
     <div class="charackters">

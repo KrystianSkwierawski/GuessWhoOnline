@@ -485,7 +485,7 @@ th {
 .chat-communicator {
   position: fixed;
   width: 100%;
-  height: 30%;
+  height: 40%;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
@@ -499,16 +499,25 @@ th {
   width: 100%;
   overflow: auto;
   margin-bottom: 1%;
-  text-align: left; }
+  text-align: left;
+  margin-left: 10px;
+  margin-right: 10px; }
   .chat-communicator__messages .message {
     padding: 0, 5px, 0, 5px; }
 
+.chat-communicator__messages::-webkit-scrollbar {
+  display: none; }
+
 .send-messages {
-  display: flex; }
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  margin-left: 10px; }
 
 .send-messages__send-message-input {
   height: auto;
-  width: 95%; }
+  padding: 5px;
+  width: 100%; }
 
 .send-messages__send-message-button {
   color: #007bff;
