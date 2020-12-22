@@ -1,0 +1,32 @@
+﻿.game-panel{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20%;
+}
+
+.game-panel__your-character {
+    height: 80vw;
+    width: 80vw;
+}
+
+.game-panel__skip-turn-button {
+   border-radius: 12px;
+}
+
+.game-panel__turn-time{
+    margin-top: 10%;
+    font-size: font-scale(2);
+}
+
+.game-panel__character-type {
+    margin-top: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+}
+
+.game-panel__check-type-button{
+    margin-top: 5%;
+    width: 80vw;
+}

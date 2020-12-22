@@ -1,0 +1,24 @@
+﻿.game{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    @include respond-to(large){
+        flex-direction: row;
+    }
+}
+
+.show-chat-communicator-button {
+    position: fixed;
+    right: 1px;
+    bottom: 1px;
+    
+
+    @include reset-button;
+}
+
+/*.game button{
+    @include reset-button;
+}
+*/

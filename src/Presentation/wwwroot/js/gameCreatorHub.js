@@ -7,10 +7,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as indexView from './views/indexView.js';
-import { navigateToGameUrl } from './index.js';
+import * as indexView from './views/homeView.js';
+import { navigateToGameUrl } from './home.js';
 var hub = new signalR.HubConnectionBuilder()
-    .withUrl('/gameHub')
+    .withUrl('/gameCreatorHub')
     .build();
 hub.on('DisplayNotification', () => {
     indexView.displayNotificationAboutIncorrectPassword();

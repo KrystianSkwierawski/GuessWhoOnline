@@ -74,4 +74,4 @@ export const renderGamesInMatchList = (games) => {
 export const displayNotificationAboutIncorrectPassword = () => {
     toastr["warning"]('Incorrect password');
 };
-//# sourceMappingURL=indexView.js.map
+//# sourceMappingURL=homeView.js.map

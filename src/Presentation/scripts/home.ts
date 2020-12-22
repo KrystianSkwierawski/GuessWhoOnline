@@ -1,7 +1,7 @@
-﻿import * as indexView from './views/indexView.js';
+﻿import * as indexView from './views/homeView.js';
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
-import * as gameCreatorHub from './gameCreatorHub';
+import * as gameCreatorHub from './gameCreatorHub.js';
 import { getGameFullUrl, Game } from './models/Game.js';
 
 elements.showFindMatchButton.addEventListener('click', async (): Promise<void> => {

@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as indexView from './views/indexView.js';
+import * as indexView from './views/homeView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
@@ -55,4 +55,4 @@ export const navigateToGameUrl = (url) => {
     const fullGameUrl = getGameFullUrl(url);
     window.location.href = fullGameUrl;
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=home.js.map

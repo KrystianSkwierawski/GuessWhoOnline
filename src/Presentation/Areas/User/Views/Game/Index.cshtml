@@ -1,1 +1,72 @@
-﻿<h1>GameBoard</h1>
+﻿<div class="game">
+
+
+    <div class="game-panel">
+        <h1>Wait for enemy</h1>
+
+        <img class="game-panel__your-character" src="~/images/characters/square.jpg" />
+        <h2>Name</h2>
+
+        <p class="game-panel__turn-time">1:00</p>
+        <button class="btn btn-primary game-panel__skip-turn-button">Skip turn</button>
+
+        <select class="game-panel__character-type" name="character-type" id="character-type">
+            @for (int i = 0; i < 20; i++)
+            {
+                <option value="name">Name</option>
+            }
+        </select>
+        <button class="game-panel__check-type-button btn btn-primary">Check</button>
+
+        @*
+            1. game status: {wait for enemy, your turn, enemy turn}
+            2. czas
+            3. przycisk do skipowania
+            4. your type
+            5. check
+        *@
+
+        @*  gora na mobilnej
+            prawo na desktop
+        *@
+
+
+    </div>
+
+    <div class="charackters">
+        @*foreach postaci 5x4 = 20*@
+        <h3>Characters</h3>
+
+        @for (int i = 0; i < 20; i++)
+        {
+            <div class="character">
+                <button><img src="~/images/characters/square.jpg" alt="charachter name" /></button>
+                <p>name</p>
+            </div>
+        }
+
+    </div>
+
+    <div class="chat-communicator d-none">
+        <button class="chat-communicator__hide-communicator-button"><i class="fas fa-minus"></i></button>
+
+        <div class="chat-communicator__messages">
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+            <p class="message">bezi: asdasd</p>
+        </div>
+
+        <div class="send-messages">
+            <input class="send-messages__send-message-input" />
+            <button class="send-messages__send-message-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button class="show-chat-communicator-button"><i class="fas fa-comment"></i></button>
+</div>
+
+<script type="module" src="~/js/game.js"></script>

@@ -1,0 +1,24 @@
+﻿.charackters{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.character {
+    height: 300px;
+    width: 100%;
+    align-self: center;
+    margin-bottom: 20px;
+
+    button {
+        height: 80vw;
+        width: 80vw;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+

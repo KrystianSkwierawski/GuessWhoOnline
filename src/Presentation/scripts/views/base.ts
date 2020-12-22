@@ -12,7 +12,10 @@
     createMatchButton: document.querySelector('.create-match-button'),
     urlMatchInput: document.querySelector('.url-match-input'),
     idMatchInput: document.querySelector('.id-match-input'),
-    findMatch__refreshList: document.querySelector('.find-match__refresh-list')
+    findMatch__refreshList: document.querySelector('.find-match__refresh-list'),
+    showChatCommunicatorButton: document.querySelector('.show-chat-communicator-button'),
+    chatCommunicator: document.querySelector('.chat-communicator'),
+    chatCommunicator__hideCommunicatorButton: document.querySelector('.chat-communicator__hide-communicator-button')
 };
 
 export const elementStrings = {

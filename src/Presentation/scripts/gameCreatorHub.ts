@@ -1,11 +1,11 @@
 ﻿declare var signalR: any
-import * as indexView from './views/indexView.js';
+import * as indexView from './views/homeView.js';
 import { Game } from './models/Game.js';
-import { navigateToGameUrl } from './index.js';
+import { navigateToGameUrl } from './home.js';
 
 
 var hub = new signalR.HubConnectionBuilder()
-    .withUrl('/gameHub')
+    .withUrl('/gameCreatorHub')
     .build();
 
 
