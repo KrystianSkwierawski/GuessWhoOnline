@@ -33,6 +33,18 @@ elements.createMatch_backButton.addEventListener('click', () => {
     indexView.hideCreateMatchContainer();
 });
 elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    const game = yield createGameObject();
+    yield gameCreatorHub.createGame(game);
+    navigateToGameUrl(game.url);
+}));
+elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield gameCreatorHub.refreshListOfGames();
+}));
+export const navigateToGameUrl = (url) => {
+    const fullGameUrl = getGameFullUrl(url);
+    window.location.href = fullGameUrl;
+};
+const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
     const gameId = indexView.getIdMatchInputValue();
     const gameUrl = indexView.getUrlMatchInputValue();
     const gameName = indexView.getNameMatchInputValue();
@@ -45,14 +57,6 @@ elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, voi
         hostPlayerConnectionId: null,
         guestPlayerhostConnectionId: null
     };
-    yield gameCreatorHub.createGame(game);
-    navigateToGameUrl(gameUrl);
-}));
-elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    yield gameCreatorHub.refreshListOfGames();
-}));
-export const navigateToGameUrl = (url) => {
-    const fullGameUrl = getGameFullUrl(url);
-    window.location.href = fullGameUrl;
-};
+    return game;
+});
 //# sourceMappingURL=home.js.map

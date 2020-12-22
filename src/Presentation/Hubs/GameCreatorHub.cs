@@ -9,22 +9,16 @@ namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
-        static List<HubCallerContext> _connections = new List<HubCallerContext>();
         static List<Game> _games = new List<Game>();
 
 
         public override async Task OnConnectedAsync()
         {
-            _connections.Add(Context);
-
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            TryRemoveConnection();
-
-
             await base.OnDisconnectedAsync(exception);
         }
 
@@ -53,19 +47,12 @@ namespace Presentation.Hubs
 
         public async Task CreateGame(Game game)
         {
+            bool gameDoesNotExist = (_games.FirstOrDefault(x => x.Id == game.Id) == null) ? true : false;
 
-            _games.Add(game);
-        }
-
-
-        private void TryRemoveConnection()
-        {
-            HubCallerContext connection = _connections.FirstOrDefault(x => x.UserIdentifier == Context.UserIdentifier);
-
-            if (connection != null)
+            if (gameDoesNotExist)
             {
-                _connections.Remove(connection);
-            }
+                _games.Add(game);
+            }          
         }
     }
 }

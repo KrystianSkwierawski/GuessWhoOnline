@@ -32,6 +32,22 @@ elements.createMatch_backButton.addEventListener('click', (): void => {
 });
 
 elements.createMatchButton.addEventListener('click', async (): Promise<void> => {
+    const game: Game = await createGameObject();
+
+    await gameCreatorHub.createGame(game);
+    navigateToGameUrl(game.url); 
+});
+
+elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {
+    await gameCreatorHub.refreshListOfGames();
+});
+
+export const navigateToGameUrl = (url: string): void => {
+    const fullGameUrl: string = getGameFullUrl(url);
+    window.location.href = fullGameUrl;
+};
+
+const createGameObject = async (): Promise<Game> => {
     const gameId: string = indexView.getIdMatchInputValue();
     const gameUrl: string = indexView.getUrlMatchInputValue();
     const gameName: string = indexView.getNameMatchInputValue();
@@ -46,17 +62,6 @@ elements.createMatchButton.addEventListener('click', async (): Promise<void> => 
         guestPlayerhostConnectionId: null
     };
 
-    await gameCreatorHub.createGame(game);
-    navigateToGameUrl(gameUrl); 
-});
-
-elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {
-    await gameCreatorHub.refreshListOfGames();
-});
-
-export const navigateToGameUrl = (url: string): void => {
-    const fullGameUrl: string = getGameFullUrl(url);
-    window.location.href = fullGameUrl;
+    return game;
 };
-
 
