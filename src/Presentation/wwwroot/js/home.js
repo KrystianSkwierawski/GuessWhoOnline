@@ -49,6 +49,7 @@ const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
     const gameUrl = indexView.getUrlMatchInputValue();
     const gameName = indexView.getNameMatchInputValue();
     const gamePassword = indexView.getPasswordMatchInputValue();
+    // TODO: usun oba connectionId
     const game = {
         id: gameId,
         url: gameUrl,

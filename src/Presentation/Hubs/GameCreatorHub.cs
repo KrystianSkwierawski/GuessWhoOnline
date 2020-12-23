@@ -12,6 +12,7 @@ namespace Presentation.Hubs
         static List<Game> _games = new List<Game>();
 
 
+        // TODO: usun connected i disconnected
         public override async Task OnConnectedAsync()
         {
             await base.OnConnectedAsync();
