@@ -3,8 +3,6 @@
     url: string
     name: string,
     password: string,
-    hostPlayerConnectionId: string,
-    guestPlayerhostConnectionId: string
 }
 
 export const getGameFullUrl = function (gameId: string): string {

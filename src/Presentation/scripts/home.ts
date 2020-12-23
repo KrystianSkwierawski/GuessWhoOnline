@@ -53,15 +53,11 @@ const createGameObject = async (): Promise<Game> => {
     const gameName: string = indexView.getNameMatchInputValue();
     const gamePassword: string = indexView.getPasswordMatchInputValue();
 
-
-    // TODO: usun oba connectionId
     const game: Game =  {
         id: gameId,
         url: gameUrl,
         name: gameName,
         password: gamePassword,
-        hostPlayerConnectionId: null,
-        guestPlayerhostConnectionId: null
     };
 
     return game;

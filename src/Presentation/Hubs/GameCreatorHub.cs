@@ -11,18 +11,6 @@ namespace Presentation.Hubs
     {
         static List<Game> _games = new List<Game>();
 
-
-        // TODO: usun connected i disconnected
-        public override async Task OnConnectedAsync()
-        {
-            await base.OnConnectedAsync();
-        }
-
-        public override async Task OnDisconnectedAsync(Exception exception)
-        {
-            await base.OnDisconnectedAsync(exception);
-        }
-
         public async Task GetListOfGames()
         {
             if (_games.Count > 0)
