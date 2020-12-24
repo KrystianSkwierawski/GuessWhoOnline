@@ -1,7 +1,7 @@
 ﻿.game-panel {
     width: 100%;
     height: auto;
-    margin-bottom: 20%;
+    padding-bottom: 20%;
 
     @include respond-to(medium) {
         position: fixed;

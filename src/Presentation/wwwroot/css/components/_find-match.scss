@@ -41,6 +41,7 @@
 
         li button {
             @include reset-button;
+
             color: black;
             height: 100%;
             width: 100%;
@@ -52,6 +53,7 @@
 
 .find-match__back-button {
     @include reset-button;
+
     background-color: #007bff;
     color: white;
     height: auto;

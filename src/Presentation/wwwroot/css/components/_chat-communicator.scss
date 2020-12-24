@@ -5,8 +5,7 @@
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    background-color: white;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     display: flex;
     flex-direction: column;
     padding: 5px;
@@ -20,12 +19,10 @@
 }
 
 .chat-communicator__messages {
-    width: 100%;
+    width: calc(100% - 20px);
     overflow: auto;
-    margin-bottom: 1%;
     text-align: left;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 14px 10px 14px 10px;
 
     .message {
         padding: 0, 5px, 0, 5px;
@@ -45,19 +42,23 @@
 }
 
 .send-messages__send-message-input {
+    background-color: white;
+    color: black;
     height: auto;
     padding: 5px;
     width: 100%;
 }
 
 .send-messages__send-message-button {
-    color: #007bff;
-
     @include reset-button;
+
+    color: #007bff;
 }
 
 .chat-communicator__hide-communicator-button{
-    text-align: right;
+   position: absolute;
+   right: 0;
+   top: 0;
 
     @include reset-button;
 }

@@ -436,6 +436,7 @@ th {
   display: block; }
 
 .game {
+  color: white;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -443,13 +444,15 @@ th {
   @media screen and (min-width: 768px) {
     .game {
       flex-direction: row; } }
+  .game * {
+    background-color: #131339; }
 
 .show-chat-communicator-button {
+  border: 0;
+  background: none;
   position: fixed;
   right: 1px;
-  bottom: 1px;
-  border: 0;
-  background: none; }
+  bottom: 1px; }
 
 /*.game button{
     @include reset-button;
@@ -458,7 +461,7 @@ th {
 .game-panel {
   width: 100%;
   height: auto;
-  margin-bottom: 20%; }
+  padding-bottom: 20%; }
   @media screen and (min-width: 768px) {
     .game-panel {
       position: fixed;
@@ -513,8 +516,7 @@ th {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  background-color: white;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   padding: 5px; }
@@ -526,12 +528,10 @@ th {
       height: 30%; } }
 
 .chat-communicator__messages {
-  width: 100%;
+  width: calc(100% - 20px);
   overflow: auto;
-  margin-bottom: 1%;
   text-align: left;
-  margin-left: 10px;
-  margin-right: 10px; }
+  margin: 14px 10px 14px 10px; }
   .chat-communicator__messages .message {
     padding: 0, 5px, 0, 5px; }
 
@@ -545,17 +545,21 @@ th {
   margin-left: 10px; }
 
 .send-messages__send-message-input {
+  background-color: white;
+  color: black;
   height: auto;
   padding: 5px;
   width: 100%; }
 
 .send-messages__send-message-button {
-  color: #007bff;
   border: 0;
-  background: none; }
+  background: none;
+  color: #007bff; }
 
 .chat-communicator__hide-communicator-button {
-  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
   border: 0;
   background: none; }
 
@@ -581,20 +585,17 @@ th {
       margin-left: 10px;
       margin-right: 10px;
       margin-bottom: 5%;
-      height: calc((100% - 20px) / 3);
-      width: calc((100% - 20px) / 3); } }
+      height: calc((100% - 20px) / 4);
+      width: calc((100% - 20px) / 4); } }
   @media screen and (min-width: 768px) {
     .character {
       flex-grow: 1;
-      height: calc((60vw - 20px) / 4);
-      width: calc((60vw - 20px) / 4); } }
+      height: calc((60vw - 20px) / 6);
+      width: calc((60vw - 20px) / 6); } }
   .character button {
+    padding: 0;
     height: 100%;
     width: 100%; }
-    @media screen and (min-width: 768px) {
-      .character button {
-        height: 100%;
-        width: 100%; } }
   .character img {
     height: 100%;
     width: 100%; }
