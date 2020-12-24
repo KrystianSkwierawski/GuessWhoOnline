@@ -2,39 +2,47 @@
 
 
     <div class="game-panel">
-        <h1>Wait for enemy</h1>
+        <div>
+            <h1>Wait for enemy</h1>
 
-        <p>Your character:</p>
-        <img class="game-panel__your-character" src="~/images/characters/square.jpg" />
-        <p>Name</p>
+            <p>Your character:</p>
+            <img class="game-panel__your-character" src="~/images/characters/square.jpg" />
+            <p>Name</p>
 
-        <p class="game-panel__turn-time">1:00</p>
-        <button class="btn btn-primary game-panel__skip-turn-button">Skip turn</button>
+            <p class="game-panel__turn-time">1:00</p>
+            <button class="btn btn-primary game-panel__skip-turn-button">Skip turn</button>
 
-        <select class="game-panel__character-type" name="character-type" id="character-type">
-            @for (int i = 0; i < 20; i++)
-            {
-                <option value="name">Name</option>
-            }
-        </select>
-        <button class="game-panel__check-type-button btn btn-danger">Check</button>
+            <select class="game-panel__character-type" name="character-type" id="character-type">
+                @for (int i = 0; i < 20; i++)
+                {
+                    <option value="name">Name</option>
+                }
+            </select>
+            <button class="game-panel__check-type-button btn btn-danger">Check</button>
 
-        @*  gora na mobilnej
-            prawo na desktop
-        *@
+            @*  gora na mobilnej
+        prawo na desktop
+            *@
+        </div>
     </div>
 
-    <div class="charackters">
-        @*foreach postaci 5x4 = 20*@
+    <div class="game-board">
         <h3>Characters</h3>
 
-        @for (int i = 0; i < 20; i++)
-        {
-            <div class="character">
-                <button><img src="~/images/characters/square.jpg" alt="charachter name" /></button>
-                <p>name</p>
-            </div>
-        }
+        <div class="charackters">
+            @*foreach postaci 5x4 = 20*@
+
+
+            @for (int i = 0; i < 20; i++)
+            {
+                <div class="character">
+                    <button><img src="~/images/characters/square.jpg" alt="charachter name" /></button>
+                    <p>name</p>
+                </div>
+            }
+
+        </div>
+
 
     </div>
 

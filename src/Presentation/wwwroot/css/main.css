@@ -440,7 +440,7 @@ th {
   display: flex;
   flex-direction: column;
   text-align: center; }
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 768px) {
     .game {
       flex-direction: row; } }
 
@@ -459,10 +459,34 @@ th {
   width: 100%;
   height: auto;
   margin-bottom: 20%; }
+  @media screen and (min-width: 768px) {
+    .game-panel {
+      position: fixed;
+      width: 30%;
+      height: 100vh;
+      right: 0;
+      top: 0;
+      overflow: scroll; }
+      .game-panel::-webkit-scrollbar {
+        display: none; } }
+  @media screen and (min-width: 768px) {
+    .game-panel div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
 
 .game-panel__your-character {
   height: 80vw;
   width: 80vw; }
+  @media screen and (min-width: 576px) {
+    .game-panel__your-character {
+      height: 70vw;
+      width: 70vw; } }
+  @media screen and (min-width: 768px) {
+    .game-panel__your-character {
+      height: 15vw;
+      width: 15vw; } }
 
 .game-panel__skip-turn-button {
   border-radius: 12px; }
@@ -476,11 +500,11 @@ th {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80vw; }
+  width: 80%; }
 
 .game-panel__check-type-button {
   margin-top: 5%;
-  width: 80vw; }
+  width: 80%; }
 
 .chat-communicator {
   position: fixed;
@@ -494,6 +518,12 @@ th {
   display: flex;
   flex-direction: column;
   padding: 5px; }
+  @media screen and (min-width: 768px) {
+    .chat-communicator {
+      width: 70%;
+      left: 0;
+      transform: translateX(0);
+      height: 30%; } }
 
 .chat-communicator__messages {
   width: 100%;
@@ -533,16 +563,46 @@ th {
   height: auto;
   width: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center; }
+  @media screen and (min-width: 576px) {
+    .charackters {
+      flex-direction: row; } }
 
 .character {
+  margin-top: 20px;
   height: 80vw;
   width: 80vw;
   align-self: center;
   margin-bottom: 20vw; }
+  @media screen and (min-width: 576px) {
+    .character {
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 5%;
+      height: calc((100% - 20px) / 3);
+      width: calc((100% - 20px) / 3); } }
+  @media screen and (min-width: 768px) {
+    .character {
+      flex-grow: 1;
+      height: calc((60vw - 20px) / 4);
+      width: calc((60vw - 20px) / 4); } }
   .character button {
-    height: 80vw;
-    width: 80vw; }
+    height: 100%;
+    width: 100%; }
+    @media screen and (min-width: 768px) {
+      .character button {
+        height: 100%;
+        width: 100%; } }
   .character img {
     height: 100%;
     width: 100%; }
+
+@media screen and (min-width: 768px) {
+  .game-board {
+    order: -1;
+    height: 100vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column; } }

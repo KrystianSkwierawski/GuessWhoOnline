@@ -1,19 +1,45 @@
-﻿.charackters{
+﻿.charackters {
     height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include respond-to(small) {
+        flex-direction: row;     
+    }
 }
 
 .character {
+    margin-top: 20px;
     height: 80vw;
     width: 80vw;
     align-self: center;
     margin-bottom: 20vw;
 
+    @include respond-to(small) {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 5%;
+        height: calc((100% - 20px) / 3);
+        width: calc((100% - 20px) / 3);
+    }
+
+    @include respond-to(medium) {
+        flex-grow: 1;
+        height: calc((60vw - 20px) / 4);
+        width: calc((60vw - 20px) / 4);
+    }
+
     button {
-        height: 80vw;
-        width: 80vw;
+        height: 100%;
+        width: 100%;
+
+        @include respond-to(medium) {
+            height: 100%;
+            width: 100%;
+        }
     }
 
     img {

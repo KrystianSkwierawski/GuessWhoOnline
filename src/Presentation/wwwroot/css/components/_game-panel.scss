@@ -1,12 +1,44 @@
-﻿.game-panel{
+﻿.game-panel {
     width: 100%;
     height: auto;
     margin-bottom: 20%;
+
+    @include respond-to(medium) {
+        position: fixed;
+        width: 30%;
+        height: 100vh;
+        right: 0;
+        top: 0;
+        overflow: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    div {
+        @include respond-to(medium) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 .game-panel__your-character {
     height: 80vw;
     width: 80vw;
+
+    @include respond-to(small) {
+        height: 70vw;
+        width: 70vw;
+    }
+
+    @include respond-to(medium) {
+        height: 15vw;
+        width: 15vw;
+    }
 }
 
 .game-panel__skip-turn-button {
@@ -23,10 +55,10 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80vw;
+    width: 80%;
 }
 
 .game-panel__check-type-button{
     margin-top: 5%;
-    width: 80vw;
+    width: 80%;
 }

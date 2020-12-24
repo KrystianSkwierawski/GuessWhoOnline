@@ -1,0 +1,11 @@
+﻿.game-board {
+
+
+    @include respond-to(medium) {
+        order: -1;
+        height: 100vh;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+}

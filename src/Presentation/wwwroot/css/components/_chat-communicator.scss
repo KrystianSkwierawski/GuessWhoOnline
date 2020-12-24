@@ -1,15 +1,22 @@
-﻿.chat-communicator{
+﻿.chat-communicator {
     position: fixed;
-    width:100%;
+    width: 100%;
     height: 40%;
     left: 50%;
-    bottom:0;
+    bottom: 0;
     transform: translateX(-50%);
     background-color: white;
     padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     padding: 5px;
+
+    @include respond-to(medium) {
+      width: 70%;
+      left: 0;
+      transform: translateX(0);
+      height: 30%;
+    }
 }
 
 .chat-communicator__messages {
