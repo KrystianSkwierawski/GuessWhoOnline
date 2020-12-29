@@ -24,6 +24,10 @@
             transform: translate(-50%, -50%);
         }
     }
+
+    &.disabled {
+        pointer-events: none;
+    }
 }
 
 .game-panel__your-character {
@@ -61,4 +65,20 @@
 .game-panel__check-type-button{
     margin-top: 5%;
     width: 80%;
+}
+
+.game-panel__start-game-button {
+    border-radius: 12px;
+    height: auto;
+    width: 80vw;
+    margin-bottom: 5%;
+    margin-top: 5%;
+
+    @include respond-to(small) {
+        width: 70vw;
+    }
+
+    @include respond-to(medium) {
+        width: 15vw;
+    }
 }

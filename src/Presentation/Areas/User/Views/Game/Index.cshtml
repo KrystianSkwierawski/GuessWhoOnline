@@ -1,9 +1,13 @@
-﻿<div class="game">
+﻿@model string
 
+<div class="game">
+    <input type="hidden" class="game__game-id-input" value="@Model"/>
+    
 
-    <div class="game-panel">
+    <div class="game-panel disabled">
         <div>
-            <h1>Wait for enemy</h1>
+            <button class="game-panel__start-game-button btn btn-danger d-none">Start</button>
+            <h1 class="game-panel__game-status">Wait for enemy</h1>
 
             <p>Your character:</p>
             <img class="game-panel__your-character" src="~/images/characters/square.jpg" />
@@ -26,7 +30,7 @@
         </div>
     </div>
 
-    <div class="game-board">
+    <div class="game-board disabled">
         <h3>Characters</h3>
 
         <div class="charackters">
@@ -69,3 +73,4 @@
 </div>
 
 <script type="module" src="~/js/game.js"></script>
+<script type="module" src="~/js/gameHub.js"></script>

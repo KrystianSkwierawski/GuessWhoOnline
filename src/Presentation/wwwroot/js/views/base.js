@@ -15,7 +15,10 @@ export const elements = {
     findMatch__refreshList: document.querySelector('.find-match__refresh-list'),
     showChatCommunicatorButton: document.querySelector('.show-chat-communicator-button'),
     chatCommunicator: document.querySelector('.chat-communicator'),
-    chatCommunicator__hideCommunicatorButton: document.querySelector('.chat-communicator__hide-communicator-button')
+    chatCommunicator__hideCommunicatorButton: document.querySelector('.chat-communicator__hide-communicator-button'),
+    game__gameIdInput: document.querySelector('.game__game-id-input'),
+    gamePanel__gameStatus: document.querySelector('.game-panel__game-status'),
+    gamePanel__startGameButton: document.querySelector('.game-panel__start-game-button')
 };
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button'

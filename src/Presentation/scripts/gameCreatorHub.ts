@@ -1,4 +1,4 @@
-﻿declare var signalR: any
+﻿declare var signalR: any;
 import * as indexView from './views/homeView.js';
 import { Game } from './models/Game.js';
 import { navigateToGameUrl } from './home.js';

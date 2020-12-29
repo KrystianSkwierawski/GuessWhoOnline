@@ -6,4 +6,8 @@ elements.showChatCommunicatorButton.addEventListener('click', () => {
 elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();
 });
+elements.gamePanel__startGameButton.addEventListener('click', () => {
+    //zmien game status na started
+    //zacznij gre, odliczanie czasu
+});
 //# sourceMappingURL=game.js.map

@@ -8,10 +8,9 @@ namespace Presentation.Areas.User.Controllers
     public class GameController : BaseController
     {
         [Route("game/{id}", Name = "Game")]
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
-
-            return View();
+            return View("Index", id);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

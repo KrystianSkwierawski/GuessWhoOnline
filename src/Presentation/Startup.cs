@@ -57,6 +57,7 @@ namespace Presentation
                     pattern: "{area=User}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
                 endpoints.MapHub<GameCreatorHub>("/gamecreatorhub");
+                endpoints.MapHub<GameHub>("/gamehub");
             });
         }
     }

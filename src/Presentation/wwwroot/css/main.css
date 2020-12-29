@@ -478,6 +478,8 @@ th {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); } }
+  .game-panel.disabled {
+    pointer-events: none; }
 
 .game-panel__your-character {
   height: 80vw;
@@ -509,10 +511,23 @@ th {
   margin-top: 5%;
   width: 80%; }
 
+.game-panel__start-game-button {
+  border-radius: 12px;
+  height: auto;
+  width: 80vw;
+  margin-bottom: 5%;
+  margin-top: 5%; }
+  @media screen and (min-width: 576px) {
+    .game-panel__start-game-button {
+      width: 70vw; } }
+  @media screen and (min-width: 768px) {
+    .game-panel__start-game-button {
+      width: 15vw; } }
+
 .chat-communicator {
   position: fixed;
   width: 100%;
-  height: 40%;
+  height: 30%;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
@@ -525,13 +540,13 @@ th {
       width: 70%;
       left: 0;
       transform: translateX(0);
-      height: 30%; } }
+      height: calc(20% - 12px); } }
 
 .chat-communicator__messages {
   width: calc(100% - 20px);
   overflow: auto;
   text-align: left;
-  margin: 14px 10px 14px 10px; }
+  margin: 14px 10px 2px 10px; }
   .chat-communicator__messages .message {
     padding: 0, 5px, 0, 5px; }
 
@@ -607,3 +622,6 @@ th {
     width: 70%;
     display: flex;
     flex-direction: column; } }
+
+.game-board.disabled {
+  pointer-events: none; }

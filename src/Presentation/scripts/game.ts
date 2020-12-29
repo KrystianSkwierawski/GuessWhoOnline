@@ -9,3 +9,7 @@ elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', (): 
     gameView.showOrHideChatCommunicator();
 });
 
+elements.gamePanel__startGameButton.addEventListener('click', (): void => {
+    //zmien game status na started
+    //zacznij gre, odliczanie czasu
+});
