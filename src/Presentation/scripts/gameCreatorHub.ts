@@ -1,7 +1,7 @@
 ﻿declare var signalR: any;
 import * as indexView from './views/homeView.js';
 import { Game } from './models/Game.js';
-import { navigateToGameUrl } from './home.js';
+import { navigateToMatchUrl } from './home.js';
 
 
 var hub = new signalR.HubConnectionBuilder()
@@ -13,12 +13,12 @@ hub.on('DisplayNotification', (): void => {
     indexView.displayNotificationAboutIncorrectPassword();
 });
 
-hub.on('RecieveGameUrl', (url: string): void => {
-    navigateToGameUrl(url);
+hub.on('RecieveMatchUrl', (url: string): void => {
+    navigateToMatchUrl(url);
 });
 
 hub.on('RecieveAndRenderListOfMatches', (games: Array<Game>) => {
-    indexView.renderGamesInMatchList(games);
+    indexView.renderMatchesInMatchList(games);
 });
 
 hub.start().then(function () {
@@ -27,12 +27,12 @@ hub.start().then(function () {
 });
 
 
-export const createGame = async (game: Game): Promise<void> => {
-    await hub.invoke('CreateGame', game);
+export const createMatch = async (game: Game): Promise<void> => {
+    await hub.invoke('CreateMatch', game);
 };
 
 export const refreshListOfGames = async (): Promise<void> => {
-    await hub.invoke('GetListOfGames');
+    await hub.invoke('GetMatchListItems');
 };
 
 export const tryJoinMatch = async (id: string, password: string): Promise<void> => {

@@ -8,28 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as indexView from './views/homeView.js';
-import { navigateToGameUrl } from './home.js';
+import { navigateToMatchUrl } from './home.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameCreatorHub')
     .build();
 hub.on('DisplayNotification', () => {
     indexView.displayNotificationAboutIncorrectPassword();
 });
-hub.on('RecieveGameUrl', (url) => {
-    navigateToGameUrl(url);
+hub.on('RecieveMatchUrl', (url) => {
+    navigateToMatchUrl(url);
 });
 hub.on('RecieveAndRenderListOfMatches', (games) => {
-    indexView.renderGamesInMatchList(games);
+    indexView.renderMatchesInMatchList(games);
 });
 hub.start().then(function () {
 }).catch(function (err) {
     return console.error(err.toString());
 });
-export const createGame = (game) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('CreateGame', game);
+export const createMatch = (game) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('CreateMatch', game);
 });
 export const refreshListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('GetListOfGames');
+    yield hub.invoke('GetMatchListItems');
 });
 export const tryJoinMatch = (id, password) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('TryJoinMatch', id, password);

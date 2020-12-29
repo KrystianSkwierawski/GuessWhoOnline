@@ -1,6 +1,6 @@
 ﻿namespace Domain.Models
 {
-    public class Game
+    public class MatchListItem
     {
         public string Id { get; set; }
         public string Url { get; set; }

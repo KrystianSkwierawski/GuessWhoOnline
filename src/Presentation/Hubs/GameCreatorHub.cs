@@ -9,24 +9,24 @@ namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
-        static List<Game> _games = new List<Game>();
+        static List<MatchListItem> _matchListItems = new List<MatchListItem>();
 
-        public async Task GetListOfGames()
+        public async Task GetMatchListItems()
         {
-            if (_games.Count > 0)
+            if (_matchListItems.Count > 0)
             {
-                await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", _games);
+                await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", _matchListItems);
             }
         }
 
         public async Task TryJoinMatch(string id, string password)
         {
-            Game game = _games.FirstOrDefault(x => x.Id == id);
+            MatchListItem match = _matchListItems.FirstOrDefault(x => x.Id == id);
 
-            bool isPasswordCorrect = (game.Password == password) ? true : false;
+            bool isPasswordCorrect = (match.Password == password) ? true : false;
             if (isPasswordCorrect)
             {
-                await Clients.Caller.SendAsync("RecieveGameUrl", game.Url);
+                await Clients.Caller.SendAsync("RecieveMatchUrl", match.Url);
             }
             else
             {
@@ -34,13 +34,13 @@ namespace Presentation.Hubs
             }
         }
 
-        public async Task CreateGame(Game game)
+        public async Task CreateMatch(MatchListItem match)
         {
-            bool gameDoesNotExist = (_games.FirstOrDefault(x => x.Id == game.Id) == null) ? true : false;
+            bool matchDoesNotExist = (_matchListItems.FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
 
-            if (gameDoesNotExist)
+            if (matchDoesNotExist)
             {
-                _games.Add(game);
+                _matchListItems.Add(match);
             }          
         }
     }

@@ -20,8 +20,10 @@ namespace Presentation.Hubs
             bool groupHasTwoPlayers = (connectionsInCurrentGroup.Count() == 2) ? true : false;
             if (groupHasTwoPlayers)
             {
-                 string[] turnOrder =  GetTurnOrder(connectionsInCurrentGroup);
-                 await GetTheGameReadyToStart(turnOrder);
+                //zmien status na wybranie postaci
+
+                 //string[] turnOrder =  GetTurnOrder(connectionsInCurrentGroup);
+                 //await GetTheGameReadyToStart(turnOrder);
             }
         }
 

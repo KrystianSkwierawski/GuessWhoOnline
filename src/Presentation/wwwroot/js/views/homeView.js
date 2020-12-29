@@ -65,7 +65,7 @@ export const setNameMatchInputValue = (name) => {
 export const getUrlMatchInputValue = () => {
     return elements.urlMatchInput.value;
 };
-export const renderGamesInMatchList = (games) => {
+export const renderMatchesInMatchList = (games) => {
     elements.matchList.innerHTML = "";
     games.forEach(game => {
         addGameToMatchList(game);

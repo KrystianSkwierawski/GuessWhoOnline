@@ -34,13 +34,13 @@ elements.createMatch_backButton.addEventListener('click', () => {
 });
 elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     const game = yield createGameObject();
-    yield gameCreatorHub.createGame(game);
-    navigateToGameUrl(game.url);
+    yield gameCreatorHub.createMatch(game);
+    navigateToMatchUrl(game.url);
 }));
 elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameCreatorHub.refreshListOfGames();
 }));
-export const navigateToGameUrl = (url) => {
+export const navigateToMatchUrl = (url) => {
     const fullGameUrl = getGameFullUrl(url);
     window.location.href = fullGameUrl;
 };

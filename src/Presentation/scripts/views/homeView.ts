@@ -79,7 +79,7 @@ export const getUrlMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.urlMatchInput).value;
 };
 
-export const renderGamesInMatchList = (games: Array<Game>): void => {
+export const renderMatchesInMatchList = (games: Array<Game>): void => {
     elements.matchList.innerHTML = "";
 
     games.forEach(game => {
