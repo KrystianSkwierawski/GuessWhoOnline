@@ -73,6 +73,7 @@
     width: 80vw;
     margin-bottom: 5%;
     margin-top: 5%;
+    pointer-events: auto;
 
     @include respond-to(small) {
         width: 70vw;
@@ -82,3 +83,4 @@
         width: 15vw;
     }
 }
+

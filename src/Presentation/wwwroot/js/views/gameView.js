@@ -6,8 +6,7 @@ export const showOrHideChatCommunicator = () => {
 export const getGameIdInputValue = () => {
     return elements.game__gameIdInput.value;
 };
-export const setGameStatusToWaitForStart = () => {
-    const status = 'Wait for start';
+export const setGameStatus = (status) => {
     elements.gamePanel__gameStatus.textContent = status;
 };
 export const showOrHideStartGameButton = () => {
@@ -15,5 +14,14 @@ export const showOrHideStartGameButton = () => {
 };
 export const showOrHideGameStatus = () => {
     elements.gamePanel__gameStatus.classList.toggle('d-none');
+};
+export const activateGameBoard = () => {
+    elements.gameBoard.classList.remove('disabled');
+};
+export const disableGameBoard = () => {
+    elements.gameBoard.classList.add('disabled');
+};
+export const getGameStatus = () => {
+    return elements.gamePanel__gameStatus.textContent;
 };
 //# sourceMappingURL=gameView.js.map

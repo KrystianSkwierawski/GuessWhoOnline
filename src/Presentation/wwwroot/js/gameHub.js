@@ -15,8 +15,14 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideStartGameButton();
     gameView.showOrHideGameStatus();
 });
-hub.on("ChangeGameStatusToWaitForStart", () => {
-    gameView.setGameStatusToWaitForStart();
+hub.on("ActivateGameBoard", () => {
+    gameView.activateGameBoard();
+});
+hub.on("DisableGameBoard", () => {
+    gameView.disableGameBoard();
+});
+hub.on("RecieveGameStatus", (status) => {
+    gameView.setGameStatus(status);
 });
 hub.start().then(function () {
     return __awaiter(this, void 0, void 0, function* () {
@@ -28,5 +34,8 @@ hub.start().then(function () {
 });
 const tryJoinGame = (gameId) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('TryJoinGame', gameId);
+});
+export const selectCharacter = (gameId, characterName) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('SelectCharacter', gameId, characterName);
 });
 //# sourceMappingURL=gameHub.js.map

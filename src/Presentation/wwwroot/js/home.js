@@ -11,7 +11,7 @@ import * as indexView from './views/homeView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
-import { getGameFullUrl } from './models/Game.js';
+import { getMatchFullUrl } from './models/MatchListItem.js';
 elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameCreatorHub.refreshListOfGames();
     indexView.showFindMatchContainer();
@@ -41,7 +41,7 @@ elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0
     yield gameCreatorHub.refreshListOfGames();
 }));
 export const navigateToMatchUrl = (url) => {
-    const fullGameUrl = getGameFullUrl(url);
+    const fullGameUrl = getMatchFullUrl(url);
     window.location.href = fullGameUrl;
 };
 const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {

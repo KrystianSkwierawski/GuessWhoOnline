@@ -1,6 +1,6 @@
 ﻿declare var signalR: any;
 import * as indexView from './views/homeView.js';
-import { Game } from './models/Game.js';
+import { MatchListItem } from './models/MatchListItem.js';
 import { navigateToMatchUrl } from './home.js';
 
 
@@ -17,8 +17,8 @@ hub.on('RecieveMatchUrl', (url: string): void => {
     navigateToMatchUrl(url);
 });
 
-hub.on('RecieveAndRenderListOfMatches', (games: Array<Game>) => {
-    indexView.renderMatchesInMatchList(games);
+hub.on('RecieveAndRenderListOfMatches', (matches: Array<MatchListItem>) => {
+    indexView.renderMatchesInMatchList(matches);
 });
 
 hub.start().then(function () {
@@ -27,8 +27,8 @@ hub.start().then(function () {
 });
 
 
-export const createMatch = async (game: Game): Promise<void> => {
-    await hub.invoke('CreateMatch', game);
+export const createMatch = async (match: MatchListItem): Promise<void> => {
+    await hub.invoke('CreateMatch', match);
 };
 
 export const refreshListOfGames = async (): Promise<void> => {

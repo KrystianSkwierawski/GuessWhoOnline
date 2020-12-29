@@ -1,0 +1,1 @@
+{"version":3,"file":"MatchListItem.js","sourceRoot":"","sources":["../../../scripts/models/MatchListItem.ts"],"names":[],"mappings":"AAOA,MAAM,CAAC,MAAM,eAAe,GAAG,UAAU,OAAe;IACpD,MAAM,UAAU,GAAG,MAAM,CAAC,QAAQ,CAAC,IAAI,CAAC;IAExC,OAAO,GAAG,UAAU,QAAQ,OAAO,EAAE,CAAC;AAC1C,CAAC,CAAC"}

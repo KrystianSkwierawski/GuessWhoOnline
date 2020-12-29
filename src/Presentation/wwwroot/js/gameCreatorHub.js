@@ -18,15 +18,15 @@ hub.on('DisplayNotification', () => {
 hub.on('RecieveMatchUrl', (url) => {
     navigateToMatchUrl(url);
 });
-hub.on('RecieveAndRenderListOfMatches', (games) => {
-    indexView.renderMatchesInMatchList(games);
+hub.on('RecieveAndRenderListOfMatches', (matches) => {
+    indexView.renderMatchesInMatchList(matches);
 });
 hub.start().then(function () {
 }).catch(function (err) {
     return console.error(err.toString());
 });
-export const createMatch = (game) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('CreateMatch', game);
+export const createMatch = (match) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('CreateMatch', match);
 });
 export const refreshListOfGames = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('GetMatchListItems');

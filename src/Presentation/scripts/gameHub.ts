@@ -11,9 +11,18 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.showOrHideGameStatus();
 });
 
+hub.on("ActivateGameBoard", (): void => {
+    gameView.activateGameBoard();
+});
 
-hub.on("ChangeGameStatusToWaitForStart", (): void => {
-    gameView.setGameStatusToWaitForStart();
+
+hub.on("DisableGameBoard", (): void => {
+    gameView.disableGameBoard();
+});
+
+
+hub.on("RecieveGameStatus", (status: string): void => {
+    gameView.setGameStatus(status);
 });
 
 hub.start().then(async function () {
@@ -27,3 +36,8 @@ hub.start().then(async function () {
 const tryJoinGame = async (gameId: string): Promise<void> => {
     await hub.invoke('TryJoinGame', gameId);
 };
+
+export const selectCharacter = async (gameId: string, characterName: string): Promise<void> => {
+    await hub.invoke('SelectCharacter', gameId, characterName);
+};
+

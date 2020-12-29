@@ -1,6 +1,6 @@
 ﻿declare var toastr: any
 import { elements, elementStrings } from './base.js';
-import { getGameFullUrl, Game } from '../models/Game.js';
+import { getMatchFullUrl, MatchListItem } from '../models/MatchListItem.js';
 import { tryJoinMatch } from '../gameCreatorHub.js';
 
 
@@ -28,30 +28,30 @@ export const getPasswordMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.passwordMatchInput).value;
 };
 
-const addEventListenerToMatchButton =  (gameId: string): void => {
-    document.getElementById(gameId).addEventListener('click', async (): Promise<void> => {
+const addEventListenerToMatchButton =  (matchId: string): void => {
+    document.getElementById(matchId).addEventListener('click', async (): Promise<void> => {
         const password = prompt('Password:');
 
         if (password) {
-            await tryJoinMatch(gameId, password);
+            await tryJoinMatch(matchId, password);
         }     
     });
 };
 
-export const addGameToMatchList = (game: Game): void => {
-    const gameFullUrl: string = getGameFullUrl(game.url);
+export const addMatchToMatchList = (match: MatchListItem): void => {
+    const gameFullUrl: string = getMatchFullUrl(match.url);
 
-    const gameHasPassword: boolean = (game.password === "") ? false : true;
+    const gameHasPassword: boolean = (match.password === "") ? false : true;
 
     let markup: string;
     if (gameHasPassword) {
-        markup = `<li><button id="${game.id}">${game.name}  <i class="fas fa-lock"></i></button></li>`;
+        markup = `<li><button id="${match.id}">${match.name}  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
 
-        addEventListenerToMatchButton(game.id);      
+        addEventListenerToMatchButton(match.id);      
     }
     else {
-        markup = `<li><a href="${gameFullUrl}">${game.name}</a></li>`;
+        markup = `<li><a href="${gameFullUrl}">${match.name}</a></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }  
 };
@@ -79,11 +79,11 @@ export const getUrlMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.urlMatchInput).value;
 };
 
-export const renderMatchesInMatchList = (games: Array<Game>): void => {
+export const renderMatchesInMatchList = (matches: Array<MatchListItem>): void => {
     elements.matchList.innerHTML = "";
 
-    games.forEach(game => {
-        addGameToMatchList(game);
+    matches.forEach(match => {
+        addMatchToMatchList(match);
     });
 };
 

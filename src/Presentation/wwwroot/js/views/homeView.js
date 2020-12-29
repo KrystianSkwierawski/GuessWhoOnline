@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { elements } from './base.js';
-import { getGameFullUrl } from '../models/Game.js';
+import { getMatchFullUrl } from '../models/MatchListItem.js';
 import { tryJoinMatch } from '../gameCreatorHub.js';
 export const showFindMatchContainer = function () {
     elements.findMatch.classList.add('find-match_active');
@@ -28,25 +28,25 @@ export const getNameMatchInputValue = () => {
 export const getPasswordMatchInputValue = () => {
     return elements.passwordMatchInput.value;
 };
-const addEventListenerToMatchButton = (gameId) => {
-    document.getElementById(gameId).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+const addEventListenerToMatchButton = (matchId) => {
+    document.getElementById(matchId).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
         const password = prompt('Password:');
         if (password) {
-            yield tryJoinMatch(gameId, password);
+            yield tryJoinMatch(matchId, password);
         }
     }));
 };
-export const addGameToMatchList = (game) => {
-    const gameFullUrl = getGameFullUrl(game.url);
-    const gameHasPassword = (game.password === "") ? false : true;
+export const addMatchToMatchList = (match) => {
+    const gameFullUrl = getMatchFullUrl(match.url);
+    const gameHasPassword = (match.password === "") ? false : true;
     let markup;
     if (gameHasPassword) {
-        markup = `<li><button id="${game.id}">${game.name}  <i class="fas fa-lock"></i></button></li>`;
+        markup = `<li><button id="${match.id}">${match.name}  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
-        addEventListenerToMatchButton(game.id);
+        addEventListenerToMatchButton(match.id);
     }
     else {
-        markup = `<li><a href="${gameFullUrl}">${game.name}</a></li>`;
+        markup = `<li><a href="${gameFullUrl}">${match.name}</a></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }
 };
@@ -65,10 +65,10 @@ export const setNameMatchInputValue = (name) => {
 export const getUrlMatchInputValue = () => {
     return elements.urlMatchInput.value;
 };
-export const renderMatchesInMatchList = (games) => {
+export const renderMatchesInMatchList = (matches) => {
     elements.matchList.innerHTML = "";
-    games.forEach(game => {
-        addGameToMatchList(game);
+    matches.forEach(match => {
+        addMatchToMatchList(match);
     });
 };
 export const displayNotificationAboutIncorrectPassword = () => {

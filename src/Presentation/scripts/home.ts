@@ -2,7 +2,7 @@
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
-import { getGameFullUrl, Game } from './models/Game.js';
+import { getMatchFullUrl, MatchListItem } from './models/MatchListItem.js';
 
 elements.showFindMatchButton.addEventListener('click', async (): Promise<void> => {
     await gameCreatorHub.refreshListOfGames()
@@ -32,7 +32,7 @@ elements.createMatch_backButton.addEventListener('click', (): void => {
 });
 
 elements.createMatchButton.addEventListener('click', async (): Promise<void> => {
-    const game: Game = await createGameObject();
+    const game: MatchListItem = await createGameObject();
 
     await gameCreatorHub.createMatch(game);
     navigateToMatchUrl(game.url); 
@@ -43,17 +43,17 @@ elements.findMatch__refreshList.addEventListener('click', async (): Promise<void
 });
 
 export const navigateToMatchUrl = (url: string): void => {
-    const fullGameUrl: string = getGameFullUrl(url);
+    const fullGameUrl: string = getMatchFullUrl(url);
     window.location.href = fullGameUrl;
 };
 
-const createGameObject = async (): Promise<Game> => {
+const createGameObject = async (): Promise<MatchListItem> => {
     const gameId: string = indexView.getIdMatchInputValue();
     const gameUrl: string = indexView.getUrlMatchInputValue();
     const gameName: string = indexView.getNameMatchInputValue();
     const gamePassword: string = indexView.getPasswordMatchInputValue();
 
-    const game: Game =  {
+    const game: MatchListItem =  {
         id: gameId,
         url: gameUrl,
         name: gameName,

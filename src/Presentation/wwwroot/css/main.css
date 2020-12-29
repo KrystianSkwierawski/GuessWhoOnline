@@ -516,7 +516,8 @@ th {
   height: auto;
   width: 80vw;
   margin-bottom: 5%;
-  margin-top: 5%; }
+  margin-top: 5%;
+  pointer-events: auto; }
   @media screen and (min-width: 576px) {
     .game-panel__start-game-button {
       width: 70vw; } }
