@@ -481,22 +481,22 @@ th {
   .game-panel.disabled {
     pointer-events: none; }
 
-.game-panel__your-character {
+.game-panel__your-character-img {
   height: 80vw;
   width: 80vw; }
   @media screen and (min-width: 576px) {
-    .game-panel__your-character {
+    .game-panel__your-character-img {
       height: 70vw;
       width: 70vw; } }
   @media screen and (min-width: 768px) {
-    .game-panel__your-character {
+    .game-panel__your-character-img {
       height: 15vw;
       width: 15vw; } }
 
 .game-panel__skip-turn-button {
   border-radius: 12px; }
 
-.game-panel__turn-time {
+.game-panel__round-time {
   margin-top: 10%;
   font-size: 1.618rem; }
 

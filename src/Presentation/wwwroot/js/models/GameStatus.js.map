@@ -1,1 +1,1 @@
-{"version":3,"file":"GameStatus.js","sourceRoot":"","sources":["../../../scripts/models/GameStatus.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,YAAY,GAAW,gBAAgB,CAAC;AACrD,MAAM,CAAC,MAAM,eAAe,GAAW,uBAAuB,CAAC;AAC/D,MAAM,CAAC,MAAM,yBAAyB,GAAW,8BAA8B,CAAC;AAChF,MAAM,CAAC,MAAM,OAAO,GAAW,SAAS,CAAC"}
+{"version":3,"file":"GameStatus.js","sourceRoot":"","sources":["../../../scripts/models/GameStatus.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,eAAe,GAAW,uBAAuB,CAAC"}

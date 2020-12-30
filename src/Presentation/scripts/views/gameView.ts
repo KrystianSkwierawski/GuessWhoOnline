@@ -25,6 +25,14 @@ export const activateGameBoard = (): void => {
     elements.gameBoard.classList.remove('disabled');
 };
 
+export const activateGamePanel = (): void => {
+    elements.gamePanel.classList.remove('disabled');
+};
+
+export const disableGamePanel = (): void => {
+    elements.gamePanel.classList.add('disabled');
+};
+
 export const disableGameBoard = (): void => {
     elements.gameBoard.classList.add('disabled');
 };
@@ -32,4 +40,21 @@ export const disableGameBoard = (): void => {
 export const getGameStatus = (): string => {
     return (<HTMLEmbedElement>elements.gamePanel__gameStatus).textContent;
 };
+
+export const setYourCharacterName = (characterName: string): void => {
+    elements.gamePanel__yourCharacterName.textContent = characterName;
+};
+
+export const HideGamePanel__startGameButton = (): void => {
+    elements.gamePanel__startGameButton.classList.add('d-none');
+};
+
+export const setYourCharacterImg = (characterName: string): void => {
+    (<HTMLEmbedElement>elements.gamePanel__yourCharacterImg).src = `/images/characters/${characterName}.jpg`;
+};
+
+export const updateGamePanel__roundTime = (time: number): void => {
+    (<HTMLElement>elements.gamePanel__roundTime).textContent = `00:${time}`;
+};
+
 

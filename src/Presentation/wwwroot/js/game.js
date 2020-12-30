@@ -9,21 +9,20 @@ elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', () =
     gameView.showOrHideChatCommunicator();
 });
 elements.gamePanel__startGameButton.addEventListener('click', () => {
-    //zmien game status na started
-    //zacznij gre, odliczanie czasu
+    gameHub.startGame();
 });
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e) => {
         const gameStatus = gameView.getGameStatus();
-        switch (gameStatus) {
-            case GameStatus.CharacterSelect:
-                const character = e.target.closest(`.${elementStrings.character}`);
-                const characterName = character.querySelector(`.${elementStrings.characterName}`).textContent;
-                const gameId = gameView.getGameIdInputValue();
-                gameHub.selectCharacter(gameId, characterName);
-                break;
-            default:
-                console.log('asd');
+        if (gameStatus === GameStatus.CharacterSelect) {
+            const character = e.target.closest(`.${elementStrings.character}`);
+            const characterName = character.querySelector(`.${elementStrings.characterName}`).textContent;
+            const gameId = gameView.getGameIdInputValue();
+            gameHub.selectCharacter(gameId, characterName);
+        }
+        else {
+            //suspect
+            //rejected
         }
     });
 });

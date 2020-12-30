@@ -21,6 +21,10 @@ export const elements = {
     gamePanel__startGameButton: document.querySelector('.game-panel__start-game-button'),
     gameBoard: document.querySelector('.game-board'),
     characterButtons: document.querySelectorAll('.character-button'),
+    gamePanel__yourCharacterImg: document.querySelector('.game-panel__your-character-img'),
+    gamePanel__yourCharacterName: document.querySelector('.game-panel__your-character-name'),
+    gamePanel: document.querySelector('.game-panel'),
+    gamePanel__roundTime: document.querySelector('.game-panel__round-time')
 };
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button',

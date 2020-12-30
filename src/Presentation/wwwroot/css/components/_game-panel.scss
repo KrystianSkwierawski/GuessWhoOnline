@@ -30,7 +30,7 @@
     }
 }
 
-.game-panel__your-character {
+.game-panel__your-character-img {
     height: 80vw;
     width: 80vw;
 
@@ -46,10 +46,10 @@
 }
 
 .game-panel__skip-turn-button {
-   border-radius: 12px;
+    border-radius: 12px;
 }
 
-.game-panel__turn-time{
+.game-panel__round-time{
     margin-top: 10%;
     font-size: font-scale(2);
 }

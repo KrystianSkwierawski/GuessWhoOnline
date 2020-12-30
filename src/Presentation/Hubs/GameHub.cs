@@ -28,6 +28,25 @@ namespace Presentation.Hubs
             }
         }
 
+        public async Task StartGame()
+        {
+            Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
+            string groupName = _groups[Context.ConnectionId];
+
+            if (groupName != null)
+            {
+                await Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
+                await Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");
+
+                await Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.EnemyTurn);
+                await Clients.Client(game.SecondTurnPlayerId).SendAsync("ShowGameStatus");
+                await Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");                  
+
+                await Clients.Group(groupName).SendAsync("ActivateGameBoard");
+                await Clients.Group(groupName).SendAsync("StartTimer");
+            }
+        }
+
         private async Task<Game> CreateGame(string groupId)
         {
             IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGroup = _groups.Where(x => x.Value == groupId);
@@ -51,11 +70,11 @@ namespace Presentation.Hubs
             Game game = _games.FirstOrDefault(x => x.Id == gameId);
 
             //set player character
-            if(game.FirstTurnPlayerId == Context.ConnectionId)
+            if (game.FirstTurnPlayerId == Context.ConnectionId)
             {
                 game.FirstTurnPlayerCharacter = characterName;
             }
-            else if(game.SecondTurnPlayerId == Context.ConnectionId)
+            else if (game.SecondTurnPlayerId == Context.ConnectionId)
             {
                 game.SecondTurnPlayerCharacter = characterName;
             }
@@ -63,14 +82,15 @@ namespace Presentation.Hubs
             bool bothPlayersSelectedCharacter = (game.FirstTurnPlayerCharacter != null && game.SecondTurnPlayerCharacter != null);
             if (bothPlayersSelectedCharacter)
             {
-                await Clients.Client(game.FirstTurnPlayerId).SendAsync("GivePermisionToStartTheGame");
-                await Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.WaitForStart);
+                await Clients.Client(game.SecondTurnPlayerId).SendAsync("GivePermisionToStartTheGame");
+                await Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.WaitForStart);
             }
-            else
+            else //only one player selected character
             {
                 await Clients.Client(Context.ConnectionId).SendAsync("RecieveGameStatus", GameStatus.EnemyIsSelectingCharacter);
             }
 
+            await Clients.Clients(Context.ConnectionId).SendAsync("SetYourCharacter", characterName);
             await Clients.Client(Context.ConnectionId).SendAsync("DisableGameBoard");
         }
 

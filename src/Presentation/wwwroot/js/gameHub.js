@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import * as gameView from './views/gameView.js';
+import { Timer } from './models/Timer.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
@@ -15,8 +16,24 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideStartGameButton();
     gameView.showOrHideGameStatus();
 });
+hub.on("StartTimer", () => {
+    new Timer().startTimer();
+});
+hub.on("SetYourCharacter", (characterName) => {
+    gameView.setYourCharacterImg(characterName);
+    gameView.setYourCharacterName(characterName);
+});
 hub.on("ActivateGameBoard", () => {
     gameView.activateGameBoard();
+});
+hub.on("ActivateGamePanel", () => {
+    gameView.activateGamePanel();
+});
+hub.on("HideStartGameButton", () => {
+    gameView.HideGamePanel__startGameButton();
+});
+hub.on("ShowGameStatus", () => {
+    gameView.showOrHideGameStatus();
 });
 hub.on("DisableGameBoard", () => {
     gameView.disableGameBoard();
@@ -37,5 +54,8 @@ const tryJoinGame = (gameId) => __awaiter(void 0, void 0, void 0, function* () {
 });
 export const selectCharacter = (gameId, characterName) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('SelectCharacter', gameId, characterName);
+});
+export const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('StartGame');
 });
 //# sourceMappingURL=gameHub.js.map

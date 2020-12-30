@@ -1,5 +1,6 @@
 ﻿declare var signalR: any;
 import * as gameView from './views/gameView.js';
+import { Timer } from './models/Timer.js';
 
 
 var hub = new signalR.HubConnectionBuilder()
@@ -11,10 +12,31 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.showOrHideGameStatus();
 });
 
+hub.on("StartTimer", (): void => {
+    new Timer().startTimer();
+});
+
+hub.on("SetYourCharacter", (characterName: string): void => {
+    gameView.setYourCharacterImg(characterName);
+    gameView.setYourCharacterName(characterName);
+});
+
 hub.on("ActivateGameBoard", (): void => {
     gameView.activateGameBoard();
 });
 
+hub.on("ActivateGamePanel", (): void => {
+    gameView.activateGamePanel();
+});
+
+hub.on("HideStartGameButton", (): void => {
+    gameView.HideGamePanel__startGameButton();
+});
+
+
+hub.on("ShowGameStatus", (): void => {
+    gameView.showOrHideGameStatus();
+});
 
 hub.on("DisableGameBoard", (): void => {
     gameView.disableGameBoard();
@@ -39,5 +61,9 @@ const tryJoinGame = async (gameId: string): Promise<void> => {
 
 export const selectCharacter = async (gameId: string, characterName: string): Promise<void> => {
     await hub.invoke('SelectCharacter', gameId, characterName);
+};
+
+export const startGame = async (): Promise<void> => {
+    await hub.invoke('StartGame');
 };
 
