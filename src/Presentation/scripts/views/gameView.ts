@@ -1,4 +1,5 @@
 ﻿import { elements, elementStrings } from './base.js';
+import * as GameStatus from '../models/CharacterStatus.js';
 
 export const showOrHideChatCommunicator = (): void => {
     elements.chatCommunicator.classList.toggle('d-none');
@@ -57,4 +58,18 @@ export const updateGamePanel__roundTime = (time: number): void => {
     (<HTMLElement>elements.gamePanel__roundTime).textContent = `00:${time}`;
 };
 
+export const changeCharacterStatusToRejected = (characterButtonElement: HTMLEmbedElement): void => {
+    const markup: string = `<img class="character-status" id="${GameStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
+    characterButtonElement.insertAdjacentHTML('beforeend', markup);
+};
+
+export const changeCharacterStatusToSuspect = (characterButtonElement: HTMLEmbedElement): void => {
+    const markup: string = `<img class="character-status" id="${GameStatus.suspect}" src="/images/character-statuses/suspect.png"/>`;
+    characterButtonElement.insertAdjacentHTML('beforeend', markup);
+};
+
+export const removeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
+    const characterStatus: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
+    characterButtonElement.removeChild(characterStatus);
+};
 

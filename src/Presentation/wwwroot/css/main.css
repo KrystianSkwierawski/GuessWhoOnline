@@ -595,6 +595,7 @@ th {
   height: 80vw;
   width: 80vw;
   align-self: center;
+  position: relative;
   margin-bottom: 20vw; }
   @media screen and (min-width: 576px) {
     .character {
@@ -608,13 +609,27 @@ th {
       flex-grow: 1;
       height: calc((60vw - 20px) / 6);
       width: calc((60vw - 20px) / 6); } }
-  .character button {
-    padding: 0;
-    height: 100%;
-    width: 100%; }
-  .character img {
-    height: 100%;
-    width: 100%; }
+
+.character-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.character-button {
+  padding: 0;
+  height: 100%;
+  width: 100%; }
+
+.character-status {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: transparent; }
 
 @media screen and (min-width: 768px) {
   .game-board {

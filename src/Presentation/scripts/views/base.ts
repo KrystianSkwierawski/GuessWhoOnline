@@ -30,5 +30,9 @@
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button',
     character: 'character',
-    characterName: 'character-name'
+    characterName: 'character-name',
+    characterButton: 'character-button',
+    character_rejected: 'character_rejected',
+    character_suspect: 'character_suspect',
+    characterStatus: 'character-status'
 };

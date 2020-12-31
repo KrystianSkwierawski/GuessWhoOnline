@@ -49,7 +49,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\pages\" />
-    <Folder Include="wwwroot\images\characters\" />
     <Folder Include="wwwroot\js\models\" />
   </ItemGroup>
 

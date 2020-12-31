@@ -1,4 +1,5 @@
-import { elements } from './base.js';
+import { elements, elementStrings } from './base.js';
+import * as GameStatus from '../models/CharacterStatus.js';
 export const showOrHideChatCommunicator = () => {
     elements.chatCommunicator.classList.toggle('d-none');
     elements.showChatCommunicatorButton.classList.toggle('d-none');
@@ -41,5 +42,17 @@ export const setYourCharacterImg = (characterName) => {
 };
 export const updateGamePanel__roundTime = (time) => {
     elements.gamePanel__roundTime.textContent = `00:${time}`;
+};
+export const changeCharacterStatusToRejected = (characterButtonElement) => {
+    const markup = `<img class="character-status" id="${GameStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
+    characterButtonElement.insertAdjacentHTML('beforeend', markup);
+};
+export const changeCharacterStatusToSuspect = (characterButtonElement) => {
+    const markup = `<img class="character-status" id="${GameStatus.suspect}" src="/images/character-statuses/suspect.png"/>`;
+    characterButtonElement.insertAdjacentHTML('beforeend', markup);
+};
+export const removeCharacterStatus = (characterButtonElement) => {
+    const characterStatus = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
+    characterButtonElement.removeChild(characterStatus);
 };
 //# sourceMappingURL=gameView.js.map
