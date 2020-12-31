@@ -11,7 +11,7 @@ export class Timer {
         let remainingTime = this.roundTimeInSeconds;
 
         const intervalId = setInterval(function (): void {
-            const endOfTheTime: boolean = (remainingTime === 57) ? true : false;
+            const endOfTheTime: boolean = (remainingTime === 0) ? true : false;
 
             if (endOfTheTime) {
                 //stop the timer
