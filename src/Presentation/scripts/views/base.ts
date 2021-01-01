@@ -24,7 +24,9 @@
     gamePanel__yourCharacterImg: document.querySelector('.game-panel__your-character-img'),
     gamePanel__yourCharacterName: document.querySelector('.game-panel__your-character-name'),
     gamePanel: document.querySelector('.game-panel'),
-    gamePanel__roundTime: document.querySelector('.game-panel__round-time')
+    gamePanel__roundTime: document.querySelector('.game-panel__round-time'),
+    gamePanel__finishTurnButton: document.querySelector('.game-panel__-turn-button'),
+    gamePanel__checkCharacterTypeButton: document.querySelector('.game-panel__check-character-type-button')
 };
 
 export const elementStrings = {

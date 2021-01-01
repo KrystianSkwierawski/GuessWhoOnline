@@ -8,5 +8,6 @@
         public string SecondTurnPlayerId { get; set; }
         public string SecondTurnPlayerCharacter { get; set; }
         public string Status { get; set; }
+        public string CurrentTurnPlayerId { get; set; }
     }
 }

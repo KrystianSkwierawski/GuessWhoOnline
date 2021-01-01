@@ -2,6 +2,7 @@
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 
+const _timer = new Timer();
 
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
@@ -13,7 +14,11 @@ hub.on("GivePermisionToStartTheGame", (): void => {
 });
 
 hub.on("StartTimer", (): void => {
-    new Timer().startTimer();
+    _timer.startTimer();
+});
+
+hub.on("ResetTimer", (): void => {
+    _timer.resetTimer();
 });
 
 hub.on("SetYourCharacter", (characterName: string): void => {
@@ -42,6 +47,9 @@ hub.on("DisableGameBoard", (): void => {
     gameView.disableGameBoard();
 });
 
+hub.on("DisableGamePanel", (): void => {
+    gameView.disableGamePanel();
+});
 
 hub.on("RecieveGameStatus", (status: string): void => {
     gameView.setGameStatus(status);
@@ -65,5 +73,9 @@ export const selectCharacter = async (gameId: string, characterName: string): Pr
 
 export const startGame = async (): Promise<void> => {
     await hub.invoke('StartGame');
+};
+
+export const finishTheTurn = async (): Promise<void> => {
+    await hub.invoke('FinishTheTurn');
 };
 

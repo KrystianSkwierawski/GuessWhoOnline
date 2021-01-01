@@ -493,7 +493,7 @@ th {
       height: 15vw;
       width: 15vw; } }
 
-.game-panel__skip-turn-button {
+.game-panel__finish-turn-button {
   border-radius: 12px; }
 
 .game-panel__round-time {

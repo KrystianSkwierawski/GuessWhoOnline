@@ -1,26 +1,31 @@
 ﻿import { updateGamePanel__roundTime } from '../views/gameView.js';
+import { finishTheTurn} from '../gameHub.js';
 
 export class Timer {
-    roundTimeInSeconds: number;
+    #roundTimeInSeconds: number;
+    #remainingTime: number;
 
-    constructor(roundTimeInSeconds: number = 60) {
-        this.roundTimeInSeconds = roundTimeInSeconds;
+    constructor(roundTimeInSeconds: number = 60, remainingTime = roundTimeInSeconds) {
+        this.#roundTimeInSeconds = roundTimeInSeconds;
+        this.#remainingTime = remainingTime;
     }
 
-    startTimer() {
-        let remainingTime = this.roundTimeInSeconds;
+    resetTimer(): void {
+        this.#remainingTime = 60;
+    }
 
-        const intervalId = setInterval(function (): void {
-            const endOfTheTime: boolean = (remainingTime === 0) ? true : false;
+    startTimer(): void {
+        setInterval((): void => {
+            const endOfTheTime: boolean = (this.#remainingTime === 0) ? true : false;
+
 
             if (endOfTheTime) {
-                //stop the timer
-                clearInterval(intervalId);
-                return;               
+                finishTheTurn();
+                return;
             }
 
-            remainingTime -= 1;
-            updateGamePanel__roundTime(remainingTime);
+            this.#remainingTime -= 1;
+            updateGamePanel__roundTime(this.#remainingTime);
         }, 1000);
     }
 } 

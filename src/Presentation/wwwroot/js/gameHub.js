@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
+const _timer = new Timer();
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
@@ -17,7 +18,10 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideGameStatus();
 });
 hub.on("StartTimer", () => {
-    new Timer().startTimer();
+    _timer.startTimer();
+});
+hub.on("ResetTimer", () => {
+    _timer.resetTimer();
 });
 hub.on("SetYourCharacter", (characterName) => {
     gameView.setYourCharacterImg(characterName);
@@ -38,6 +42,9 @@ hub.on("ShowGameStatus", () => {
 hub.on("DisableGameBoard", () => {
     gameView.disableGameBoard();
 });
+hub.on("DisableGamePanel", () => {
+    gameView.disableGamePanel();
+});
 hub.on("RecieveGameStatus", (status) => {
     gameView.setGameStatus(status);
 });
@@ -57,5 +64,8 @@ export const selectCharacter = (gameId, characterName) => __awaiter(void 0, void
 });
 export const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('StartGame');
+});
+export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('FinishTheTurn');
 });
 //# sourceMappingURL=gameHub.js.map

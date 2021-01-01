@@ -1,1 +1,1 @@
-{"version":3,"file":"GameStatus.js","sourceRoot":"","sources":["../../../scripts/models/GameStatus.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,eAAe,GAAW,uBAAuB,CAAC"}
+{"version":3,"file":"GameStatus.js","sourceRoot":"","sources":["../../../scripts/models/GameStatus.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,eAAe,GAAG,uBAAuB,CAAC;AACvD,MAAM,CAAC,MAAM,QAAQ,GAAG,WAAW,CAAC"}
