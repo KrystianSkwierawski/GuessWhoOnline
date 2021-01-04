@@ -25,7 +25,7 @@
     gamePanel__yourCharacterName: document.querySelector('.game-panel__your-character-name'),
     gamePanel: document.querySelector('.game-panel'),
     gamePanel__roundTime: document.querySelector('.game-panel__round-time'),
-    gamePanel__finishTurnButton: document.querySelector('.game-panel__-turn-button'),
+    gamePanel__finishTurnButton: document.querySelector('.game-panel__finish-turn-button'),
     gamePanel__checkCharacterTypeButton: document.querySelector('.game-panel__check-character-type-button')
 };
 
