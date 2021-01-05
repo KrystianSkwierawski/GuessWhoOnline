@@ -73,3 +73,9 @@ export const removeCharacterStatus = (characterButtonElement: HTMLEmbedElement):
     characterButtonElement.removeChild(characterStatus);
 };
 
+export const getCharacterTypeValue = (): string => {
+    const e = <HTMLSelectElement>elements.gamePanel__characterType;
+
+    return e.options[e.selectedIndex].text;
+};
+

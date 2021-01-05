@@ -17,8 +17,15 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideStartGameButton();
     gameView.showOrHideGameStatus();
 });
+hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
+    console.log(status);
+    //TODO: wyswietl powieadomienie bd tam zagraj jeszcze raz lub exit
+});
 hub.on("StartTimer", () => {
     _timer.startTimer();
+});
+hub.on("StopTimer", () => {
+    _timer.stopTimer();
 });
 hub.on("ResetTimer", () => {
     _timer.resetTimer();
@@ -67,5 +74,8 @@ export const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('FinishTheTurn');
+});
+export const checkCharacterTypeAndEndTheGame = (characterType) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
 });
 //# sourceMappingURL=gameHub.js.map

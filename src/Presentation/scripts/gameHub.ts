@@ -13,8 +13,18 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.showOrHideGameStatus();
 });
 
+hub.on("ShowNotificationAboutEndOfTheGame", (status: string): void => {
+    console.log(status);
+
+    //TODO: wyswietl powieadomienie bd tam zagraj jeszcze raz lub exit
+});
+
 hub.on("StartTimer", (): void => {
     _timer.startTimer();
+});
+
+hub.on("StopTimer", (): void => {
+    _timer.stopTimer();
 });
 
 hub.on("ResetTimer", (): void => {
@@ -77,5 +87,9 @@ export const startGame = async (): Promise<void> => {
 
 export const finishTheTurn = async (): Promise<void> => {
     await hub.invoke('FinishTheTurn');
+};
+
+export const checkCharacterTypeAndEndTheGame = async (characterType: string): Promise<void> => {
+    await hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
 };
 

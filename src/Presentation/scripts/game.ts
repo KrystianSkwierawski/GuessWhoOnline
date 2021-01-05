@@ -24,13 +24,15 @@ elements.gamePanel__finishTurnButton.addEventListener('click', (): void => {
     }
 });
 
-//elements.gamePanel__checkCharacterTypeButton.addEventListener('click', (): void => {
-//    const status = gameView.getGameStatus();
+elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async (): Promise<void> => {
+    const status = gameView.getGameStatus();
 
-//    if (status === GameStatus.yourTurn) {
-//        //sprawdz czy dobrze wybral i zakoncz gre
-//    }
-//});
+    if (status === GameStatus.yourTurn) {
+        const selectedCharacterType: string = gameView.getCharacterTypeValue();
+
+       await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
+    }
+});
 
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {

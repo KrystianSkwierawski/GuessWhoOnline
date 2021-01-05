@@ -26,7 +26,8 @@ export const elements = {
     gamePanel: document.querySelector('.game-panel'),
     gamePanel__roundTime: document.querySelector('.game-panel__round-time'),
     gamePanel__finishTurnButton: document.querySelector('.game-panel__finish-turn-button'),
-    gamePanel__checkCharacterTypeButton: document.querySelector('.game-panel__check-character-type-button')
+    gamePanel__checkCharacterTypeButton: document.querySelector('.game-panel__check-character-type-button'),
+    gamePanel__characterType: document.querySelector('.game-panel__character-type')
 };
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button',

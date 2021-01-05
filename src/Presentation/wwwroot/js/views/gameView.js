@@ -55,4 +55,8 @@ export const removeCharacterStatus = (characterButtonElement) => {
     const characterStatus = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
     characterButtonElement.removeChild(characterStatus);
 };
+export const getCharacterTypeValue = () => {
+    const e = elements.gamePanel__characterType;
+    return e.options[e.selectedIndex].text;
+};
 //# sourceMappingURL=gameView.js.map
