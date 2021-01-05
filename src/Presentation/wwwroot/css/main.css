@@ -604,7 +604,7 @@ th {
       margin-bottom: 5%;
       height: calc((60vw - 20px) / 3);
       width: calc((60vw - 20px) / 3); } }
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 1000px) {
     .character {
       flex-grow: 1;
       height: calc((60vw - 20px) / 6);
