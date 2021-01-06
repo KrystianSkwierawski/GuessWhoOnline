@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 
 namespace Domain
 {
@@ -8,13 +9,26 @@ namespace Domain
 
         static Characters()
         {
-            CharacterNames.Add("Animu");
-            CharacterNames.Add("Dawid");
-            CharacterNames.Add("Dodek");
-            CharacterNames.Add("Filip");
-            CharacterNames.Add("Filippa");
-            CharacterNames.Add("Krystian");
-            CharacterNames.Add("Leon");
+            StartUp();
+        }
+
+        static void StartUp()
+        {
+            string charactersPath = @"./wwwroot/images/characters";
+
+            DirectoryInfo directoryInfo = new DirectoryInfo(charactersPath);
+            FileInfo[] files = directoryInfo.GetFiles("*.jpg"); 
+
+            AddFilesNamesToList(files);
+        }
+
+        static void AddFilesNamesToList(FileInfo[] files)
+        {
+            foreach(var file in files)
+            {
+                string characterName = file.Name.Replace(".jpg", "");
+                CharacterNames.Add(characterName);
+            }
         }
     }
 }
