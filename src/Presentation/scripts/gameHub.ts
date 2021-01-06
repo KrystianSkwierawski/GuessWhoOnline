@@ -14,9 +14,7 @@ hub.on("GivePermisionToStartTheGame", (): void => {
 });
 
 hub.on("ShowNotificationAboutEndOfTheGame", (status: string): void => {
-    console.log(status);
-
-    //TODO: wyswietl powieadomienie bd tam zagraj jeszcze raz lub exit
+    gameView.renderEndGameNotification(status);
 });
 
 hub.on("StartTimer", (): void => {

@@ -1,4 +1,6 @@
 ﻿using Applciation.ViewModel;
+using Domain;
+using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -10,7 +12,13 @@ namespace Presentation.Areas.User.Controllers
         [Route("game/{id}", Name = "Game")]
         public IActionResult Index(string id)
         {
-            return View("Index", id);
+            GameViewModel gameViewModel = new GameViewModel
+            {
+                Id = id,
+                CharactersNames = Characters.CharacterNames
+            };
+
+            return View("Index", gameViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

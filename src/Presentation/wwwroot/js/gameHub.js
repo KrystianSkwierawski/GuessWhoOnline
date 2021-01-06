@@ -18,8 +18,7 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideGameStatus();
 });
 hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
-    console.log(status);
-    //TODO: wyswietl powieadomienie bd tam zagraj jeszcze raz lub exit
+    gameView.renderEndGameNotification(status);
 });
 hub.on("StartTimer", () => {
     _timer.startTimer();

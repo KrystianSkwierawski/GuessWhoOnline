@@ -160,8 +160,8 @@ namespace Presentation.Hubs
                 nextTurnPlayerStatus = $"You win! Enemy character was {currentTurnPlayerCharacter}";
             }
 
-            Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus);
-            Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus);
+            Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus);
+            Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus);
         }
 
         public string[] GetTurnOrder(IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGame)

@@ -48,29 +48,8 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         }
         else {
             const characterButtonElement: HTMLEmbedElement = characterElement.querySelector(`.${elementStrings.characterButton}`);
-            changeCharacterStatus(characterButtonElement);
+            gameView.changeCharacterStatus(characterButtonElement);
         }
     });
 });
 
-export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
-    const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
-
-    if (!characterStatusElement) { //if character has no status
-        gameView.changeCharacterStatusToRejected(characterButtonElement);
-        return;
-    }
-
-    const isRejected: boolean = (characterStatusElement.id === CharacterStatus.rejected);
-    const isSuspect: boolean = (characterStatusElement.id === CharacterStatus.suspect);
-
-    if (isRejected) {
-        //remove old character status
-        gameView.removeCharacterStatus(characterButtonElement);
-
-        gameView.changeCharacterStatusToSuspect(characterButtonElement);
-    }
-    else if (isSuspect) {
-        gameView.removeCharacterStatus(characterButtonElement);
-    }
-};

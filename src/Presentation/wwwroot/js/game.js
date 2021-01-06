@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { elements, elementStrings } from './views/base.js';
 import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
-import * as CharacterStatus from './models/CharacterStatus.js';
 import * as GameStatus from './models/GameStatus.js';
 elements.showChatCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();
@@ -45,25 +44,8 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         }
         else {
             const characterButtonElement = characterElement.querySelector(`.${elementStrings.characterButton}`);
-            changeCharacterStatus(characterButtonElement);
+            gameView.changeCharacterStatus(characterButtonElement);
         }
     });
 });
-export const changeCharacterStatus = (characterButtonElement) => {
-    const characterStatusElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
-    if (!characterStatusElement) { //if character has no status
-        gameView.changeCharacterStatusToRejected(characterButtonElement);
-        return;
-    }
-    const isRejected = (characterStatusElement.id === CharacterStatus.rejected);
-    const isSuspect = (characterStatusElement.id === CharacterStatus.suspect);
-    if (isRejected) {
-        //remove old character status
-        gameView.removeCharacterStatus(characterButtonElement);
-        gameView.changeCharacterStatusToSuspect(characterButtonElement);
-    }
-    else if (isSuspect) {
-        gameView.removeCharacterStatus(characterButtonElement);
-    }
-};
 //# sourceMappingURL=game.js.map

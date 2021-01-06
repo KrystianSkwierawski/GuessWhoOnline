@@ -25,12 +25,16 @@
         margin-bottom: 5%;
         height: calc((60vw - 20px) / 3);
         width: calc((60vw - 20px) / 3);
+        max-height: calc((60vw - 20px) / 3);
+        max-width: calc((60vw - 20px) / 3);
     }
 
-    @include respond-to(large) {
+    @include respond-to(extra-large) {
         flex-grow: 1;
         height: calc((60vw - 20px) / 6);
         width: calc((60vw - 20px) / 6);
+        max-height: calc((60vw - 20px) / 6);
+        max-width: calc((60vw - 20px) / 6);
     }
 }
 

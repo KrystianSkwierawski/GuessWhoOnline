@@ -19,15 +19,17 @@
     game__gameIdInput: document.querySelector('.game__game-id-input'),
     gamePanel__gameStatus: document.querySelector('.game-panel__game-status'),
     gamePanel__startGameButton: document.querySelector('.game-panel__start-game-button'),
-    gameBoard: document.querySelector('.game-board'),
-    characterButtons: document.querySelectorAll('.character-button'),
+    gameBoard: document.querySelector('.game-board'),  
     gamePanel__yourCharacterImg: document.querySelector('.game-panel__your-character-img'),
     gamePanel__yourCharacterName: document.querySelector('.game-panel__your-character-name'),
     gamePanel: document.querySelector('.game-panel'),
     gamePanel__roundTime: document.querySelector('.game-panel__round-time'),
     gamePanel__finishTurnButton: document.querySelector('.game-panel__finish-turn-button'),
     gamePanel__checkCharacterTypeButton: document.querySelector('.game-panel__check-character-type-button'),
-    gamePanel__characterType: document.querySelector('.game-panel__character-type')
+    gamePanel__characterType: document.querySelector('.game-panel__character-type'),
+    game: document.querySelector('.game'),
+    characters: document.querySelector('.charackters'),
+    characterButtons: document.querySelectorAll('.character-button')
 };
 
 export const elementStrings = {
@@ -37,5 +39,5 @@ export const elementStrings = {
     characterButton: 'character-button',
     character_rejected: 'character_rejected',
     character_suspect: 'character_suspect',
-    characterStatus: 'character-status'
+    characterStatus: 'character-status',
 };

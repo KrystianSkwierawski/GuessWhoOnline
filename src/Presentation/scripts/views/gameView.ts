@@ -1,5 +1,5 @@
 ﻿import { elements, elementStrings } from './base.js';
-import * as GameStatus from '../models/CharacterStatus.js';
+import * as CharacterStatus from '../models/CharacterStatus.js';
 
 export const showOrHideChatCommunicator = (): void => {
     elements.chatCommunicator.classList.toggle('d-none');
@@ -59,12 +59,12 @@ export const updateGamePanel__roundTime = (time: number): void => {
 };
 
 export const changeCharacterStatusToRejected = (characterButtonElement: HTMLEmbedElement): void => {
-    const markup: string = `<img class="character-status" id="${GameStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
+    const markup: string = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 
 export const changeCharacterStatusToSuspect = (characterButtonElement: HTMLEmbedElement): void => {
-    const markup: string = `<img class="character-status" id="${GameStatus.suspect}" src="/images/character-statuses/suspect.png"/>`;
+    const markup: string = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.png"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 
@@ -78,4 +78,42 @@ export const getCharacterTypeValue = (): string => {
 
     return e.options[e.selectedIndex].text;
 };
+
+export const renderEndGameNotification = (gameSatus: string) => {
+    const markup: string = `
+    <div class="endgame-notification">
+        <p class="endgame-notification__status">${gameSatus}</p>
+        <a class="btn endgame-notification__exit-button" href="/">Exit</a>
+    </div>
+    `;
+
+    elements.game.insertAdjacentHTML('beforeend', markup);
+};
+
+export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
+    const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
+
+    if (!characterStatusElement) { //if character has no status
+        changeCharacterStatusToRejected(characterButtonElement);
+        return;
+    }
+
+    const isRejected: boolean = (characterStatusElement.id === CharacterStatus.rejected);
+    const isSuspect: boolean = (characterStatusElement.id === CharacterStatus.suspect);
+
+    if (isRejected) {
+        //remove old character status
+        removeCharacterStatus(characterButtonElement);
+
+        changeCharacterStatusToSuspect(characterButtonElement);
+    }
+    else if (isSuspect) {
+        removeCharacterStatus(characterButtonElement);
+    }
+};
+
+
+
+
+
 

@@ -1,8 +1,8 @@
-﻿@model string
+﻿@model Domain.ViewModels.GameViewModel
 
 <div class="game">
-    <input type="hidden" class="game__game-id-input" value="@Model"/>
-    
+    <input type="hidden" class="game__game-id-input" value="@Model.Id" />
+
 
     <div class="game-panel disabled">
         <div>
@@ -17,9 +17,9 @@
             <button class="btn btn-primary game-panel__finish-turn-button">Finish turn</button>
 
             <select class="game-panel__character-type" name="character-type" id="character-type">
-                @for (int i = 0; i < 20; i++)
+                @foreach (var characterName in Model.CharactersNames)
                 {
-                    <option value="name">Name</option>
+                    <option value="@characterName">@characterName</option>
                 }
             </select>
             <button class="game-panel__check-character-type-button btn btn-danger">Check</button>
@@ -31,16 +31,17 @@
 
         <div class="charackters">
 
-            @for (int i = 0; i < 18; i++)
+            @foreach (var characterName in Model.CharactersNames)
             {
+                string characterPath = $"../images/characters/{characterName}.jpg";
+
                 <div class="character">
-                    <button class="character-button"><img class="character-img" src="~/images/characters/daw5dxd.jpg" alt="charachter name" /></button>
-                    <p class="character-name">daw5dxd</p>
+                    <button class="character-button"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
+                    <p class="character-name">@characterName</p>
                 </div>
             }
 
         </div>
-
 
     </div>
 

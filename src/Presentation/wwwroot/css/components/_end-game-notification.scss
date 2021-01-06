@@ -1,0 +1,35 @@
+﻿.endgame-notification {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+
+    @include respond-to(medium) {
+        width: 35%;
+    }
+
+    /*button,*/ a {
+        color: white;
+    }
+}
+
+/*.endgame-notification__restart-game-button {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+*/
+.endgame-notification__exit-button { 
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.endgame-notification__status{
+    color: black;
+    background: none;
+}
