@@ -55,7 +55,7 @@
 }
 
 .game-panel__character-type {
-    margin-top: 15%;
+    margin-top: 18%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -82,5 +82,14 @@
     @include respond-to(medium) {
         width: 15vw;
     }
+}
+
+.question-mark-icon {
+    color: #F4B853;
+    background-color: transparent;
+}
+
+.game-panel__game-status{
+    color: red;
 }
 

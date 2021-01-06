@@ -39,7 +39,6 @@ export class Timer {
             const endOfTheTime = (__classPrivateFieldGet(this, _remainingTime) === 0) ? true : false;
             if (endOfTheTime) {
                 yield finishTheTurn();
-                return;
             }
             __classPrivateFieldSet(this, _remainingTime, __classPrivateFieldGet(this, _remainingTime) - 1);
             updateGamePanel__roundTime(__classPrivateFieldGet(this, _remainingTime));

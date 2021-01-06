@@ -34,13 +34,13 @@ namespace Presentation.Hubs
             string groupName = _groups[Context.ConnectionId];
 
             if (groupName != null)
-            {          
+            {
                 Task recieveGameStatusFirstTurnPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
-                Task activeGamePanelFirstPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");            
+                Task activeGamePanelFirstPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");
 
                 Task recieveGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.EnemyTurn);
                 Task showGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("ShowGameStatus");
-                Task hideStartGameButtonSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");           
+                Task hideStartGameButtonSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");
 
                 Task activeGameBoardTask = Clients.Group(groupName).SendAsync("ActivateGameBoard");
 
@@ -48,9 +48,9 @@ namespace Presentation.Hubs
                 game.NextTurnPlayerId = game.SecondTurnPlayerId;
 
                 List<Task> startGameTasks = new List<Task> { recieveGameStatusFirstTurnPlayerTask, activeGamePanelFirstPlayerTask, recieveGameStatusSecondPlayerTask, showGameStatusSecondPlayerTask, hideStartGameButtonSecondPlayerTask, activeGameBoardTask };
-               
+
                 await Task.WhenAll(startGameTasks);
-             
+
                 await Clients.Group(groupName).SendAsync("StartTimer");
             }
         }
@@ -106,26 +106,23 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
 
-            await Clients.Client(game.CurrentTurnPlayerId).SendAsync("DisableGamePanel");
-            Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.EnemyTurn);
-
-            Clients.Client(game.NextTurnPlayerId).SendAsync("ActivateGamePanel");
-            Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
-
-            await ChangeTurn(game);
-
-            await Clients.Group(game.Id).SendAsync("ResetTimer");
+            if (game.CurrentTurnPlayerId == Context.ConnectionId)
+            {
+                await ChangeTurn(game);
+            }
         }
 
         public async Task ChangeTurn(Game game)
         {
-            await Clients.Client(game.CurrentTurnPlayerId).SendAsync("DisableGamePanel");
+            Clients.Client(game.CurrentTurnPlayerId).SendAsync("DisableGamePanel");
             Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.EnemyTurn);
 
             Clients.Client(game.NextTurnPlayerId).SendAsync("ActivateGamePanel");
             Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
 
-            (game.CurrentTurnPlayerId, game.NextTurnPlayerId) = (game.NextTurnPlayerId, game.CurrentTurnPlayerId);
+            Clients.Group(game.Id).SendAsync("ResetTimer");
+
+            (game.CurrentTurnPlayerId, game.NextTurnPlayerId) = (game.NextTurnPlayerId, game.CurrentTurnPlayerId);          
         }
 
         public async Task CheckCharacterTypeAndEndTheGame(string characterType)
@@ -147,7 +144,7 @@ namespace Presentation.Hubs
         {
             string currentTurnPlayerStatus = "", nextTurnPlayerStatus = "";
 
-            bool correctAnswer = (currentTurnPlayerCharacter == characterType) ? true : false;
+            bool correctAnswer = (nextTurnPlayerCharacter == characterType) ? true : false;
 
             if (correctAnswer)
             {

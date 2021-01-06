@@ -28,11 +28,21 @@ elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async ():
     const status = gameView.getGameStatus();
 
     if (status === GameStatus.yourTurn) {
-        const selectedCharacterType: string = gameView.getCharacterTypeValue();
-
-       await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
+       await checkCharacterType();
     }
 });
+
+const checkCharacterType = async (): Promise<void> => {
+    const selectedCharacterType: string = gameView.getCharacterTypeValue();
+
+    const userSelectedAnyCharacter: boolean = (selectedCharacterType === 'Guess enemy character') ? false : true;
+    if (userSelectedAnyCharacter) {
+        await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
+    }
+    else {
+        gameView.displayNotificationAboutNotChoosedCharacter();
+    }
+};
 
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {

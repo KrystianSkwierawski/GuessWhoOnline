@@ -1,5 +1,6 @@
 ﻿import { elements, elementStrings } from './base.js';
 import * as CharacterStatus from '../models/CharacterStatus.js';
+declare var toastr: any
 
 export const showOrHideChatCommunicator = (): void => {
     elements.chatCommunicator.classList.toggle('d-none');
@@ -111,6 +112,12 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement):
         removeCharacterStatus(characterButtonElement);
     }
 };
+
+
+export const displayNotificationAboutNotChoosedCharacter = (): void => {
+    toastr["info"]("Choose character to guess");
+};
+
 
 
 

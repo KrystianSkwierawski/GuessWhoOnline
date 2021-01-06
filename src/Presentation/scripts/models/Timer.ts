@@ -16,16 +16,15 @@ export class Timer {
     }
 
     startTimer(): void {
-        this.#timerId = setInterval(async (): Promise<void> => {
+        this.#timerId = setInterval(async (): Promise<void> => { 
             const endOfTheTime: boolean = (this.#remainingTime === 0) ? true : false;
 
             if (endOfTheTime) {
                 await finishTheTurn();
-                return;
             }
 
             this.#remainingTime -= 1;
-            updateGamePanel__roundTime(this.#remainingTime);
+            updateGamePanel__roundTime(this.#remainingTime);        
         }, 1000);
     }
 

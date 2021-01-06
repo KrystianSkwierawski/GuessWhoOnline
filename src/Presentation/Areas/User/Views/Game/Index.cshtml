@@ -17,12 +17,14 @@
             <button class="btn btn-primary game-panel__finish-turn-button">Finish turn</button>
 
             <select class="game-panel__character-type" name="character-type" id="character-type">
+                <option disabled selected>Guess enemy character</option>
+
                 @foreach (var characterName in Model.CharactersNames)
                 {
                     <option value="@characterName">@characterName</option>
                 }
             </select>
-            <button class="game-panel__check-character-type-button btn btn-danger">Check</button>
+            <button class="game-panel__check-character-type-button btn btn-danger">Guess <i class="question-mark-icon fas fa-question"></i></button>
         </div>
     </div>
 
@@ -45,7 +47,7 @@
 
     </div>
 
-    <div class="chat-communicator d-none">
+    <div class="chat-communicator">
         <button class="chat-communicator__hide-communicator-button"><i class="fas fa-minus"></i></button>
 
         <div class="chat-communicator__messages">
@@ -64,7 +66,7 @@
         </div>
     </div>
 
-    <button class="show-chat-communicator-button"><i class="fas fa-comment"></i></button>
+    <button class="show-chat-communicator-button d-none"><i class="fas fa-comment"></i></button>
 </div>
 
 <script type="module" src="~/js/game.js"></script>

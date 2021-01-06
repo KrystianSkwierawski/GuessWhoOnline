@@ -85,4 +85,7 @@ export const changeCharacterStatus = (characterButtonElement) => {
         removeCharacterStatus(characterButtonElement);
     }
 };
+export const displayNotificationAboutNotChoosedCharacter = () => {
+    toastr["info"]("Choose character to guess");
+};
 //# sourceMappingURL=gameView.js.map
