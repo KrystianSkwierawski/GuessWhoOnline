@@ -1,5 +1,6 @@
 import { elements, elementStrings } from './base.js';
 import * as CharacterStatus from '../models/CharacterStatus.js';
+import * as GameStatus from '../models/GameStatus.js';
 export const showOrHideChatCommunicator = () => {
     elements.chatCommunicator.classList.toggle('d-none');
     elements.showChatCommunicatorButton.classList.toggle('d-none');
@@ -8,7 +9,14 @@ export const getGameIdInputValue = () => {
     return elements.game__gameIdInput.value;
 };
 export const setGameStatus = (status) => {
-    elements.gamePanel__gameStatus.textContent = status;
+    let markup;
+    if (status === GameStatus.characterSelect) {
+        markup = status;
+    }
+    else {
+        markup = `${status}<span> . . .</span>`;
+    }
+    elements.gamePanel__gameStatus.innerHTML = markup;
 };
 export const showOrHideStartGameButton = () => {
     elements.gamePanel__startGameButton.classList.toggle('d-none');
@@ -87,5 +95,15 @@ export const changeCharacterStatus = (characterButtonElement) => {
 };
 export const displayNotificationAboutNotChoosedCharacter = () => {
     toastr["info"]("Choose character to guess");
+};
+export const stickyRoundTime = () => {
+    const scrollY = window.scrollY - 20;
+    const finishTurnButtonTop = elements.gamePanel__finishTurnButton.offsetTop;
+    if (scrollY > finishTurnButtonTop) {
+        elements.gamePanel__roundTime.classList.add('game-panel__round-time_sticky');
+    }
+    else {
+        elements.gamePanel__roundTime.classList.remove('game-panel__round-time_sticky');
+    }
 };
 //# sourceMappingURL=gameView.js.map

@@ -11,6 +11,9 @@ import { elements, elementStrings } from './views/base.js';
 import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
 import * as GameStatus from './models/GameStatus.js';
+document.addEventListener('DOMContentLoaded', () => {
+    gameView.stickyRoundTime();
+});
 elements.showChatCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();
 });
@@ -56,5 +59,8 @@ Array.from(elements.characterButtons).forEach(characterButton => {
             gameView.changeCharacterStatus(characterButtonElement);
         }
     });
+});
+document.addEventListener('scroll', () => {
+    gameView.stickyRoundTime();
 });
 //# sourceMappingURL=game.js.map

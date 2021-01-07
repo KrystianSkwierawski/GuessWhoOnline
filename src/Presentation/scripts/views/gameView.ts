@@ -1,5 +1,6 @@
 ﻿import { elements, elementStrings } from './base.js';
 import * as CharacterStatus from '../models/CharacterStatus.js';
+import * as GameStatus from '../models/GameStatus.js';
 declare var toastr: any
 
 export const showOrHideChatCommunicator = (): void => {
@@ -12,31 +13,40 @@ export const getGameIdInputValue = (): string => {
 };
 
 export const setGameStatus = (status: string): void => {
-    elements.gamePanel__gameStatus.textContent = status;
+    let markup: string;
+
+    if (status === GameStatus.characterSelect) {
+        markup = status;
+    }
+    else {
+        markup = `${status}<span> . . .</span>`;
+    }
+
+    (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
 };
 
 export const showOrHideStartGameButton = (): void => {
-    elements.gamePanel__startGameButton.classList.toggle('d-none');
+    (<HTMLEmbedElement>elements.gamePanel__startGameButton).classList.toggle('d-none');
 };
 
 export const showOrHideGameStatus = (): void => {
-    elements.gamePanel__gameStatus.classList.toggle('d-none');
+    (<HTMLEmbedElement>elements.gamePanel__gameStatus).classList.toggle('d-none');
 };
 
 export const activateGameBoard = (): void => {
-    elements.gameBoard.classList.remove('disabled');
+    (<HTMLEmbedElement>elements.gameBoard).classList.remove('disabled');
 };
 
 export const activateGamePanel = (): void => {
-    elements.gamePanel.classList.remove('disabled');
+    (<HTMLEmbedElement>elements.gamePanel).classList.remove('disabled');
 };
 
 export const disableGamePanel = (): void => {
-    elements.gamePanel.classList.add('disabled');
+    (<HTMLEmbedElement>elements.gamePanel).classList.add('disabled');
 };
 
 export const disableGameBoard = (): void => {
-    elements.gameBoard.classList.add('disabled');
+    (<HTMLEmbedElement>elements.gameBoard).classList.add('disabled');
 };
 
 export const getGameStatus = (): string => {
@@ -44,11 +54,11 @@ export const getGameStatus = (): string => {
 };
 
 export const setYourCharacterName = (characterName: string): void => {
-    elements.gamePanel__yourCharacterName.textContent = characterName;
+    (<HTMLEmbedElement>elements.gamePanel__yourCharacterName).textContent = characterName;
 };
 
 export const HideGamePanel__startGameButton = (): void => {
-    elements.gamePanel__startGameButton.classList.add('d-none');
+    (<HTMLEmbedElement>elements.gamePanel__startGameButton).classList.add('d-none');
 };
 
 export const setYourCharacterImg = (characterName: string): void => {
@@ -117,6 +127,19 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement):
 export const displayNotificationAboutNotChoosedCharacter = (): void => {
     toastr["info"]("Choose character to guess");
 };
+
+export const stickyRoundTime = (): void => {
+    const scrollY: number = (<any>window).scrollY - 20;
+    const finishTurnButtonTop: number = (<HTMLEmbedElement>elements.gamePanel__finishTurnButton).offsetTop;
+
+    if (scrollY > finishTurnButtonTop) {
+        elements.gamePanel__roundTime.classList.add('game-panel__round-time_sticky');
+    }
+    else {
+        elements.gamePanel__roundTime.classList.remove('game-panel__round-time_sticky');
+    }
+}
+
 
 
 

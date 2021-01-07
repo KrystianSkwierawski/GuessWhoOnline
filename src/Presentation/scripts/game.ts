@@ -4,6 +4,10 @@ import * as gameHub from './gameHub.js';
 import * as CharacterStatus from './models/CharacterStatus.js';
 import * as GameStatus from './models/GameStatus.js';
 
+document.addEventListener('DOMContentLoaded', (): void => {
+    gameView.stickyRoundTime();
+});
+
 elements.showChatCommunicatorButton.addEventListener('click', (): void => {
     gameView.showOrHideChatCommunicator();
 });
@@ -61,5 +65,9 @@ Array.from(elements.characterButtons).forEach(characterButton => {
             gameView.changeCharacterStatus(characterButtonElement);
         }
     });
+});
+
+document.addEventListener('scroll', (): void => {
+    gameView.stickyRoundTime();
 });
 
