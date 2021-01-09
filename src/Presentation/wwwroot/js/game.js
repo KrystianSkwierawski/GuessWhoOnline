@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 elements.showChatCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();
+    gameView.scrollMessagesContainerToBottom();
 });
 elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();
@@ -63,4 +64,28 @@ Array.from(elements.characterButtons).forEach(characterButton => {
 document.addEventListener('scroll', () => {
     gameView.stickyRoundTime();
 });
+elements.sendMessages__sendMessageButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield trySendMessage();
+    gameView.clearSendMessages__sendMessagesInputValue();
+}));
+elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awaiter(void 0, void 0, void 0, function* () {
+    const enterKey = 13;
+    const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey) ? true : false;
+    if (clickedEnterKey) {
+        yield trySendMessage();
+        gameView.clearSendMessages__sendMessagesInputValue();
+    }
+}));
+const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
+    const message = gameView.getSendMessages__sendMessageInputValue();
+    const inputIsNotEmpty = message.trim() ? true : false;
+    const gameStatus = gameView.getGameStatus();
+    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForEnemy) {
+        const sender = "You";
+        gameView.renderMessage(message, sender);
+        gameView.scrollMessagesContainerToBottom();
+        yield gameHub.sendMessageToEnemy(message);
+    }
+});
+window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
 //# sourceMappingURL=game.js.map

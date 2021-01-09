@@ -8,8 +8,4 @@
         display: flex;
         flex-direction: column;
     }
-
-    &.disabled {
-        pointer-events: none;
-    }
 }

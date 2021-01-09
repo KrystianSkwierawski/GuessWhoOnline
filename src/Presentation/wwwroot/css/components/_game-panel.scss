@@ -25,10 +25,6 @@
             transform: translate(-50%, -50%);
         }
     }
-
-    &.disabled {
-        pointer-events: none;
-    }
 }
 
 .game-panel__your-character-img {

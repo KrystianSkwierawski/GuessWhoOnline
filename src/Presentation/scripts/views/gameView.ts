@@ -15,11 +15,11 @@ export const getGameIdInputValue = (): string => {
 export const setGameStatus = (status: string): void => {
     let markup: string;
 
-    if (status === GameStatus.characterSelect) {
-        markup = status;
+    if (status === GameStatus.waitForEnemy || status === GameStatus.waitForStart || status === GameStatus.enemyIsSelectingCharacter) {
+        markup = `${status}<span> . . .</span>`;
     }
     else {
-        markup = `${status}<span> . . .</span>`;
+        markup = status;
     }
 
     (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
@@ -139,6 +139,32 @@ export const stickyRoundTime = (): void => {
         elements.gamePanel__roundTime.classList.remove('game-panel__round-time_sticky');
     }
 }
+
+export const getSendMessages__sendMessageInputValue = (): string => {
+    return (<HTMLInputElement>elements.sendMessages__sendMessageInput).value;
+};
+
+export const clearSendMessages__sendMessagesInputValue = (): void => {
+    (<HTMLInputElement>elements.sendMessages__sendMessageInput).value = "";
+};
+
+export const renderMessage = (message: string, sender: string): void => {
+    const markup: string = `<p class="message text-break">${sender}: ${message}</p>`;
+
+    (<HTMLEmbedElement>elements.chatCommunicator__messages).insertAdjacentHTML('beforeend', markup);
+};
+
+export const activateChatCommunicator = (): void => {
+    (<HTMLEmbedElement>elements.chatCommunicator).classList.remove('disabled');
+};
+
+export const scrollMessagesContainerToBottom = (): void => {
+    const scrollHeight = (<HTMLEmbedElement>elements.chatCommunicator__messages).scrollHeight
+    const clientHeight = (<HTMLEmbedElement>elements.chatCommunicator__messages).clientHeight;
+
+    (<HTMLEmbedElement>elements.chatCommunicator__messages).scrollTop = scrollHeight - clientHeight;
+};
+
 
 
 

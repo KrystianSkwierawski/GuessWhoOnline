@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
 
 elements.showChatCommunicatorButton.addEventListener('click', (): void => {
     gameView.showOrHideChatCommunicator();
+    gameView.scrollMessagesContainerToBottom();
 });
 
 elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', (): void => {
@@ -71,3 +72,32 @@ document.addEventListener('scroll', (): void => {
     gameView.stickyRoundTime();
 });
 
+elements.sendMessages__sendMessageButton.addEventListener('click',  async (): Promise<void> => {
+    await trySendMessage();
+    gameView.clearSendMessages__sendMessagesInputValue();
+});
+
+elements.sendMessages__sendMessageInput.addEventListener('keypress', async (): Promise<void> => {
+    const enterKey = 13;
+    const clickedEnterKey = ((<KeyboardEvent>event).keyCode === enterKey && !(<KeyboardEvent>event).shiftKey) ? true : false;
+
+    if (clickedEnterKey) {
+        await trySendMessage();
+        gameView.clearSendMessages__sendMessagesInputValue();
+    }
+});
+
+const trySendMessage = async (): Promise<void> => {
+    const message: string = gameView.getSendMessages__sendMessageInputValue();
+    const inputIsNotEmpty = message.trim() ? true : false;
+    const gameStatus: string = gameView.getGameStatus();
+
+    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForEnemy) {
+        const sender = "You";
+        gameView.renderMessage(message, sender);
+        gameView.scrollMessagesContainerToBottom();
+        await gameHub.sendMessageToEnemy(message);
+    }
+};
+
+window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);

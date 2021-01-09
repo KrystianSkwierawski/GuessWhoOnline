@@ -13,6 +13,10 @@
     * {
         background-color: #131339;
     }
+
+    & .disabled {
+        pointer-events: none;
+    }
 }
 
 .show-chat-communicator-button {

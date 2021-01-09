@@ -10,11 +10,11 @@ export const getGameIdInputValue = () => {
 };
 export const setGameStatus = (status) => {
     let markup;
-    if (status === GameStatus.characterSelect) {
-        markup = status;
+    if (status === GameStatus.waitForEnemy || status === GameStatus.waitForStart || status === GameStatus.enemyIsSelectingCharacter) {
+        markup = `${status}<span> . . .</span>`;
     }
     else {
-        markup = `${status}<span> . . .</span>`;
+        markup = status;
     }
     elements.gamePanel__gameStatus.innerHTML = markup;
 };
@@ -105,5 +105,23 @@ export const stickyRoundTime = () => {
     else {
         elements.gamePanel__roundTime.classList.remove('game-panel__round-time_sticky');
     }
+};
+export const getSendMessages__sendMessageInputValue = () => {
+    return elements.sendMessages__sendMessageInput.value;
+};
+export const clearSendMessages__sendMessagesInputValue = () => {
+    elements.sendMessages__sendMessageInput.value = "";
+};
+export const renderMessage = (message, sender) => {
+    const markup = `<p class="message text-break">${sender}: ${message}</p>`;
+    elements.chatCommunicator__messages.insertAdjacentHTML('beforeend', markup);
+};
+export const activateChatCommunicator = () => {
+    elements.chatCommunicator.classList.remove('disabled');
+};
+export const scrollMessagesContainerToBottom = () => {
+    const scrollHeight = elements.chatCommunicator__messages.scrollHeight;
+    const clientHeight = elements.chatCommunicator__messages.clientHeight;
+    elements.chatCommunicator__messages.scrollTop = scrollHeight - clientHeight;
 };
 //# sourceMappingURL=gameView.js.map

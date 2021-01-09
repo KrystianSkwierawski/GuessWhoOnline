@@ -23,8 +23,12 @@ namespace Presentation.Hubs
             if (groupHasTwoPlayers)
             {
                 Game game = await CreateGame(groupName);
-                await Clients.Group(game.Id).SendAsync("RecieveGameStatus", game.Status);
-                await Clients.Group(game.Id).SendAsync("ActivateGameBoard", game.Status);
+                if (game != null)
+                {
+                    Clients.Group(game.Id).SendAsync("ActivateChatCommunicator");
+                    await Clients.Group(game.Id).SendAsync("RecieveGameStatus", game.Status);
+                    await Clients.Group(game.Id).SendAsync("ActivateGameBoard", game.Status);
+                }
             }
         }
 
@@ -68,7 +72,7 @@ namespace Presentation.Hubs
                 Status = GameStatus.CharacterSelect
             };
 
-            _games.Add(game);
+            _games.Add(game);        
 
             return game;
         }
@@ -76,6 +80,9 @@ namespace Presentation.Hubs
         public async Task SelectCharacter(string gameId, string characterName)
         {
             Game game = _games.FirstOrDefault(x => x.Id == gameId);
+
+            if (game == null)
+                return;
 
             //set player character
             if (game.FirstTurnPlayerId == Context.ConnectionId)
@@ -106,6 +113,9 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
 
+            if (game == null)
+                return;
+
             if (game.CurrentTurnPlayerId == Context.ConnectionId)
             {
                 await ChangeTurn(game);
@@ -122,7 +132,7 @@ namespace Presentation.Hubs
 
             Clients.Group(game.Id).SendAsync("ResetTimer");
 
-            (game.CurrentTurnPlayerId, game.NextTurnPlayerId) = (game.NextTurnPlayerId, game.CurrentTurnPlayerId);          
+            (game.CurrentTurnPlayerId, game.NextTurnPlayerId) = (game.NextTurnPlayerId, game.CurrentTurnPlayerId);
         }
 
         public async Task CheckCharacterTypeAndEndTheGame(string characterType)
@@ -159,6 +169,17 @@ namespace Presentation.Hubs
 
             Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus);
             Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus);
+        }
+
+        public async Task SendMessageToEnemy(string message)
+        {
+            Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
+
+            if (game == null)
+                return;
+
+            string enemyConnectionId = (game.FirstTurnPlayerId == Context.ConnectionId) ? game.SecondTurnPlayerId : game.FirstTurnPlayerId;
+            await Clients.Clients(enemyConnectionId).SendAsync("RecieveEnemyMessage", message);
         }
 
         public string[] GetTurnOrder(IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGame)

@@ -17,6 +17,9 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideStartGameButton();
     gameView.showOrHideGameStatus();
 });
+hub.on("ActivateChatCommunicator", () => {
+    gameView.activateChatCommunicator();
+});
 hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
     gameView.renderEndGameNotification(status);
 });
@@ -41,6 +44,11 @@ hub.on("ActivateGamePanel", () => {
 });
 hub.on("HideStartGameButton", () => {
     gameView.HideGamePanel__startGameButton();
+});
+hub.on("RecieveEnemyMessage", (message) => {
+    const sender = "Enemy";
+    gameView.renderMessage(message, sender);
+    gameView.scrollMessagesContainerToBottom();
 });
 hub.on("ShowGameStatus", () => {
     gameView.showOrHideGameStatus();
@@ -76,5 +84,8 @@ export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* (
 });
 export const checkCharacterTypeAndEndTheGame = (characterType) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
+});
+export const sendMessageToEnemy = (message) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('SendMessageToEnemy', message);
 });
 //# sourceMappingURL=gameHub.js.map

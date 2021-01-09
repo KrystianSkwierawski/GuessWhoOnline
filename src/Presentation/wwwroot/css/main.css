@@ -446,6 +446,8 @@ th {
       flex-direction: row; } }
   .game * {
     background-color: #131339; }
+  .game .disabled {
+    pointer-events: none; }
 
 .show-chat-communicator-button {
   border: 0;
@@ -478,8 +480,6 @@ th {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%); } }
-  .game-panel.disabled {
-    pointer-events: none; }
 
 .game-panel__your-character-img {
   height: 80vw;
@@ -581,6 +581,7 @@ th {
 
 .chat-communicator__messages {
   width: calc(100% - 20px);
+  height: 100%;
   overflow: auto;
   text-align: left;
   margin: 14px 10px 1px 10px; }
@@ -610,6 +611,7 @@ th {
   color: #007bff; }
 
 .chat-communicator__hide-communicator-button {
+  pointer-events: auto;
   position: absolute;
   right: 0;
   top: 0;
@@ -679,9 +681,6 @@ th {
     width: 70%;
     display: flex;
     flex-direction: column; } }
-
-.game-board.disabled {
-  pointer-events: none; }
 
 .endgame-notification {
   flex-direction: column;

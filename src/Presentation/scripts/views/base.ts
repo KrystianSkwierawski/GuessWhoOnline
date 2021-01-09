@@ -29,7 +29,10 @@
     gamePanel__characterType: document.querySelector('.game-panel__character-type'),
     game: document.querySelector('.game'),
     characters: document.querySelector('.charackters'),
-    characterButtons: document.querySelectorAll('.character-button')
+    characterButtons: document.querySelectorAll('.character-button'),
+    sendMessages__sendMessageButton: document.querySelector('.send-messages__send-message-button'),
+    sendMessages__sendMessageInput: document.querySelector('.send-messages__send-message-input'),
+    chatCommunicator__messages: document.querySelector('.chat-communicator__messages')
 };
 
 export const elementStrings = {

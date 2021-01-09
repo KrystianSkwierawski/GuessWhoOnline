@@ -13,6 +13,11 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.showOrHideGameStatus();
 });
 
+hub.on("ActivateChatCommunicator", (): void => {
+    gameView.activateChatCommunicator();
+});
+
+
 hub.on("ShowNotificationAboutEndOfTheGame", (status: string): void => {
     gameView.renderEndGameNotification(status);
 });
@@ -46,6 +51,12 @@ hub.on("HideStartGameButton", (): void => {
     gameView.HideGamePanel__startGameButton();
 });
 
+hub.on("RecieveEnemyMessage", (message: string): void => {
+    const sender = "Enemy";
+
+    gameView.renderMessage(message, sender);
+    gameView.scrollMessagesContainerToBottom();
+});
 
 hub.on("ShowGameStatus", (): void => {
     gameView.showOrHideGameStatus();
@@ -89,5 +100,9 @@ export const finishTheTurn = async (): Promise<void> => {
 
 export const checkCharacterTypeAndEndTheGame = async (characterType: string): Promise<void> => {
     await hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
+};
+
+export const sendMessageToEnemy = async (message: string): Promise<void> => {
+    await hub.invoke('SendMessageToEnemy', message);
 };
 

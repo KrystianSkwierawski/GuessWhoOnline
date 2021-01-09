@@ -20,6 +20,7 @@
 
 .chat-communicator__messages {
     width: calc(100% - 20px);
+    height: 100%;
     overflow: auto;
     text-align: left;
     margin: 14px 10px 1px 10px;
@@ -56,10 +57,11 @@
     color: #007bff;
 }
 
-.chat-communicator__hide-communicator-button{
-   position: absolute;
-   right: 0;
-   top: 0;
+.chat-communicator__hide-communicator-button {
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
 
     @include reset-button;
 }
