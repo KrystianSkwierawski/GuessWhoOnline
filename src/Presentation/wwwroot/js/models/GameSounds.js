@@ -34,6 +34,12 @@ export class GameSounds {
             this.keyboardClick.play();
         }
     }
+    static playWin() {
+        this.win.play();
+    }
+    static playLose() {
+        this.lose.play();
+    }
     static muteSounds() {
         this.soundsAreMuted = true;
         this.mainTheme.pause();
@@ -47,6 +53,8 @@ GameSounds.soundsAreMuted = false;
 GameSounds.mainTheme = new Audio('/sounds/main-theme.mp3');
 GameSounds.tikTokTimer = new Audio('/sounds/timer-sound-15s.mp3');
 GameSounds.endRound = new Audio('/sounds/end-round.mp3');
+GameSounds.lose = new Audio('/sounds/lose.mp3');
+GameSounds.win = new Audio('/sounds/win.mp3');
 GameSounds.keyboardClick = null;
 GameSounds.characterSelect = null;
 //# sourceMappingURL=GameSounds.js.map

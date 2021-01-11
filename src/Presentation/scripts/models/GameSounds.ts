@@ -3,8 +3,10 @@
     static mainTheme: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
     static tikTokTimer: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
     static endRound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
+    static lose: HTMLAudioElement = new Audio('/sounds/lose.mp3');
+    static win: HTMLAudioElement = new Audio('/sounds/win.mp3');
     static keyboardClick: HTMLAudioElement = null;
-    static characterSelect: HTMLAudioElement = null;
+    static characterSelect: HTMLAudioElement = null;   
     //static characterHover: HTMLAudioElement = null;
 
     static startUp(): void {
@@ -45,6 +47,14 @@
             this.keyboardClick = new Audio('/sounds/keyboard-click.mp3');
             this.keyboardClick.play();
         }
+    }
+
+    static playWin(): void {
+        this.win.play();
+    }
+
+    static playLose(): void {
+        this.lose.play();
     }
 
     static muteSounds(): void {

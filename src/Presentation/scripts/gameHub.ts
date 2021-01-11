@@ -18,6 +18,14 @@ hub.on("ActivateChatCommunicator", (): void => {
     gameView.activateChatCommunicator();
 });
 
+hub.on("PlayWinSound", (): void => {
+    GameSounds.playWin();
+});
+
+hub.on("PlayLoseSound", (): void => {
+    GameSounds.playLose();
+});
+
 hub.on("PlayEndTurnSound", (): void => {
     GameSounds.playEndRound();
 });

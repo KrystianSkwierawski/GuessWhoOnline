@@ -21,6 +21,12 @@ hub.on("GivePermisionToStartTheGame", () => {
 hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
 });
+hub.on("PlayWinSound", () => {
+    GameSounds.playWin();
+});
+hub.on("PlayLoseSound", () => {
+    GameSounds.playLose();
+});
 hub.on("PlayEndTurnSound", () => {
     GameSounds.playEndRound();
 });

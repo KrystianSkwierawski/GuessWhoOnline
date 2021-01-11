@@ -153,20 +153,28 @@ namespace Presentation.Hubs
 
         public async Task SendNotificationsToWinnerAndLoserAboutEndOfTheGame(Game game, string currentTurnPlayerCharacter, string nextTurnPlayerCharacter, string characterType)
         {
+            string loser = null, winner = null;
             string currentTurnPlayerStatus = "", nextTurnPlayerStatus = "";
 
             bool correctAnswer = (nextTurnPlayerCharacter == characterType) ? true : false;
 
             if (correctAnswer)
             {
+                winner = game.CurrentTurnPlayerId;
+                loser = game.NextTurnPlayerId;
                 currentTurnPlayerStatus = $"You win! Enemy character was {nextTurnPlayerCharacter}";
                 nextTurnPlayerStatus = $"You lose! Enemy character was {currentTurnPlayerCharacter}";
             }
             else if (!correctAnswer)
             {
+                winner = game.NextTurnPlayerId;
+                loser = game.CurrentTurnPlayerId;
                 currentTurnPlayerStatus = $"You lose! Enemy character was {nextTurnPlayerCharacter}";
                 nextTurnPlayerStatus = $"You win! Enemy character was {currentTurnPlayerCharacter}";
             }
+
+            Clients.Clients(winner).SendAsync("PlayWinSound");
+            Clients.Clients(loser).SendAsync("PlayLoseSound");
 
             Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus);
             Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus);
