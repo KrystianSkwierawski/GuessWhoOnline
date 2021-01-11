@@ -19,7 +19,7 @@ hub.on("ActivateChatCommunicator", (): void => {
 });
 
 hub.on("PlayEndTurnSound", (): void => {
-    GameSounds.playEndRoundSound();
+    GameSounds.playEndRound();
 });
 
 

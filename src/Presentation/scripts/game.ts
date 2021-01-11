@@ -53,7 +53,7 @@ const checkCharacterType = async (): Promise<void> => {
 
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {
-        GameSounds.playSelectCharacterSound();
+        GameSounds.playCharacterSelect();
         const gameStatus: string = gameView.getGameStatus();
         const characterElement: HTMLEmbedElement = e.target.closest(`.${elementStrings.character}`);
 
@@ -69,6 +69,10 @@ Array.from(elements.characterButtons).forEach(characterButton => {
             gameView.changeCharacterStatus(characterButtonElement);
         }
     });
+
+    //characterButton.addEventListener('mouseover', (): void => {
+    //    GameSounds.playCharacterHover();
+    //});
 });
 
 document.addEventListener('scroll', (): void => {
@@ -81,6 +85,7 @@ elements.sendMessages__sendMessageButton.addEventListener('click', async (): Pro
 });
 
 elements.sendMessages__sendMessageInput.addEventListener('keypress', async (): Promise<void> => {
+    GameSounds.playKeyboardClick();
     const enterKey = 13;
     const clickedEnterKey = ((<KeyboardEvent>event).keyCode === enterKey && !(<KeyboardEvent>event).shiftKey) ? true : false;
 

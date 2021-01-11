@@ -50,7 +50,7 @@ const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () 
 });
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e) => {
-        GameSounds.playSelectCharacterSound();
+        GameSounds.playCharacterSelect();
         const gameStatus = gameView.getGameStatus();
         const characterElement = e.target.closest(`.${elementStrings.character}`);
         if (gameStatus === GameStatus.characterSelect) {
@@ -63,6 +63,9 @@ Array.from(elements.characterButtons).forEach(characterButton => {
             gameView.changeCharacterStatus(characterButtonElement);
         }
     });
+    //characterButton.addEventListener('mouseover', (): void => {
+    //    GameSounds.playCharacterHover();
+    //});
 });
 document.addEventListener('scroll', () => {
     gameView.stickyRoundTime();
@@ -72,6 +75,7 @@ elements.sendMessages__sendMessageButton.addEventListener('click', () => __await
     gameView.clearSendMessages__sendMessagesInputValue();
 }));
 elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awaiter(void 0, void 0, void 0, function* () {
+    GameSounds.playKeyboardClick();
     const enterKey = 13;
     const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey) ? true : false;
     if (clickedEnterKey) {

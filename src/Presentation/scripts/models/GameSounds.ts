@@ -1,32 +1,49 @@
 ﻿export class GameSounds {
     static soundsAreMuted = false;
-    static mainTheme: HTMLAudioElement = new Audio('/sounds/main-theme-music.mp3');
-    static timer15s: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
-    static endRound: HTMLAudioElement = new Audio('/sounds/end-round-sound.mp3');
-    static selectCharacter: HTMLAudioElement = null;
+    static mainTheme: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
+    static tikTokTimer: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
+    static endRound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
+    static keyboardClick: HTMLAudioElement = null;
+    static characterSelect: HTMLAudioElement = null;
+    //static characterHover: HTMLAudioElement = null;
 
     static startUp(): void {
         this.mainTheme.autoplay = true;
         this.mainTheme.loop = true;
     }
 
-    static playTimerSound(): void {
+    static playTiktokTimer(): void {
         if (!this.soundsAreMuted) {
-            this.timer15s.play();
+            this.tikTokTimer.play();
         }
     }
 
-    static playEndRoundSound(): void {
+    static playEndRound(): void {
         if (!this.soundsAreMuted) {
             this.endRound.play();
         }
     }
 
-    static playSelectCharacterSound(): void {
+    //static playCharacterHover(): void {
+    //    if (!this.soundsAreMuted) {
+    //        this.characterHover = new Audio('/sounds/character-hover.mp3');
+    //        this.characterHover.play();
+    //    }
+    //}
+
+    static playCharacterSelect(): void {
         if (!this.soundsAreMuted) {
             //create new audio as user may click it multiple times
-            this.selectCharacter = new Audio('/sounds/select-character-sound.mp3');
-            this.selectCharacter.play();
+            this.characterSelect = new Audio('/sounds/character-select.mp3');
+            this.characterSelect.play();
+        }
+    }
+
+    static playKeyboardClick(): void {
+        if (!this.soundsAreMuted) {
+             //create new audio as user may click it multiple times
+            this.keyboardClick = new Audio('/sounds/keyboard-click.mp3');
+            this.keyboardClick.play();
         }
     }
 

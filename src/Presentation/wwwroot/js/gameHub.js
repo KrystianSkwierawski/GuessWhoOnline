@@ -22,7 +22,7 @@ hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
 });
 hub.on("PlayEndTurnSound", () => {
-    GameSounds.playEndRoundSound();
+    GameSounds.playEndRound();
 });
 hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
     gameView.renderEndGameNotification(status);
