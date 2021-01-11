@@ -23,6 +23,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var _roundTimeInSeconds, _remainingTime, _timerId;
 import { updateGamePanel__roundTime } from '../views/gameView.js';
 import { finishTheTurn } from '../gameHub.js';
+import { GameSounds } from './GameSounds.js';
 export class Timer {
     constructor(roundTimeInSeconds = 60, remainingTime = roundTimeInSeconds) {
         _roundTimeInSeconds.set(this, void 0);
@@ -39,6 +40,9 @@ export class Timer {
             const endOfTheTime = (__classPrivateFieldGet(this, _remainingTime) === 0) ? true : false;
             if (endOfTheTime) {
                 yield finishTheTurn();
+            }
+            if (__classPrivateFieldGet(this, _remainingTime) === 15) {
+                GameSounds.playTimerSound();
             }
             __classPrivateFieldSet(this, _remainingTime, __classPrivateFieldGet(this, _remainingTime) - 1);
             updateGamePanel__roundTime(__classPrivateFieldGet(this, _remainingTime));

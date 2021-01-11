@@ -542,7 +542,7 @@ th {
   background-color: transparent; }
 
 .game-panel__game-status {
-  font-size: 1.618rem;
+  font-size: 1rem;
   color: red;
   overflow: hidden; }
   .game-panel__game-status span {

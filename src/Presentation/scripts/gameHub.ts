@@ -1,6 +1,7 @@
 ﻿declare var signalR: any;
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
+import { GameSounds } from './models/GameSounds.js';
 
 const _timer = new Timer();
 
@@ -15,6 +16,10 @@ hub.on("GivePermisionToStartTheGame", (): void => {
 
 hub.on("ActivateChatCommunicator", (): void => {
     gameView.activateChatCommunicator();
+});
+
+hub.on("PlayEndTurnSound", (): void => {
+    GameSounds.playEndRoundSound();
 });
 
 

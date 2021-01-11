@@ -1,5 +1,6 @@
 ﻿import { updateGamePanel__roundTime } from '../views/gameView.js';
 import { finishTheTurn } from '../gameHub.js';
+import { GameSounds } from './GameSounds.js';
 
 export class Timer {
     #roundTimeInSeconds: number;
@@ -21,6 +22,10 @@ export class Timer {
 
             if (endOfTheTime) {
                 await finishTheTurn();
+            }
+
+            if (this.#remainingTime === 15) {
+                GameSounds.playTimerSound();
             }
 
             this.#remainingTime -= 1;

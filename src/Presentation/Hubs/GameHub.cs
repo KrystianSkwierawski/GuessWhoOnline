@@ -72,7 +72,7 @@ namespace Presentation.Hubs
                 Status = GameStatus.CharacterSelect
             };
 
-            _games.Add(game);        
+            _games.Add(game);
 
             return game;
         }
@@ -119,6 +119,7 @@ namespace Presentation.Hubs
             if (game.CurrentTurnPlayerId == Context.ConnectionId)
             {
                 await ChangeTurn(game);
+                await Clients.Group(game.Id).SendAsync("PlayEndTurnSound");
             }
         }
 

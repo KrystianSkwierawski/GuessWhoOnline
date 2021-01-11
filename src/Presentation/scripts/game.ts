@@ -1,11 +1,13 @@
 ﻿import { elements, elementStrings } from './views/base.js';
 import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
-import * as CharacterStatus from './models/CharacterStatus.js';
 import * as GameStatus from './models/GameStatus.js';
+import { GameSounds } from './models/GameSounds.js';
+
 
 document.addEventListener('DOMContentLoaded', (): void => {
     gameView.stickyRoundTime();
+    GameSounds.startUp();
 });
 
 elements.showChatCommunicatorButton.addEventListener('click', (): void => {
@@ -21,7 +23,7 @@ elements.gamePanel__startGameButton.addEventListener('click', (): void => {
     gameHub.startGame();
 });
 
-elements.gamePanel__finishTurnButton.addEventListener('click', (): void => {
+elements.gamePanel__finishTurnButton.addEventListener('click', async (): Promise<void> => {
     const status = gameView.getGameStatus();
 
     if (status === GameStatus.yourTurn) {
@@ -33,7 +35,7 @@ elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async ():
     const status = gameView.getGameStatus();
 
     if (status === GameStatus.yourTurn) {
-       await checkCharacterType();
+        await checkCharacterType();
     }
 });
 
@@ -51,6 +53,7 @@ const checkCharacterType = async (): Promise<void> => {
 
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {
+        GameSounds.playSelectCharacterSound();
         const gameStatus: string = gameView.getGameStatus();
         const characterElement: HTMLEmbedElement = e.target.closest(`.${elementStrings.character}`);
 
@@ -72,7 +75,7 @@ document.addEventListener('scroll', (): void => {
     gameView.stickyRoundTime();
 });
 
-elements.sendMessages__sendMessageButton.addEventListener('click',  async (): Promise<void> => {
+elements.sendMessages__sendMessageButton.addEventListener('click', async (): Promise<void> => {
     await trySendMessage();
     gameView.clearSendMessages__sendMessagesInputValue();
 });

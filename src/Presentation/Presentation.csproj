@@ -50,6 +50,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\css\pages\" />
     <Folder Include="wwwroot\js\models\" />
+    <Folder Include="wwwroot\sounds\" />
   </ItemGroup>
 
 </Project>

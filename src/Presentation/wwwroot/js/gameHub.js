@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
+import { GameSounds } from './models/GameSounds.js';
 const _timer = new Timer();
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
@@ -19,6 +20,9 @@ hub.on("GivePermisionToStartTheGame", () => {
 });
 hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
+});
+hub.on("PlayEndTurnSound", () => {
+    GameSounds.playEndRoundSound();
 });
 hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
     gameView.renderEndGameNotification(status);
