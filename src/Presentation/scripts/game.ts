@@ -81,9 +81,9 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         }
     });
 
-    //characterButton.addEventListener('mouseover', (): void => {
-    //    GameSounds.playCharacterHover();
-    //});
+    characterButton.addEventListener('mouseover', (): void => {
+        GameSounds.playCharacterHover();
+    });
 });
 
 document.addEventListener('scroll', (): void => {

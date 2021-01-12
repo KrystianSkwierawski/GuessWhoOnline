@@ -7,7 +7,7 @@
     static win: HTMLAudioElement = new Audio('/sounds/win.mp3');
     static keyboardClick: HTMLAudioElement = null;
     static characterSelect: HTMLAudioElement = null;   
-    //static characterHover: HTMLAudioElement = null;
+    static characterHover: HTMLAudioElement = null;
 
     static startUp(): void {
         this.mainTheme.autoplay = true;
@@ -26,12 +26,12 @@
         }
     }
 
-    //static playCharacterHover(): void {
-    //    if (!this.soundsAreMuted) {
-    //        this.characterHover = new Audio('/sounds/character-hover.mp3');
-    //        this.characterHover.play();
-    //    }
-    //}
+    static playCharacterHover(): void {
+        if (!this.soundsAreMuted) {
+            this.characterHover = new Audio('/sounds/character-hover.mp3');
+            this.characterHover.play();
+        }
+    }
 
     static playCharacterSelect(): void {
         if (!this.soundsAreMuted) {
@@ -50,11 +50,15 @@
     }
 
     static playWin(): void {
-        this.win.play();
+        if (!this.soundsAreMuted) {
+            this.win.play();
+        }
     }
 
     static playLose(): void {
-        this.lose.play();
+        if (!this.soundsAreMuted) {
+            this.lose.play();
+        }
     }
 
     static muteSounds(): void {   

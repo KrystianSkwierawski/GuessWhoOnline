@@ -1,5 +1,4 @@
 export class GameSounds {
-    //static characterHover: HTMLAudioElement = null;
     static startUp() {
         this.mainTheme.autoplay = true;
         this.mainTheme.loop = true;
@@ -14,12 +13,12 @@ export class GameSounds {
             this.endRound.play();
         }
     }
-    //static playCharacterHover(): void {
-    //    if (!this.soundsAreMuted) {
-    //        this.characterHover = new Audio('/sounds/character-hover.mp3');
-    //        this.characterHover.play();
-    //    }
-    //}
+    static playCharacterHover() {
+        if (!this.soundsAreMuted) {
+            this.characterHover = new Audio('/sounds/character-hover.mp3');
+            this.characterHover.play();
+        }
+    }
     static playCharacterSelect() {
         if (!this.soundsAreMuted) {
             //create new audio as user may click it multiple times
@@ -35,10 +34,14 @@ export class GameSounds {
         }
     }
     static playWin() {
-        this.win.play();
+        if (!this.soundsAreMuted) {
+            this.win.play();
+        }
     }
     static playLose() {
-        this.lose.play();
+        if (!this.soundsAreMuted) {
+            this.lose.play();
+        }
     }
     static muteSounds() {
         this.mainTheme.pause();
@@ -57,4 +60,5 @@ GameSounds.lose = new Audio('/sounds/lose.mp3');
 GameSounds.win = new Audio('/sounds/win.mp3');
 GameSounds.keyboardClick = null;
 GameSounds.characterSelect = null;
+GameSounds.characterHover = null;
 //# sourceMappingURL=GameSounds.js.map

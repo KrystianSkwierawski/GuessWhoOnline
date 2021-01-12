@@ -73,9 +73,9 @@ Array.from(elements.characterButtons).forEach(characterButton => {
             gameView.changeCharacterStatus(characterButtonElement);
         }
     });
-    //characterButton.addEventListener('mouseover', (): void => {
-    //    GameSounds.playCharacterHover();
-    //});
+    characterButton.addEventListener('mouseover', () => {
+        GameSounds.playCharacterHover();
+    });
 });
 document.addEventListener('scroll', () => {
     gameView.stickyRoundTime();
