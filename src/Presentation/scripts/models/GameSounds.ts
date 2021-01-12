@@ -57,13 +57,13 @@
         this.lose.play();
     }
 
-    static muteSounds(): void {
-        this.soundsAreMuted = true;
+    static muteSounds(): void {   
         this.mainTheme.pause();
+        this.soundsAreMuted = true;
     }
 
-    static unmuteSounds(): void {
-        this.soundsAreMuted = false;
+    static unmuteSounds(): void {      
         this.mainTheme.play();
+        this.soundsAreMuted = false;
     }
 }

@@ -124,4 +124,12 @@ export const scrollMessagesContainerToBottom = () => {
     const clientHeight = elements.chatCommunicator__messages.clientHeight;
     elements.chatCommunicator__messages.scrollTop = scrollHeight - clientHeight;
 };
+export const changeMuteOrUnmuteSoundsIconToVoloumeMute = () => {
+    elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-up');
+    elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-mute');
+};
+export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = () => {
+    elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
+    elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
+};
 //# sourceMappingURL=gameView.js.map

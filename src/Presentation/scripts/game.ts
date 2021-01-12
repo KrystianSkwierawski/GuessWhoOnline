@@ -39,6 +39,17 @@ elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async ():
     }
 });
 
+elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
+    if (GameSounds.soundsAreMuted) {
+        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();   
+        GameSounds.unmuteSounds();
+    }
+    else {
+        gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+        GameSounds.muteSounds();
+    }
+});
+
 const checkCharacterType = async (): Promise<void> => {
     const selectedCharacterType: string = gameView.getCharacterTypeValue();
 

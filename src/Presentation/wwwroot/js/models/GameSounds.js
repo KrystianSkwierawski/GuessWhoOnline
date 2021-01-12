@@ -41,12 +41,12 @@ export class GameSounds {
         this.lose.play();
     }
     static muteSounds() {
-        this.soundsAreMuted = true;
         this.mainTheme.pause();
+        this.soundsAreMuted = true;
     }
     static unmuteSounds() {
-        this.soundsAreMuted = false;
         this.mainTheme.play();
+        this.soundsAreMuted = false;
     }
 }
 GameSounds.soundsAreMuted = false;

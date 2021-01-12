@@ -165,6 +165,18 @@ export const scrollMessagesContainerToBottom = (): void => {
     (<HTMLEmbedElement>elements.chatCommunicator__messages).scrollTop = scrollHeight - clientHeight;
 };
 
+export const changeMuteOrUnmuteSoundsIconToVoloumeMute = (): void => {
+    elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-up');
+    elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-mute');
+};
+
+export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = (): void => {
+    elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
+    elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
+};
+
+
+
 
 
 

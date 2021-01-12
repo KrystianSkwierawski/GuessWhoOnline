@@ -38,6 +38,16 @@ elements.gamePanel__checkCharacterTypeButton.addEventListener('click', () => __a
         yield checkCharacterType();
     }
 }));
+elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
+    if (GameSounds.soundsAreMuted) {
+        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+        GameSounds.unmuteSounds();
+    }
+    else {
+        gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+        GameSounds.muteSounds();
+    }
+});
 const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {
     const selectedCharacterType = gameView.getCharacterTypeValue();
     const userSelectedAnyCharacter = (selectedCharacterType === 'Guess enemy character') ? false : true;

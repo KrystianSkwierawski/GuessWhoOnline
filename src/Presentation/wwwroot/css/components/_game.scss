@@ -21,9 +21,34 @@
 
 .show-chat-communicator-button {
     @include reset-button;
+    font-size: 15px;
     position: fixed;
-    right: 1px;
-    bottom: 1px;
+    right: 2%;
+    background-color: #EE7A38;
+    bottom: 2%;
+    border-radius: 60%;
+    height: 45px;
+    width: 45px;
+
+    i {
+        background: none;
+    }
+}
+
+.mute-or-unmute-sounds-button {
+    @include reset-button;
+    position: fixed;
+    right: 2%;
+    font-size: 15px;
+    background-color: #EE7A38;
+    top: 2%;
+    border-radius: 60%;
+    height: 45px;
+    width: 45px;
+
+    i {
+        background: none;
+    }
 }
 
 /*.game button{

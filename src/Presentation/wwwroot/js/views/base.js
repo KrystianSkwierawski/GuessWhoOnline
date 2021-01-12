@@ -33,6 +33,8 @@ export const elements = {
     sendMessages__sendMessageButton: document.querySelector('.send-messages__send-message-button'),
     sendMessages__sendMessageInput: document.querySelector('.send-messages__send-message-input'),
     chatCommunicator__messages: document.querySelector('.chat-communicator__messages'),
+    muteOrUnmuteSoundsButton: document.querySelector('.mute-or-unmute-sounds-button'),
+    muteOrUnmuteSoundsIcon: document.querySelector('.mute-or-unmute-sounds-icon')
 };
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button',

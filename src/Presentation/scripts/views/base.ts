@@ -19,7 +19,7 @@
     game__gameIdInput: document.querySelector('.game__game-id-input'),
     gamePanel__gameStatus: document.querySelector('.game-panel__game-status'),
     gamePanel__startGameButton: document.querySelector('.game-panel__start-game-button'),
-    gameBoard: document.querySelector('.game-board'),  
+    gameBoard: document.querySelector('.game-board'),
     gamePanel__yourCharacterImg: document.querySelector('.game-panel__your-character-img'),
     gamePanel__yourCharacterName: document.querySelector('.game-panel__your-character-name'),
     gamePanel: document.querySelector('.game-panel'),
@@ -33,6 +33,8 @@
     sendMessages__sendMessageButton: document.querySelector('.send-messages__send-message-button'),
     sendMessages__sendMessageInput: document.querySelector('.send-messages__send-message-input'),
     chatCommunicator__messages: document.querySelector('.chat-communicator__messages'),
+    muteOrUnmuteSoundsButton: document.querySelector('.mute-or-unmute-sounds-button'),
+    muteOrUnmuteSoundsIcon: document.querySelector('.mute-or-unmute-sounds-icon')
 };
 
 export const elementStrings = {

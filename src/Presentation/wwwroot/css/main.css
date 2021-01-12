@@ -366,7 +366,7 @@ th {
   padding: 2%;
   box-shadow: 2px 2px 20px;
   border-radius: 8px; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .find-match {
       width: 60%;
       height: 60%; } }
@@ -428,7 +428,7 @@ th {
   background-color: white;
   box-shadow: 2px 2px 20px;
   border-radius: 8px; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .create-match {
       width: 60%; } }
 
@@ -441,7 +441,7 @@ th {
   display: flex;
   flex-direction: column;
   text-align: center; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .game {
       flex-direction: row; } }
   .game * {
@@ -452,9 +452,30 @@ th {
 .show-chat-communicator-button {
   border: 0;
   background: none;
+  font-size: 15px;
   position: fixed;
-  right: 1px;
-  bottom: 1px; }
+  right: 2%;
+  background-color: #EE7A38;
+  bottom: 2%;
+  border-radius: 60%;
+  height: 45px;
+  width: 45px; }
+  .show-chat-communicator-button i {
+    background: none; }
+
+.mute-or-unmute-sounds-button {
+  border: 0;
+  background: none;
+  position: fixed;
+  right: 2%;
+  font-size: 15px;
+  background-color: #EE7A38;
+  top: 2%;
+  border-radius: 60%;
+  height: 45px;
+  width: 45px; }
+  .mute-or-unmute-sounds-button i {
+    background: none; }
 
 /*.game button{
     @include reset-button;
@@ -464,7 +485,7 @@ th {
   width: 100%;
   height: auto;
   padding-bottom: 20%; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel {
       position: fixed;
       width: 30%;
@@ -474,7 +495,7 @@ th {
       overflow: auto; }
       .game-panel::-webkit-scrollbar {
         display: none; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel div {
       position: absolute;
       top: 50%;
@@ -484,11 +505,11 @@ th {
 .game-panel__your-character-img {
   height: 80vw;
   width: 80vw; }
-  @media screen and (min-width: 576px) {
+  @media screen and (min-height: 550px) and (min-width: 576px) {
     .game-panel__your-character-img {
       height: 70vw;
       width: 70vw; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__your-character-img {
       height: 15vw;
       width: 15vw; } }
@@ -505,7 +526,7 @@ th {
   .game-panel__round-time_sticky {
     position: fixed;
     left: 50%;
-    top: 0;
+    top: -20px;
     transform: translateX(-50%);
     z-index: 3;
     background-color: transparent;
@@ -530,10 +551,10 @@ th {
   margin-bottom: 5%;
   margin-top: 5%;
   pointer-events: auto; }
-  @media screen and (min-width: 576px) {
+  @media screen and (min-height: 550px) and (min-width: 576px) {
     .game-panel__start-game-button {
       width: 70vw; } }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__start-game-button {
       width: 15vw; } }
 
@@ -573,7 +594,7 @@ th {
   display: flex;
   flex-direction: column;
   padding: 5px; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .chat-communicator {
       width: 70%;
       left: 0;
@@ -625,7 +646,7 @@ th {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center; }
-  @media screen and (min-width: 576px) {
+  @media screen and (min-height: 550px) and (min-width: 576px) {
     .charackters {
       flex-direction: row; } }
 
@@ -636,7 +657,7 @@ th {
   align-self: center;
   position: relative;
   margin-bottom: 20vw; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .character {
       margin-left: 10px;
       margin-right: 10px;
@@ -645,7 +666,7 @@ th {
       width: calc((60vw - 20px) / 3);
       max-height: calc((60vw - 20px) / 3);
       max-width: calc((60vw - 20px) / 3); } }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-height: 550px) and (min-width: 1200px) {
     .character {
       flex-grow: 1;
       height: calc((60vw - 20px) / 6);
@@ -674,7 +695,7 @@ th {
   z-index: 1;
   background-color: transparent; }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-height: 550px) and (min-width: 768px) {
   .game-board {
     order: -1;
     height: 100vh;
@@ -695,7 +716,7 @@ th {
   padding: 20px;
   z-index: 1;
   /*button,*/ }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 768px) {
     .endgame-notification {
       width: 35%; } }
   .endgame-notification a {
