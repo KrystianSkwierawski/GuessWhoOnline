@@ -22,13 +22,13 @@ hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
 });
 hub.on("PlayWinSound", () => {
-    GameSounds.playWin();
+    GameSounds.playWinSound();
 });
 hub.on("PlayLoseSound", () => {
-    GameSounds.playLose();
+    GameSounds.playLoseSound();
 });
 hub.on("PlayEndTurnSound", () => {
-    GameSounds.playEndRound();
+    GameSounds.playEndRoundSound();
 });
 hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
     gameView.renderEndGameNotification(status);

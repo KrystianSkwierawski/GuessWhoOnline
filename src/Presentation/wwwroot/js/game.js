@@ -60,7 +60,7 @@ const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () 
 });
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e) => {
-        GameSounds.playCharacterSelect();
+        GameSounds.playCharacterSelectSound();
         const gameStatus = gameView.getGameStatus();
         const characterElement = e.target.closest(`.${elementStrings.character}`);
         if (gameStatus === GameStatus.characterSelect) {
@@ -74,7 +74,7 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         }
     });
     characterButton.addEventListener('mouseover', () => {
-        GameSounds.playCharacterHover();
+        GameSounds.playCharacterHoverSound();
     });
 });
 document.addEventListener('scroll', () => {
@@ -85,7 +85,7 @@ elements.sendMessages__sendMessageButton.addEventListener('click', () => __await
     gameView.clearSendMessages__sendMessagesInputValue();
 }));
 elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awaiter(void 0, void 0, void 0, function* () {
-    GameSounds.playKeyboardClick();
+    GameSounds.playKeyboardClickSound();
     const enterKey = 13;
     const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey) ? true : false;
     if (clickedEnterKey) {

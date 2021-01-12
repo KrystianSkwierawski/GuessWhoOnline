@@ -21,7 +21,7 @@ export class Timer {
             const endOfTheTime: boolean = (this.#remainingTime === 0) ? true : false;
 
             if (this.#remainingTime === 15) {
-                GameSounds.playTiktokTimer();
+                GameSounds.playTiktokTimerSound();
             }
 
             if (endOfTheTime) {

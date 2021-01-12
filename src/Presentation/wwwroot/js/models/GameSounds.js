@@ -1,64 +1,65 @@
 export class GameSounds {
     static startUp() {
-        this.mainTheme.autoplay = true;
-        this.mainTheme.loop = true;
+        this.mainThemeMusic.autoplay = true;
+        this.mainThemeMusic.loop = true;
     }
-    static playTiktokTimer() {
+    static playTiktokTimerSound() {
         if (!this.soundsAreMuted) {
-            this.tikTokTimer.play();
+            this.tikTokTimerSound.play();
         }
     }
-    static playEndRound() {
+    static playEndRoundSound() {
         if (!this.soundsAreMuted) {
-            this.endRound.play();
+            this.endRoundSound.play();
         }
     }
-    static playCharacterHover() {
-        if (!this.soundsAreMuted) {
-            this.characterHover = new Audio('/sounds/character-hover.mp3');
-            this.characterHover.play();
-        }
-    }
-    static playCharacterSelect() {
+    static playCharacterHoverSound() {
         if (!this.soundsAreMuted) {
             //create new audio as user may click it multiple times
-            this.characterSelect = new Audio('/sounds/character-select.mp3');
-            this.characterSelect.play();
+            const characterHover = new Audio(this.characterHoverPath);
+            characterHover.play();
         }
     }
-    static playKeyboardClick() {
+    static playCharacterSelectSound() {
         if (!this.soundsAreMuted) {
             //create new audio as user may click it multiple times
-            this.keyboardClick = new Audio('/sounds/keyboard-click.mp3');
-            this.keyboardClick.play();
+            const characterSelect = new Audio(this.characterSelectPath);
+            characterSelect.play();
         }
     }
-    static playWin() {
+    static playKeyboardClickSound() {
         if (!this.soundsAreMuted) {
-            this.win.play();
+            //create new audio as user may click it multiple times
+            const keyboardClick = new Audio(this.keyboardClickPath);
+            keyboardClick.play();
         }
     }
-    static playLose() {
+    static playWinSound() {
         if (!this.soundsAreMuted) {
-            this.lose.play();
+            this.winSound.play();
+        }
+    }
+    static playLoseSound() {
+        if (!this.soundsAreMuted) {
+            this.loseSound.play();
         }
     }
     static muteSounds() {
-        this.mainTheme.pause();
+        this.mainThemeMusic.pause();
         this.soundsAreMuted = true;
     }
     static unmuteSounds() {
-        this.mainTheme.play();
+        this.mainThemeMusic.play();
         this.soundsAreMuted = false;
     }
 }
 GameSounds.soundsAreMuted = false;
-GameSounds.mainTheme = new Audio('/sounds/main-theme.mp3');
-GameSounds.tikTokTimer = new Audio('/sounds/timer-sound-15s.mp3');
-GameSounds.endRound = new Audio('/sounds/end-round.mp3');
-GameSounds.lose = new Audio('/sounds/lose.mp3');
-GameSounds.win = new Audio('/sounds/win.mp3');
-GameSounds.keyboardClick = null;
-GameSounds.characterSelect = null;
-GameSounds.characterHover = null;
+GameSounds.mainThemeMusic = new Audio('/sounds/main-theme.mp3');
+GameSounds.tikTokTimerSound = new Audio('/sounds/timer-sound-15s.mp3');
+GameSounds.endRoundSound = new Audio('/sounds/end-round.mp3');
+GameSounds.loseSound = new Audio('/sounds/lose.mp3');
+GameSounds.winSound = new Audio('/sounds/win.mp3');
+GameSounds.keyboardClickPath = '/sounds/keyboard-click.mp3';
+GameSounds.characterSelectPath = '/sounds/character-select.mp3';
+GameSounds.characterHoverPath = '/sounds/character-hover.mp3';
 //# sourceMappingURL=GameSounds.js.map

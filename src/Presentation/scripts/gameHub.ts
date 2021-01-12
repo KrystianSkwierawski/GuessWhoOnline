@@ -19,15 +19,15 @@ hub.on("ActivateChatCommunicator", (): void => {
 });
 
 hub.on("PlayWinSound", (): void => {
-    GameSounds.playWin();
+    GameSounds.playWinSound();
 });
 
 hub.on("PlayLoseSound", (): void => {
-    GameSounds.playLose();
+    GameSounds.playLoseSound();
 });
 
 hub.on("PlayEndTurnSound", (): void => {
-    GameSounds.playEndRound();
+    GameSounds.playEndRoundSound();
 });
 
 

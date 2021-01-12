@@ -39,7 +39,7 @@ export class Timer {
         __classPrivateFieldSet(this, _timerId, setInterval(() => __awaiter(this, void 0, void 0, function* () {
             const endOfTheTime = (__classPrivateFieldGet(this, _remainingTime) === 0) ? true : false;
             if (__classPrivateFieldGet(this, _remainingTime) === 15) {
-                GameSounds.playTiktokTimer();
+                GameSounds.playTiktokTimerSound();
             }
             if (endOfTheTime) {
                 yield finishTheTurn();
