@@ -1,6 +1,6 @@
 ﻿export class GameSounds {
     static soundsAreMuted = false;
-    static mainThemeMusic: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
+    static bacgroundMusic: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
     static tikTokTimerSound: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
     static endRoundSound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
     static loseSound: HTMLAudioElement = new Audio('/sounds/lose.mp3');
@@ -11,8 +11,8 @@
     static characterHoverPath: string = '/sounds/character-hover.mp3';
 
     static startUp(): void {
-        this.mainThemeMusic.autoplay = true;
-        this.mainThemeMusic.loop = true;
+        this.bacgroundMusic.autoplay = true;
+        this.bacgroundMusic.loop = true;
     }
 
     static playTiktokTimerSound(): void {
@@ -64,12 +64,12 @@
     }
 
     static muteSounds(): void {
-        this.mainThemeMusic.pause();
+        this.bacgroundMusic.pause();
         this.soundsAreMuted = true;
     }
 
     static unmuteSounds(): void {
-        this.mainThemeMusic.play();
+        this.bacgroundMusic.play();
         this.soundsAreMuted = false;
     }
 }

@@ -149,6 +149,8 @@ namespace Presentation.Hubs
             SendNotificationsToWinnerAndLoserAboutEndOfTheGame(game, currentTurnPlayerCharacter, nextTurnPlayerCharacter, characterType);
 
             Clients.Group(game.Id).SendAsync("StopTimer");
+            Clients.Group(game.Id).SendAsync("DisableGameBoard");
+            Clients.Group(game.Id).SendAsync("DisableGamePanel");
         }
 
         public async Task SendNotificationsToWinnerAndLoserAboutEndOfTheGame(Game game, string currentTurnPlayerCharacter, string nextTurnPlayerCharacter, string characterType)
@@ -208,12 +210,43 @@ namespace Presentation.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            await LeaveGameIfGamesContainsConnectionId();
+            LeaveOrRemoveGame();
+            await LeaveGroupIfGamesContainsConnectionId();
 
             await base.OnDisconnectedAsync(exception);
         }
 
-        private async Task LeaveGameIfGamesContainsConnectionId()
+        private async Task LeaveOrRemoveGame()
+        {
+            Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
+
+            if (game == null)
+                return;        
+
+            await LeaveTheGame(game);
+
+            bool bothPlayersLeftTheGame = (game.FirstTurnPlayerId == null && game.SecondTurnPlayerId == null) ? true : false;
+            if (bothPlayersLeftTheGame)
+            {
+                _games.Remove(game);
+            }                                 
+        }
+
+
+        private async Task LeaveTheGame(Game game)
+        {
+            if (Context.ConnectionId == game.FirstTurnPlayerId)
+            {
+                game.FirstTurnPlayerId = null;
+            }
+            else if (Context.ConnectionId == game.SecondTurnPlayerId)
+            {
+                game.SecondTurnPlayerId = null;
+            }
+        }
+
+
+        private async Task LeaveGroupIfGamesContainsConnectionId()
         {
             bool groupExist = CheckIfGroupExist(Context.ConnectionId);
 

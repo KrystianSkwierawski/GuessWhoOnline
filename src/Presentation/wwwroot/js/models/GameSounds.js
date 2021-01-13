@@ -1,7 +1,7 @@
 export class GameSounds {
     static startUp() {
-        this.mainThemeMusic.autoplay = true;
-        this.mainThemeMusic.loop = true;
+        this.bacgroundMusic.autoplay = true;
+        this.bacgroundMusic.loop = true;
     }
     static playTiktokTimerSound() {
         if (!this.soundsAreMuted) {
@@ -45,16 +45,16 @@ export class GameSounds {
         }
     }
     static muteSounds() {
-        this.mainThemeMusic.pause();
+        this.bacgroundMusic.pause();
         this.soundsAreMuted = true;
     }
     static unmuteSounds() {
-        this.mainThemeMusic.play();
+        this.bacgroundMusic.play();
         this.soundsAreMuted = false;
     }
 }
 GameSounds.soundsAreMuted = false;
-GameSounds.mainThemeMusic = new Audio('/sounds/main-theme.mp3');
+GameSounds.bacgroundMusic = new Audio('/sounds/main-theme.mp3');
 GameSounds.tikTokTimerSound = new Audio('/sounds/timer-sound-15s.mp3');
 GameSounds.endRoundSound = new Audio('/sounds/end-round.mp3');
 GameSounds.loseSound = new Audio('/sounds/lose.mp3');
