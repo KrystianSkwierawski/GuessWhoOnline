@@ -25,12 +25,13 @@ export const setGameStatus = (status: string): void => {
     (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
 };
 
-export const showOrHideStartGameButton = (): void => {
-    (<HTMLEmbedElement>elements.gamePanel__startGameButton).classList.toggle('d-none');
+
+export const showGameStatus = (): void => {
+    (<HTMLEmbedElement>elements.gamePanel__gameStatus).classList.remove('d-none');
 };
 
-export const showOrHideGameStatus = (): void => {
-    (<HTMLEmbedElement>elements.gamePanel__gameStatus).classList.toggle('d-none');
+export const hideGameStatus = (): void => {
+    (<HTMLEmbedElement>elements.gamePanel__gameStatus).classList.add('d-none');
 };
 
 export const activateGameBoard = (): void => {
@@ -59,6 +60,10 @@ export const setYourCharacterName = (characterName: string): void => {
 
 export const HideGamePanel__startGameButton = (): void => {
     (<HTMLEmbedElement>elements.gamePanel__startGameButton).classList.add('d-none');
+};
+
+export const ShowGamePanel__startGameButton = (): void => {
+    (<HTMLEmbedElement>elements.gamePanel__startGameButton).classList.remove('d-none');
 };
 
 export const setYourCharacterImg = (characterName: string): void => {
@@ -90,31 +95,35 @@ export const getCharacterTypeValue = (): string => {
     return e.options[e.selectedIndex].text;
 };
 
-export const renderTheNotificationAboutEndTheGame = (gameSatus: string, characterName: string) => {
+export const renderTheNotificationAboutEndTheGame = (gameSatus: string, characterName: string): void => {
     const markup: string = `
-    <div class="endgame-notification">     
-        <p class="endgame-notification__status">${gameSatus}</p>
-        <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
-        <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
-    </div>
+        <div class="endgame-notification">     
+            <p class="endgame-notification__status">${gameSatus}</p>
+            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
+            <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
+        </div>
     `;
 
     elements.game.insertAdjacentHTML('beforeend', markup);
 };
 
-export const renderTheNotificationAboutPausingTheGame = () => {
+export const renderTheNotificationAboutPausingTheGame = (): void => {
     const markup: string = `  
-            <div class="game-pause-notification">     
-                <header>
-                    <h1>The game is paused, because enemy player left the game</p>
-                </header>
-                <p>wait for enemy<span> . . .</span></p>
-            </div>
+        <div class="game-pause-notification">
+            <p>The game is paused, because enemy player left the game</p>
+            <p id="game-pause-notification__status">wait for enemy<span> . . .</span></p>
+        </div>
     `;
 
     elements.game.insertAdjacentHTML('beforeend', markup);
 };
 
+export const remvoeTheNotificationAboutPausingTheGame = (): void => {
+    const notificationElement: HTMLEmbedElement = elements.game.querySelector(`.${elementStrings.gamePauseNotification}`);
+    if (notificationElement) {
+        elements.game.removeChild(notificationElement);
+    }
+}
 
 export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
     const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
@@ -189,8 +198,6 @@ export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = (): void => {
     elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
     elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
 };
-
-
 
 
 

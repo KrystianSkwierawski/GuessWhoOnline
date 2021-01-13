@@ -10,12 +10,16 @@ var hub = new signalR.HubConnectionBuilder()
     .build();
 
 hub.on("GivePermisionToStartTheGame", (): void => {
-    gameView.showOrHideStartGameButton();
-    gameView.showOrHideGameStatus();
+    gameView.ShowGamePanel__startGameButton();
+    gameView.hideGameStatus();
 });
 
 hub.on("SendNotificationAboutPauseTheGame", (): void => {
     gameView.renderTheNotificationAboutPausingTheGame();
+});
+
+hub.on("RemoveNotificationAboutPauseTheGame", (): void => {
+    gameView.remvoeTheNotificationAboutPausingTheGame();
 });
 
 hub.on("ActivateChatCommunicator", (): void => {
@@ -33,7 +37,6 @@ hub.on("PlayLoseSound", (): void => {
 hub.on("PlayEndTurnSound", (): void => {
     GameSounds.playEndRoundSound();
 });
-
 
 hub.on("ShowNotificationAboutEndOfTheGame", (status: string, characterName: string): void => {
     gameView.renderTheNotificationAboutEndTheGame(status, characterName);
@@ -76,7 +79,7 @@ hub.on("RecieveEnemyMessage", (message: string): void => {
 });
 
 hub.on("ShowGameStatus", (): void => {
-    gameView.showOrHideGameStatus();
+    gameView.showGameStatus();
 });
 
 hub.on("DisableGameBoard", (): void => {
@@ -89,12 +92,11 @@ hub.on("DisableGamePanel", (): void => {
 
 hub.on("RecieveGameStatus", (status: string): void => {
     gameView.setGameStatus(status);
-});
+})
 
 hub.start().then(async function () {
     const gameId: string = gameView.getGameIdInputValue();
     await tryJoinGame(gameId);
-
 }).catch(function (err) {
     return console.error(err.toString());
 });
@@ -108,7 +110,7 @@ export const selectCharacter = async (gameId: string, characterName: string): Pr
 };
 
 export const startGame = async (): Promise<void> => {
-    await hub.invoke('StartGame');
+    await hub.invoke('StartTheGame');
 };
 
 export const finishTheTurn = async (): Promise<void> => {

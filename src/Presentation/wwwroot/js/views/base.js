@@ -44,5 +44,6 @@ export const elementStrings = {
     character_rejected: 'character_rejected',
     character_suspect: 'character_suspect',
     characterStatus: 'character-status',
+    gamePauseNotification: 'game-pause-notification'
 };
 //# sourceMappingURL=base.js.map

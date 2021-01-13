@@ -18,11 +18,11 @@ export const setGameStatus = (status) => {
     }
     elements.gamePanel__gameStatus.innerHTML = markup;
 };
-export const showOrHideStartGameButton = () => {
-    elements.gamePanel__startGameButton.classList.toggle('d-none');
+export const showGameStatus = () => {
+    elements.gamePanel__gameStatus.classList.remove('d-none');
 };
-export const showOrHideGameStatus = () => {
-    elements.gamePanel__gameStatus.classList.toggle('d-none');
+export const hideGameStatus = () => {
+    elements.gamePanel__gameStatus.classList.add('d-none');
 };
 export const activateGameBoard = () => {
     elements.gameBoard.classList.remove('disabled');
@@ -44,6 +44,9 @@ export const setYourCharacterName = (characterName) => {
 };
 export const HideGamePanel__startGameButton = () => {
     elements.gamePanel__startGameButton.classList.add('d-none');
+};
+export const ShowGamePanel__startGameButton = () => {
+    elements.gamePanel__startGameButton.classList.remove('d-none');
 };
 export const setYourCharacterImg = (characterName) => {
     elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.jpg`;
@@ -69,24 +72,28 @@ export const getCharacterTypeValue = () => {
 };
 export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) => {
     const markup = `
-    <div class="endgame-notification">     
-        <p class="endgame-notification__status">${gameSatus}</p>
-        <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
-        <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
-    </div>
+        <div class="endgame-notification">     
+            <p class="endgame-notification__status">${gameSatus}</p>
+            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
+            <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
+        </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);
 };
 export const renderTheNotificationAboutPausingTheGame = () => {
     const markup = `  
-            <div class="game-pause-notification">     
-                <header>
-                    <h1>The game is paused, because enemy player left the game</p>
-                </header>
-                <p>wait for enemy<span> . . .</span></p>
-            </div>
+        <div class="game-pause-notification">
+            <p>The game is paused, because enemy player left the game</p>
+            <p id="game-pause-notification__status">wait for enemy<span> . . .</span></p>
+        </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);
+};
+export const remvoeTheNotificationAboutPausingTheGame = () => {
+    const notificationElement = elements.game.querySelector(`.${elementStrings.gamePauseNotification}`);
+    if (notificationElement) {
+        elements.game.removeChild(notificationElement);
+    }
 };
 export const changeCharacterStatus = (characterButtonElement) => {
     const characterStatusElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);

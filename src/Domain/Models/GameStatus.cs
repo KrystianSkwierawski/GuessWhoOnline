@@ -9,5 +9,7 @@
         public static string EnemyTurn = "Enemy turn";
         public static string YourTurn = "Your turn";
         public static string Paused = "Game is paused";
+        public static string Started = "Started";
+        public static string Ended = "Ended";
     }
 }

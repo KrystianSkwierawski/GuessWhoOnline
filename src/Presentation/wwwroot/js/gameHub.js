@@ -15,11 +15,14 @@ var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
     .build();
 hub.on("GivePermisionToStartTheGame", () => {
-    gameView.showOrHideStartGameButton();
-    gameView.showOrHideGameStatus();
+    gameView.ShowGamePanel__startGameButton();
+    gameView.hideGameStatus();
 });
 hub.on("SendNotificationAboutPauseTheGame", () => {
     gameView.renderTheNotificationAboutPausingTheGame();
+});
+hub.on("RemoveNotificationAboutPauseTheGame", () => {
+    gameView.remvoeTheNotificationAboutPausingTheGame();
 });
 hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
@@ -64,7 +67,7 @@ hub.on("RecieveEnemyMessage", (message) => {
     gameView.scrollMessagesContainerToBottom();
 });
 hub.on("ShowGameStatus", () => {
-    gameView.showOrHideGameStatus();
+    gameView.showGameStatus();
 });
 hub.on("DisableGameBoard", () => {
     gameView.disableGameBoard();
@@ -90,7 +93,7 @@ export const selectCharacter = (gameId, characterName) => __awaiter(void 0, void
     yield hub.invoke('SelectCharacter', gameId, characterName);
 });
 export const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('StartGame');
+    yield hub.invoke('StartTheGame');
 });
 export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('FinishTheTurn');
