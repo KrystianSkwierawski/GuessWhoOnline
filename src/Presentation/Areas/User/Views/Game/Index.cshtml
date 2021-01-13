@@ -7,7 +7,7 @@
     <div class="game-panel disabled">
         <div>
             <button class="game-panel__start-game-button btn btn-danger d-none">Start</button>
-            <p class="game-panel__game-status">Wait for enemy<span> . . .</span></p>
+            <p class="game-panel__game-status">Wait for opponent<span> . . .</span></p>
 
             <p>Your character:</p>
             <img class="game-panel__your-character-img" src="/images/square.jpg" />
@@ -17,7 +17,7 @@
             <button class="btn btn-primary game-panel__finish-turn-button">Finish turn</button>
 
             <select class="game-panel__character-type" name="character-type" id="character-type">
-                <option disabled selected>Guess enemy character</option>
+                <option disabled selected>Guess opponent character</option>
 
                 @foreach (var characterName in Model.CharactersNames)
                 {

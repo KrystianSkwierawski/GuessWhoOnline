@@ -2,7 +2,6 @@
 import * as CharacterStatus from '../models/CharacterStatus.js';
 import * as GameStatus from '../models/GameStatus.js';
 import { addEventListenerToVoteToRestartGameButton } from '../game.js';
-declare var toastr: any
 
 export const showOrHideChatCommunicator = (): void => {
     elements.chatCommunicator.classList.toggle('d-none');
@@ -16,7 +15,7 @@ export const getGameIdInputValue = (): string => {
 export const setGameStatus = (status: string): void => {
     let markup: string;
 
-    if (status === GameStatus.waitForEnemy || status === GameStatus.waitForStart || status === GameStatus.enemyIsSelectingCharacter) {
+    if (status === GameStatus.waitForOpponent || status === GameStatus.waitForStart || status === GameStatus.opponentIsSelectingCharacter) {
         markup = `${status}<span> . . .</span>`;
     }
     else {
@@ -25,7 +24,6 @@ export const setGameStatus = (status: string): void => {
 
     (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
 };
-
 
 export const showGameStatus = (): void => {
     (<HTMLEmbedElement>elements.gamePanel__gameStatus).classList.remove('d-none');
@@ -123,6 +121,11 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus: string, characte
     addEventListenerToVoteToRestartGameButton();
 };
 
+export const disableVoteToRestartGameButton = (): void => {
+    const restartGameButton: HTMLButtonElement = document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`);
+    restartGameButton.disabled = true;
+};
+
 export const removeTheNotificationAboutEndTheGame = (): void => {
     const endgameNotification: HTMLEmbedElement = document.querySelector(`.${elementStrings.endgameNotification}`);
     endgameNotification.parentNode.removeChild(endgameNotification);
@@ -131,8 +134,8 @@ export const removeTheNotificationAboutEndTheGame = (): void => {
 export const renderTheNotificationAboutPausingTheGame = (): void => {
     const markup: string = `  
         <div class="game-pause-notification">
-            <p>The game is paused, because enemy player left the game</p>
-            <p id="game-pause-notification__status">wait for enemy<span> . . .</span></p>
+            <p>The game is paused, because opponent player left the game</p>
+            <p id="game-pause-notification__status">wait for opponent<span> . . .</span></p>
         </div>
     `;
 
@@ -168,10 +171,6 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement):
     }
 };
 
-
-export const displayNotificationAboutNotChoosedCharacter = (): void => {
-    toastr["info"]("Choose character to guess");
-};
 
 export const stickyRoundTime = (): void => {
     const scrollY: number = (<any>window).scrollY - 20;

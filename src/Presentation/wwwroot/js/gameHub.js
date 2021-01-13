@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 import { GameSounds } from './models/GameSounds.js';
+import * as NotificationSender from './models/NotificationSender.js';
 const _timer = new Timer();
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
@@ -18,11 +19,17 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.ShowGamePanel__startGameButton();
     gameView.hideGameStatus();
 });
+hub.on("SendNotificationAboutOpponentJoinedToTheGame", () => {
+    NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
+});
 hub.on("RestartGameBoard", () => {
     gameView.restartGameBoard();
 });
 hub.on("RestartGamePanel", () => {
     gameView.restartGamePanel();
+});
+hub.on("SendNotificationAboutGameRestart", () => {
+    NotificationSender.sendNotificationAboutGameRestart();
 });
 hub.on("RemoveEndGameNotification", () => {
     gameView.removeTheNotificationAboutEndTheGame();
@@ -45,8 +52,11 @@ hub.on("PlayLoseSound", () => {
 hub.on("PlayEndTurnSound", () => {
     GameSounds.playEndRoundSound();
 });
-hub.on("ShowNotificationAboutEndOfTheGame", (status, characterName) => {
+hub.on("SendNotificationAboutEndOfTheGame", (status, characterName) => {
     gameView.renderTheNotificationAboutEndTheGame(status, characterName);
+});
+hub.on("SendNotificationThatYourOpponentLeftTheGame", () => {
+    NotificationSender.sendNotificationThatYourOpponentLeftTheGame();
 });
 hub.on("StartTimer", () => {
     _timer.startTimer();
@@ -70,8 +80,8 @@ hub.on("ActivateGamePanel", () => {
 hub.on("HideStartGameButton", () => {
     gameView.HideGamePanel__startGameButton();
 });
-hub.on("RecieveEnemyMessage", (message) => {
-    const sender = "Enemy";
+hub.on("RecieveOpponentMessage", (message) => {
+    const sender = "Opponent";
     gameView.renderMessage(message, sender);
     gameView.scrollMessagesContainerToBottom();
 });
@@ -110,8 +120,8 @@ export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* (
 export const checkCharacterTypeAndEndTheGame = (characterType) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
 });
-export const sendMessageToEnemy = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('SendMessageToEnemy', message);
+export const sendMessageToOpponent = (message) => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('SendMessageToOpponent', message);
 });
 export const voteToRestartGame = () => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('VoteToRestartGame');

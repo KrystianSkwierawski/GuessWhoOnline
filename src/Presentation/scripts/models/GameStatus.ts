@@ -1,5 +1,5 @@
 ﻿export const characterSelect: string = 'Select your character';
 export const yourTurn: string = 'Your turn';
-export const waitForEnemy: string = 'Wait for enemy . . .';
+export const waitForOpponent: string = 'Wait for opponent. . .';
 export const waitForStart: string = 'Wait for start';
-export const enemyIsSelectingCharacter: string = 'Enemy is selecting character';
+export const opponentIsSelectingCharacter: string = 'Opponent is selecting character';

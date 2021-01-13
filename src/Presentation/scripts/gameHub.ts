@@ -2,6 +2,7 @@
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 import { GameSounds } from './models/GameSounds.js';
+import * as NotificationSender from './models/NotificationSender.js';
 
 const _timer = new Timer();
 
@@ -14,6 +15,10 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.hideGameStatus();
 });
 
+hub.on("SendNotificationAboutOpponentJoinedToTheGame", (): void => {
+    NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
+});
+
 hub.on("RestartGameBoard", (): void => {
     gameView.restartGameBoard();
 });
@@ -22,10 +27,13 @@ hub.on("RestartGamePanel", (): void => {
     gameView.restartGamePanel();
 });
 
+hub.on("SendNotificationAboutGameRestart", (): void => {
+    NotificationSender.sendNotificationAboutGameRestart();
+});
+
 hub.on("RemoveEndGameNotification", (): void => {
     gameView.removeTheNotificationAboutEndTheGame();
 });
-
 
 hub.on("SendNotificationAboutPauseTheGame", (): void => {
     gameView.renderTheNotificationAboutPausingTheGame();
@@ -51,8 +59,12 @@ hub.on("PlayEndTurnSound", (): void => {
     GameSounds.playEndRoundSound();
 });
 
-hub.on("ShowNotificationAboutEndOfTheGame", (status: string, characterName: string): void => {
+hub.on("SendNotificationAboutEndOfTheGame", (status: string, characterName: string): void => {
     gameView.renderTheNotificationAboutEndTheGame(status, characterName);
+});
+
+hub.on("SendNotificationThatYourOpponentLeftTheGame", (): void => {
+    NotificationSender.sendNotificationThatYourOpponentLeftTheGame();
 });
 
 hub.on("StartTimer", (): void => {
@@ -84,8 +96,8 @@ hub.on("HideStartGameButton", (): void => {
     gameView.HideGamePanel__startGameButton();
 });
 
-hub.on("RecieveEnemyMessage", (message: string): void => {
-    const sender = "Enemy";
+hub.on("RecieveOpponentMessage", (message: string): void => {
+    const sender = "Opponent";
 
     gameView.renderMessage(message, sender);
     gameView.scrollMessagesContainerToBottom();
@@ -134,8 +146,8 @@ export const checkCharacterTypeAndEndTheGame = async (characterType: string): Pr
     await hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
 };
 
-export const sendMessageToEnemy = async (message: string): Promise<void> => {
-    await hub.invoke('SendMessageToEnemy', message);
+export const sendMessageToOpponent = async (message: string): Promise<void> => {
+    await hub.invoke('SendMessageToOpponent', message);
 };
 
 export const voteToRestartGame = async (): Promise<void> => {

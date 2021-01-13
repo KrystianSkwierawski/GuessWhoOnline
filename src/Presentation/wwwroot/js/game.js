@@ -12,6 +12,7 @@ import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
 import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
+import * as NotificationSender from './models/NotificationSender.js';
 document.addEventListener('DOMContentLoaded', () => {
     gameView.stickyRoundTime();
     GameSounds.startUp();
@@ -50,12 +51,12 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
 });
 const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {
     const selectedCharacterType = gameView.getCharacterTypeValue();
-    const userSelectedAnyCharacter = (selectedCharacterType === 'Guess enemy character') ? false : true;
+    const userSelectedAnyCharacter = (selectedCharacterType === 'Guess opponent character') ? false : true;
     if (userSelectedAnyCharacter) {
         yield gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
     }
     else {
-        gameView.displayNotificationAboutNotChoosedCharacter();
+        NotificationSender.sendNotificationAboutNotChoosedCharacter();
     }
 });
 Array.from(elements.characterButtons).forEach(characterButton => {
@@ -97,17 +98,19 @@ const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
     const message = gameView.getSendMessages__sendMessageInputValue();
     const inputIsNotEmpty = message.trim() ? true : false;
     const gameStatus = gameView.getGameStatus();
-    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForEnemy) {
+    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForOpponent) {
         const sender = "You";
         gameView.renderMessage(message, sender);
         gameView.scrollMessagesContainerToBottom();
-        yield gameHub.sendMessageToEnemy(message);
+        yield gameHub.sendMessageToOpponent(message);
     }
 });
 window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
 export const addEventListenerToVoteToRestartGameButton = () => {
     document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-        yield gameHub.voteToRestartGame();
+        NotificationSender.sendVotingNotificationsToRestartTheGame();
+        gameHub.voteToRestartGame();
+        gameView.disableVoteToRestartGameButton();
     }));
 };
 //# sourceMappingURL=game.js.map

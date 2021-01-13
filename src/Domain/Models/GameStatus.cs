@@ -2,11 +2,11 @@
 {
     public static class GameStatus
     {
-        public static string WaitForEnemy = "Wait for enemy";
+        public static string WaitForOpponent = "Wait for opponent";
         public static string CharacterSelect = "Select your character";
-        public static string EnemyIsSelectingCharacter = "Enemy is selecting character";
+        public static string OpponentIsSelectingCharacter = "Opponent is selecting character";
         public static string WaitForStart = "Wait for start";
-        public static string EnemyTurn = "Enemy turn";
+        public static string OpponentTurn = "Opponent turn";
         public static string YourTurn = "Your turn";
         public static string Paused = "Game is paused";
         public static string Started = "Started";

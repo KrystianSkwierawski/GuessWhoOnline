@@ -3,7 +3,7 @@ import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
 import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
-
+import * as NotificationSender from './models/NotificationSender.js';
 
 document.addEventListener('DOMContentLoaded', (): void => {
     gameView.stickyRoundTime();
@@ -53,12 +53,12 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
 const checkCharacterType = async (): Promise<void> => {
     const selectedCharacterType: string = gameView.getCharacterTypeValue();
 
-    const userSelectedAnyCharacter: boolean = (selectedCharacterType === 'Guess enemy character') ? false : true;
+    const userSelectedAnyCharacter: boolean = (selectedCharacterType === 'Guess opponent character') ? false : true;
     if (userSelectedAnyCharacter) {
         await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
     }
     else {
-        gameView.displayNotificationAboutNotChoosedCharacter();
+        NotificationSender.sendNotificationAboutNotChoosedCharacter();
     }
 };
 
@@ -111,11 +111,11 @@ const trySendMessage = async (): Promise<void> => {
     const inputIsNotEmpty = message.trim() ? true : false;
     const gameStatus: string = gameView.getGameStatus();
 
-    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForEnemy) {
+    if (inputIsNotEmpty && gameStatus !== GameStatus.waitForOpponent) {
         const sender = "You";
         gameView.renderMessage(message, sender);
         gameView.scrollMessagesContainerToBottom();
-        await gameHub.sendMessageToEnemy(message);
+        await gameHub.sendMessageToOpponent(message);
     }
 };
 
@@ -123,6 +123,8 @@ window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
 
 export const addEventListenerToVoteToRestartGameButton = (): void => {
     document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', async (): Promise<void> => {
-        await gameHub.voteToRestartGame();
+        NotificationSender.sendVotingNotificationsToRestartTheGame();
+        gameHub.voteToRestartGame();
+        gameView.disableVoteToRestartGameButton();
     });
 };

@@ -11,7 +11,7 @@ export const getGameIdInputValue = () => {
 };
 export const setGameStatus = (status) => {
     let markup;
-    if (status === GameStatus.waitForEnemy || status === GameStatus.waitForStart || status === GameStatus.enemyIsSelectingCharacter) {
+    if (status === GameStatus.waitForOpponent || status === GameStatus.waitForStart || status === GameStatus.opponentIsSelectingCharacter) {
         markup = `${status}<span> . . .</span>`;
     }
     else {
@@ -93,6 +93,10 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
     elements.game.insertAdjacentHTML('beforeend', markup);
     addEventListenerToVoteToRestartGameButton();
 };
+export const disableVoteToRestartGameButton = () => {
+    const restartGameButton = document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`);
+    restartGameButton.disabled = true;
+};
 export const removeTheNotificationAboutEndTheGame = () => {
     const endgameNotification = document.querySelector(`.${elementStrings.endgameNotification}`);
     endgameNotification.parentNode.removeChild(endgameNotification);
@@ -100,8 +104,8 @@ export const removeTheNotificationAboutEndTheGame = () => {
 export const renderTheNotificationAboutPausingTheGame = () => {
     const markup = `  
         <div class="game-pause-notification">
-            <p>The game is paused, because enemy player left the game</p>
-            <p id="game-pause-notification__status">wait for enemy<span> . . .</span></p>
+            <p>The game is paused, because opponent player left the game</p>
+            <p id="game-pause-notification__status">wait for opponent<span> . . .</span></p>
         </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);
@@ -128,9 +132,6 @@ export const changeCharacterStatus = (characterButtonElement) => {
     else if (isSuspect) {
         removeCharacterStatus(characterButtonElement);
     }
-};
-export const displayNotificationAboutNotChoosedCharacter = () => {
-    toastr["info"]("Choose character to guess");
 };
 export const stickyRoundTime = () => {
     const scrollY = window.scrollY - 20;
