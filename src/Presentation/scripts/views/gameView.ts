@@ -90,11 +90,12 @@ export const getCharacterTypeValue = (): string => {
     return e.options[e.selectedIndex].text;
 };
 
-export const renderEndGameNotification = (gameSatus: string) => {
+export const renderEndGameNotification = (gameSatus: string, characterName: string) => {
     const markup: string = `
-    <div class="endgame-notification">
+    <div class="endgame-notification">     
         <p class="endgame-notification__status">${gameSatus}</p>
-        <a class="btn endgame-notification__exit-button" href="/">Exit</a>
+        <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
+        <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
     </div>
     `;
 

@@ -178,8 +178,8 @@ namespace Presentation.Hubs
             Clients.Clients(winner).SendAsync("PlayWinSound");
             Clients.Clients(loser).SendAsync("PlayLoseSound");
 
-            Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus);
-            Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus);
+            Clients.Clients(game.CurrentTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", currentTurnPlayerStatus, nextTurnPlayerCharacter);
+            Clients.Clients(game.NextTurnPlayerId).SendAsync("ShowNotificationAboutEndOfTheGame", nextTurnPlayerStatus, currentTurnPlayerCharacter);
         }
 
         public async Task SendMessageToEnemy(string message)

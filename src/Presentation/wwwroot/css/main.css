@@ -737,3 +737,7 @@ th {
 .endgame-notification__status {
   color: black;
   background: none; }
+
+.endgame-notification__character-img {
+  width: 40%;
+  height: 40%; }

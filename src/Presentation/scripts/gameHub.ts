@@ -31,8 +31,8 @@ hub.on("PlayEndTurnSound", (): void => {
 });
 
 
-hub.on("ShowNotificationAboutEndOfTheGame", (status: string): void => {
-    gameView.renderEndGameNotification(status);
+hub.on("ShowNotificationAboutEndOfTheGame", (status: string, characterName: string): void => {
+    gameView.renderEndGameNotification(status, characterName);
 });
 
 hub.on("StartTimer", (): void => {

@@ -30,8 +30,8 @@ hub.on("PlayLoseSound", () => {
 hub.on("PlayEndTurnSound", () => {
     GameSounds.playEndRoundSound();
 });
-hub.on("ShowNotificationAboutEndOfTheGame", (status) => {
-    gameView.renderEndGameNotification(status);
+hub.on("ShowNotificationAboutEndOfTheGame", (status, characterName) => {
+    gameView.renderEndGameNotification(status, characterName);
 });
 hub.on("StartTimer", () => {
     _timer.startTimer();
