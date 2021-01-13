@@ -229,9 +229,22 @@ namespace Presentation.Hubs
             if (bothPlayersLeftTheGame)
             {
                 _games.Remove(game);
-            }                                 
+            }
+            else
+            {
+                PuaseTheGame(game);
+            }                                
         }
 
+        private async Task PuaseTheGame(Game game)
+        {
+            Clients.Group(game.Id).SendAsync("StopTimer");
+            Clients.Group(game.Id).SendAsync("DisableGameBoard");
+            Clients.Group(game.Id).SendAsync("DisableGamePanel");
+            Clients.Group(game.Id).SendAsync("StopTimer");
+            Clients.Group(game.Id).SendAsync("SendNotificationAboutPauseTheGame");
+            Clients.Group(game.Id).SendAsync("RecieveGameStatus", GameStatus.Paused);
+        }
 
         private async Task LeaveTheGame(Game game)
         {

@@ -67,13 +67,24 @@ export const getCharacterTypeValue = () => {
     const e = elements.gamePanel__characterType;
     return e.options[e.selectedIndex].text;
 };
-export const renderEndGameNotification = (gameSatus, characterName) => {
+export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) => {
     const markup = `
     <div class="endgame-notification">     
         <p class="endgame-notification__status">${gameSatus}</p>
         <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
         <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
     </div>
+    `;
+    elements.game.insertAdjacentHTML('beforeend', markup);
+};
+export const renderTheNotificationAboutPausingTheGame = () => {
+    const markup = `  
+            <div class="game-pause-notification">     
+                <header>
+                    <h1>The game is paused, because enemy player left the game</p>
+                </header>
+                <p>wait for enemy<span> . . .</span></p>
+            </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);
 };

@@ -14,6 +14,10 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.showOrHideGameStatus();
 });
 
+hub.on("SendNotificationAboutPauseTheGame", (): void => {
+    gameView.renderTheNotificationAboutPausingTheGame();
+});
+
 hub.on("ActivateChatCommunicator", (): void => {
     gameView.activateChatCommunicator();
 });
@@ -32,7 +36,7 @@ hub.on("PlayEndTurnSound", (): void => {
 
 
 hub.on("ShowNotificationAboutEndOfTheGame", (status: string, characterName: string): void => {
-    gameView.renderEndGameNotification(status, characterName);
+    gameView.renderTheNotificationAboutEndTheGame(status, characterName);
 });
 
 hub.on("StartTimer", (): void => {

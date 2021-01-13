@@ -8,5 +8,6 @@
         public static string WaitForStart = "Wait for start";
         public static string EnemyTurn = "Enemy turn";
         public static string YourTurn = "Your turn";
+        public static string Paused = "Game is paused";
     }
 }

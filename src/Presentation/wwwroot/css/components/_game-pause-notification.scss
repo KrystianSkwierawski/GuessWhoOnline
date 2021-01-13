@@ -1,0 +1,31 @@
+﻿.game-pause-notification {
+    flex-direction: column;
+    height: auto;
+    width: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1;
+
+    @include respond-to(medium) {
+        width: 35%;
+    }
+
+    p:nth-child(1) {
+        background-color: transparent;
+        font-size: font-scale(2);
+        color: black;
+    }
+
+    #game-pause-notification__status {
+        @include dots-animation(white);
+
+        font-size: font-scale(1);
+        color: black;
+        background: none;
+    }
+}

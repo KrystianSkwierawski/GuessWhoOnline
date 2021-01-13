@@ -18,6 +18,9 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.showOrHideStartGameButton();
     gameView.showOrHideGameStatus();
 });
+hub.on("SendNotificationAboutPauseTheGame", () => {
+    gameView.renderTheNotificationAboutPausingTheGame();
+});
 hub.on("ActivateChatCommunicator", () => {
     gameView.activateChatCommunicator();
 });
@@ -31,7 +34,7 @@ hub.on("PlayEndTurnSound", () => {
     GameSounds.playEndRoundSound();
 });
 hub.on("ShowNotificationAboutEndOfTheGame", (status, characterName) => {
-    gameView.renderEndGameNotification(status, characterName);
+    gameView.renderTheNotificationAboutEndTheGame(status, characterName);
 });
 hub.on("StartTimer", () => {
     _timer.startTimer();

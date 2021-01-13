@@ -101,30 +101,12 @@
 }
 
 .game-panel__game-status {
+    @include dots-animation(#131339);
+
     font-size: font-scale(1);
     color: red;
-    overflow: hidden;
-
-    & span {
-        position: relative;
-    }
-
-    & span::before {
-        background-color: #131339;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        content: '';
-        animation: dots 2s steps(3, start) infinite;
-    }
 }
 
 
-@keyframes dots {
-    to {
-        right: -100%;
-    }
-}
+
 

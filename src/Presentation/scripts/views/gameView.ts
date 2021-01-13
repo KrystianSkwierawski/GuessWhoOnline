@@ -90,7 +90,7 @@ export const getCharacterTypeValue = (): string => {
     return e.options[e.selectedIndex].text;
 };
 
-export const renderEndGameNotification = (gameSatus: string, characterName: string) => {
+export const renderTheNotificationAboutEndTheGame = (gameSatus: string, characterName: string) => {
     const markup: string = `
     <div class="endgame-notification">     
         <p class="endgame-notification__status">${gameSatus}</p>
@@ -101,6 +101,20 @@ export const renderEndGameNotification = (gameSatus: string, characterName: stri
 
     elements.game.insertAdjacentHTML('beforeend', markup);
 };
+
+export const renderTheNotificationAboutPausingTheGame = () => {
+    const markup: string = `  
+            <div class="game-pause-notification">     
+                <header>
+                    <h1>The game is paused, because enemy player left the game</p>
+                </header>
+                <p>wait for enemy<span> . . .</span></p>
+            </div>
+    `;
+
+    elements.game.insertAdjacentHTML('beforeend', markup);
+};
+
 
 export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
     const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);

@@ -483,6 +483,10 @@ th {
     @include reset-button;
 }
 */
+@keyframes dots {
+  to {
+    right: -100%; } }
+
 .game-panel {
   width: 100%;
   height: auto;
@@ -565,11 +569,12 @@ th {
   background-color: transparent; }
 
 .game-panel__game-status {
+  overflow: hidden;
   font-size: 1rem;
-  color: red;
-  overflow: hidden; }
+  color: red; }
   .game-panel__game-status span {
-    position: relative; }
+    position: relative;
+    background: none; }
   .game-panel__game-status span::before {
     background-color: #131339;
     position: absolute;
@@ -579,10 +584,6 @@ th {
     height: 100%;
     content: '';
     animation: dots 2s steps(3, start) infinite; }
-
-@keyframes dots {
-  to {
-    right: -100%; } }
 
 .chat-communicator {
   position: fixed;
@@ -741,3 +742,40 @@ th {
 .endgame-notification__character-img {
   width: 40%;
   height: 40%; }
+
+.game-pause-notification {
+  flex-direction: column;
+  height: auto;
+  width: 90%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1; }
+  @media screen and (min-height: 550px) and (min-width: 768px) {
+    .game-pause-notification {
+      width: 35%; } }
+  .game-pause-notification p:nth-child(1) {
+    background-color: transparent;
+    font-size: 1.618rem;
+    color: black; }
+  .game-pause-notification #game-pause-notification__status {
+    overflow: hidden;
+    font-size: 1rem;
+    color: black;
+    background: none; }
+    .game-pause-notification #game-pause-notification__status span {
+      position: relative;
+      background: none; }
+    .game-pause-notification #game-pause-notification__status span::before {
+      background-color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      content: '';
+      animation: dots 2s steps(3, start) infinite; }
