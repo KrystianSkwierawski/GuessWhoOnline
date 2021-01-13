@@ -10,5 +10,6 @@
         public string Status { get; set; }
         public string CurrentTurnPlayerId { get; set; }
         public string NextTurnPlayerId { get; set; }
+        public int VotesToRestartGame { get; set; }
     }
 }

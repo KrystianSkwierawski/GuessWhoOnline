@@ -14,6 +14,7 @@ export class Timer {
 
     resetTimer(): void {
         this.#remainingTime = this.#roundTimeInSeconds;
+        updateGamePanel__roundTime(this.#remainingTime);  
     }
 
     startTimer(): void {

@@ -45,5 +45,7 @@ export const elementStrings = {
     character_rejected: 'character_rejected',
     character_suspect: 'character_suspect',
     characterStatus: 'character-status',
-    gamePauseNotification: 'game-pause-notification'
+    gamePauseNotification: 'game-pause-notification',
+    endgameNotification__voteToRestartGameButton: 'endgame-notification__vote-to-restart-game-button',
+    endgameNotification: 'endgame-notification'
 };

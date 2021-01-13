@@ -62,7 +62,7 @@ namespace Presentation.Hubs
             {
                 SetGameToWaitForStart(game);
             }
-         
+
             Clients.Group(game.Id).SendAsync("RemoveNotificationAboutPauseTheGame");
             Clients.Group(game.Id).SendAsync("ActivateGameBoard");
             Clients.Group(game.Id).SendAsync("ActivateChatCommunicator");
@@ -80,6 +80,37 @@ namespace Presentation.Hubs
 
             Clients.Group(game.Id).SendAsync("ResetTimer");
             Clients.Group(game.Id).SendAsync("StartTimer");
+        }
+
+        public async Task VoteToRestartGame()
+        {
+            Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
+
+            game.VotesToRestartGame++;
+
+            bool bothPlayersVotedToRestartGame = (game.VotesToRestartGame == 2) ? true : false;
+            if (bothPlayersVotedToRestartGame)
+            {
+                await RestartGameSettings(game);
+                await SetGameToCharacterSelect(game);
+            }
+        }
+
+        private async Task RestartGameSettings(Game game)
+        {
+            IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGroup = _groups.Where(x => x.Value == game.Id);
+            string[] turnOrder = GetTurnOrder(connectionsInCurrentGroup);
+
+            game.CurrentTurnPlayerId = turnOrder[0];
+            game.NextTurnPlayerId = turnOrder[1];
+            game.FirstTurnPlayerCharacter = null;
+            game.SecondTurnPlayerCharacter = null;
+            game.VotesToRestartGame = 0;
+
+            Clients.Group(game.Id).SendAsync("RestartGameBoard");
+            Clients.Group(game.Id).SendAsync("RestartGamePanel");
+            Clients.Group(game.Id).SendAsync("RemoveEndGameNotification");
+            Clients.Group(game.Id).SendAsync("ResetTimer");
         }
 
         private async Task AddUserInformationsToTheGame(Game game)
@@ -142,7 +173,8 @@ namespace Presentation.Hubs
                 Id = groupId,
                 FirstTurnPlayerId = turnOrder[0],
                 SecondTurnPlayerId = turnOrder[1],
-                Status = GameStatus.CharacterSelect
+                Status = GameStatus.CharacterSelect,
+                VotesToRestartGame = 0
             };
 
             _games.Add(game);
@@ -330,7 +362,7 @@ namespace Presentation.Hubs
         {
             //change current user information in game to null
             if (Context.ConnectionId == game.FirstTurnPlayerId)
-            {            
+            {
                 if (game.CurrentTurnPlayerId == game.FirstTurnPlayerId)
                 {
                     game.CurrentTurnPlayerId = null;
@@ -343,7 +375,7 @@ namespace Presentation.Hubs
                 game.FirstTurnPlayerId = null;
             }
             else if (Context.ConnectionId == game.SecondTurnPlayerId)
-            {               
+            {
                 if (game.CurrentTurnPlayerId == game.SecondTurnPlayerId)
                 {
                     game.CurrentTurnPlayerId = null;

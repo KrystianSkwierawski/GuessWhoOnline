@@ -14,6 +14,19 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.hideGameStatus();
 });
 
+hub.on("RestartGameBoard", (): void => {
+    gameView.restartGameBoard();
+});
+
+hub.on("RestartGamePanel", (): void => {
+    gameView.restartGamePanel();
+});
+
+hub.on("RemoveEndGameNotification", (): void => {
+    gameView.removeTheNotificationAboutEndTheGame();
+});
+
+
 hub.on("SendNotificationAboutPauseTheGame", (): void => {
     gameView.renderTheNotificationAboutPausingTheGame();
 });
@@ -123,5 +136,9 @@ export const checkCharacterTypeAndEndTheGame = async (characterType: string): Pr
 
 export const sendMessageToEnemy = async (message: string): Promise<void> => {
     await hub.invoke('SendMessageToEnemy', message);
+};
+
+export const voteToRestartGame = async (): Promise<void> => {
+    await hub.invoke('VoteToRestartGame');
 };
 

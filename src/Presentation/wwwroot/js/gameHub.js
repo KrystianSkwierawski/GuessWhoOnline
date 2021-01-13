@@ -18,6 +18,15 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.ShowGamePanel__startGameButton();
     gameView.hideGameStatus();
 });
+hub.on("RestartGameBoard", () => {
+    gameView.restartGameBoard();
+});
+hub.on("RestartGamePanel", () => {
+    gameView.restartGamePanel();
+});
+hub.on("RemoveEndGameNotification", () => {
+    gameView.removeTheNotificationAboutEndTheGame();
+});
 hub.on("SendNotificationAboutPauseTheGame", () => {
     gameView.renderTheNotificationAboutPausingTheGame();
 });
@@ -103,5 +112,8 @@ export const checkCharacterTypeAndEndTheGame = (characterType) => __awaiter(void
 });
 export const sendMessageToEnemy = (message) => __awaiter(void 0, void 0, void 0, function* () {
     yield hub.invoke('SendMessageToEnemy', message);
+});
+export const voteToRestartGame = () => __awaiter(void 0, void 0, void 0, function* () {
+    yield hub.invoke('VoteToRestartGame');
 });
 //# sourceMappingURL=gameHub.js.map

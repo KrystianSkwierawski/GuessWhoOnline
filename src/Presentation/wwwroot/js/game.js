@@ -105,4 +105,9 @@ const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
+export const addEventListenerToVoteToRestartGameButton = () => {
+    document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+        yield gameHub.voteToRestartGame();
+    }));
+};
 //# sourceMappingURL=game.js.map

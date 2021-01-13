@@ -34,6 +34,7 @@ export class Timer {
     }
     resetTimer() {
         __classPrivateFieldSet(this, _remainingTime, __classPrivateFieldGet(this, _roundTimeInSeconds));
+        updateGamePanel__roundTime(__classPrivateFieldGet(this, _remainingTime));
     }
     startTimer() {
         __classPrivateFieldSet(this, _timerId, setInterval(() => __awaiter(this, void 0, void 0, function* () {

@@ -710,7 +710,7 @@ th {
 .endgame-notification {
   flex-direction: column;
   height: auto;
-  width: 90%;
+  width: 70%;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -720,7 +720,7 @@ th {
   padding: 20px;
   z-index: 1;
   /*button,*/ }
-  @media screen and (min-height: 550px) and (min-width: 768px) {
+  @media screen and (min-height: 550px) and (min-width: 576px) {
     .endgame-notification {
       width: 35%; } }
   .endgame-notification a {

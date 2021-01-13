@@ -1,6 +1,7 @@
 import { elements, elementStrings } from './base.js';
 import * as CharacterStatus from '../models/CharacterStatus.js';
 import * as GameStatus from '../models/GameStatus.js';
+import { addEventListenerToVoteToRestartGameButton } from '../game.js';
 export const showOrHideChatCommunicator = () => {
     elements.chatCommunicator.classList.toggle('d-none');
     elements.showChatCommunicatorButton.classList.toggle('d-none');
@@ -52,7 +53,17 @@ export const setYourCharacterImg = (characterName) => {
     elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.jpg`;
 };
 export const updateGamePanel__roundTime = (time) => {
-    elements.gamePanel__roundTime.textContent = `00:${time}`;
+    let o_timeString = "";
+    if (time == 60) {
+        o_timeString = '1:00';
+    }
+    else if (time.toString().length == 1) {
+        o_timeString = `00:0${time}`;
+    }
+    else if (time.toString().length == 2) {
+        o_timeString = `00:${time}`;
+    }
+    elements.gamePanel__roundTime.textContent = o_timeString;
 };
 export const changeCharacterStatusToRejected = (characterButtonElement) => {
     const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
@@ -75,10 +86,16 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
             <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
+            <button class="btn btn-primary endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
         </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);
+    addEventListenerToVoteToRestartGameButton();
+};
+export const removeTheNotificationAboutEndTheGame = () => {
+    const endgameNotification = document.querySelector(`.${elementStrings.endgameNotification}`);
+    endgameNotification.parentNode.removeChild(endgameNotification);
 };
 export const renderTheNotificationAboutPausingTheGame = () => {
     const markup = `  
@@ -150,5 +167,18 @@ export const changeMuteOrUnmuteSoundsIconToVoloumeMute = () => {
 export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = () => {
     elements.muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
     elements.muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
+};
+export const restartGameBoard = () => {
+    const characterStatuses = document.querySelectorAll(`.${elementStrings.characterStatus}`);
+    Array.from(characterStatuses).forEach(characterStatus => {
+        const parentNodeElement = characterStatus.parentNode;
+        parentNodeElement.removeChild(characterStatus);
+    });
+};
+export const restartGamePanel = () => {
+    elements.gamePanel__yourCharacterImg.src = "/images/square.jpg";
+    elements.gamePanel__yourCharacterName.textContent = "";
+    elements.gamePanel__characterType.selectedIndex = 0;
+    updateGamePanel__roundTime(60);
 };
 //# sourceMappingURL=gameView.js.map

@@ -120,3 +120,9 @@ const trySendMessage = async (): Promise<void> => {
 };
 
 window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
+
+export const addEventListenerToVoteToRestartGameButton = (): void => {
+    document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', async (): Promise<void> => {
+        await gameHub.voteToRestartGame();
+    });
+};

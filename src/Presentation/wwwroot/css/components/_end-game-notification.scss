@@ -1,7 +1,7 @@
 ﻿.endgame-notification {
     flex-direction: column;
     height: auto;
-    width: 90%;
+    width: 70%;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -11,7 +11,7 @@
     padding: 20px;
     z-index: 1;
 
-    @include respond-to(medium) {
+    @include respond-to(small) {
         width: 35%;
     }
 
