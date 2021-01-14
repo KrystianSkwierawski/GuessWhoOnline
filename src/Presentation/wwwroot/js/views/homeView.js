@@ -37,16 +37,25 @@ const addEventListenerToMatchButton = (matchId) => {
     }));
 };
 export const addMatchToMatchList = (match) => {
-    const gameFullUrl = getMatchFullUrl(match.url);
+    const gameIsFull = (match.numberOfConnections === 2) ? true : false;
     const gameHasPassword = (match.password === "") ? false : true;
     let markup;
     if (gameHasPassword) {
-        markup = `<li><button id="${match.id}">${match.name}  <i class="fas fa-lock"></i></button></li>`;
+        markup = `<li><button id="${match.id}">${match.name} ${match.numberOfConnections}/2  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
-        addEventListenerToMatchButton(match.id);
+        if (!gameIsFull) {
+            addEventListenerToMatchButton(match.id);
+        }
     }
     else {
-        markup = `<li><a href="${gameFullUrl}">${match.name}</a></li>`;
+        let gameUrl = "";
+        if (gameIsFull) {
+            gameUrl = "#";
+        }
+        else {
+            gameUrl = getMatchFullUrl(match.url);
+        }
+        markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }
 };

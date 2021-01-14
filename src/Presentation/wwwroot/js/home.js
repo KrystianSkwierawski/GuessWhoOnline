@@ -54,6 +54,7 @@ const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
         url: gameUrl,
         name: gameName,
         password: gamePassword,
+        numberOfConnections: 0
     };
     return game;
 });

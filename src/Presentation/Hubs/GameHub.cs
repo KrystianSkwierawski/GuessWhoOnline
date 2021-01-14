@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.List;
+using Domain.Models;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
@@ -12,30 +13,33 @@ namespace Presentation.Hubs
         static Dictionary<string, string> _groups = new Dictionary<string, string>();
         static List<Game> _games = new List<Game>();
 
-
         public async Task TryJoinGame(string groupName)
-        {
+        {      
+            Game game = _games.FirstOrDefault(x => x.Id == groupName);
+
             await SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(groupName);
 
             _groups.Add(Context.ConnectionId, groupName);
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
 
-            int numberOfConnectionsInCurrentGroup = _groups.Where(x => x.Value == groupName).Count();
-            bool groupHasTwoPlayers = (numberOfConnectionsInCurrentGroup == 2) ? true : false;
-            if (groupHasTwoPlayers)
+            bool firstConnection = (game == null) ? true : false;
+            if (firstConnection)
             {
-                Game game = _games.FirstOrDefault(x => x.Id == groupName);
+                _games.Add(new Game() { Id = groupName });
+                return;
+            }
 
-                if (game == null)
-                {
-                    game = await CreateGame(groupName);
+            bool gameIsPaused = (game.Status != null && game.Status != GameStatus.Ended) ? true : false;
 
-                    SetGameToCharacterSelect(game);
-                }
-                else if (game != null && game.Status != GameStatus.Ended)
-                {
-                    ReconnectToTheGame(game);
-                }
+            if (gameIsPaused)
+            {
+                ReconnectToTheGame(game);
+            }
+            else if (!gameIsPaused)
+            {
+                game = await CreateGame(groupName);
+
+                SetGameToCharacterSelect(game);
             }
         }
 
@@ -185,16 +189,12 @@ namespace Presentation.Hubs
             IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGroup = _groups.Where(x => x.Value == groupId);
             string[] turnOrder = GetTurnOrder(connectionsInCurrentGroup);
 
-            Game game = new Game
-            {
-                Id = groupId,
-                FirstTurnPlayerId = turnOrder[0],
-                SecondTurnPlayerId = turnOrder[1],
-                Status = GameStatus.CharacterSelect,
-                VotesToRestartGame = 0
-            };
+            Game game = _games.FirstOrDefault(x => x.Id == groupId);
 
-            _games.Add(game);
+            game.FirstTurnPlayerId = turnOrder[0];
+            game.SecondTurnPlayerId = turnOrder[1];
+            game.Status = GameStatus.CharacterSelect;
+            game.VotesToRestartGame = 0;
 
             return game;
         }
@@ -339,28 +339,32 @@ namespace Presentation.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            Disconnect();
-            await LeaveGroupIfGamesContainsConnectionId();
+            await Disconnect();
 
             await base.OnDisconnectedAsync(exception);
         }
 
         private async Task Disconnect()
         {
-            Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
+            Game game = _games.FirstOrDefault(x => x.Id == _groups[Context.ConnectionId]);
+            await LeaveGroupIfGamesContainsConnectionId();
 
             if (game == null)
                 return;
 
-            await LeaveTheGame(game);
+            RemoveUserInformationsFromTheGame(game);
 
-            bool bothPlayersLeftTheGame = (game.FirstTurnPlayerId == null && game.SecondTurnPlayerId == null) ? true : false;
-            if (bothPlayersLeftTheGame)
+            int numberOfConnectionsInCurrentGroup = _groups.Where(x => x.Value == game.Id).Count();
+            bool gameIsEmpty = (numberOfConnectionsInCurrentGroup == 0) ? true : false;
+            if (gameIsEmpty)
             {
+                MatchListItems.RemoveMatchByUrl(game.Id);
                 _games.Remove(game);
             }
-            else if (!bothPlayersLeftTheGame)
+            else if (!gameIsEmpty)
             {
+                MatchListItems.RemoveConnection(game.Id);
+
                 Clients.Group(game.Id).SendAsync("SendNotificationThatYourOpponentLeftTheGame");
 
                 if (game.Status != GameStatus.Ended)
@@ -380,9 +384,9 @@ namespace Presentation.Hubs
             Clients.Group(game.Id).SendAsync("RecieveGameStatus", GameStatus.Paused);
         }
 
-        private async Task LeaveTheGame(Game game)
+        private async Task RemoveUserInformationsFromTheGame(Game game)
         {
-            //change current user information in game to null
+            //change current user information in game to null except character
             if (Context.ConnectionId == game.FirstTurnPlayerId)
             {
                 if (game.CurrentTurnPlayerId == game.FirstTurnPlayerId)

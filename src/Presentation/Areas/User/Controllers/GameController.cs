@@ -1,8 +1,10 @@
 ﻿using Applciation.ViewModel;
 using Domain;
+using Domain.List;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Presentation.Areas.User.Controllers
 {
@@ -10,12 +12,22 @@ namespace Presentation.Areas.User.Controllers
     public class GameController : BaseController
     {
         [Route("game/{id}", Name = "Game")]
-        public IActionResult Index(string id)
+        public async Task<IActionResult> Index(string id)
         {
+            int numberOfConnections = await MatchListItems.GetNumberOfConnections(id);
+            bool gameIsFull = (numberOfConnections == 2) ? true : false;
+            if (gameIsFull)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            await MatchListItems.AddConnection(id);
+
             GameViewModel gameViewModel = new GameViewModel
             {
                 Id = id,
-                CharactersNames = Characters.CharacterNames
+                CharactersNames = Characters.CharacterNames,
+                NumberOfConnections = await MatchListItems.GetNumberOfConnections(id)
             };
 
             return View("Index", gameViewModel);

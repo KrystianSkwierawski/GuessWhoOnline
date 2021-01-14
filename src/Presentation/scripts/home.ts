@@ -58,6 +58,7 @@ const createGameObject = async (): Promise<MatchListItem> => {
         url: gameUrl,
         name: gameName,
         password: gamePassword,
+        numberOfConnections: 0
     };
 
     return game;

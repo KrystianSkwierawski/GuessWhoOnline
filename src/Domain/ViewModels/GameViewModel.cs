@@ -6,5 +6,6 @@ namespace Domain.ViewModels
     {
         public string Id { get; set; }
         public List<string> CharactersNames { get; set; }
+        public int NumberOfConnections { get; set; }
     }
 }

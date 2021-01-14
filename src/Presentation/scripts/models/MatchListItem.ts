@@ -3,6 +3,7 @@
     url: string
     name: string,
     password: string,
+    numberOfConnections: number
 }
 
 export const getMatchFullUrl = function (matchId: string): string {
