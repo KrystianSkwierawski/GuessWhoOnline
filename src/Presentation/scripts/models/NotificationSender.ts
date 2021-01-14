@@ -19,3 +19,8 @@ export const sendNotificationAboutOpponentJoinedToTheGame = (): void => {
 export const sendNotificationAboutGameRestart = (): void => {
     toastr["success"]("The game has been restarted.");
 };
+
+export const sendNotificationAboutIncorrectPassword = (): void => {
+    toastr["warning"]('Incorrect password');
+};
+

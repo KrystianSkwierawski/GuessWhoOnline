@@ -27,7 +27,7 @@ namespace Presentation.Hubs
             }
             else
             {
-                await Clients.Caller.SendAsync("DisplayNotification");
+                await Clients.Caller.SendAsync("SendNotificationAboutIncorrectPassword");
             }
         }
 

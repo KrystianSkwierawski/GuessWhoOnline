@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import * as indexView from './views/homeView.js';
 import { navigateToMatchUrl } from './home.js';
+import * as NotificationSender from './models/NotificationSender.js';
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameCreatorHub')
     .build();
-hub.on('DisplayNotification', () => {
-    indexView.displayNotificationAboutIncorrectPassword();
+hub.on('SendNotificationAboutIncorrectPassword', () => {
+    NotificationSender.sendNotificationAboutIncorrectPassword();
 });
 hub.on('RecieveMatchUrl', (url) => {
     navigateToMatchUrl(url);

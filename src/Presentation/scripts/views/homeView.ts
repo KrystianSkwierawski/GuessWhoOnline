@@ -97,9 +97,5 @@ export const renderMatchesInMatchList = (matches: Array<MatchListItem>): void =>
     });
 };
 
-export const displayNotificationAboutIncorrectPassword = (): void => {
-    toastr["warning"]('Incorrect password');
-};
-
 
 

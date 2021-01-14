@@ -13,4 +13,7 @@ export const sendNotificationAboutOpponentJoinedToTheGame = () => {
 export const sendNotificationAboutGameRestart = () => {
     toastr["success"]("The game has been restarted.");
 };
+export const sendNotificationAboutIncorrectPassword = () => {
+    toastr["warning"]('Incorrect password');
+};
 //# sourceMappingURL=NotificationSender.js.map

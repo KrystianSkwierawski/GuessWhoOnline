@@ -80,7 +80,4 @@ export const renderMatchesInMatchList = (matches) => {
         addMatchToMatchList(match);
     });
 };
-export const displayNotificationAboutIncorrectPassword = () => {
-    toastr["warning"]('Incorrect password');
-};
 //# sourceMappingURL=homeView.js.map
