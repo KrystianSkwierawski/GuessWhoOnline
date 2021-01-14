@@ -3,6 +3,7 @@ using Domain;
 using Domain.List;
 using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -11,6 +12,13 @@ namespace Presentation.Areas.User.Controllers
     [Area("User")]
     public class GameController : BaseController
     {
+        private readonly IToastNotification _toastNotification;
+
+        public GameController(IToastNotification toastNotification)
+        {
+            _toastNotification = toastNotification;
+        }
+
         [Route("game/{id}", Name = "Game")]
         public async Task<IActionResult> Index(string id)
         {
@@ -18,6 +26,7 @@ namespace Presentation.Areas.User.Controllers
             bool gameIsFull = (numberOfConnections == 2) ? true : false;
             if (gameIsFull)
             {
+                _toastNotification.AddErrorToastMessage("Game was full");
                 return RedirectToAction("Index", "Home");
             }
 
