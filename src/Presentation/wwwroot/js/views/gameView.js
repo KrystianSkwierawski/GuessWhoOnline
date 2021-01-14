@@ -179,7 +179,8 @@ export const restartGameBoard = () => {
 export const restartGamePanel = () => {
     elements.gamePanel__yourCharacterImg.src = "/images/square.jpg";
     elements.gamePanel__yourCharacterName.textContent = "";
-    elements.gamePanel__characterType.selectedIndex = 0;
+    const defaultCharacterTypeIndex = 0;
+    elements.gamePanel__characterType.selectedIndex = defaultCharacterTypeIndex;
     updateGamePanel__roundTime(60);
 };
 //# sourceMappingURL=gameView.js.map

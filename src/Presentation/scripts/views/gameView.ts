@@ -231,7 +231,8 @@ export const restartGameBoard = (): void => {
 export const restartGamePanel = (): void => {
     (<HTMLImageElement>elements.gamePanel__yourCharacterImg).src = "/images/square.jpg";
     (<HTMLEmbedElement>elements.gamePanel__yourCharacterName).textContent = "";
-    (<HTMLSelectElement>elements.gamePanel__characterType).selectedIndex = 0;
+    const defaultCharacterTypeIndex: number = 0;
+    (<HTMLSelectElement>elements.gamePanel__characterType).selectedIndex = defaultCharacterTypeIndex;
     updateGamePanel__roundTime(60);
 };
 
