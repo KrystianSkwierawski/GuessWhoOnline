@@ -1,5 +1,6 @@
 ﻿using Applciation.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
 using System.Diagnostics;
 
 namespace Presentation.Areas.User.Controllers
@@ -7,6 +8,14 @@ namespace Presentation.Areas.User.Controllers
     [Area("User")]
     public class HomeController : BaseController
     {
+
+        private readonly IToastNotification _toastNotification;
+
+        public HomeController(IToastNotification toastNotification)
+        {
+            _toastNotification = toastNotification;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -15,6 +24,12 @@ namespace Presentation.Areas.User.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult GameWasFull()
+        {
+            _toastNotification.AddErrorToastMessage("Game was full");
+            return View(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

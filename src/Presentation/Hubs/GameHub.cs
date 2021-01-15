@@ -1,6 +1,7 @@
 ﻿using Domain.List;
 using Domain.Models;
 using Microsoft.AspNetCore.SignalR;
+using NToastNotify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,19 @@ namespace Presentation.Hubs
         static List<Game> _games = new List<Game>();
 
         public async Task TryJoinGame(string groupName)
-        {      
+        {
             Game game = _games.FirstOrDefault(x => x.Id == groupName);
 
+            int numberOfConnections = await MatchListItems.GetNumberOfConnections(groupName);
+            bool gameIsFull = (numberOfConnections == 2) ? true : false;
+
+            if (gameIsFull)
+            {
+                await Clients.Caller.SendAsync("RedirectToHomeGameWasFull");
+                return;
+            }
+
+            MatchListItems.AddConnection(groupName);
             await SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(groupName);
 
             _groups.Add(Context.ConnectionId, groupName);
@@ -339,14 +350,21 @@ namespace Presentation.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            await Disconnect();
+            bool userIsPlayer = (_groups.ContainsKey(Context.ConnectionId)) ? true : false;
 
-            await base.OnDisconnectedAsync(exception);
+            if (userIsPlayer)
+            {
+                Disconnect();
+            }
+
+            base.OnDisconnectedAsync(exception);
         }
 
         private async Task Disconnect()
         {
             Game game = _games.FirstOrDefault(x => x.Id == _groups[Context.ConnectionId]);
+
+            MatchListItems.RemoveConnection(game.Id);
             await LeaveGroupIfGamesContainsConnectionId();
 
             if (game == null)
@@ -363,7 +381,7 @@ namespace Presentation.Hubs
             }
             else if (!gameIsEmpty)
             {
-                MatchListItems.RemoveConnection(game.Id);
+
 
                 Clients.Group(game.Id).SendAsync("SendNotificationThatYourOpponentLeftTheGame");
 

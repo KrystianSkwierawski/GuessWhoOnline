@@ -15,6 +15,10 @@ hub.on("GivePermisionToStartTheGame", (): void => {
     gameView.hideGameStatus();
 });
 
+hub.on("RedirectToHomeGameWasFull", (): void => {
+   document.location.href="/User/Home/GameWasFull";
+});
+
 hub.on("SendNotificationAboutOpponentJoinedToTheGame", (): void => {
     NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
 });

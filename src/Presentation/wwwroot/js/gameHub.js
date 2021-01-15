@@ -19,6 +19,9 @@ hub.on("GivePermisionToStartTheGame", () => {
     gameView.ShowGamePanel__startGameButton();
     gameView.hideGameStatus();
 });
+hub.on("RedirectToHomeGameWasFull", () => {
+    document.location.href = "/User/Home/GameWasFull";
+});
 hub.on("SendNotificationAboutOpponentJoinedToTheGame", () => {
     NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
 });

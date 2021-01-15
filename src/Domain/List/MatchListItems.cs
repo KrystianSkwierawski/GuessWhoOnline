@@ -7,13 +7,13 @@ namespace Domain.List
 {
     public static class MatchListItems
     {
-       public static List<MatchListItem> Matches = new List<MatchListItem>();
+        public static List<MatchListItem> Matches = new List<MatchListItem>();
 
         public static async Task RemoveMatchByUrl(string url)
         {
             MatchListItem match = Matches.FirstOrDefault(x => x.Url == url);
 
-            if(match != null)
+            if (match != null)
             {
                 Matches.Remove(match);
             }
