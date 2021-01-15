@@ -198,10 +198,6 @@ export const renderMessage = (message: string, sender: string): void => {
     (<HTMLEmbedElement>elements.chatCommunicator__messages).insertAdjacentHTML('beforeend', markup);
 };
 
-export const activateChatCommunicator = (): void => {
-    (<HTMLEmbedElement>elements.chatCommunicator).classList.remove('disabled');
-};
-
 export const scrollMessagesContainerToBottom = (): void => {
     const scrollHeight = (<HTMLEmbedElement>elements.chatCommunicator__messages).scrollHeight
     const clientHeight = (<HTMLEmbedElement>elements.chatCommunicator__messages).clientHeight;

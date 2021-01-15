@@ -66,7 +66,6 @@ namespace Presentation.Hubs
         private async Task SetGameToCharacterSelect(Game game)
         {
             game.Status = GameStatus.CharacterSelect;
-            Clients.Group(game.Id).SendAsync("ActivateChatCommunicator");
             await Clients.Group(game.Id).SendAsync("RecieveGameStatus", game.Status);
             await Clients.Group(game.Id).SendAsync("ActivateGameBoard");
         }
@@ -92,7 +91,6 @@ namespace Presentation.Hubs
 
             Clients.Group(game.Id).SendAsync("RemoveNotificationAboutPauseTheGame");
             Clients.Group(game.Id).SendAsync("ActivateGameBoard");
-            Clients.Group(game.Id).SendAsync("ActivateChatCommunicator");
         }
 
         private async Task SetUserCharacter(Game game)

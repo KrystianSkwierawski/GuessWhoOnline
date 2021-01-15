@@ -153,9 +153,6 @@ export const renderMessage = (message, sender) => {
     const markup = `<p class="message text-break">${sender}: ${message}</p>`;
     elements.chatCommunicator__messages.insertAdjacentHTML('beforeend', markup);
 };
-export const activateChatCommunicator = () => {
-    elements.chatCommunicator.classList.remove('disabled');
-};
 export const scrollMessagesContainerToBottom = () => {
     const scrollHeight = elements.chatCommunicator__messages.scrollHeight;
     const clientHeight = elements.chatCommunicator__messages.clientHeight;

@@ -43,9 +43,6 @@ hub.on("SendNotificationAboutPauseTheGame", () => {
 hub.on("RemoveNotificationAboutPauseTheGame", () => {
     gameView.remvoeTheNotificationAboutPausingTheGame();
 });
-hub.on("ActivateChatCommunicator", () => {
-    gameView.activateChatCommunicator();
-});
 hub.on("PlayWinSound", () => {
     GameSounds.playWinSound();
 });
