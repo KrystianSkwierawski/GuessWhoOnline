@@ -6,23 +6,21 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    @include respond-to(small) {
+    @include respond-to(medium) {
         flex-direction: row;
     }
 }
 
 .character {
-    margin-top: 20px;
     height: 80vw;
     width: 80vw;
     align-self: center;
     position: relative;
-    margin-bottom: 20vw;
+    margin-bottom: 40px;
 
     @include respond-to(medium) {
         margin-left: 10px;
         margin-right: 10px;
-        margin-bottom: 5%;
         height: calc((60vw - 20px) / 3);
         width: calc((60vw - 20px) / 3);
         max-height: calc((60vw - 20px) / 3);
