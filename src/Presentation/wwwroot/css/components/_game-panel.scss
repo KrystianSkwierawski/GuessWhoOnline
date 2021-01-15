@@ -1,37 +1,58 @@
 ﻿.game-panel {
     width: 100%;
     height: auto;
-    padding-top: 20px;
-
 
     @include respond-to(medium) {
         position: fixed;
+        overflow: auto;
         right: 0;
         top: 0;
-        height: 100vh;
+        height: 80vh;
         width: 30vw;
-
 
         &::-webkit-scrollbar {
             display: none;
         }
     }
 
-    .menu {
-        @include respond-to(medium) {       
-            padding-top: 15%;
-            height: 80%;
+    & div {
+        padding-top: 20px;
+
+        @include respond-to(medium) {
+            padding-top: 20%;
+            height: 100%;
             width: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+.game-panel_chat-communicator-is-hidden {
+    @include respond-to(medium) {
+        padding-top: 0;
+        height: 100vh;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    & div {
+        @include respond-to(medium) {
+            padding-top: 0;
+            height: auto;
         }
     }
 }
 
 .game-panel__your-character-img {
-    width: 80vw;
+    width: 80%;
     height: auto;
 
     @include respond-to(medium) {
         width: 50%;
+        height: auto;
     }
 }
 
@@ -64,11 +85,19 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+
+    @include respond-to(medium) {
+        width: 50%;
+    }
 }
 
 .game-panel__check-character-type-button {
     margin-top: 5%;
     width: 80%;
+
+    @include respond-to(medium) {
+        width: 50%;
+    }
 }
 
 .game-panel__start-game-button {
@@ -77,6 +106,10 @@
     width: 80%;
     margin-top: 5%;
     pointer-events: auto;
+
+    @include respond-to(medium) {
+        width: 50%;
+    }
 }
 
 .question-mark-icon {
@@ -89,7 +122,3 @@
     font-size: 15px;
     color: red;
 }
-
-
-
-

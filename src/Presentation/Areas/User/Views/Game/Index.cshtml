@@ -4,8 +4,8 @@
 
     <input type="hidden" class="game__game-id-input" value="@Model.Id" />
 
-    <div class="game-panel disabled">
-        <div class="menu">
+    <div class="game-panel ">
+        <div class="disabled">
             <button class="game-panel__start-game-button btn btn-danger d-none">Start</button>
             <p class="game-panel__game-status">Wait for opponent<span> . . .</span></p>
 
@@ -26,19 +26,6 @@
             </select>
             <button class="game-panel__check-character-type-button btn btn-danger">Guess <i class="question-mark-icon fas fa-question"></i></button>
         </div>
-
-        <div class="chat-communicator">
-            <button class="chat-communicator__hide-communicator-button"><i class="fas fa-minus"></i></button>
-
-            <div class="chat-communicator__messages">
-
-            </div>
-
-            <div class="send-messages">
-                <input class="send-messages__send-message-input" />
-                <button class="send-messages__send-message-button"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
     </div>
 
     <div class="game-board disabled">
@@ -58,8 +45,18 @@
 
     </div>
 
-   
+    <div class="chat-communicator">
+        <button class="chat-communicator__hide-communicator-button"><i class="fas fa-minus"></i></button>
 
+        <div class="chat-communicator__messages">
+
+        </div>
+
+        <div class="send-messages">
+            <input class="send-messages__send-message-input" />
+            <button class="send-messages__send-message-button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
 
     <button class="show-chat-communicator-button d-none"><i class="fas fa-comment"></i></button>
     <button class="mute-or-unmute-sounds-button"><i class="mute-or-unmute-sounds-icon fas fa-volume-up"></i></button>

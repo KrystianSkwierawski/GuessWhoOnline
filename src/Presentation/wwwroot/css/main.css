@@ -441,7 +441,8 @@ th {
   height: auto;
   flex-direction: column;
   text-align: center;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #131339; }
   .game * {
     background-color: #131339; }
   .game .disabled {
@@ -487,29 +488,48 @@ th {
 
 .game-panel {
   width: 100%;
-  height: auto;
-  padding-top: 20px; }
+  height: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel {
       position: fixed;
+      overflow: auto;
       right: 0;
       top: 0;
-      height: 100vh;
+      height: 80vh;
       width: 30vw; }
       .game-panel::-webkit-scrollbar {
         display: none; } }
-  @media screen and (min-height: 550px) and (min-width: 768px) {
-    .game-panel .menu {
-      padding-top: 15%;
-      height: 80%;
-      width: 100%; } }
+  .game-panel div {
+    padding-top: 20px; }
+    @media screen and (min-height: 550px) and (min-width: 768px) {
+      .game-panel div {
+        padding-top: 20%;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); } }
+
+@media screen and (min-height: 550px) and (min-width: 768px) {
+  .game-panel_chat-communicator-is-hidden {
+    padding-top: 0;
+    height: 100vh;
+    top: 50%;
+    transform: translateY(-50%); } }
+
+@media screen and (min-height: 550px) and (min-width: 768px) {
+  .game-panel_chat-communicator-is-hidden div {
+    padding-top: 0;
+    height: auto; } }
 
 .game-panel__your-character-img {
-  width: 80vw;
+  width: 80%;
   height: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__your-character-img {
-      width: 50%; } }
+      width: 50%;
+      height: auto; } }
 
 .game-panel__finish-turn-button {
   border-radius: 12px; }
@@ -536,10 +556,16 @@ th {
   margin-left: auto;
   margin-right: auto;
   width: 80%; }
+  @media screen and (min-height: 550px) and (min-width: 768px) {
+    .game-panel__character-type {
+      width: 50%; } }
 
 .game-panel__check-character-type-button {
   margin-top: 5%;
   width: 80%; }
+  @media screen and (min-height: 550px) and (min-width: 768px) {
+    .game-panel__check-character-type-button {
+      width: 50%; } }
 
 .game-panel__start-game-button {
   border-radius: 12px;
@@ -547,6 +573,9 @@ th {
   width: 80%;
   margin-top: 5%;
   pointer-events: auto; }
+  @media screen and (min-height: 550px) and (min-width: 768px) {
+    .game-panel__start-game-button {
+      width: 50%; } }
 
 .question-mark-icon {
   color: #F4B853;
@@ -661,7 +690,6 @@ th {
       max-width: calc((60vw - 20px) / 3); } }
   @media screen and (min-height: 550px) and (min-width: 1200px) {
     .character {
-      flex-grow: 1;
       height: calc((60vw - 20px) / 6);
       width: calc((60vw - 20px) / 6);
       max-height: calc((60vw - 20px) / 6);

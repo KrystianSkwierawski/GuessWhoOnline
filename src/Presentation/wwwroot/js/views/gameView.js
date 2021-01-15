@@ -5,6 +5,7 @@ import { addEventListenerToVoteToRestartGameButton } from '../game.js';
 export const showOrHideChatCommunicator = () => {
     elements.chatCommunicator.classList.toggle('d-none');
     elements.showChatCommunicatorButton.classList.toggle('d-none');
+    elements.gamePanel.classList.toggle('game-panel_chat-communicator-is-hidden');
 };
 export const getGameIdInputValue = () => {
     return elements.game__gameIdInput.value;

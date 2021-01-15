@@ -30,7 +30,6 @@
     }
 
     @include respond-to(extra-large) {
-        flex-grow: 1;
         height: calc((60vw - 20px) / 6);
         width: calc((60vw - 20px) / 6);
         max-height: calc((60vw - 20px) / 6);
