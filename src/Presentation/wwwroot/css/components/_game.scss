@@ -1,14 +1,10 @@
 ﻿.game {
     color: white;
-    width: 100vw;
-    display: flex;
+    width: 100%;
+    height: auto;
     flex-direction: column;
     text-align: center;
-
-
-    @include respond-to(medium) {
-        flex-direction: row;
-    }
+    overflow: hidden;
 
     * {
         background-color: #131339;

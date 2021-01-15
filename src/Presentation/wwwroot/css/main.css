@@ -437,13 +437,11 @@ th {
 
 .game {
   color: white;
-  width: 100vw;
-  display: flex;
+  width: 100%;
+  height: auto;
   flex-direction: column;
-  text-align: center; }
-  @media screen and (min-height: 550px) and (min-width: 768px) {
-    .game {
-      flex-direction: row; } }
+  text-align: center;
+  overflow: hidden; }
   .game * {
     background-color: #131339; }
   .game .disabled {
@@ -488,33 +486,30 @@ th {
     right: -100%; } }
 
 .game-panel {
-  padding-top: 20px;
   width: 100%;
-  height: 100vh;
-  padding-bottom: 20%; }
+  height: auto;
+  padding-top: 20px; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
       position: fixed;
-      width: 30%;
       right: 0;
       top: 0;
-      padding-bottom: 0; }
+      height: 100vh;
+      width: 30vw; }
       .game-panel::-webkit-scrollbar {
         display: none; } }
   @media screen and (min-height: 550px) and (min-width: 768px) {
-    .game-panel div {
-      flex-grow: 1; } }
+    .game-panel .menu {
+      padding-top: 15%;
+      height: 80%;
+      width: 100%; } }
 
 .game-panel__your-character-img {
-  height: 80vw;
-  width: 80vw; }
+  width: 80vw;
+  height: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__your-character-img {
-      height: 15vw;
-      width: 15vw; } }
+      width: 50%; } }
 
 .game-panel__finish-turn-button {
   border-radius: 12px; }
@@ -549,12 +544,9 @@ th {
 .game-panel__start-game-button {
   border-radius: 12px;
   height: auto;
-  width: 80vw;
+  width: 80%;
   margin-top: 5%;
   pointer-events: auto; }
-  @media screen and (min-height: 550px) and (min-width: 768px) {
-    .game-panel__start-game-button {
-      width: 15vw; } }
 
 .question-mark-icon {
   color: #F4B853;
@@ -580,35 +572,36 @@ th {
 .chat-communicator {
   width: 100%;
   pointer-events: auto;
-  height: 200px;
+  height: 30%;
   position: fixed;
   z-index: 3;
-  left: 0;
+  right: 0;
   bottom: 0;
-  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
+  overflow: auto;
   padding: 5px; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .chat-communicator {
-      position: static;
-      left: 0;
-      transform: translateX(0); } }
+      width: 30vw;
+      height: 20%; } }
 
 .chat-communicator__messages {
   width: calc(100% - 20px);
   height: 100%;
   overflow: auto;
   text-align: left;
-  margin: 14px 10px 1px 10px; }
+  margin: 14px 10px 5px 10px; }
   .chat-communicator__messages .message {
-    padding: 0, 5px, 0, 5px; }
+    padding: 0, 5px, 0, 5px;
+    margin-bottom: 2px; }
 
 .chat-communicator__messages::-webkit-scrollbar {
   display: none; }
 
 .send-messages {
   display: flex;
+  max-height: 30px;
   justify-content: center;
   margin-left: 10px;
   margin-left: 10px; }
@@ -617,14 +610,19 @@ th {
   background-color: white;
   color: black;
   height: auto;
+  max-height: 30px;
+  align-self: flex-end;
   padding: 5px;
   width: 100%;
-  margin-top: 5px; }
+  margin-top: 5px;
+  margin-bottom: 5px; }
 
 .send-messages__send-message-button {
   border: 0;
   background: none;
-  color: #007bff; }
+  align-self: flex-end;
+  color: #007bff;
+  margin-bottom: 5px; }
 
 .chat-communicator__hide-communicator-button {
   pointer-events: auto;
@@ -639,10 +637,12 @@ th {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
   flex-wrap: wrap;
   justify-content: center; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .charackters {
+      margin-top: 0;
       flex-direction: row; } }
 
 .character {
@@ -691,10 +691,11 @@ th {
 
 @media screen and (min-height: 550px) and (min-width: 768px) {
   .game-board {
-    justify-content: center;
     order: -1;
-    height: 100vh;
-    width: 70vw;
+    height: auto;
+    min-height: 100vh;
+    justify-content: center;
+    width: 70%;
     display: flex;
     flex-direction: column; } }
 
