@@ -39,11 +39,11 @@ export const activateGameBoard = (): void => {
 };
 
 export const activateGamePanel = (): void => {
-    (<HTMLEmbedElement>elements.gamePanel).classList.remove('disabled');
+    (<HTMLEmbedElement>elements.gamePanel__menu).classList.remove('disabled');
 };
 
 export const disableGamePanel = (): void => {
-    (<HTMLEmbedElement>elements.gamePanel).classList.add('disabled');
+    (<HTMLEmbedElement>elements.gamePanel__menu).classList.add('disabled');
 };
 
 export const disableGameBoard = (): void => {

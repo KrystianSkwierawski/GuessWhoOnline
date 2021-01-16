@@ -30,10 +30,10 @@ export const activateGameBoard = () => {
     elements.gameBoard.classList.remove('disabled');
 };
 export const activateGamePanel = () => {
-    elements.gamePanel.classList.remove('disabled');
+    elements.gamePanel__menu.classList.remove('disabled');
 };
 export const disableGamePanel = () => {
-    elements.gamePanel.classList.add('disabled');
+    elements.gamePanel__menu.classList.add('disabled');
 };
 export const disableGameBoard = () => {
     elements.gameBoard.classList.add('disabled');

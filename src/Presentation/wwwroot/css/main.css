@@ -499,10 +499,10 @@ th {
       width: 30vw; }
       .game-panel::-webkit-scrollbar {
         display: none; } }
-  .game-panel div {
+  .game-panel .game-panel__menu {
     padding-top: 20px; }
     @media screen and (min-height: 550px) and (min-width: 768px) {
-      .game-panel div {
+      .game-panel .game-panel__menu {
         padding-top: 20%;
         height: 100%;
         width: 100%;
@@ -519,7 +519,7 @@ th {
     transform: translateY(-50%); } }
 
 @media screen and (min-height: 550px) and (min-width: 768px) {
-  .game-panel_chat-communicator-is-hidden div {
+  .game-panel_chat-communicator-is-hidden .game-panel__menu {
     padding-top: 0;
     height: auto; } }
 

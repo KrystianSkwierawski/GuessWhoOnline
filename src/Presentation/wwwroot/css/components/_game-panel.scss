@@ -15,7 +15,7 @@
         }
     }
 
-    & div {
+    .game-panel__menu {
         padding-top: 20px;
 
         @include respond-to(medium) {
@@ -38,7 +38,7 @@
         transform: translateY(-50%);
     }
 
-    & div {
+    .game-panel__menu {
         @include respond-to(medium) {
             padding-top: 0;
             height: auto;
