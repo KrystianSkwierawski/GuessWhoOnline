@@ -21,7 +21,7 @@
 
                 @foreach (var characterName in Model.CharactersNames)
                 {
-                    <option value="@characterName">@characterName</option>
+                    <option value="@characterName" id="character-type_@characterName">@characterName</option>
                 }
             </select>
             <button class="game-panel__check-character-type-button btn btn-danger">Guess <i class="question-mark-icon fas fa-question"></i></button>

@@ -393,6 +393,7 @@ namespace Presentation.Hubs
 
         private async Task PuaseTheGame(Game game)
         {
+            Clients.Group(game.Id).SendAsync("PauseTikTokTimerSound");
             Clients.Group(game.Id).SendAsync("StopTimer");
             Clients.Group(game.Id).SendAsync("DisableGameBoard");
             Clients.Group(game.Id).SendAsync("DisableGamePanel");

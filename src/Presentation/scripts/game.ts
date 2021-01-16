@@ -65,11 +65,12 @@ const checkCharacterType = async (): Promise<void> => {
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {
         GameSounds.playCharacterSelectSound();
+       
         const gameStatus: string = gameView.getGameStatus();
         const characterElement: HTMLEmbedElement = e.target.closest(`.${elementStrings.character}`);
+        const characterName: string = (<HTMLEmbedElement>characterElement.querySelector(`.${elementStrings.characterName}`)).textContent;
 
         if (gameStatus === GameStatus.characterSelect) {
-            const characterName: string = characterElement.querySelector(`.${elementStrings.characterName}`).textContent;
 
             const gameId = gameView.getGameIdInputValue();
 
@@ -77,7 +78,7 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         }
         else {
             const characterButtonElement: HTMLEmbedElement = characterElement.querySelector(`.${elementStrings.characterButton}`);
-            gameView.changeCharacterStatus(characterButtonElement);
+            gameView.changeCharacterStatus(characterButtonElement, characterName);
         }
     });
 

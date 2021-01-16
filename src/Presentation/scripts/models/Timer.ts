@@ -21,7 +21,7 @@ export class Timer {
         this.#timerId = setInterval(async (): Promise<void> => { 
             const endOfTheTime: boolean = (this.#remainingTime === 0) ? true : false;
 
-            if (this.#remainingTime === 55) {
+            if (this.#remainingTime === 15) {
                 GameSounds.playTiktokTimerSound();
             }
 

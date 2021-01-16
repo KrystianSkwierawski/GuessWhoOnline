@@ -150,10 +150,11 @@ export const remvoeTheNotificationAboutPausingTheGame = (): void => {
     }
 }
 
-export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement): void => {
+export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, characterName: string): void => {
     const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
 
     if (!characterStatusElement) { //if character has no status
+        removeCharacterOptionFromGamePanel__characterType(characterName);
         changeCharacterStatusToRejected(characterButtonElement);
         return;
     }
@@ -164,14 +165,24 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement):
     if (isRejected) {
         //remove old character status
         removeCharacterStatus(characterButtonElement);
-
         changeCharacterStatusToSuspect(characterButtonElement);
+      
+        addCharacterOptionFromGamePanel__characterType(characterName);
     }
-    else if (isSuspect) {
+    else if (isSuspect) {    
         removeCharacterStatus(characterButtonElement);
     }
 };
 
+const removeCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
+    const optionElement: any = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
+    elements.gamePanel__characterType.removeChild(optionElement);
+};
+
+const addCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
+    const markup: string = `<option value="${characterName}" id="character-type_${characterName}">${characterName}</option>`;
+    elements.gamePanel__characterType.insertAdjacentHTML('beforeend', markup);
+};
 
 export const stickyRoundTime = (): void => {
     const scrollY: number = (<any>window).scrollY - 20;

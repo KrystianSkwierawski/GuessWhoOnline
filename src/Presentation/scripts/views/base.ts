@@ -48,5 +48,5 @@ export const elementStrings = {
     characterStatus: 'character-status',
     gamePauseNotification: 'game-pause-notification',
     endgameNotification__voteToRestartGameButton: 'endgame-notification__vote-to-restart-game-button',
-    endgameNotification: 'endgame-notification'
+    endgameNotification: 'endgame-notification',
 };

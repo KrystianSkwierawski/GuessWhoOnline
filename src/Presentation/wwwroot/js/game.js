@@ -64,14 +64,14 @@ Array.from(elements.characterButtons).forEach(characterButton => {
         GameSounds.playCharacterSelectSound();
         const gameStatus = gameView.getGameStatus();
         const characterElement = e.target.closest(`.${elementStrings.character}`);
+        const characterName = characterElement.querySelector(`.${elementStrings.characterName}`).textContent;
         if (gameStatus === GameStatus.characterSelect) {
-            const characterName = characterElement.querySelector(`.${elementStrings.characterName}`).textContent;
             const gameId = gameView.getGameIdInputValue();
             gameHub.selectCharacter(gameId, characterName);
         }
         else {
             const characterButtonElement = characterElement.querySelector(`.${elementStrings.characterButton}`);
-            gameView.changeCharacterStatus(characterButtonElement);
+            gameView.changeCharacterStatus(characterButtonElement, characterName);
         }
     });
     characterButton.addEventListener('mouseover', () => {

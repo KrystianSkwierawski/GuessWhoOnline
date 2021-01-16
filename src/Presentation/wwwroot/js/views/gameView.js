@@ -117,9 +117,10 @@ export const remvoeTheNotificationAboutPausingTheGame = () => {
         elements.game.removeChild(notificationElement);
     }
 };
-export const changeCharacterStatus = (characterButtonElement) => {
+export const changeCharacterStatus = (characterButtonElement, characterName) => {
     const characterStatusElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
     if (!characterStatusElement) { //if character has no status
+        removeCharacterOptionFromGamePanel__characterType(characterName);
         changeCharacterStatusToRejected(characterButtonElement);
         return;
     }
@@ -129,10 +130,19 @@ export const changeCharacterStatus = (characterButtonElement) => {
         //remove old character status
         removeCharacterStatus(characterButtonElement);
         changeCharacterStatusToSuspect(characterButtonElement);
+        addCharacterOptionFromGamePanel__characterType(characterName);
     }
     else if (isSuspect) {
         removeCharacterStatus(characterButtonElement);
     }
+};
+const removeCharacterOptionFromGamePanel__characterType = (characterName) => {
+    const optionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
+    elements.gamePanel__characterType.removeChild(optionElement);
+};
+const addCharacterOptionFromGamePanel__characterType = (characterName) => {
+    const markup = `<option value="${characterName}" id="character-type_${characterName}">${characterName}</option>`;
+    elements.gamePanel__characterType.insertAdjacentHTML('beforeend', markup);
 };
 export const stickyRoundTime = () => {
     const scrollY = window.scrollY - 20;
