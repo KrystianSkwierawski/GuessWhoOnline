@@ -254,6 +254,7 @@ namespace Presentation.Hubs
 
             if (game.CurrentTurnPlayerId == Context.ConnectionId)
             {
+                Clients.Group(game.Id).SendAsync("PauseTikTokTimerSound");
                 await ChangeTurn(game);
                 await Clients.Group(game.Id).SendAsync("PlayEndTurnSound");
             }

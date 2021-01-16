@@ -52,6 +52,11 @@ hub.on("PlayWinSound", (): void => {
     GameSounds.playWinSound();
 });
 
+hub.on("PauseTikTokTimerSound", (): void => {
+    GameSounds.pauseTiktokTimerSound();
+});
+
+
 hub.on("PlayLoseSound", (): void => {
     GameSounds.playLoseSound();
 });

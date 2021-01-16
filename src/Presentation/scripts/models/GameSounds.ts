@@ -21,6 +21,12 @@
         }
     }
 
+    static pauseTiktokTimerSound(): void {
+        if (!this.soundsAreMuted) {
+            this.tikTokTimerSound.pause();
+        }
+    };
+
     static playEndRoundSound(): void {
         if (!this.soundsAreMuted) {
             this.endRoundSound.play();

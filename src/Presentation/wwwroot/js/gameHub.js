@@ -46,6 +46,9 @@ hub.on("RemoveNotificationAboutPauseTheGame", () => {
 hub.on("PlayWinSound", () => {
     GameSounds.playWinSound();
 });
+hub.on("PauseTikTokTimerSound", () => {
+    GameSounds.pauseTiktokTimerSound();
+});
 hub.on("PlayLoseSound", () => {
     GameSounds.playLoseSound();
 });

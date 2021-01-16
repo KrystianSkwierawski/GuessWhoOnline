@@ -8,6 +8,12 @@ export class GameSounds {
             this.tikTokTimerSound.play();
         }
     }
+    static pauseTiktokTimerSound() {
+        if (!this.soundsAreMuted) {
+            this.tikTokTimerSound.pause();
+        }
+    }
+    ;
     static playEndRoundSound() {
         if (!this.soundsAreMuted) {
             this.endRoundSound.play();
