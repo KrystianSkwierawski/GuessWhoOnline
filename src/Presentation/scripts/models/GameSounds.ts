@@ -1,23 +1,32 @@
 ﻿export class GameSounds {
-    static soundsAreMuted = false;
-    static bacgroundMusic: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
-    static tikTokTimerSound: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
-    static endRoundSound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
-    static loseSound: HTMLAudioElement = new Audio('/sounds/lose.mp3');
-    static winSound: HTMLAudioElement = new Audio('/sounds/win.mp3');
+    static soundsAreMuted: boolean;
+    private static bacgroundMusic: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
+    private static tikTokTimerSound: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
+    private static endRoundSound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
+    private static loseSound: HTMLAudioElement = new Audio('/sounds/lose.mp3');
+    private static winSound: HTMLAudioElement = new Audio('/sounds/win.mp3');
 
     static keyboardClickPath: string = '/sounds/keyboard-click.mp3';
     static characterSelectPath: string = '/sounds/character-select.mp3';
     static characterHoverPath: string = '/sounds/character-hover.mp3';
 
     static startUp(): void {
-        this.bacgroundMusic.autoplay = true;
-        this.bacgroundMusic.loop = true;
+        this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
+        localStorage.soundsAreMuted = this.soundsAreMuted;
+
+        this.autoPlayBackgroundMusic();
     }
 
     static playTiktokTimerSound(): void {
         if (!this.soundsAreMuted) {
             this.tikTokTimerSound.play();
+        }
+    }
+
+    static autoPlayBackgroundMusic(): void {
+        if (!this.soundsAreMuted) {
+            this.bacgroundMusic.autoplay = true;
+            this.bacgroundMusic.loop = true;
         }
     }
 
@@ -35,7 +44,7 @@
 
     static playCharacterHoverSound(): void {
         if (!this.soundsAreMuted) {
-             //create new audio as user may click it multiple times
+            //create new audio as user may click it multiple times
             const characterHover: HTMLAudioElement = new Audio(this.characterHoverPath);
             characterHover.play();
         }
@@ -70,12 +79,14 @@
     }
 
     static muteSounds(): void {
-        this.bacgroundMusic.pause();
+        localStorage.soundsAreMuted = true;
         this.soundsAreMuted = true;
+        this.bacgroundMusic.pause();
     }
 
     static unmuteSounds(): void {
-        this.bacgroundMusic.play();
+        localStorage.soundsAreMuted = false;
         this.soundsAreMuted = false;
+        this.bacgroundMusic.play();
     }
 }

@@ -5,9 +5,19 @@ import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
 import * as NotificationSender from './models/NotificationSender.js';
 
+const setMuteOrUbmuteSoundsButton = (): void => {
+    if (localStorage.soundsAreMuted === 'true') {
+        gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    }
+    else {
+        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+    }
+};
+
 document.addEventListener('DOMContentLoaded', (): void => {
-    gameView.stickyRoundTime();
     GameSounds.startUp();
+    gameView.stickyRoundTime();  
+    setMuteOrUbmuteSoundsButton();
 });
 
 elements.showChatCommunicatorButton.addEventListener('click', (): void => {
@@ -41,7 +51,7 @@ elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async ():
 
 elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
     if (GameSounds.soundsAreMuted) {
-        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();   
+        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
     }
     else {
@@ -65,7 +75,7 @@ const checkCharacterType = async (): Promise<void> => {
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e: any): void => {
         GameSounds.playCharacterSelectSound();
-       
+
         const gameStatus: string = gameView.getGameStatus();
         const characterElement: HTMLEmbedElement = e.target.closest(`.${elementStrings.character}`);
         const characterName: string = (<HTMLEmbedElement>characterElement.querySelector(`.${elementStrings.characterName}`)).textContent;

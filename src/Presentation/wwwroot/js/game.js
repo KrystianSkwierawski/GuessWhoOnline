@@ -13,9 +13,18 @@ import * as gameHub from './gameHub.js';
 import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
 import * as NotificationSender from './models/NotificationSender.js';
+const setMuteOrUbmuteSoundsButton = () => {
+    if (localStorage.soundsAreMuted === 'true') {
+        gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    }
+    else {
+        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+    }
+};
 document.addEventListener('DOMContentLoaded', () => {
-    gameView.stickyRoundTime();
     GameSounds.startUp();
+    gameView.stickyRoundTime();
+    setMuteOrUbmuteSoundsButton();
 });
 elements.showChatCommunicatorButton.addEventListener('click', () => {
     gameView.showOrHideChatCommunicator();

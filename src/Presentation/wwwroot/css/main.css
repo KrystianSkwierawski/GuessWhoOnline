@@ -441,8 +441,7 @@ th {
   height: auto;
   flex-direction: column;
   text-align: center;
-  overflow: hidden;
-  background-color: #131339; }
+  overflow: hidden; }
   .game * {
     background-color: #131339; }
   .game .disabled {
