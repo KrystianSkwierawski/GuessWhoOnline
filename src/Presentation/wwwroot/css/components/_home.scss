@@ -28,6 +28,7 @@
     }
 
     & * {
+        font-family: 'Fredoka One', cursive;
         font-size: font-scale(2);
 
         @include respond-to(small) {

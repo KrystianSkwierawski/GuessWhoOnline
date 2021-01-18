@@ -824,6 +824,7 @@ th {
     color: white;
     border: 3px solid white; }
   .home * {
+    font-family: 'Fredoka One', cursive;
     font-size: 1.618rem; }
     @media screen and (min-height: 550px) and (min-width: 576px) {
       .home * {
