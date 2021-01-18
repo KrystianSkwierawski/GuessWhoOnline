@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.ViewModels
+namespace Applciation.ViewModel
 {
     public class GameViewModel
     {

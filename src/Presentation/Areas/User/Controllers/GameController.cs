@@ -1,9 +1,7 @@
 ﻿using Applciation.ViewModel;
 using Domain;
 using Domain.List;
-using Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using NToastNotify;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
