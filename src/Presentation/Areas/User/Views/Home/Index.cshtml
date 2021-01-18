@@ -4,7 +4,7 @@
     string _guid = Guid.NewGuid().ToString();
 }
 
-<div class="home my-auto">
+<div class="home">
     <div class="home-container">
         <div class="home-header">
             <img class="home-header__logo" src="~/images/orange_logo.png" />
@@ -15,8 +15,8 @@
             <button class="home-main__show-create-match-button">Create match</button>
         </div>
         <div class="home-bottom">
-            <button class="home-bottom__show-rules-button"><i class="fas fa-question"></i></button>
-            <button class="home-bottom__mute-or-unmute-sounds-button"><i class="fas fa-volume-mute"></i></button>
+            <button class="home-bottom__show-informations-about-game-button"><i class="fas fa-question"></i></button>
+            <button class="home-bottom__mute-or-unmute-sounds-button"><i class="fas fa-volume-mute home-bottom__mute-or-unmute-sounds-icon"></i></button>
         </div>
     </div>
 </div>
@@ -65,6 +65,41 @@
     </ul>
 
     <button class="find-match__back-button btn">Back</button>
+</div>
+
+<div class="informations-about-game">
+    <button class="hide-informations-about-game-button"><i class="fas fa-times"></i></button>
+
+    <div>
+        <div class="rules">
+            <h2 class="text-center">Rules:</h2>
+            <p>
+                1. You have to choose one of 24 characters.<br />
+                2. Your task is guess, which character the opponent chose.<br />
+                3. Ask the questions about the appearance of the opponent’s character, so that it is possible to answer “yes” or “no”<br />
+
+                For instance:<br />
+                <em>
+                    -Does your character have brown hair?<br />
+                    -yes
+                </em>
+                <br />
+                4. After asking a question, delete mismatched characters by clicking in character. If you’re not sure, the next click will set question mark on character and then, click finish turn.<br />
+                5. If you are sure about your opponent’s character, you can guess by selecting a name of character and then, confirm your choice by clicking in button “Guess”.<br />
+                6. If you guessed correctly, you won, if not, you lose.
+            </p>
+        </div>
+
+        <div class="authors">
+            <h2 class="text-center">Authors:</h2>
+            <p class="text-center">
+                Proggramer: <a href="https://www.linkedin.com/in/krystian-skwierawski/">Krystian Skwierawski</a><br />
+                Graphic designer: <a href="https://wiktoriaskorek.com/">Wiktoria Skórek</a><br />
+                sound technician: Bartosz Budek
+
+            </p>
+        </div>
+    </div>
 </div>
 
 

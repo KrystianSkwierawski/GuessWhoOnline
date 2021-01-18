@@ -7,30 +7,44 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as indexView from './views/homeView.js';
+import * as homeView from './views/homeView.js';
 import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
 import { getMatchFullUrl } from './models/MatchListItem.js';
+import { GameSounds } from './models/GameSounds.js';
+const setMuteOrUbmuteSoundsButton = () => {
+    if (localStorage.soundsAreMuted === 'true') {
+        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    }
+    else {
+        homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+    }
+};
+document.addEventListener('DOMContentLoaded', () => {
+    GameSounds.startUp();
+    GameSounds.autoPlayHomeBackgroundMusic();
+    setMuteOrUbmuteSoundsButton();
+});
 elements.homeMain__showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameCreatorHub.refreshListOfGames();
-    indexView.showFindMatchContainer();
-    indexView.hideCreateMatchContainer();
+    homeView.showFindMatchContainer();
+    homeView.hideCreateMatchContainer();
 }));
 elements.homeMain__showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
     const url = Guid.newGuid();
-    indexView.setIdMatchInputValue(id);
-    indexView.setUrlMatchInputValue(url);
-    indexView.setNameMatchInputValue(id); //the name of the game is id by default
-    indexView.hideFindMatchContainer();
-    indexView.showCreateMatchContainer();
+    homeView.setIdMatchInputValue(id);
+    homeView.setUrlMatchInputValue(url);
+    homeView.setNameMatchInputValue(id); //the name of the game is id by default
+    homeView.hideFindMatchContainer();
+    homeView.showCreateMatchContainer();
 });
 elements.findMatch__backButton.addEventListener('click', () => {
-    indexView.hideFindMatchContainer();
+    homeView.hideFindMatchContainer();
 });
 elements.createMatch_backButton.addEventListener('click', () => {
-    indexView.hideCreateMatchContainer();
+    homeView.hideCreateMatchContainer();
 });
 elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     const game = yield createGameObject();
@@ -45,10 +59,10 @@ export const navigateToMatchUrl = (url) => {
     window.location.href = fullGameUrl;
 };
 const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
-    const gameId = indexView.getIdMatchInputValue();
-    const gameUrl = indexView.getUrlMatchInputValue();
-    const gameName = indexView.getNameMatchInputValue();
-    const gamePassword = indexView.getPasswordMatchInputValue();
+    const gameId = homeView.getIdMatchInputValue();
+    const gameUrl = homeView.getUrlMatchInputValue();
+    const gameName = homeView.getNameMatchInputValue();
+    const gamePassword = homeView.getPasswordMatchInputValue();
     const game = {
         id: gameId,
         url: gameUrl,
@@ -57,5 +71,19 @@ const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
         numberOfConnections: 0
     };
     return game;
+});
+elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+elements.hideInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', () => {
+    if (GameSounds.soundsAreMuted) {
+        homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+        GameSounds.unmuteSounds();
+        GameSounds.playHomeBackgroundMusic();
+    }
+    else {
+        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+        GameSounds.muteSounds();
+        GameSounds.pauseHomeBackgroundMusic();
+    }
 });
 //# sourceMappingURL=home.js.map

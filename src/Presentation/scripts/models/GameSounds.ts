@@ -1,6 +1,7 @@
 ﻿export class GameSounds {
     static soundsAreMuted: boolean;
-    private static bacgroundMusic: HTMLAudioElement = new Audio('/sounds/main-theme.mp3');
+    private static gameBackgroundMusic: HTMLAudioElement = new Audio('/sounds/game-background-music.mp3');
+    private static homeBackgroundMusic: HTMLAudioElement = new Audio('/sounds/home-background-music.mp3');
     private static tikTokTimerSound: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
     private static endRoundSound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
     private static loseSound: HTMLAudioElement = new Audio('/sounds/lose.mp3');
@@ -13,8 +14,6 @@
     static startUp(): void {
         this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
         localStorage.soundsAreMuted = this.soundsAreMuted;
-
-        this.autoPlayBackgroundMusic();
     }
 
     static playTiktokTimerSound(): void {
@@ -23,11 +22,41 @@
         }
     }
 
-    static autoPlayBackgroundMusic(): void {
+    static autoPlayHomeBackgroundMusic(): void {
         if (!this.soundsAreMuted) {
-            this.bacgroundMusic.autoplay = true;
-            this.bacgroundMusic.loop = true;
+            this.homeBackgroundMusic.autoplay = true;
+            this.homeBackgroundMusic.loop = true;
         }
+    }
+
+
+    static playHomeBackgroundMusic(): void {
+        if (!this.soundsAreMuted) {
+            this.homeBackgroundMusic.play();
+        }
+    }
+
+    static pauseHomeBackgroundMusic(): void {
+
+        this.homeBackgroundMusic.pause();
+
+    }
+
+    static autoPlayGameBackgroundMusic(): void {
+        if (!this.soundsAreMuted) {
+            this.gameBackgroundMusic.autoplay = true;
+            this.gameBackgroundMusic.loop = true;
+        }
+    }
+
+    static playGameBackgroundMusic(): void {
+        if (!this.soundsAreMuted) {
+            this.gameBackgroundMusic.play();
+        }
+    }
+
+    static pauseGameBackgroundMusic(): void {
+        this.gameBackgroundMusic.pause();
     }
 
     static pauseTiktokTimerSound(): void {
@@ -81,12 +110,10 @@
     static muteSounds(): void {
         localStorage.soundsAreMuted = true;
         this.soundsAreMuted = true;
-        this.bacgroundMusic.pause();
     }
 
     static unmuteSounds(): void {
         localStorage.soundsAreMuted = false;
         this.soundsAreMuted = false;
-        this.bacgroundMusic.play();
     }
 }

@@ -23,6 +23,7 @@ const setMuteOrUbmuteSoundsButton = () => {
 };
 document.addEventListener('DOMContentLoaded', () => {
     GameSounds.startUp();
+    GameSounds.autoPlayGameBackgroundMusic();
     gameView.stickyRoundTime();
     setMuteOrUbmuteSoundsButton();
 });
@@ -52,10 +53,12 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
     if (GameSounds.soundsAreMuted) {
         gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
+        GameSounds.playGameBackgroundMusic();
     }
     else {
         gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
         GameSounds.muteSounds();
+        GameSounds.pauseGameBackgroundMusic();
     }
 });
 const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {

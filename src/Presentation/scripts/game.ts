@@ -16,6 +16,7 @@ const setMuteOrUbmuteSoundsButton = (): void => {
 
 document.addEventListener('DOMContentLoaded', (): void => {
     GameSounds.startUp();
+    GameSounds.autoPlayGameBackgroundMusic();
     gameView.stickyRoundTime();  
     setMuteOrUbmuteSoundsButton();
 });
@@ -53,10 +54,12 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
     if (GameSounds.soundsAreMuted) {
         gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
+        GameSounds.playGameBackgroundMusic();
     }
     else {
         gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
         GameSounds.muteSounds();
+        GameSounds.pauseGameBackgroundMusic();
     }
 });
 

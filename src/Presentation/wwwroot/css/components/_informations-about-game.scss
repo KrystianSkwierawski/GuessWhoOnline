@@ -1,0 +1,49 @@
+﻿.informations-about-game {
+    display: none;
+    height: 91%;
+    overflow: auto;
+    width: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 3%;
+    box-shadow: 2px 2px 20px;
+    border-radius: 8px;
+
+    @include respond-to(small) {
+        width: 60%;
+        height: 65%;
+    }
+
+    & div {
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    p {
+        font-size: font-scale(1);
+
+        @include respond-to(small) {
+            font-size: font-scale(2);
+        }
+    }
+}
+
+.informations-about-game_active {
+    display: flex;
+}
+
+.hide-informations-about-game-button {
+    @include reset-button;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: auto;
+    width: auto;
+    font-size: font-scale(2);
+}

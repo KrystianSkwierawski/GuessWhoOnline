@@ -2,18 +2,39 @@ export class GameSounds {
     static startUp() {
         this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
         localStorage.soundsAreMuted = this.soundsAreMuted;
-        this.autoPlayBackgroundMusic();
     }
     static playTiktokTimerSound() {
         if (!this.soundsAreMuted) {
             this.tikTokTimerSound.play();
         }
     }
-    static autoPlayBackgroundMusic() {
+    static autoPlayHomeBackgroundMusic() {
         if (!this.soundsAreMuted) {
-            this.bacgroundMusic.autoplay = true;
-            this.bacgroundMusic.loop = true;
+            this.homeBackgroundMusic.autoplay = true;
+            this.homeBackgroundMusic.loop = true;
         }
+    }
+    static playHomeBackgroundMusic() {
+        if (!this.soundsAreMuted) {
+            this.homeBackgroundMusic.play();
+        }
+    }
+    static pauseHomeBackgroundMusic() {
+        this.homeBackgroundMusic.pause();
+    }
+    static autoPlayGameBackgroundMusic() {
+        if (!this.soundsAreMuted) {
+            this.gameBackgroundMusic.autoplay = true;
+            this.gameBackgroundMusic.loop = true;
+        }
+    }
+    static playGameBackgroundMusic() {
+        if (!this.soundsAreMuted) {
+            this.gameBackgroundMusic.play();
+        }
+    }
+    static pauseGameBackgroundMusic() {
+        this.gameBackgroundMusic.pause();
     }
     static pauseTiktokTimerSound() {
         if (!this.soundsAreMuted) {
@@ -60,15 +81,14 @@ export class GameSounds {
     static muteSounds() {
         localStorage.soundsAreMuted = true;
         this.soundsAreMuted = true;
-        this.bacgroundMusic.pause();
     }
     static unmuteSounds() {
         localStorage.soundsAreMuted = false;
         this.soundsAreMuted = false;
-        this.bacgroundMusic.play();
     }
 }
-GameSounds.bacgroundMusic = new Audio('/sounds/main-theme.mp3');
+GameSounds.gameBackgroundMusic = new Audio('/sounds/game-background-music.mp3');
+GameSounds.homeBackgroundMusic = new Audio('/sounds/home-background-music.mp3');
 GameSounds.tikTokTimerSound = new Audio('/sounds/timer-sound-15s.mp3');
 GameSounds.endRoundSound = new Audio('/sounds/end-round.mp3');
 GameSounds.loseSound = new Audio('/sounds/lose.mp3');

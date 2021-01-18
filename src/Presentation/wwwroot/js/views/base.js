@@ -35,7 +35,13 @@ export const elements = {
     chatCommunicator__messages: document.querySelector('.chat-communicator__messages'),
     muteOrUnmuteSoundsButton: document.querySelector('.mute-or-unmute-sounds-button'),
     muteOrUnmuteSoundsIcon: document.querySelector('.mute-or-unmute-sounds-icon'),
-    gamePanel__menu: document.querySelector('.game-panel__menu')
+    gamePanel__menu: document.querySelector('.game-panel__menu'),
+    home: document.querySelector('.home'),
+    homeBottom__showInformationsAboutGameButton: document.querySelector('.home-bottom__show-informations-about-game-button'),
+    informationsAboutGame: document.querySelector('.informations-about-game'),
+    hideInformationsAboutGameButton: document.querySelector('.hide-informations-about-game-button'),
+    homeBottom__muteOrUnmuteSoundsButton: document.querySelector('.home-bottom__mute-or-unmute-sounds-button'),
+    homeBottom__muteOrUnmuteSoundsIcon: document.querySelector('.home-bottom__mute-or-unmute-sounds-icon')
 };
 export const elementStrings = {
     tryJoinToMatchButton: 'try-join-to-match-button',

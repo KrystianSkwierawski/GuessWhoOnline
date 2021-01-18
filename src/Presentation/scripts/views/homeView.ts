@@ -1,23 +1,31 @@
 ﻿import { elements, elementStrings } from './base.js';
 import { getMatchFullUrl, MatchListItem } from '../models/MatchListItem.js';
 import { tryJoinMatch } from '../gameCreatorHub.js';
-declare var toastr: any
 
 
 export const showFindMatchContainer = function (): void {
     elements.findMatch.classList.add('find-match_active');
+    elements.home.classList.add('blur');
 };
 
 export const hideFindMatchContainer = (): void => {
     elements.findMatch.classList.remove('find-match_active');
+    elements.home.classList.remove('blur');
 };
 
 export const showCreateMatchContainer = (): void => {
     elements.createMatch.classList.add('create-match_active');
+    elements.home.classList.add('blur');
 };
 
 export const hideCreateMatchContainer = (): void  =>{
     elements.createMatch.classList.remove('create-match_active');
+    elements.home.classList.remove('blur');
+};
+
+export const showOrHideInformationsAboutGame = () => {
+    elements.home.classList.toggle('blur');
+    elements.informationsAboutGame.classList.toggle('informations-about-game_active');
 };
 
 export const getNameMatchInputValue = (): string => {
@@ -96,6 +104,17 @@ export const renderMatchesInMatchList = (matches: Array<MatchListItem>): void =>
         addMatchToMatchList(match);
     });
 };
+
+export const changeMuteOrUnmuteSoundsIconToVoloumeMute = (): void => {
+    elements.homeBottom__muteOrUnmuteSoundsIcon.classList.remove('fa-volume-up');
+    elements.homeBottom__muteOrUnmuteSoundsIcon.classList.add('fa-volume-mute');
+};
+
+export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = (): void => {
+    elements.homeBottom__muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
+    elements.homeBottom__muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
+};
+
 
 
 

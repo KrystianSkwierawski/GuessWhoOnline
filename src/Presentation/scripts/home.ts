@@ -1,34 +1,50 @@
-﻿import * as indexView from './views/homeView.js';
+﻿import * as homeView from './views/homeView.js';
 import { elements, elementStrings } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
 import { getMatchFullUrl, MatchListItem } from './models/MatchListItem.js';
+import { GameSounds } from './models/GameSounds.js';
+
+const setMuteOrUbmuteSoundsButton = (): void => {
+    if (localStorage.soundsAreMuted === 'true') {
+        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    }
+    else {
+        homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', (): void => {
+    GameSounds.startUp();
+    GameSounds.autoPlayHomeBackgroundMusic();
+    setMuteOrUbmuteSoundsButton();
+});
 
 elements.homeMain__showFindMatchButton.addEventListener('click', async (): Promise<void> => {
     await gameCreatorHub.refreshListOfGames()
 
-    indexView.showFindMatchContainer();
-    indexView.hideCreateMatchContainer();
+    homeView.showFindMatchContainer();
+    homeView.hideCreateMatchContainer();
 });
 
 elements.homeMain__showCreateMatchButton.addEventListener('click', (): void => {
     const id: string = Guid.newGuid();
     const url: string = Guid.newGuid();
 
-    indexView.setIdMatchInputValue(id);
-    indexView.setUrlMatchInputValue(url);
-    indexView.setNameMatchInputValue(id); //the name of the game is id by default
+    homeView.setIdMatchInputValue(id);
+    homeView.setUrlMatchInputValue(url);
+    homeView.setNameMatchInputValue(id); //the name of the game is id by default
 
-    indexView.hideFindMatchContainer();
-    indexView.showCreateMatchContainer();
+    homeView.hideFindMatchContainer();
+    homeView.showCreateMatchContainer();
 });
 
 elements.findMatch__backButton.addEventListener('click', (): void => {
-    indexView.hideFindMatchContainer();
+    homeView.hideFindMatchContainer();
 });
 
 elements.createMatch_backButton.addEventListener('click', (): void => { 
-    indexView.hideCreateMatchContainer();
+    homeView.hideCreateMatchContainer();
 });
 
 elements.createMatchButton.addEventListener('click', async (): Promise<void> => {
@@ -48,10 +64,10 @@ export const navigateToMatchUrl = (url: string): void => {
 };
 
 const createGameObject = async (): Promise<MatchListItem> => {
-    const gameId: string = indexView.getIdMatchInputValue();
-    const gameUrl: string = indexView.getUrlMatchInputValue();
-    const gameName: string = indexView.getNameMatchInputValue();
-    const gamePassword: string = indexView.getPasswordMatchInputValue();
+    const gameId: string = homeView.getIdMatchInputValue();
+    const gameUrl: string = homeView.getUrlMatchInputValue();
+    const gameName: string = homeView.getNameMatchInputValue();
+    const gamePassword: string = homeView.getPasswordMatchInputValue();
 
     const game: MatchListItem =  {
         id: gameId,
@@ -63,4 +79,20 @@ const createGameObject = async (): Promise<MatchListItem> => {
 
     return game;
 };
+
+elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+elements.hideInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+
+elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
+    if (GameSounds.soundsAreMuted) {
+        homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
+        GameSounds.unmuteSounds();
+        GameSounds.playHomeBackgroundMusic();
+    }
+    else {
+        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+        GameSounds.muteSounds();
+        GameSounds.pauseHomeBackgroundMusic();
+    }
+});
 
