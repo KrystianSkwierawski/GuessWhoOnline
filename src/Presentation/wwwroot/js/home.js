@@ -12,12 +12,12 @@ import { elements } from './views/base.js';
 import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
 import { getMatchFullUrl } from './models/MatchListItem.js';
-elements.showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+elements.homeMain__showFindMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     yield gameCreatorHub.refreshListOfGames();
     indexView.showFindMatchContainer();
     indexView.hideCreateMatchContainer();
 }));
-elements.showCreateMatchButton.addEventListener('click', () => {
+elements.homeMain__showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
     const url = Guid.newGuid();
     indexView.setIdMatchInputValue(id);

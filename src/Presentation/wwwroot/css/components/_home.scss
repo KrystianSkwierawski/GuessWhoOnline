@@ -1,0 +1,33 @@
+﻿.home {
+    height: auto;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    background-image: linear-gradient(to right, #5499c7, #2980b9);
+    justify-content: center;
+
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        justify-content: center;
+        align-content: center;
+
+        @include respond-to(small) {
+            width: 60%;
+        }
+    }
+
+    button {
+        @include reset-button;
+        border-radius: 12px;
+        background-color: #E59866;
+        color: white;
+        border: 2px solid white;
+    }
+
+    & * {
+        font-size: font-scale(2);
+    }
+}

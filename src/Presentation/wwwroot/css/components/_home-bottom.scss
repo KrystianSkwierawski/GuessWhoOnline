@@ -1,0 +1,14 @@
+﻿.home-bottom {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.home-bottom__show-rules-button, .home-bottom__mute-or-unmute-sounds-button {
+    margin: 5%;
+    height: auto;
+    padding: 2%;
+    width: 20%;
+}

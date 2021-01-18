@@ -1,0 +1,14 @@
+﻿.home-main {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-main__show-find-match-button, .home-main__show-create-match-button {
+    margin-top: 3%;
+    align-self: center;
+    height: auto;
+    padding: 3%;
+    width: 80%;
+}

@@ -1,7 +1,7 @@
 ﻿.find-match {
     flex-direction: column;
     display: none;
-    height: 70%;
+    height: 91%;
     width: 90%;
     position: fixed;
     left: 50%;
@@ -12,11 +12,15 @@
     box-shadow: 2px 2px 20px;
     border-radius: 8px;
 
-    @include respond-to(medium) {
+    @include respond-to(small) {
         width: 60%;
-        height: 60%;
+        height: 65%;
     }
 
+    .home{
+        opacity: 0.7;
+
+    }
 
     ul {
         padding: 10px;

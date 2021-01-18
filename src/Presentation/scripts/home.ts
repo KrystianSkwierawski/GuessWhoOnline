@@ -4,14 +4,14 @@ import * as Guid from './models/Guid.js';
 import * as gameCreatorHub from './gameCreatorHub.js';
 import { getMatchFullUrl, MatchListItem } from './models/MatchListItem.js';
 
-elements.showFindMatchButton.addEventListener('click', async (): Promise<void> => {
+elements.homeMain__showFindMatchButton.addEventListener('click', async (): Promise<void> => {
     await gameCreatorHub.refreshListOfGames()
 
     indexView.showFindMatchContainer();
     indexView.hideCreateMatchContainer();
 });
 
-elements.showCreateMatchButton.addEventListener('click', (): void => {
+elements.homeMain__showCreateMatchButton.addEventListener('click', (): void => {
     const id: string = Guid.newGuid();
     const url: string = Guid.newGuid();
 

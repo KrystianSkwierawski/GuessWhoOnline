@@ -4,9 +4,22 @@
     string _guid = Guid.NewGuid().ToString();
 }
 
-
-<button class="show-find-match-button">Find match</button>
-<button class="show-create-match-button">Create match</button>
+<div class="home my-auto">
+    <div class="home-container">
+        <div class="home-header">
+            <img class="home-header__logo" src="~/images/orange_logo.png" />
+            <h1>Guess Who Online</h1>
+        </div>
+        <div class="home-main">
+            <button class="home-main__show-find-match-button">Find match</button>
+            <button class="home-main__show-create-match-button">Create match</button>
+        </div>
+        <div class="home-bottom">
+            <button class="home-bottom__show-rules-button"><i class="fas fa-question"></i></button>
+            <button class="home-bottom__mute-or-unmute-sounds-button"><i class="fas fa-volume-mute"></i></button>
+        </div>
+    </div>
+</div>
 
 <div class="create-match">
     <div class="container mb-2">
@@ -46,7 +59,7 @@
 <div class="find-match">
     <div class="find-match__top-container">
         <h2>Match list</h2>
-        <button class="find-match__refresh-list"><i class="fas fa-redo-alt"></i></button>
+        <button class="find-match__refresh-list"><i class="fas fa-sync"></i></button>
     </div>
     <ul class="match-list">
     </ul>
