@@ -24,11 +24,20 @@
         border-radius: 12px;
         background-color: #E59866;
         color: white;
-        border: 2px solid white;
+        border: 3px solid white;
     }
 
     & * {
         font-size: font-scale(2);
+
+        @include respond-to(small) {
+            font-size: font-scale(3);
+        }
     }
+}
+
+.home_blured {
+    background-color: rgba(0, 0, 0, .5);
+    filter: blur(4px);
 }
 

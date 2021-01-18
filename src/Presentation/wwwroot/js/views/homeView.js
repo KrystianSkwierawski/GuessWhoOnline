@@ -10,25 +10,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { elements } from './base.js';
 import { getMatchFullUrl } from '../models/MatchListItem.js';
 import { tryJoinMatch } from '../gameCreatorHub.js';
-export const showFindMatchContainer = function () {
+export const showFindMatchContainer = () => {
     elements.findMatch.classList.add('find-match_active');
-    elements.home.classList.add('blur');
+};
+export const addBlurToHome = () => {
+    elements.home.classList.add('home_blured');
+};
+export const removeBlurFromHome = () => {
+    elements.home.classList.remove('home_blured');
 };
 export const hideFindMatchContainer = () => {
     elements.findMatch.classList.remove('find-match_active');
-    elements.home.classList.remove('blur');
 };
 export const showCreateMatchContainer = () => {
     elements.createMatch.classList.add('create-match_active');
-    elements.home.classList.add('blur');
 };
 export const hideCreateMatchContainer = () => {
+    elements.home.classList.remove('home_blured');
     elements.createMatch.classList.remove('create-match_active');
-    elements.home.classList.remove('blur');
 };
-export const showOrHideInformationsAboutGame = () => {
-    elements.home.classList.toggle('blur');
-    elements.informationsAboutGame.classList.toggle('informations-about-game_active');
+export const showInformationsAboutGame = () => {
+    elements.informationsAboutGame.classList.add('informations-about-game_active');
+};
+export const hideInformationsAboutGame = () => {
+    elements.informationsAboutGame.classList.remove('informations-about-game_active');
 };
 export const getNameMatchInputValue = () => {
     return elements.nameMatchInput.value;

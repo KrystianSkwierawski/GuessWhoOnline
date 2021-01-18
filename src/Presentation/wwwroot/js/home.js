@@ -30,6 +30,7 @@ elements.homeMain__showFindMatchButton.addEventListener('click', () => __awaiter
     yield gameCreatorHub.refreshListOfGames();
     homeView.showFindMatchContainer();
     homeView.hideCreateMatchContainer();
+    homeView.addBlurToHome();
 }));
 elements.homeMain__showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
@@ -39,12 +40,15 @@ elements.homeMain__showCreateMatchButton.addEventListener('click', () => {
     homeView.setNameMatchInputValue(id); //the name of the game is id by default
     homeView.hideFindMatchContainer();
     homeView.showCreateMatchContainer();
+    homeView.addBlurToHome();
 });
 elements.findMatch__backButton.addEventListener('click', () => {
     homeView.hideFindMatchContainer();
+    homeView.removeBlurFromHome();
 });
 elements.createMatch_backButton.addEventListener('click', () => {
     homeView.hideCreateMatchContainer();
+    homeView.removeBlurFromHome();
 });
 elements.createMatchButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
     const game = yield createGameObject();
@@ -72,8 +76,14 @@ const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
     };
     return game;
 });
-elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
-elements.hideInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', () => {
+    homeView.showInformationsAboutGame();
+    homeView.addBlurToHome();
+});
+elements.hideInformationsAboutGameButton.addEventListener('click', () => {
+    homeView.hideInformationsAboutGame();
+    homeView.removeBlurFromHome();
+});
 elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', () => {
     if (GameSounds.soundsAreMuted) {
         homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();

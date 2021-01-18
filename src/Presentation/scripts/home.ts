@@ -25,6 +25,7 @@ elements.homeMain__showFindMatchButton.addEventListener('click', async (): Promi
 
     homeView.showFindMatchContainer();
     homeView.hideCreateMatchContainer();
+    homeView.addBlurToHome();
 });
 
 elements.homeMain__showCreateMatchButton.addEventListener('click', (): void => {
@@ -37,14 +38,17 @@ elements.homeMain__showCreateMatchButton.addEventListener('click', (): void => {
 
     homeView.hideFindMatchContainer();
     homeView.showCreateMatchContainer();
+    homeView.addBlurToHome();
 });
 
 elements.findMatch__backButton.addEventListener('click', (): void => {
     homeView.hideFindMatchContainer();
+    homeView.removeBlurFromHome();
 });
 
 elements.createMatch_backButton.addEventListener('click', (): void => { 
     homeView.hideCreateMatchContainer();
+    homeView.removeBlurFromHome();
 });
 
 elements.createMatchButton.addEventListener('click', async (): Promise<void> => {
@@ -80,8 +84,15 @@ const createGameObject = async (): Promise<MatchListItem> => {
     return game;
 };
 
-elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
-elements.hideInformationsAboutGameButton.addEventListener('click', homeView.showOrHideInformationsAboutGame);
+elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', (): void => {
+    homeView.showInformationsAboutGame();
+    homeView.addBlurToHome();
+
+});
+elements.hideInformationsAboutGameButton.addEventListener('click', (): void => {
+    homeView.hideInformationsAboutGame();
+    homeView.removeBlurFromHome();
+});
 
 elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
     if (GameSounds.soundsAreMuted) {

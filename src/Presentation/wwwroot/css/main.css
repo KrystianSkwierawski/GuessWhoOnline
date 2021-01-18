@@ -369,7 +369,7 @@ th {
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .find-match {
       width: 60%;
-      height: 65%; } }
+      height: 70%; } }
   .find-match ul {
     padding: 10px;
     overflow: auto;
@@ -822,9 +822,16 @@ th {
     border-radius: 12px;
     background-color: #E59866;
     color: white;
-    border: 2px solid white; }
+    border: 3px solid white; }
   .home * {
     font-size: 1.618rem; }
+    @media screen and (min-height: 550px) and (min-width: 576px) {
+      .home * {
+        font-size: 2.61792rem; } }
+
+.home_blured {
+  background-color: rgba(0, 0, 0, 0.5);
+  filter: blur(4px); }
 
 .home-header {
   margin-top: 5%;
@@ -875,10 +882,6 @@ th {
   padding: 2%;
   width: 20%; }
 
-.blur {
-  background-color: rgba(0, 0, 0, 0.5);
-  filter: blur(4px); }
-
 .informations-about-game {
   display: none;
   height: 91%;
@@ -895,7 +898,7 @@ th {
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .informations-about-game {
       width: 60%;
-      height: 65%; } }
+      height: 70%; } }
   .informations-about-game div {
     overflow: auto; }
     .informations-about-game div::-webkit-scrollbar {
