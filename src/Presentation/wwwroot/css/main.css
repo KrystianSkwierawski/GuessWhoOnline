@@ -922,3 +922,10 @@ th {
   height: auto;
   width: auto;
   font-size: 1.618rem; }
+
+.github-link {
+  color: black;
+  display: block;
+  text-align: center; }
+  .github-link i {
+    font-size: 2.61792rem; }

@@ -47,3 +47,13 @@
     width: auto;
     font-size: font-scale(2);
 }
+
+.github-link {
+    color: black;
+    display: block;
+    text-align: center;
+
+    & i {        
+        font-size: font-scale(3);
+    }
+}
