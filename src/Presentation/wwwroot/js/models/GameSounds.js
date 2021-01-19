@@ -1,5 +1,6 @@
 export class GameSounds {
     static startUp() {
+        this.gameBackgroundMusic.volume = 0.5;
         this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
         localStorage.soundsAreMuted = this.soundsAreMuted;
     }

@@ -12,6 +12,7 @@
     static characterHoverPath: string = '/sounds/character-hover.mp3';
 
     static startUp(): void {
+        this.gameBackgroundMusic.volume = 0.5;
         this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
         localStorage.soundsAreMuted = this.soundsAreMuted;
     }
