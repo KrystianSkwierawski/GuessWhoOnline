@@ -41,6 +41,7 @@ Project is in finished.
 
 ## Contact to co-workers
 Graphic designer: wiktoria.dominika.skorek@gmail.com
+
 Sound technician: bartek.budek@op.pl
  
  
