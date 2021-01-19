@@ -61,14 +61,13 @@ export const addMatchToMatchList = (match) => {
         }
     }
     else {
-        let gameUrl = "";
         if (gameIsFull) {
-            gameUrl = "#";
+            markup = `<li><button>${match.name} ${match.numberOfConnections}/2 </button></li>`;
         }
         else {
-            gameUrl = getMatchFullUrl(match.url);
+            const gameUrl = getMatchFullUrl(match.url);
+            markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
         }
-        markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
     }
 };
