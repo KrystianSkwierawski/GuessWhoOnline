@@ -30,9 +30,7 @@ namespace Presentation
             services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
             {
                 ProgressBar = false,
-                PositionClass = ToastPositions.TopRight,
-                
-
+                PositionClass = ToastPositions.TopRight,               
             });
         }
 
@@ -42,7 +40,6 @@ namespace Presentation
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {

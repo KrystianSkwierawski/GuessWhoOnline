@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <Folder Include="Enum\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Enum\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
