@@ -37,7 +37,7 @@ I learned a lot of TypeScript and practiced Sass.
 * TypeScript
  
 ## Status
-Project is in finished.
+Project is finished.
 
 ## Contact to co-workers
 Graphic designer: wiktoria.dominika.skorek@gmail.com
