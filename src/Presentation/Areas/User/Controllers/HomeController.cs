@@ -29,7 +29,7 @@ namespace Presentation.Areas.User.Controllers
         public IActionResult GameWasFull()
         {
             _toastNotification.AddErrorToastMessage("Game was full");
-            return View(nameof(Index));
+            return RedirectToAction(nameof(Index));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
