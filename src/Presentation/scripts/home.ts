@@ -86,6 +86,8 @@ const createGameObject = async (): Promise<MatchListItem> => {
 
 elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', (): void => {
     homeView.showInformationsAboutGame();
+    homeView.hideCreateMatchContainer();
+    homeView.hideFindMatchContainer();
     homeView.addBlurToHome();
 
 });

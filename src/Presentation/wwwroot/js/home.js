@@ -78,6 +78,8 @@ const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 elements.homeBottom__showInformationsAboutGameButton.addEventListener('click', () => {
     homeView.showInformationsAboutGame();
+    homeView.hideCreateMatchContainer();
+    homeView.hideFindMatchContainer();
     homeView.addBlurToHome();
 });
 elements.hideInformationsAboutGameButton.addEventListener('click', () => {
