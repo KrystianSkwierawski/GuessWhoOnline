@@ -1,5 +1,4 @@
-﻿using Domain.Lists;
-using Domain.Models;
+﻿using Application.Models;
 using Microsoft.AspNetCore.SignalR;
 using System.Linq;
 using System.Threading.Tasks;

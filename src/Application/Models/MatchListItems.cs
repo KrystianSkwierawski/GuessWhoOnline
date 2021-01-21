@@ -1,9 +1,9 @@
-﻿using Domain.Models;
+﻿using Application.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Domain.Lists
+namespace Application.Models
 {
     public static class MatchListItems
     {

@@ -1,6 +1,5 @@
 ﻿using Applciation.ViewModel;
-using Domain;
-using Domain.Lists;
+using Application.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Threading.Tasks;

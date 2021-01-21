@@ -1,7 +1,5 @@
-﻿using Domain.Lists;
-using Domain.Models;
+﻿using Application.Models;
 using Microsoft.AspNetCore.SignalR;
-using NToastNotify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
