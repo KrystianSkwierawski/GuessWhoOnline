@@ -1,8 +1,7 @@
-﻿using Application.MatchListItems.Commands;
-using Application.MatchListItems.Queries;
+﻿using Domain.Lists;
 using Domain.Models;
-using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using NToastNotify;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,23 +11,14 @@ namespace Presentation.Hubs
 {
     public class GameHub : Hub
     {
-        private IMediator _mediator;
         static Dictionary<string, string> _groups = new Dictionary<string, string>();
         static List<Game> _games = new List<Game>();
-
-        public GameHub(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
 
         public async Task TryJoinGame(string groupName)
         {
             Game game = _games.FirstOrDefault(x => x.Id == groupName);
 
-            int numberOfConnections = await _mediator.Send(new GetNumberOfConnectionsInMatchListItemQuery
-            {
-                Url = groupName
-            });
+            int numberOfConnections = await MatchListItems.GetNumberOfConnections(groupName);
             bool gameIsFull = (numberOfConnections == 2) ? true : false;
 
             if (gameIsFull)
@@ -37,11 +27,7 @@ namespace Presentation.Hubs
                 return;
             }
 
-            _mediator.Send(new AddConnectionToMatchListItemCommand
-            {
-                Url = groupName
-            });
-
+            MatchListItems.AddConnection(groupName);
             await SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(groupName);
 
             _groups.Add(Context.ConnectionId, groupName);
@@ -377,11 +363,7 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.Id == _groups[Context.ConnectionId]);
 
-            _mediator.Send(new AddConnectionToMatchListItemCommand
-            {
-                Url = game.Id
-            });
-
+            MatchListItems.RemoveConnection(game.Id);
             await LeaveGroupIfGamesContainsConnectionId();
 
             if (game == null)
@@ -393,10 +375,7 @@ namespace Presentation.Hubs
             bool gameIsEmpty = (numberOfConnectionsInCurrentGroup == 0) ? true : false;
             if (gameIsEmpty)
             {
-                _mediator.Send(new RemoveMatchListItemCommand
-                {
-                    Url = game.Id
-                });
+                MatchListItems.RemoveMatchByUrl(game.Id);
                 _games.Remove(game);
             }
             else if (!gameIsEmpty)

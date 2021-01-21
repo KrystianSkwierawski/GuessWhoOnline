@@ -5,7 +5,7 @@ namespace Domain.Lists
 {
     public static class Characters
     {
-        public static List<string> CharacterNames = new List<string>();
+        public static List<string> CharacterNames { get; set; } = new List<string>();
 
         static Characters()
         {
