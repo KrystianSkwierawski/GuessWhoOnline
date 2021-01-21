@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace Application
 {
@@ -7,6 +6,7 @@ namespace Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+           
 
             return services;
         }
