@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "src\Presentation\Presentation.csproj", "{4419A669-D5B1-4EEB-873A-9C423F9D7D91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\Application\Application.csproj", "{C72A396B-C52E-4FD1-8127-4266B168DC95}"
+	ProjectSection(ProjectDependencies) = postProject
+		{352F82CA-A71E-4B8D-90CC-D9A662767587} = {352F82CA-A71E-4B8D-90CC-D9A662767587}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\Domain\Domain.csproj", "{352F82CA-A71E-4B8D-90CC-D9A662767587}"
 EndProject

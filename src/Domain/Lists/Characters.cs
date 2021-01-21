@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Domain
+namespace Domain.Lists
 {
     public static class Characters
     {

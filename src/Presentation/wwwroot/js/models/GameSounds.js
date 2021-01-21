@@ -3,8 +3,6 @@ export class GameSounds {
         this.gameBackgroundMusic.volume = 0.5;
         this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
         localStorage.soundsAreMuted = this.soundsAreMuted;
-        this.homeBackgroundMusic.loop = true;
-        this.gameBackgroundMusic.loop = true;
     }
     static playTiktokTimerSound() {
         if (!this.soundsAreMuted) {
@@ -14,6 +12,7 @@ export class GameSounds {
     static autoPlayHomeBackgroundMusic() {
         if (!this.soundsAreMuted) {
             this.homeBackgroundMusic.autoplay = true;
+            this.homeBackgroundMusic.loop = true;
         }
     }
     static playHomeBackgroundMusic() {
@@ -27,6 +26,7 @@ export class GameSounds {
     static autoPlayGameBackgroundMusic() {
         if (!this.soundsAreMuted) {
             this.gameBackgroundMusic.autoplay = true;
+            this.gameBackgroundMusic.loop = true;
         }
     }
     static playGameBackgroundMusic() {

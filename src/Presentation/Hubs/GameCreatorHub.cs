@@ -1,24 +1,34 @@
-﻿using Domain.List;
+﻿using Application.MatchListItems.Commands;
+using Application.MatchListItems.Queries;
 using Domain.Models;
+using MediatR;
 using Microsoft.AspNetCore.SignalR;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
+        private IMediator _mediator;
+
+        public GameCreatorHub(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         public async Task GetMatchListItems()
         {
-            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", MatchListItems.Matches);
+            List<MatchListItem> matches = await _mediator.Send(new GetMatchListItemsQuery());
+            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", matches);
         }
 
         public async Task TryJoinMatch(string id, string password)
         {
-            MatchListItem match = MatchListItems.Matches.FirstOrDefault(x => x.Id == id);
+            MatchListItem match = await _mediator.Send(new GetMatchListItemQuery
+            {
+                Id = id
+            });
 
             bool isPasswordCorrect = (match.Password == password) ? true : false;
             if (isPasswordCorrect)
@@ -33,11 +43,14 @@ namespace Presentation.Hubs
 
         public async Task CreateMatch(MatchListItem match)
         {
-            bool matchDoesNotExist = (MatchListItems.Matches.FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
-
-            if (matchDoesNotExist)
+            bool matchExist = await _mediator.Send(new CheckIfMatchListItemExistQuery
             {
-                MatchListItems.Matches.Add(match);
+                Id = match.Id
+            });
+
+            if (!matchExist)
+            {
+                await _mediator.Send(new AddMatchListItemCommand());
             }
         }
     }
