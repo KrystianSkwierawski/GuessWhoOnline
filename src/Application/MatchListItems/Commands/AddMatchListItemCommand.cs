@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Application.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace Application.MatchListItems.Commands
         {
             public async Task<Unit> Handle(AddMatchListItemCommand request, CancellationToken cancellationToken)
             {
-                Domain.Lists.MatchListItems.Matches.Add(request.Match);
+                Application.Models.MatchListItems.Matches.Add(request.Match);
                 return Unit.Value;
             }
         }

@@ -12,7 +12,7 @@ namespace Application.MatchListItems.Queries
         {
             public async Task<bool> Handle(CheckIfMatchListItemExistQuery request, CancellationToken cancellationToken)
             {
-                bool matchExist = (Domain.Lists.MatchListItems.Matches.FirstOrDefault(x => x.Id == request.Id) == null) ? false : true;
+                bool matchExist = (Application.Models.MatchListItems.Matches.FirstOrDefault(x => x.Id == request.Id) == null) ? false : true;
                 return matchExist;
             }
         }

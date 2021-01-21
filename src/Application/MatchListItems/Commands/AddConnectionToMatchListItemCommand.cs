@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Application.Models;
 using MediatR;
 using System.Linq;
 using System.Threading;
@@ -13,11 +13,11 @@ namespace Application.MatchListItems.Commands
         {
             public async Task<Unit> Handle(AddConnectionToMatchListItemCommand request, CancellationToken cancellationToken)
             {
-                MatchListItem match = Domain.Lists.MatchListItems.Matches.FirstOrDefault(x => x.Url == request.Url);
+                MatchListItem match = Application.Models.MatchListItems.Matches.FirstOrDefault(x => x.Url == request.Url);
 
                 if (match != null)
                 {
-                     Domain.Lists.MatchListItems.Matches.Remove(match);
+                     Application.Models.MatchListItems.Matches.Remove(match);
                 }
 
                 return Unit.Value;

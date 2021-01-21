@@ -1,7 +1,6 @@
-﻿using Domain.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Domain.Lists
+namespace Application.Models
 {
     public static class MatchListItems
     {

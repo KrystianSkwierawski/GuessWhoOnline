@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Application.Models;
 using MediatR;
 using System.Linq;
 using System.Threading;
@@ -15,7 +15,7 @@ namespace Application.MatchListItems.Queries
             {
                 int o_numberOfConnections = 0;
 
-                MatchListItem match = Domain.Lists.MatchListItems.Matches.ToList().FirstOrDefault(x => x.Url == request.Url);
+                MatchListItem match = Application.Models.MatchListItems.Matches.FirstOrDefault(x => x.Url == request.Url);
 
                 if (match != null)
                 {

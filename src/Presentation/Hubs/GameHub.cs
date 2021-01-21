@@ -1,6 +1,6 @@
 ﻿using Application.MatchListItems.Commands;
 using Application.MatchListItems.Queries;
-using Domain.Models;
+using Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
 using System;

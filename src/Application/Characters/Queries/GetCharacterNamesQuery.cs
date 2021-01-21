@@ -11,7 +11,7 @@ namespace Application.Characters.Queries
         {
             public async Task<List<string>> Handle(GetCharacterNamesQuery request, CancellationToken cancellationToken)
             {
-                return Domain.Lists.Characters.CharacterNames;
+                return Application.Models.Characters.CharacterNames;
             }
         }
 

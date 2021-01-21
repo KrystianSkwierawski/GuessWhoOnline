@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿
+using Application.Models;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
@@ -12,7 +13,7 @@ namespace Application.MatchListItems.Queries
         {
             public async Task<List<MatchListItem>> Handle(GetMatchListItemsQuery request, CancellationToken cancellationToken)
             {
-                return Domain.Lists.MatchListItems.Matches;
+                return Application.Models.MatchListItems.Matches;
             }
         }
     }
