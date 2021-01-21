@@ -1,5 +1,5 @@
-﻿using Applciation.ViewModel;
-using Application.Models;
+﻿using Applciation.Common.ViewModel;
+using Application.Common.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Threading.Tasks;

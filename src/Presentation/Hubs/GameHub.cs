@@ -1,4 +1,4 @@
-﻿using Application.Models;
+﻿using Application.Common.Models;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
