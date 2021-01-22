@@ -1,4 +1,6 @@
-﻿using Application.Common.Models;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.SignalR;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,15 +9,21 @@ namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
+        IMatchListItemsService _matchListItemsService;
+
+        public GameCreatorHub(IMatchListItemsService matchListItemsService)
+        {
+            _matchListItemsService = matchListItemsService;
+        }
 
         public async Task GetMatchListItems()
         {
-            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", MatchListItems.Matches);
+            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", _matchListItemsService.GetAll());
         }
 
         public async Task TryJoinMatch(string id, string password)
         {
-            MatchListItem match = MatchListItems.Matches.FirstOrDefault(x => x.Id == id);
+            MatchListItem match = _matchListItemsService.GetMatchById(id);
 
             bool isPasswordCorrect = (match.Password == password) ? true : false;
             if (isPasswordCorrect)
@@ -30,11 +38,11 @@ namespace Presentation.Hubs
 
         public async Task CreateMatch(MatchListItem match)
         {
-            bool matchDoesNotExist = (MatchListItems.Matches.FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
+            bool matchDoesNotExist = (_matchListItemsService.GetAll().FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
 
             if (matchDoesNotExist)
             {
-                MatchListItems.Matches.Add(match);
+                _matchListItemsService.AddMatchListItem(match);
             }
         }
     }
