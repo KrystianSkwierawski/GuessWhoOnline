@@ -1,7 +1,6 @@
 ﻿@model Applciation.Common.ViewModel.GameViewModel
 
 <div class="game">
-
     <input type="hidden" class="game__game-id-input" value="@Model.Id" />
 
     <div class="game-panel ">
@@ -21,8 +20,7 @@
 
                 @foreach (var characterName in Model.CharactersNames)
                 {
-                    <option value="@characterName" id="character-type_@characterName">@characterName</option>
-                }
+    <option value="@characterName" id="character-type_@characterName">@characterName</option>}
             </select>
             <button class="game-panel__check-character-type-button btn btn-danger">Guess <i class="question-mark-icon fas fa-question"></i></button>
         </div>
@@ -35,11 +33,10 @@
             {
                 string characterPath = $"../images/characters/{characterName}.jpg";
 
-                <div class="character">
-                    <button class="character-button"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
-                    <p class="character-name">@characterName</p>
-                </div>
-            }
+<div class="character">
+    <button class="character-button"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
+    <p class="character-name">@characterName</p>
+</div>            }
 
         </div>
 
@@ -64,6 +61,3 @@
 
 <script type="module" src="~/js/game.js"></script>
 <script type="module" src="~/js/gameHub.js"></script>
-
-
-
