@@ -1,4 +1,4 @@
-﻿using Applciation.ViewModel;
+﻿using Applciation.Common.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using System.Diagnostics;

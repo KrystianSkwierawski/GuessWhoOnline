@@ -1,9 +1,8 @@
-﻿using Applciation.ViewModel;
-using Application.Characters.Queries;
-using Application.MatchListItems.Queries;
-using MediatR;
+﻿using Applciation.Common.ViewModel;
+using Application.Common.Interfaces;
+using Application.Common.Models;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -12,28 +11,23 @@ namespace Presentation.Areas.User.Controllers
     [Area("User")]
     public class GameController : BaseController
     {
-        private IMediator _mediator;
+        IMatchListItemsService _matchListItemsService;
+        ICharactersService _charactersService;
 
-        public GameController(IMediator mediator)
+        public GameController(IMatchListItemsService matchListItemsService, ICharactersService charactersService)
         {
-            _mediator = mediator;
+            _matchListItemsService = matchListItemsService;
+            _charactersService = charactersService;
         }
 
         [Route("game/{id}", Name = "Game")]
         public async Task<IActionResult> Index(string id)
         {
-            int numberOfConnections = await _mediator.Send(new GetNumberOfConnectionsInMatchListItemQuery()
-            {
-                Url = id
-            });
-
-            List<string> characterNames = await _mediator.Send(new GetCharacterNamesQuery());
-
             GameViewModel gameViewModel = new GameViewModel
             {
                 Id = id,
-                CharactersNames = characterNames,
-                NumberOfConnections = numberOfConnections
+                CharactersNames = _charactersService.GetCharacterNames(),
+                NumberOfConnections = _matchListItemsService.GetNumberOfConnections(id)
             };
 
             return View("Index", gameViewModel);

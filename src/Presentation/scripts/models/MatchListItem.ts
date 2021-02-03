@@ -7,9 +7,11 @@
 }
 
 export const getMatchFullUrl = function (matchId: string): string {
-    const currentUrl = window.location.href;
+    const domain: string = window.location.host;
+    const protocol: string = window.location.protocol;
 
-    return `${currentUrl}game/${matchId}`;
+    const o_fullUrl: string = `${protocol}//${domain}/game/${matchId}`;
+    return o_fullUrl
 };
 
 
