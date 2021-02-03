@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
-using Infrastructure.Services;
+using Domain;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
@@ -14,12 +14,10 @@ namespace Presentation.Hubs
         static Dictionary<string, string> _groups = new Dictionary<string, string>();
         static List<Game> _games = new List<Game>();
         IMatchListItemsService _matchListItemsService;
-        IGameStatus _gameStatus;
 
-        public GameHub(IMatchListItemsService matchListItemsService, IGameStatus gameStatus)
+        public GameHub(IMatchListItemsService matchListItemsService)
         {
             _matchListItemsService = matchListItemsService;
-            _gameStatus = gameStatus;
         }
 
         public async Task TryJoinGame(string groupName)
@@ -48,7 +46,7 @@ namespace Presentation.Hubs
                 return;
             }
 
-            bool gameIsPaused = (game.Status != null && game.Status != _gameStatus.Ended) ? true : false;
+            bool gameIsPaused = (game.Status != null && game.Status != GameStatus.Ended) ? true : false;
 
             if (gameIsPaused)
             {
@@ -73,7 +71,7 @@ namespace Presentation.Hubs
 
         private async Task SetGameToCharacterSelect(Game game)
         {
-            game.Status = _gameStatus.CharacterSelect;
+            game.Status = GameStatus.CharacterSelect;
             await Clients.Group(game.Id).SendAsync("RecieveGameStatus", game.Status);
             await Clients.Group(game.Id).SendAsync("ActivateGameBoard");
         }
@@ -82,16 +80,16 @@ namespace Presentation.Hubs
         {
             await AddUserInformationsToTheGame(game);
 
-            if (game.Status == _gameStatus.CharacterSelect)
+            if (game.Status == GameStatus.CharacterSelect)
             {
                 SetGameToCharacterSelect(game);
             }
-            else if (game.Status == _gameStatus.Started)
+            else if (game.Status == GameStatus.Started)
             {
                 SetUserCharacter(game);
                 ResumeTheGame(game);
             }
-            else if (game.Status == _gameStatus.WaitForStart)
+            else if (game.Status == GameStatus.WaitForStart)
             {
                 SetUserCharacter(game);
                 SetGameToWaitForStart(game);
@@ -110,10 +108,10 @@ namespace Presentation.Hubs
         private async Task ResumeTheGame(Game game)
         {
             Clients.Client(game.NextTurnPlayerId).SendAsync("DisableGamePanel");
-            Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.OpponentTurn);
+            Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.OpponentTurn);
 
             Clients.Client(game.CurrentTurnPlayerId).SendAsync("ActivateGamePanel");
-            Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.YourTurn);
+            Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
 
             Clients.Group(game.Id).SendAsync("ResetTimer");
             Clients.Group(game.Id).SendAsync("StartTimer");
@@ -179,12 +177,12 @@ namespace Presentation.Hubs
 
             if (groupName != null)
             {
-                game.Status = _gameStatus.Started;
+                game.Status = GameStatus.Started;
 
-                Task recieveGameStatusFirstTurnPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.YourTurn);
+                Task recieveGameStatusFirstTurnPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
                 Task activeGamePanelFirstPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");
 
-                Task recieveGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.OpponentTurn);
+                Task recieveGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.OpponentTurn);
                 Task showGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("ShowGameStatus");
                 Task hideStartGameButtonSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");
 
@@ -210,16 +208,16 @@ namespace Presentation.Hubs
 
             game.FirstTurnPlayerId = turnOrder[0];
             game.SecondTurnPlayerId = turnOrder[1];
-            game.Status = _gameStatus.CharacterSelect;
+            game.Status = GameStatus.CharacterSelect;
             game.VotesToRestartGame = 0;
 
             return game;
         }
         private async Task SetGameToWaitForStart(Game game)
         {
-            game.Status = _gameStatus.WaitForStart;
+            game.Status = GameStatus.WaitForStart;
             await Clients.Client(game.SecondTurnPlayerId).SendAsync("GivePermisionToStartTheGame");
-            await Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.WaitForStart);
+            await Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.WaitForStart);
         }
 
         public async Task SelectCharacter(string gameId, string characterName)
@@ -246,7 +244,7 @@ namespace Presentation.Hubs
             }
             else //only one player selected character
             {
-                Clients.Client(Context.ConnectionId).SendAsync("RecieveGameStatus", _gameStatus.OpponentIsSelectingCharacter);
+                Clients.Client(Context.ConnectionId).SendAsync("RecieveGameStatus", GameStatus.OpponentIsSelectingCharacter);
             }
 
             Clients.Clients(Context.ConnectionId).SendAsync("SetYourCharacter", characterName);
@@ -271,10 +269,10 @@ namespace Presentation.Hubs
         public async Task ChangeTurn(Game game)
         {
             Clients.Client(game.CurrentTurnPlayerId).SendAsync("DisableGamePanel");
-            Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.OpponentTurn);
+            Clients.Client(game.CurrentTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.OpponentTurn);
 
             Clients.Client(game.NextTurnPlayerId).SendAsync("ActivateGamePanel");
-            Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", _gameStatus.YourTurn);
+            Clients.Client(game.NextTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
 
             Clients.Group(game.Id).SendAsync("ResetTimer");
 
@@ -297,7 +295,7 @@ namespace Presentation.Hubs
             Clients.Group(game.Id).SendAsync("DisableGameBoard");
             Clients.Group(game.Id).SendAsync("DisableGamePanel");
 
-            game.Status = _gameStatus.Ended;
+            game.Status = GameStatus.Ended;
         }
 
         public async Task SendNotificationsToWinnerAndLoserAboutEndOfTheGame(Game game, string currentTurnPlayerCharacter, string nextTurnPlayerCharacter, string characterType)
@@ -392,7 +390,7 @@ namespace Presentation.Hubs
 
                 Clients.Group(game.Id).SendAsync("SendNotificationThatYourOpponentLeftTheGame");
 
-                if (game.Status != _gameStatus.Ended)
+                if (game.Status != GameStatus.Ended)
                 {
                     PuaseTheGame(game);
                 }
@@ -407,7 +405,7 @@ namespace Presentation.Hubs
             Clients.Group(game.Id).SendAsync("DisableGamePanel");
             Clients.Group(game.Id).SendAsync("StopTimer");
             Clients.Group(game.Id).SendAsync("SendNotificationAboutPauseTheGame");
-            Clients.Group(game.Id).SendAsync("RecieveGameStatus", _gameStatus.Paused);
+            Clients.Group(game.Id).SendAsync("RecieveGameStatus", GameStatus.Paused);
         }
 
         private async Task RemoveUserInformationsFromTheGame(Game game)
