@@ -1,13 +1,14 @@
 ﻿using Application.CharacterNames.Queries;
 using FluentAssertions;
 using Infrastructure.Services;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using static Application.CharacterNames.Queries.GetCharacterNamesQuery;
 
-namespace Application.UnitTests.CharacterNames.Queries
+namespace Application.IntegrationTests.CharacterNames.Queries
 {
     public class GetCharacterNamesQueryHandlerTests
     {
@@ -18,7 +19,7 @@ namespace Application.UnitTests.CharacterNames.Queries
             var handler = new GetCharacterNamesQueryHandler(new CharactersService());
 
             //Act
-            var characterNames = await handler.Handle(new GetCharacterNamesQuery(), CancellationToken.None);
+            List<string> characterNames = await handler.Handle(new GetCharacterNamesQuery(), CancellationToken.None);
 
             //Assert
             characterNames.Should().NotBeNull();

@@ -6,7 +6,7 @@ namespace Infrastructure.Services
 {
     public class CharactersService : ICharactersService
     {
-        private static List<string> _characterNames = new List<string>();
+        private List<string> _characterNames = new List<string>();
 
         public CharactersService()
         {

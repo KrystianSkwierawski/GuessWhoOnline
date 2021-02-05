@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,12 @@ namespace Infrastructure.Services
 {
     public class MatchListItemsService : IMatchListItemsService
     {
-        private static List<MatchListItem> _matches = new List<MatchListItem>();
+        private List<MatchListItem> _matches;
+
+        public MatchListItemsService()
+        {
+            _matches = new List<MatchListItem>();
+        }
 
         public List<MatchListItem> GetAll()
         {
