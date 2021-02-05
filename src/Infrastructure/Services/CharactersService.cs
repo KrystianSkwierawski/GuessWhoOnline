@@ -36,6 +36,5 @@ namespace Infrastructure.Services
                 _characterNames.Add(characterName);
             }
         }
-
     }
 }

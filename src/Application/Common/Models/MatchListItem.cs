@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/Application/Models/MatchListItem.cs
-﻿namespace Application.Models
-=======
 ﻿namespace Application.Common.Models
->>>>>>> master:src/Application/Common/Models/MatchListItem.cs
 {
     public class MatchListItem
     {

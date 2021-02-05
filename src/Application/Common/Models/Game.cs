@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/Application/Models/Game.cs
-﻿namespace Application.Models
-=======
 ﻿namespace Application.Common.Models
->>>>>>> master:src/Application/Common/Models/Game.cs
 {
     public class Game
     {

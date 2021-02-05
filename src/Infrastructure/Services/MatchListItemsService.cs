@@ -9,7 +9,6 @@ namespace Infrastructure.Services
     {
         private static List<MatchListItem> _matches = new List<MatchListItem>();
 
-
         public List<MatchListItem> GetAll()
         {
             return _matches;

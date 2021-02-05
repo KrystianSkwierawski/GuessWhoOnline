@@ -1,4 +1,5 @@
-﻿using Application.Models;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,12 +8,19 @@ namespace Application.MatchListItems.Commands
 {
     public class AddMatchListItemCommand : IRequest
     {
-        public MatchListItem Match { get; set; }
+        public MatchListItem MatchListItem { get; set; }
         public class AddMatchListItemCommandHandler : IRequestHandler<AddMatchListItemCommand>
         {
+            IMatchListItemsService _matchListItemsService;
+
+            public AddMatchListItemCommandHandler(IMatchListItemsService matchListItemsService)
+            {
+                _matchListItemsService = matchListItemsService;
+            }
             public async Task<Unit> Handle(AddMatchListItemCommand request, CancellationToken cancellationToken)
             {
-                Application.Models.MatchListItems.Matches.Add(request.Match);
+                _matchListItemsService.AddMatchListItem(request.MatchListItem);
+
                 return Unit.Value;
             }
         }

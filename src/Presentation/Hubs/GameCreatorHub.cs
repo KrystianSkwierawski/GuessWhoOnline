@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-﻿using Application.MatchListItems.Commands;
+﻿using Application.Common.Models;
+using Application.MatchListItems.Commands;
 using Application.MatchListItems.Queries;
-using Application.Models;
 using MediatR;
-=======
-﻿using Application.Common.Interfaces;
-using Application.Common.Models;
-using Infrastructure.Services;
->>>>>>> master
 using Microsoft.AspNetCore.SignalR;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,21 +11,23 @@ namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
-        IMatchListItemsService _matchListItemsService;
+        IMediator _mediator;
 
-        public GameCreatorHub(IMatchListItemsService matchListItemsService)
+        public GameCreatorHub(IMediator mediator)
         {
-            _matchListItemsService = matchListItemsService;
+            _mediator = mediator;
         }
 
         public async Task GetMatchListItems()
         {
-            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", _matchListItemsService.GetAll());
+            List<MatchListItem> matchListItems = await _mediator.Send(new GetAllMatchListItemsQuery());
+
+            await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", matchListItems);
         }
 
         public async Task TryJoinMatch(string id, string password)
         {
-            MatchListItem match = _matchListItemsService.GetMatchById(id);
+            MatchListItem match = await _mediator.Send(new GetMatchByIdQuery{ Id = id});
 
             bool isPasswordCorrect = (match.Password == password) ? true : false;
             if (isPasswordCorrect)
@@ -45,11 +42,12 @@ namespace Presentation.Hubs
 
         public async Task CreateMatch(MatchListItem match)
         {
-            bool matchDoesNotExist = (_matchListItemsService.GetAll().FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
+            List<MatchListItem> matchListItems = await _mediator.Send(new GetAllMatchListItemsQuery());
+            bool matchDoesNotExist = (matchListItems.FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
 
             if (matchDoesNotExist)
             {
-                _matchListItemsService.AddMatchListItem(match);
+                _mediator.Send(new AddMatchListItemCommand { MatchListItem = match});
             }
         }
     }

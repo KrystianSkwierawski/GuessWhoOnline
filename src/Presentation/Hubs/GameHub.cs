@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-﻿using Application.MatchListItems.Commands;
-using Application.MatchListItems.Queries;
-using Application.Models;
-using MediatR;
-=======
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
-<<<<<<< HEAD
-using Infrastructure.Services;
->>>>>>> master
-=======
 using Domain;
->>>>>>> master
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
