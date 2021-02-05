@@ -8,7 +8,6 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddSingleton<IGameStatus, GameStatusService>();
             services.AddSingleton<ICharactersService, CharactersService>();
             services.AddSingleton<IMatchListItemsService ,MatchListItemsService>();
 
