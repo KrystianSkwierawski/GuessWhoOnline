@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xunit;
 using static Application.MatchListItems.Queries.GetNumberOfConnectionsByUrlQuery;
 
-namespace Application.IntegrationTests.MatchListItems.Queries
+namespace Application.UnitTests.MatchListItems.Queries
 {
     public class GetNumberOfConnectionsByUrlQueryHandlerTests
     {

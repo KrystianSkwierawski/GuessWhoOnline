@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xunit;
 using static Application.CharacterNames.Queries.GetCharacterNamesQuery;
 
-namespace Application.IntegrationTests.CharacterNames.Queries
+namespace Application.UnitTests.CharacterNames.Queries
 {
     public class GetCharacterNamesQueryHandlerTests
     {
