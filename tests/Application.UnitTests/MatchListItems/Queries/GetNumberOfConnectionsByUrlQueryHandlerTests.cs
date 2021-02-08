@@ -1,4 +1,5 @@
-﻿using Application.Common.Models;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
 using Application.MatchListItems.Queries;
 using FluentAssertions;
 using Infrastructure.Services;
@@ -16,7 +17,7 @@ namespace Application.IntegrationTests.MatchListItems.Queries
        public async Task ShouldReturnNumberOfConnections()
         {
             //Arrange
-            MatchListItemsService matchListItemService = new MatchListItemsService();
+            IMatchListItemsService matchListItemService = new MatchListItemsService();
 
             MatchListItem matchListItem = new MatchListItem { Url = Guid.NewGuid().ToString(), NumberOfConnections = 0 };
             matchListItemService.AddMatchListItem(matchListItem);

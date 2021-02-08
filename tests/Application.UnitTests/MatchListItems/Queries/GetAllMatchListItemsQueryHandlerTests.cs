@@ -1,4 +1,5 @@
-﻿using Application.Common.Models;
+﻿using Application.Common.Interfaces;
+using Application.Common.Models;
 using Application.MatchListItems.Queries;
 using FluentAssertions;
 using Infrastructure.Services;
@@ -18,7 +19,7 @@ namespace Application.IntegrationTests.MatchListItems.Queries
         public async Task ShouldReturnMatchListItems()
         {
             //Arrange
-            MatchListItemsService matchListItemService = new MatchListItemsService();
+            IMatchListItemsService matchListItemService = new MatchListItemsService();
 
             MatchListItem matchListItem = new MatchListItem { Id = Guid.NewGuid().ToString()};
             matchListItemService.AddMatchListItem(matchListItem);
