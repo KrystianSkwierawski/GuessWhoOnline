@@ -2,7 +2,7 @@
 import * as indexView from './views/homeView.js';
 import { MatchListItem } from './models/MatchListItem.js';
 import { navigateToMatchUrl } from './home.js';
-import * as NotificationSender from './models/NotificationSender.js';
+import * as notificationSender from './views/notificationSender.js';
 
 
 var hub = new signalR.HubConnectionBuilder()
@@ -11,7 +11,7 @@ var hub = new signalR.HubConnectionBuilder()
 
 
 hub.on('SendNotificationAboutIncorrectPassword', (): void => {
-    NotificationSender.sendNotificationAboutIncorrectPassword();
+    notificationSender.sendNotificationAboutIncorrectPassword();
 });
 
 hub.on('RecieveMatchUrl', (url: string): void => {

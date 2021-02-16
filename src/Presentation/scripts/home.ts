@@ -31,10 +31,11 @@ elements.homeMain__showFindMatchButton.addEventListener('click', async (): Promi
 elements.homeMain__showCreateMatchButton.addEventListener('click', (): void => {
     const id: string = Guid.newGuid();
     const url: string = Guid.newGuid();
+    const nameMatch: string = id;  //the name of the game is id by default
 
     homeView.setIdMatchInputValue(id);
     homeView.setUrlMatchInputValue(url);
-    homeView.setNameMatchInputValue(id); //the name of the game is id by default
+    homeView.setNameMatchInputValue(nameMatch);
 
     homeView.hideFindMatchContainer();
     homeView.showCreateMatchContainer();
@@ -46,7 +47,7 @@ elements.findMatch__backButton.addEventListener('click', (): void => {
     homeView.removeBlurFromHome();
 });
 
-elements.createMatch_backButton.addEventListener('click', (): void => { 
+elements.createMatch_backButton.addEventListener('click', (): void => {
     homeView.hideCreateMatchContainer();
     homeView.removeBlurFromHome();
 });
@@ -55,7 +56,7 @@ elements.createMatchButton.addEventListener('click', async (): Promise<void> => 
     const game: MatchListItem = await createGameObject();
 
     await gameCreatorHub.createMatch(game);
-    navigateToMatchUrl(game.url); 
+    navigateToMatchUrl(game.url);
 });
 
 elements.findMatch__refreshList.addEventListener('click', async (): Promise<void> => {
@@ -73,7 +74,7 @@ const createGameObject = async (): Promise<MatchListItem> => {
     const gameName: string = homeView.getNameMatchInputValue();
     const gamePassword: string = homeView.getPasswordMatchInputValue();
 
-    const game: MatchListItem =  {
+    const game: MatchListItem = {
         id: gameId,
         url: gameUrl,
         name: gameName,

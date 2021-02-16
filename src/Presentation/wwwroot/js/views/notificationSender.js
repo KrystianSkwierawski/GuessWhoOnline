@@ -16,4 +16,4 @@ export const sendNotificationAboutGameRestart = () => {
 export const sendNotificationAboutIncorrectPassword = () => {
     toastr["warning"]('Incorrect password');
 };
-//# sourceMappingURL=NotificationSender.js.map
+//# sourceMappingURL=notificationSender.js.map

@@ -35,9 +35,10 @@ elements.homeMain__showFindMatchButton.addEventListener('click', () => __awaiter
 elements.homeMain__showCreateMatchButton.addEventListener('click', () => {
     const id = Guid.newGuid();
     const url = Guid.newGuid();
+    const nameMatch = id; //the name of the game is id by default
     homeView.setIdMatchInputValue(id);
     homeView.setUrlMatchInputValue(url);
-    homeView.setNameMatchInputValue(id); //the name of the game is id by default
+    homeView.setNameMatchInputValue(nameMatch);
     homeView.hideFindMatchContainer();
     homeView.showCreateMatchContainer();
     homeView.addBlurToHome();

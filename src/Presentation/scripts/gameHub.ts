@@ -2,7 +2,7 @@
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 import { GameSounds } from './models/GameSounds.js';
-import * as NotificationSender from './models/NotificationSender.js';
+import * as notificationSender from './views/notificationSender.js';
 
 const _timer = new Timer();
 
@@ -20,7 +20,7 @@ hub.on("RedirectToHomeGameWasFull", (): void => {
 });
 
 hub.on("SendNotificationAboutOpponentJoinedToTheGame", (): void => {
-    NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
+    notificationSender.sendNotificationAboutOpponentJoinedToTheGame();
 });
 
 hub.on("RestartGameBoard", (): void => {
@@ -32,7 +32,7 @@ hub.on("RestartGamePanel", (): void => {
 });
 
 hub.on("SendNotificationAboutGameRestart", (): void => {
-    NotificationSender.sendNotificationAboutGameRestart();
+    notificationSender.sendNotificationAboutGameRestart();
 });
 
 hub.on("RemoveEndGameNotification", (): void => {
@@ -70,7 +70,7 @@ hub.on("SendNotificationAboutEndOfTheGame", (status: string, characterName: stri
 });
 
 hub.on("SendNotificationThatYourOpponentLeftTheGame", (): void => {
-    NotificationSender.sendNotificationThatYourOpponentLeftTheGame();
+    notificationSender.sendNotificationThatYourOpponentLeftTheGame();
 });
 
 hub.on("StartTimer", (): void => {

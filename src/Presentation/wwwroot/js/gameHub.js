@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 import { GameSounds } from './models/GameSounds.js';
-import * as NotificationSender from './models/NotificationSender.js';
+import * as notificationSender from './views/notificationSender.js';
 const _timer = new Timer();
 var hub = new signalR.HubConnectionBuilder()
     .withUrl('/gameHub')
@@ -23,7 +23,7 @@ hub.on("RedirectToHomeGameWasFull", () => {
     document.location.href = "/User/Home/GameWasFull";
 });
 hub.on("SendNotificationAboutOpponentJoinedToTheGame", () => {
-    NotificationSender.sendNotificationAboutOpponentJoinedToTheGame();
+    notificationSender.sendNotificationAboutOpponentJoinedToTheGame();
 });
 hub.on("RestartGameBoard", () => {
     gameView.restartGameBoard();
@@ -32,7 +32,7 @@ hub.on("RestartGamePanel", () => {
     gameView.restartGamePanel();
 });
 hub.on("SendNotificationAboutGameRestart", () => {
-    NotificationSender.sendNotificationAboutGameRestart();
+    notificationSender.sendNotificationAboutGameRestart();
 });
 hub.on("RemoveEndGameNotification", () => {
     gameView.removeTheNotificationAboutEndTheGame();
@@ -59,7 +59,7 @@ hub.on("SendNotificationAboutEndOfTheGame", (status, characterName) => {
     gameView.renderTheNotificationAboutEndTheGame(status, characterName);
 });
 hub.on("SendNotificationThatYourOpponentLeftTheGame", () => {
-    NotificationSender.sendNotificationThatYourOpponentLeftTheGame();
+    notificationSender.sendNotificationThatYourOpponentLeftTheGame();
 });
 hub.on("StartTimer", () => {
     _timer.startTimer();

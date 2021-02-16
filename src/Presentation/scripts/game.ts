@@ -3,7 +3,7 @@ import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
 import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
-import * as NotificationSender from './models/NotificationSender.js';
+import * as notificationSender from './views/notificationSender.js';
 
 const setMuteOrUbmuteSoundsButton = (): void => {
     if (localStorage.soundsAreMuted === 'true') {
@@ -71,7 +71,7 @@ const checkCharacterType = async (): Promise<void> => {
         await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
     }
     else {
-        NotificationSender.sendNotificationAboutNotChoosedCharacter();
+        notificationSender.sendNotificationAboutNotChoosedCharacter();
     }
 };
 
@@ -137,7 +137,7 @@ window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
 
 export const addEventListenerToVoteToRestartGameButton = (): void => {
     document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', async (): Promise<void> => {
-        NotificationSender.sendVotingNotificationsToRestartTheGame();
+        notificationSender.sendVotingNotificationsToRestartTheGame();
         gameHub.voteToRestartGame();
         gameView.disableVoteToRestartGameButton();
     });
