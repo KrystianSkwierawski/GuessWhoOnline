@@ -67,11 +67,11 @@ export const updateGamePanel__roundTime = (time) => {
     elements.gamePanel__roundTime.textContent = o_timeString;
 };
 export const changeCharacterStatusToRejected = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/>`;
+    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/> alt="${CharacterStatus.rejected}"`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const changeCharacterStatusToSuspect = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.png"/>`;
+    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.png"/> alt=${CharacterStatus.suspect}`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const removeCharacterStatus = (characterButtonElement) => {
