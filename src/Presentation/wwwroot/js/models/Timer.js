@@ -25,7 +25,7 @@ import { updateGamePanel__roundTime } from '../views/gameView.js';
 import { finishTheTurn } from '../gameHub.js';
 import { GameSounds } from './GameSounds.js';
 export class Timer {
-    constructor(roundTimeInSeconds = 60, remainingTime = roundTimeInSeconds) {
+    constructor(roundTimeInSeconds = 120, remainingTime = roundTimeInSeconds) {
         _roundTimeInSeconds.set(this, void 0);
         _remainingTime.set(this, void 0);
         _timerId.set(this, void 0);

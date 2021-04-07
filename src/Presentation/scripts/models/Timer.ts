@@ -7,7 +7,7 @@ export class Timer {
     #remainingTime: number;
     #timerId: number;
 
-    constructor(roundTimeInSeconds: number = 60, remainingTime = roundTimeInSeconds) {
+    constructor(roundTimeInSeconds: number = 120, remainingTime = roundTimeInSeconds) {
         this.#roundTimeInSeconds = roundTimeInSeconds;
         this.#remainingTime = remainingTime;
     }

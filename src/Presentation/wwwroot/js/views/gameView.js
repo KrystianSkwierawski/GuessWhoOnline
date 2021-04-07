@@ -54,17 +54,16 @@ export const setYourCharacterImg = (characterName) => {
     elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.jpg`;
 };
 export const updateGamePanel__roundTime = (time) => {
-    let o_timeString = "";
-    if (time == 60) {
-        o_timeString = '1:00';
-    }
-    else if (time.toString().length == 1) {
-        o_timeString = `00:0${time}`;
-    }
-    else if (time.toString().length == 2) {
-        o_timeString = `00:${time}`;
-    }
+    const o_timeString = toMMSS(time);
     elements.gamePanel__roundTime.textContent = o_timeString;
+};
+const toMMSS = (secs) => {
+    const sec_num = parseInt(secs, 10);
+    const minutes = Math.floor(sec_num / 60) % 60;
+    const seconds = sec_num % 60;
+    return [minutes, seconds]
+        .map(v => v < 10 ? "0" + v : v)
+        .join(":");
 };
 export const changeCharacterStatusToRejected = (characterButtonElement) => {
     const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/> alt="${CharacterStatus.rejected}"`;
