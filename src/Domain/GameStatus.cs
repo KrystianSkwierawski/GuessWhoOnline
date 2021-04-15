@@ -2,22 +2,22 @@
 {
     public static class GameStatus
     {
-        public static string WaitForOpponent { get; } = "Wait for opponent";
+        public static string WaitForOpponent => "Wait for opponent";
 
-        public static string CharacterSelect { get; } = "Select your character";
+        public static string CharacterSelect = "Select your character";
 
-        public static string OpponentIsSelectingCharacter { get; } = "Opponent is selecting character";
+        public static string OpponentIsSelectingCharacter = "Opponent is selecting character";
 
-        public static string WaitForStart { get; } = "Wait for start";
+        public static string WaitForStart => "Wait for start";
 
-        public static string OpponentTurn { get; } = "Opponent turn";
+        public static string OpponentTurn => "Opponent turn";
 
-        public static string YourTurn { get; } = "Your turn";
+        public static string YourTurn => "Your turn";
 
-        public static string Paused { get; } = "Game is paused";
+        public static string Paused => "Game is paused";
 
-        public static string Started { get; } = "Started";
+        public static string Started => "Started";
 
-        public static string Ended { get; } = "Ended";
+        public static string Ended => "Ended";
     }
 }
