@@ -1,4 +1,4 @@
-# QuessWhoOnlie
+# GuessWhoOnline
 Two-player character guessing game. The idea for the project came from the desire to play the classic board game of Guess Who. During the project
 I learned a lot of TypeScript and practiced Sass.
  
