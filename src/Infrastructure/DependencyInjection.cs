@@ -10,6 +10,7 @@ namespace Infrastructure
         {
             services.AddSingleton<ICharactersService, CharactersService>();
             services.AddSingleton<IMatchListItemsService ,MatchListItemsService>();
+            services.AddSignalR();
 
             return services;
         }
