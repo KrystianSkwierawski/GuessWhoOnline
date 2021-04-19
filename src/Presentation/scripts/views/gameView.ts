@@ -71,12 +71,12 @@ export const setYourCharacterImg = (characterName: string): void => {
 };
 
 export const updateGamePanel__roundTime = (time: number): void => {
-    const o_timeString: string = toMMSS(time);
+    const o_timeString: string = secondsToMMSS(time);
 
     (<HTMLElement>elements.gamePanel__roundTime).textContent = o_timeString;
 };
 
-const toMMSS = (secs) => {
+const secondsToMMSS = (secs) => {
     const sec_num = parseInt(secs, 10);
     const minutes = Math.floor(sec_num / 60) % 60;
     const seconds = sec_num % 60;

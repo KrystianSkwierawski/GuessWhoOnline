@@ -54,10 +54,10 @@ export const setYourCharacterImg = (characterName) => {
     elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.jpg`;
 };
 export const updateGamePanel__roundTime = (time) => {
-    const o_timeString = toMMSS(time);
+    const o_timeString = secondsToMMSS(time);
     elements.gamePanel__roundTime.textContent = o_timeString;
 };
-const toMMSS = (secs) => {
+const secondsToMMSS = (secs) => {
     const sec_num = parseInt(secs, 10);
     const minutes = Math.floor(sec_num / 60) % 60;
     const seconds = sec_num % 60;
