@@ -1,7 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Infrastructure.Services
 {
@@ -21,8 +20,7 @@ namespace Infrastructure.Services
 
         void StartUp()
         {
-            string applicationPath = GetApplicationRoot();
-            string charactersPath = applicationPath + @"/wwwroot/images/characters";
+            string charactersPath = @"./wwwroot/images/characters";
 
             DirectoryInfo directoryInfo = new DirectoryInfo(charactersPath);
             FileInfo[] files = directoryInfo.GetFiles("*.webp");
@@ -37,18 +35,6 @@ namespace Infrastructure.Services
                 string characterName = file.Name.Replace(".webp", "");
                 _characterNames.Add(characterName);
             }
-        }
-
-        public string GetApplicationRoot()
-        {
-            var exePath = Path.GetDirectoryName(System.Reflection
-                              .Assembly.GetExecutingAssembly().CodeBase);
-
-            Regex appPathMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
-
-            string appRoot = appPathMatcher.Match(exePath).Value;
-
-            return appRoot;
         }
     }
 }

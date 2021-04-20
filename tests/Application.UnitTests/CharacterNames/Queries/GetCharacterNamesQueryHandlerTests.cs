@@ -24,7 +24,7 @@ namespace Application.UnitTests.CharacterNames.Queries
             //Assert
             characterNames.Should().NotBeNull();
             characterNames.Should().HaveCount(1);
-            characterNames.First().Should().Be("test-name");
+            characterNames.First().Should().Be("test");
         }
     }
 }
