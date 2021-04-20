@@ -2,10 +2,12 @@ using Application;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Hubs;
+using System.Linq;
 
 namespace Presentation
 {
@@ -24,7 +26,7 @@ namespace Presentation
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddInfrastructure();
-            services.AddApplication();         
+            services.AddApplication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +48,7 @@ namespace Presentation
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseNToastNotify();
+            app.UseNToastNotify();         
 
             app.UseEndpoints(endpoints =>
             {
