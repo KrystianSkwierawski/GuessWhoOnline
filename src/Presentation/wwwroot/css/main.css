@@ -908,7 +908,6 @@ th {
     .informations-about-game div::-webkit-scrollbar {
       display: none; }
   .informations-about-game p {
-    line-height: 1.6;
     font-size: 1.2rem; }
 
 .authors {
@@ -933,3 +932,6 @@ th {
   text-align: center; }
   .github-link i {
     font-size: 2.61792rem; }
+
+.authors {
+  margin-top: 1rem; }
