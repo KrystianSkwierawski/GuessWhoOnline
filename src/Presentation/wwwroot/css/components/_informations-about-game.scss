@@ -1,4 +1,6 @@
-﻿.informations-about-game {
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.informations-about-game {
     display: none;
     height: 91%;
     overflow: auto;
@@ -11,6 +13,7 @@
     padding: 3%;
     box-shadow: 2px 2px 20px;
     border-radius: 8px;
+    font-family: 'Inter', sans-serif;
 
     @include respond-to(small) {
         width: 60%;
@@ -26,11 +29,7 @@
     }
 
     p {
-        font-size: font-scale(1);
-
-        @include respond-to(small) {
-            font-size: font-scale(2);
-        }
+        font-size: 1.2rem;
     }
 }
 
@@ -56,4 +55,8 @@
     & i {        
         font-size: font-scale(3);
     }
+}
+
+.authors{
+    margin-top: 1rem;
 }
