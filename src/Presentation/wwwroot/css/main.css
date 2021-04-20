@@ -4,6 +4,7 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&display=swap");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -896,20 +897,22 @@ th {
   background-color: white;
   padding: 3%;
   box-shadow: 2px 2px 20px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .informations-about-game {
-      width: 60%;
-      height: 70%; } }
+      width: 75%;
+      height: 75%; } }
   .informations-about-game div {
     overflow: auto; }
     .informations-about-game div::-webkit-scrollbar {
       display: none; }
   .informations-about-game p {
-    font-size: 1rem; }
-    @media screen and (min-height: 550px) and (min-width: 576px) {
-      .informations-about-game p {
-        font-size: 1.618rem; } }
+    line-height: 1.6;
+    font-size: 1.2rem; }
+
+.authors {
+  margin-top: 1.5rem; }
 
 .informations-about-game_active {
   display: flex; }

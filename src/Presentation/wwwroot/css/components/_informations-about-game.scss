@@ -1,4 +1,6 @@
-﻿.informations-about-game {
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&display=swap');
+
+.informations-about-game {
     display: none;
     height: 91%;
     overflow: auto;
@@ -11,10 +13,11 @@
     padding: 3%;
     box-shadow: 2px 2px 20px;
     border-radius: 8px;
+    font-family: 'Inter', sans-serif;
 
     @include respond-to(small) {
-        width: 60%;
-        height: 70%;
+        width: 75%;
+        height: 75%;
     }
 
     & div {
@@ -26,12 +29,13 @@
     }
 
     p {
-        font-size: font-scale(1);
-
-        @include respond-to(small) {
-            font-size: font-scale(2);
-        }
+        line-height: 1.6;
+        font-size: 1.2rem;
     }
+}
+
+.authors {
+    margin-top: 1.5rem;
 }
 
 .informations-about-game_active {
@@ -53,7 +57,7 @@
     display: block;
     text-align: center;
 
-    & i {        
+    & i {
         font-size: font-scale(3);
     }
 }
