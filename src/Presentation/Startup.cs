@@ -48,7 +48,18 @@ namespace Presentation
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseNToastNotify();         
+            app.UseNToastNotify();
+
+            const string cacheMaxAge = "604800";
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Append(
+                         "Cache-Control",
+                         $"public, max-age={cacheMaxAge}");
+                }
+            });
 
             app.UseEndpoints(endpoints =>
             {
