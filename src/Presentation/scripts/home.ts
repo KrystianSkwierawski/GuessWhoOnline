@@ -65,7 +65,7 @@ elements.findMatch__refreshList.addEventListener('click', async (): Promise<void
 
 export const navigateToMatchUrl = (url: string): void => {
     const fullGameUrl: string = getMatchFullUrl(url);
-    window.location.replace(fullGameUrl);
+    window.location.assign(fullGameUrl);
 };
 
 const createGameObject = async (): Promise<MatchListItem> => {

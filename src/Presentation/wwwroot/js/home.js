@@ -61,7 +61,7 @@ elements.findMatch__refreshList.addEventListener('click', () => __awaiter(void 0
 }));
 export const navigateToMatchUrl = (url) => {
     const fullGameUrl = getMatchFullUrl(url);
-    window.location.replace(fullGameUrl);
+    window.location.assign(fullGameUrl);
 };
 const createGameObject = () => __awaiter(void 0, void 0, void 0, function* () {
     const gameId = homeView.getIdMatchInputValue();
