@@ -51,7 +51,7 @@ export const ShowGamePanel__startGameButton = () => {
     elements.gamePanel__startGameButton.classList.remove('d-none');
 };
 export const setYourCharacterImg = (characterName) => {
-    elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.jpg`;
+    elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.webp`;
 };
 export const updateGamePanel__roundTime = (time) => {
     const o_timeString = secondsToMMSS(time);
@@ -85,7 +85,7 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
     const markup = `
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
-            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.jpg" />
+            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" />
             <button class="btn btn-primary endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
         </div>
@@ -184,7 +184,7 @@ export const restartGameBoard = () => {
     });
 };
 export const restartGamePanel = () => {
-    elements.gamePanel__yourCharacterImg.src = "/images/square.jpg";
+    elements.gamePanel__yourCharacterImg.src = "/images/square.webp";
     elements.gamePanel__yourCharacterName.textContent = "";
     const defaultCharacterTypeIndex = 0;
     elements.gamePanel__characterType.selectedIndex = defaultCharacterTypeIndex;

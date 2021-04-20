@@ -9,7 +9,7 @@
             <p class="game-panel__game-status">Wait for opponent<span> . . .</span></p>
 
             <p>Your character:</p>
-            <img class="game-panel__your-character-img" src="/images/square.jpg" />
+            <img class="game-panel__your-character-img" src="/images/square.webp" />
             <p class="game-panel__your-character-name">Name</p>
 
             <p class="game-panel__round-time">2:00</p>
@@ -31,7 +31,7 @@
 
             @foreach (var characterName in Model.CharactersNames)
             {
-                string characterPath = $"../images/characters/{characterName}.jpg";
+                string characterPath = $"../images/characters/{characterName}.webp";
 
 <div class="character">
     <button class="character-button"><img class="character-img" src="@characterPath" alt="@characterName" /></button>

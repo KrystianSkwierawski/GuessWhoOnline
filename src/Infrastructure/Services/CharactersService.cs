@@ -23,7 +23,7 @@ namespace Infrastructure.Services
             string charactersPath = @"./wwwroot/images/characters";
 
             DirectoryInfo directoryInfo = new DirectoryInfo(charactersPath);
-            FileInfo[] files = directoryInfo.GetFiles("*.jpg");
+            FileInfo[] files = directoryInfo.GetFiles("*.webp");
 
             AddFilesNamesToList(files);
         }
@@ -32,7 +32,7 @@ namespace Infrastructure.Services
         {
             foreach (var file in files)
             {
-                string characterName = file.Name.Replace(".jpg", "");
+                string characterName = file.Name.Replace(".webp", "");
                 _characterNames.Add(characterName);
             }
         }
