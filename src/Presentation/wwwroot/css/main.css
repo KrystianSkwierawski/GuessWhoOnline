@@ -901,8 +901,8 @@ th {
   font-family: 'Inter', sans-serif; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .informations-about-game {
-      width: 75%;
-      height: 75%; } }
+      width: 60%;
+      height: 70%; } }
   .informations-about-game div {
     overflow: auto; }
     .informations-about-game div::-webkit-scrollbar {

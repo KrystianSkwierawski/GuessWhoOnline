@@ -16,8 +16,8 @@
     font-family: 'Inter', sans-serif;
 
     @include respond-to(small) {
-        width: 75%;
-        height: 75%;
+        width: 60%;
+        height: 70%;
     }
 
     & div {
