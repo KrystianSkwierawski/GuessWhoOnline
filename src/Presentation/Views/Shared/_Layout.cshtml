@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="~/images/logo.png" />
     <title>QuessWhoOnline</title>
+    <script src="~/lib/jquery/dist/jquery.min.js" async></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/main.min.css" />
@@ -16,10 +17,9 @@
         @RenderBody()
     </main>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" async></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" async></script>
     <script>
         function notificationme() {
             toastr.options = {
