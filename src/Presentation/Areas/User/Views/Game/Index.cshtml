@@ -5,7 +5,7 @@
 
     <div class="game-panel ">
         <div class="game-panel__menu disabled">
-            <button class="game-panel__start-game-button btn btn-danger d-none">Start</button>
+            <button class="game-panel__start-game-button btn btn-danger d-none" aria-label="start game">Start</button>
             <p class="game-panel__game-status">Wait for opponent<span> . . .</span></p>
 
             <p>Your character:</p>
@@ -13,7 +13,7 @@
             <p class="game-panel__your-character-name">Name</p>
 
             <p class="game-panel__round-time">2:00</p>
-            <button class="btn btn-primary game-panel__finish-turn-button">Finish turn</button>
+            <button class="btn btn-primary game-panel__finish-turn-button" aria-label="finish turn">Finish turn</button>
 
             <select class="game-panel__character-type" name="character-type" id="character-type">
                 <option disabled selected>Guess opponent character</option>
@@ -22,7 +22,7 @@
                 {
     <option value="@characterName" id="character-type_@characterName">@characterName</option>}
             </select>
-            <button class="game-panel__check-character-type-button btn btn-danger">Guess <i class="question-mark-icon fas fa-question"></i></button>
+            <button class="game-panel__check-character-type-button btn btn-danger" aria-label="guess">Guess <i class="question-mark-icon fas fa-question"></i></button>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
                 string characterPath = $"../images/characters/{characterName}.webp";
 
 <div class="character">
-    <button class="character-button"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
+    <button class="character-button" aria-label="@characterName"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
     <p class="character-name">@characterName</p>
 </div>            }
 
@@ -43,7 +43,7 @@
     </div>
 
     <div class="chat-communicator">
-        <button class="chat-communicator__hide-communicator-button"><i class="fas fa-minus"></i></button>
+        <button class="chat-communicator__hide-communicator-button" aria-label="hide chat"><i class="fas fa-minus"></i></button>
 
         <div class="chat-communicator__messages">
 
@@ -51,12 +51,12 @@
 
         <div class="send-messages">
             <input class="send-messages__send-message-input" />
-            <button class="send-messages__send-message-button"><i class="fas fa-paper-plane"></i></button>
+            <button class="send-messages__send-message-button" aria-label="send message"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <button class="show-chat-communicator-button d-none"><i class="fas fa-comment"></i></button>
-    <button class="mute-or-unmute-sounds-button"><i class="mute-or-unmute-sounds-icon fas fa-volume-up"></i></button>
+    <button class="show-chat-communicator-button d-none" aria-label="show chat"><i class="fas fa-comment"></i></button>
+    <button class="mute-or-unmute-sounds-button" aria-label="mute or unmute sounds"><i class="mute-or-unmute-sounds-icon fas fa-volume-up"></i></button>
 </div>
 
 <script type="module" src="~/js/game.js"></script>
