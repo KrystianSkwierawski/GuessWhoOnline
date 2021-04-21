@@ -14,7 +14,7 @@ namespace Application.UnitTests.CharacterNames.Queries
     {
         [Fact]
         public async Task ShouldReturnCharacterNames()
-        {
+        {          
             //Arrange
             var handler = new GetCharacterNamesQueryHandler(new CharactersService());
 
@@ -22,6 +22,9 @@ namespace Application.UnitTests.CharacterNames.Queries
             List<string> characterNames = await handler.Handle(new GetCharacterNamesQuery(), CancellationToken.None);
 
             //Assert
+
+            //The test result depends on the files in the characters folder.
+            //Add some webp files to "Application.UnitTests\bin\Debug\net5.0\wwwroot\images\characters".
             characterNames.Should().NotBeNull();
             characterNames.Should().HaveCount(1);
             characterNames.First().Should().Be("test");
