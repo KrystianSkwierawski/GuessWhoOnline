@@ -1,6 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
-using Domain.ValueObjects;
+using Domain.Common;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
