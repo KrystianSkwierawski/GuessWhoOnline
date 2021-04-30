@@ -5,35 +5,19 @@ I learned a lot of TypeScript and practiced Sass.
 ![image](https://user-images.githubusercontent.com/52860350/105014968-53c92f80-5a41-11eb-8005-b75d75ceda2e.png)
 ![image](https://user-images.githubusercontent.com/52860350/105143064-a109d780-5afb-11eb-8ef0-666858f5be5d.png)
  
-## Tools
+ ## Main technologies: 
 
-### Back-end:
+### Back-end
+ * C#
+ * .NET 5.0
+ * SignalR
+ * MediatR
+ * xUnit
 
-* Microsoft.VisualStudio.Web.CodeGeneration.Design
-
-* Microsoft.TypeScript.MSBuild
-
-* Microsoft.TypeScript.Compiler
-
-* NToastNotify
-
-* Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
-
-* SignalR
-
-* Microsoft.AspNetCore.Identity.UI
-
-### Front-end:
-
-* Boostrap 
-
-* Font awesome
-
-* Toastr
-
-* Sass
-
-* TypeScript
+### Front-end
+ * TypeScript
+ * Sass
+ * HTML5
  
 ## Status
 Project is finished.
