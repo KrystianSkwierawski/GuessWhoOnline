@@ -92,7 +92,6 @@ namespace Presentation.Hubs
         {
             await AddUserInformationsToTheGame(game);
 
-            SetUserCharacter(game);
 
             switch (game.Status)
             {
@@ -101,10 +100,12 @@ namespace Presentation.Hubs
                     break;
 
                 case GameStatus.Started:
+                    SetUserCharacter(game);
                     ResumeTheGame(game);
                     break;
 
                 case GameStatus.WaitForStart:
+                    SetUserCharacter(game);
                     SetGameToWaitForStart(game);
                     break;
 
@@ -154,10 +155,6 @@ namespace Presentation.Hubs
 
         private async Task RestartGame(Game game)
         {
-            //SetDefaultGameValues(game);
-            //game.FirstTurnPlayerCharacter = null;
-            //game.SecondTurnPlayerCharacter = null;
-
             SetDefaultGameValues(game);
             game.FirstTurnPlayerCharacter = null;
             game.SecondTurnPlayerCharacter = null;

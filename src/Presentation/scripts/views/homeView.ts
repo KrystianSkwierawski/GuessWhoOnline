@@ -71,7 +71,6 @@ export const addMatchToMatchList = (match: MatchListItem): void => {
             addEventListenerToMatchButton(match.id);
         }
 
-        elements.matchList.insertAdjacentHTML('afterbegin', markup);
         return;
     }
 

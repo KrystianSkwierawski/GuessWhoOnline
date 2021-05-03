@@ -60,7 +60,6 @@ export const addMatchToMatchList = (match) => {
         if (!gameIsFull) {
             addEventListenerToMatchButton(match.id);
         }
-        elements.matchList.insertAdjacentHTML('afterbegin', markup);
         return;
     }
     if (gameIsFull) {
