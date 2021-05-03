@@ -563,7 +563,7 @@ th {
       width: 50%; } }
 
 .game-panel__check-character-type-button {
-  margin-top: 5%;
+  margin-top: 1rem;
   width: 80%; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__check-character-type-button {
@@ -573,7 +573,7 @@ th {
   border-radius: 12px;
   height: auto;
   width: 80%;
-  margin-top: 5%;
+  margin-bottom: 1rem;
   pointer-events: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__start-game-button {

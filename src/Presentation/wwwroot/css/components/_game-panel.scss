@@ -92,7 +92,7 @@
 }
 
 .game-panel__check-character-type-button {
-    margin-top: 5%;
+    margin-top: 1rem;
     width: 80%;
 
     @include respond-to(medium) {
@@ -104,7 +104,7 @@
     border-radius: 12px;
     height: auto;
     width: 80%;
-    margin-top: 5%;
+    margin-bottom: 1rem;
     pointer-events: auto;
 
     @include respond-to(medium) {
