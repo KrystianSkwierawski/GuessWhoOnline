@@ -27,17 +27,16 @@ namespace Presentation.Hubs
 
         public async Task TryJoinMatch(string id, string password)
         {
-            MatchListItem match = await _mediator.Send(new GetMatchByIdQuery{ Id = id});
+            MatchListItem match = await _mediator.Send(new GetMatchByIdQuery { Id = id });
 
             bool isPasswordCorrect = (match.Password == password) ? true : false;
             if (isPasswordCorrect)
             {
                 await Clients.Caller.SendAsync("RecieveMatchUrl", match.Url);
+                return;
             }
-            else
-            {
-                await Clients.Caller.SendAsync("SendNotificationAboutIncorrectPassword");
-            }
+
+            await Clients.Caller.SendAsync("SendNotificationAboutIncorrectPassword");
         }
 
         public async Task CreateMatch(MatchListItem match)
@@ -47,7 +46,7 @@ namespace Presentation.Hubs
 
             if (matchDoesNotExist)
             {
-                _mediator.Send(new AddMatchListItemCommand { MatchListItem = match});
+                _mediator.Send(new AddMatchListItemCommand { MatchListItem = match });
             }
         }
     }
