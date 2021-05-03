@@ -102,11 +102,12 @@ elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', (): void
         homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
         GameSounds.playHomeBackgroundMusic();
+
+        return;
     }
-    else {
-        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
-        GameSounds.muteSounds();
-        GameSounds.pauseHomeBackgroundMusic();
-    }
+
+    homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    GameSounds.muteSounds();
+    GameSounds.pauseHomeBackgroundMusic();
 });
 

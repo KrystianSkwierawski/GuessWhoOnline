@@ -92,11 +92,10 @@ elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', () => {
         homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
         GameSounds.playHomeBackgroundMusic();
+        return;
     }
-    else {
-        homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
-        GameSounds.muteSounds();
-        GameSounds.pauseHomeBackgroundMusic();
-    }
+    homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    GameSounds.muteSounds();
+    GameSounds.pauseHomeBackgroundMusic();
 });
 //# sourceMappingURL=home.js.map
