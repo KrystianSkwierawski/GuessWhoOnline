@@ -148,15 +148,19 @@ namespace Presentation.Hubs
             if (bothPlayersVotedToRestartGame)
             {
                 await RestartGame(game);
+                await SetGameToCharacterSelect(game);
             }
         }
 
         private async Task RestartGame(Game game)
         {
+            //SetDefaultGameValues(game);
+            //game.FirstTurnPlayerCharacter = null;
+            //game.SecondTurnPlayerCharacter = null;
+
             SetDefaultGameValues(game);
             game.FirstTurnPlayerCharacter = null;
             game.SecondTurnPlayerCharacter = null;
-            await SetGameToCharacterSelect(game);
 
             Clients.Group(game.Id).SendAsync("SendNotificationAboutGameRestart");
             Clients.Group(game.Id).SendAsync("RestartGameBoard");
