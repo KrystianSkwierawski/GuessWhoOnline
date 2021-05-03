@@ -46,7 +46,7 @@ namespace Presentation.Hubs
                 ReconnectToTheGame(game);
                 return;
             }
-           
+
             //both players joined to the game
             game = await CreateGame(groupName);
             SetGameToCharacterSelect(game);
@@ -92,6 +92,8 @@ namespace Presentation.Hubs
         {
             await AddUserInformationsToTheGame(game);
 
+            SetUserCharacter(game);
+
             switch (game.Status)
             {
                 case GameStatus.CharacterSelect:
@@ -99,12 +101,10 @@ namespace Presentation.Hubs
                     break;
 
                 case GameStatus.Started:
-                    SetUserCharacter(game);
                     ResumeTheGame(game);
                     break;
 
                 case GameStatus.WaitForStart:
-                    SetUserCharacter(game);
                     SetGameToWaitForStart(game);
                     break;
 
@@ -119,7 +119,11 @@ namespace Presentation.Hubs
         private async Task SetUserCharacter(Game game)
         {
             string currentUserCharacter = (game.FirstTurnPlayerId == Context.ConnectionId) ? game.FirstTurnPlayerCharacter : game.SecondTurnPlayerCharacter;
-            Clients.Client(Context.ConnectionId).SendAsync("SetYourCharacter", currentUserCharacter);
+
+            if (!String.IsNullOrEmpty(currentUserCharacter))
+            {
+                Clients.Client(Context.ConnectionId).SendAsync("SetYourCharacter", currentUserCharacter);
+            }
         }
 
         private async Task ResumeTheGame(Game game)
