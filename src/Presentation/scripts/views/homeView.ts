@@ -56,11 +56,13 @@ const addEventListenerToMatchButton = (matchId: string): void => {
 };
 
 export const addMatchToMatchList = (match: MatchListItem): void => {
+    const gameUrl: string = getMatchFullUrl(match.url);
+    let markup: string = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
+
     const gameIsFull: boolean = (match.numberOfConnections === 2) ? true : false;
 
     const gameHasPassword: boolean = (match.password === "") ? false : true;
 
-    let markup: string;
     if (gameHasPassword) {
         markup = `<li><button id="${match.id}">${match.name} ${match.numberOfConnections}/2  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
@@ -68,18 +70,18 @@ export const addMatchToMatchList = (match: MatchListItem): void => {
         if (!gameIsFull) {
             addEventListenerToMatchButton(match.id);
         }
-    }
-    else {
-        if (gameIsFull) {
-            markup = `<li><button>${match.name} ${match.numberOfConnections}/2 </button></li>`;
-        }
-        else {
-            const gameUrl: string = getMatchFullUrl(match.url);
-            markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
-        }
-       
+
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
+        return;
     }
+
+
+    if (gameIsFull) {
+        markup = `<li><button>${match.name} ${match.numberOfConnections}/2 </button></li>`;
+    }
+
+    elements.matchList.insertAdjacentHTML('afterbegin', markup);
+    return;
 };
 
 

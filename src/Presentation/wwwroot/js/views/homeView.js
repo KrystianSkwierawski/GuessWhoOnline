@@ -50,26 +50,24 @@ const addEventListenerToMatchButton = (matchId) => {
     }));
 };
 export const addMatchToMatchList = (match) => {
+    const gameUrl = getMatchFullUrl(match.url);
+    let markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
     const gameIsFull = (match.numberOfConnections === 2) ? true : false;
     const gameHasPassword = (match.password === "") ? false : true;
-    let markup;
     if (gameHasPassword) {
         markup = `<li><button id="${match.id}">${match.name} ${match.numberOfConnections}/2  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
         if (!gameIsFull) {
             addEventListenerToMatchButton(match.id);
         }
-    }
-    else {
-        if (gameIsFull) {
-            markup = `<li><button>${match.name} ${match.numberOfConnections}/2 </button></li>`;
-        }
-        else {
-            const gameUrl = getMatchFullUrl(match.url);
-            markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
-        }
         elements.matchList.insertAdjacentHTML('afterbegin', markup);
+        return;
     }
+    if (gameIsFull) {
+        markup = `<li><button>${match.name} ${match.numberOfConnections}/2 </button></li>`;
+    }
+    elements.matchList.insertAdjacentHTML('afterbegin', markup);
+    return;
 };
 export const setIdMatchInputValue = (id) => {
     elements.idMatchInput.value = id;
