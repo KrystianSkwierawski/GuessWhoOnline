@@ -8,10 +8,11 @@ import * as notificationSender from './views/notificationSender.js';
 const setMuteOrUbmuteSoundsButton = (): void => {
     if (localStorage.soundsAreMuted === 'true') {
         gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+
+        return;
     }
-    else {
-        gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
-    }
+
+    gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
 };
 
 document.addEventListener('DOMContentLoaded', (): void => {
