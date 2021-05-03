@@ -54,22 +54,20 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
         gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
         GameSounds.unmuteSounds();
         GameSounds.playGameBackgroundMusic();
+        return;
     }
-    else {
-        gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
-        GameSounds.muteSounds();
-        GameSounds.pauseGameBackgroundMusic();
-    }
+    gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+    GameSounds.muteSounds();
+    GameSounds.pauseGameBackgroundMusic();
 });
 const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {
     const selectedCharacterType = gameView.getCharacterTypeValue();
     const userSelectedAnyCharacter = (selectedCharacterType === 'Guess opponent character') ? false : true;
     if (userSelectedAnyCharacter) {
         yield gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
+        return;
     }
-    else {
-        notificationSender.sendNotificationAboutNotChoosedCharacter();
-    }
+    notificationSender.sendNotificationAboutNotChoosedCharacter();
 });
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e) => {
