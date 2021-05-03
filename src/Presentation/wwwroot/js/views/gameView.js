@@ -11,12 +11,9 @@ export const getGameIdInputValue = () => {
     return elements.game__gameIdInput.value;
 };
 export const setGameStatus = (status) => {
-    let markup;
+    let markup = status;
     if (status === GameStatus.waitForOpponent || status === GameStatus.waitForStart || status === GameStatus.opponentIsSelectingCharacter) {
         markup = `${status}<span> . . .</span>`;
-    }
-    else {
-        markup = status;
     }
     elements.gamePanel__gameStatus.innerHTML = markup;
 };
@@ -130,9 +127,11 @@ export const changeCharacterStatus = (characterButtonElement, characterName) => 
         removeCharacterStatus(characterButtonElement);
         changeCharacterStatusToSuspect(characterButtonElement);
         addCharacterOptionFromGamePanel__characterType(characterName);
+        return;
     }
-    else if (isSuspect) {
+    if (isSuspect) {
         removeCharacterStatus(characterButtonElement);
+        return;
     }
 };
 const removeCharacterOptionFromGamePanel__characterType = (characterName) => {

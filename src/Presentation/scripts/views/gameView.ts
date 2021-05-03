@@ -14,13 +14,10 @@ export const getGameIdInputValue = (): string => {
 };
 
 export const setGameStatus = (status: string): void => {
-    let markup: string;
+    let markup: string = status;
 
     if (status === GameStatus.waitForOpponent || status === GameStatus.waitForStart || status === GameStatus.opponentIsSelectingCharacter) {
         markup = `${status}<span> . . .</span>`;
-    }
-    else {
-        markup = status;
     }
 
     (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
@@ -168,9 +165,12 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, 
         changeCharacterStatusToSuspect(characterButtonElement);
 
         addCharacterOptionFromGamePanel__characterType(characterName);
+        return;
     }
-    else if (isSuspect) {
+
+    if (isSuspect) {
         removeCharacterStatus(characterButtonElement);
+        return;
     }
 };
 
