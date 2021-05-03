@@ -24,40 +24,52 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.Id == groupName);
 
-            int numberOfConnections = _matchListItemsService.GetNumberOfConnections(groupName);
-            bool gameIsFull = (numberOfConnections == 2) ? true : false;
-
+            bool gameIsFull = CheckIfGameIsFull(groupName);
             if (gameIsFull)
             {
                 await Clients.Caller.SendAsync("RedirectToHomeGameWasFull");
                 return;
             }
 
-            _matchListItemsService.AddConnection(groupName);
-            await SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(groupName);
+            await AddConnection(groupName);
 
-            _groups.Add(Context.ConnectionId, groupName);
-            await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-
-            bool firstConnection = (game == null) ? true : false;
+            bool firstConnection = (game is null) ? true : false;
             if (firstConnection)
             {
                 _games.Add(new Game() { Id = groupName });
                 return;
             }
 
-            bool gameIsPaused = (game.Status != null && game.Status != GameStatus.Ended) ? true : false;
-
+            bool gameIsPaused = CheckIfGameIsPaused(game.Status);
             if (gameIsPaused)
             {
                 ReconnectToTheGame(game);
+                return;
             }
-            else if (!gameIsPaused)
-            {
-                game = await CreateGame(groupName);
+           
+            //both players joined to the game
+            game = await CreateGame(groupName);
+            SetGameToCharacterSelect(game);
+        }
 
-                SetGameToCharacterSelect(game);
-            }
+        private bool CheckIfGameIsFull(string groupName)
+        {
+            int numberOfConnections = _matchListItemsService.GetNumberOfConnections(groupName);
+            return (numberOfConnections == 2) ? true : false;
+        }
+
+        private bool CheckIfGameIsPaused(string gameStatus)
+        {
+            return (gameStatus != null && gameStatus != GameStatus.Ended) ? true : false;
+        }
+
+        private async Task AddConnection(string groupName)
+        {
+            _matchListItemsService.AddConnection(groupName);
+            SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(groupName);
+
+            _groups.Add(Context.ConnectionId, groupName);
+            Groups.AddToGroupAsync(Context.ConnectionId, groupName);
         }
 
         private async Task SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(string gameId)
@@ -80,19 +92,24 @@ namespace Presentation.Hubs
         {
             await AddUserInformationsToTheGame(game);
 
-            if (game.Status == GameStatus.CharacterSelect)
+            switch (game.Status)
             {
-                SetGameToCharacterSelect(game);
-            }
-            else if (game.Status == GameStatus.Started)
-            {
-                SetUserCharacter(game);
-                ResumeTheGame(game);
-            }
-            else if (game.Status == GameStatus.WaitForStart)
-            {
-                SetUserCharacter(game);
-                SetGameToWaitForStart(game);
+                case GameStatus.CharacterSelect:
+                    SetGameToCharacterSelect(game);
+                    break;
+
+                case GameStatus.Started:
+                    SetUserCharacter(game);
+                    ResumeTheGame(game);
+                    break;
+
+                case GameStatus.WaitForStart:
+                    SetUserCharacter(game);
+                    SetGameToWaitForStart(game);
+                    break;
+
+                default:
+                    throw new Exception();
             }
 
             Clients.Group(game.Id).SendAsync("RemoveNotificationAboutPauseTheGame");
@@ -127,26 +144,35 @@ namespace Presentation.Hubs
             if (bothPlayersVotedToRestartGame)
             {
                 await RestartGame(game);
-                await SetGameToCharacterSelect(game);
             }
         }
 
         private async Task RestartGame(Game game)
         {
-            IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGroup = _groups.Where(x => x.Value == game.Id);
-            string[] turnOrder = GetTurnOrder(connectionsInCurrentGroup);
-
-            game.CurrentTurnPlayerId = turnOrder[0];
-            game.NextTurnPlayerId = turnOrder[1];
+            SetDefaultGameValues(game);
             game.FirstTurnPlayerCharacter = null;
             game.SecondTurnPlayerCharacter = null;
-            game.VotesToRestartGame = 0;
+            await SetGameToCharacterSelect(game);
 
             Clients.Group(game.Id).SendAsync("SendNotificationAboutGameRestart");
             Clients.Group(game.Id).SendAsync("RestartGameBoard");
             Clients.Group(game.Id).SendAsync("RestartGamePanel");
             Clients.Group(game.Id).SendAsync("RemoveEndGameNotification");
             Clients.Group(game.Id).SendAsync("ResetTimer");
+        }
+
+        private void SetDefaultGameValues(Game game)
+        {
+            IEnumerable<KeyValuePair<string, string>> connectionsInCurrentGroup = _groups.Where(x => x.Value == game.Id);
+            string[] turnOrder = GetTurnOrder(connectionsInCurrentGroup);
+
+            game.CurrentTurnPlayerId = turnOrder[0];
+            game.FirstTurnPlayerId = turnOrder[0];
+
+            game.NextTurnPlayerId = turnOrder[1];
+            game.SecondTurnPlayerId = turnOrder[1];
+
+            game.VotesToRestartGame = 0;
         }
 
         private async Task AddUserInformationsToTheGame(Game game)
@@ -175,28 +201,28 @@ namespace Presentation.Hubs
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
             string groupName = _groups[Context.ConnectionId];
 
-            if (groupName != null)
-            {
-                game.Status = GameStatus.Started;
+            if (groupName is null)
+                return;
 
-                Task recieveGameStatusFirstTurnPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
-                Task activeGamePanelFirstPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");
+            game.Status = GameStatus.Started;
 
-                Task recieveGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.OpponentTurn);
-                Task showGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("ShowGameStatus");
-                Task hideStartGameButtonSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");
+            Task recieveGameStatusFirstTurnPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.YourTurn);
+            Task activeGamePanelFirstPlayerTask = Clients.Client(game.FirstTurnPlayerId).SendAsync("ActivateGamePanel");
 
-                Task activeGameBoardTask = Clients.Group(groupName).SendAsync("ActivateGameBoard");
+            Task recieveGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("RecieveGameStatus", GameStatus.OpponentTurn);
+            Task showGameStatusSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("ShowGameStatus");
+            Task hideStartGameButtonSecondPlayerTask = Clients.Client(game.SecondTurnPlayerId).SendAsync("HideStartGameButton");
 
-                game.CurrentTurnPlayerId = game.FirstTurnPlayerId;
-                game.NextTurnPlayerId = game.SecondTurnPlayerId;
+            Task activeGameBoardTask = Clients.Group(groupName).SendAsync("ActivateGameBoard");
 
-                List<Task> startGameTasks = new List<Task> { recieveGameStatusFirstTurnPlayerTask, activeGamePanelFirstPlayerTask, recieveGameStatusSecondPlayerTask, showGameStatusSecondPlayerTask, hideStartGameButtonSecondPlayerTask, activeGameBoardTask };
+            game.CurrentTurnPlayerId = game.FirstTurnPlayerId;
+            game.NextTurnPlayerId = game.SecondTurnPlayerId;
 
-                await Task.WhenAll(startGameTasks);
+            List<Task> startGameTasks = new List<Task> { recieveGameStatusFirstTurnPlayerTask, activeGamePanelFirstPlayerTask, recieveGameStatusSecondPlayerTask, showGameStatusSecondPlayerTask, hideStartGameButtonSecondPlayerTask, activeGameBoardTask };
 
-                await Clients.Group(groupName).SendAsync("StartTimer");
-            }
+            await Task.WhenAll(startGameTasks);
+
+            await Clients.Group(groupName).SendAsync("StartTimer");
         }
 
         private async Task<Game> CreateGame(string groupId)
@@ -206,10 +232,7 @@ namespace Presentation.Hubs
 
             Game game = _games.FirstOrDefault(x => x.Id == groupId);
 
-            game.FirstTurnPlayerId = turnOrder[0];
-            game.SecondTurnPlayerId = turnOrder[1];
-            game.Status = GameStatus.CharacterSelect;
-            game.VotesToRestartGame = 0;
+            SetDefaultGameValues(game);
 
             return game;
         }
@@ -224,7 +247,7 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.Id == gameId);
 
-            if (game == null)
+            if (game is null)
                 return;
 
             //set player character
@@ -255,7 +278,7 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
 
-            if (game == null)
+            if (game is null)
                 return;
 
             if (game.CurrentTurnPlayerId == Context.ConnectionId)
@@ -283,7 +306,7 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
 
-            if (game == null)
+            if (game is null)
                 return;
 
             string currentTurnPlayerCharacter = (game.CurrentTurnPlayerId == game.FirstTurnPlayerId) ? game.FirstTurnPlayerCharacter : game.SecondTurnPlayerCharacter;
@@ -331,7 +354,7 @@ namespace Presentation.Hubs
         {
             Game game = _games.FirstOrDefault(x => x.FirstTurnPlayerId == Context.ConnectionId || x.SecondTurnPlayerId == Context.ConnectionId);
 
-            if (game == null)
+            if (game is null)
                 return;
 
             string opponentConnectionId = (game.FirstTurnPlayerId == Context.ConnectionId) ? game.SecondTurnPlayerId : game.FirstTurnPlayerId;
@@ -372,29 +395,33 @@ namespace Presentation.Hubs
             _matchListItemsService.RemoveConnection(game.Id);
             await LeaveGroupIfGamesContainsConnectionId();
 
-            if (game == null)
+            if (game is null)
                 return;
 
             RemoveUserInformationsFromTheGame(game);
 
-            int numberOfConnectionsInCurrentGroup = _groups.Where(x => x.Value == game.Id).Count();
-            bool gameIsEmpty = (numberOfConnectionsInCurrentGroup == 0) ? true : false;
+
+            bool gameIsEmpty = CheckIfGameIsEmpty(game.Id);
             if (gameIsEmpty)
             {
                 _matchListItemsService.RemoveMatchByUrl(game.Id);
                 _games.Remove(game);
+
+                return;
             }
-            else if (!gameIsEmpty)
+
+            Clients.Group(game.Id).SendAsync("SendNotificationThatYourOpponentLeftTheGame");
+
+            if (game.Status != GameStatus.Ended)
             {
-
-
-                Clients.Group(game.Id).SendAsync("SendNotificationThatYourOpponentLeftTheGame");
-
-                if (game.Status != GameStatus.Ended)
-                {
-                    PuaseTheGame(game);
-                }
+                PuaseTheGame(game);
             }
+        }
+
+        private bool CheckIfGameIsEmpty(string gameId)
+        {
+            int numberOfConnectionsInCurrentGroup = _groups.Where(x => x.Value == gameId).Count();
+            return (numberOfConnectionsInCurrentGroup == 0) ? true : false;
         }
 
         private async Task PuaseTheGame(Game game)
