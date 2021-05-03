@@ -1,26 +1,26 @@
 ﻿declare var toastr: any
 
 export const sendVotingNotificationsToRestartTheGame = () => {
-    toastr["info"]("You voted to restart the game.");
+    toastr.info("You voted to restart the game.");
 };
 
 export const sendNotificationThatYourOpponentLeftTheGame = () => {
-    toastr["warning"]("Your opponent left the game.");
+    toastr.warning("Your opponent left the game.");
 };
 
 export const sendNotificationAboutNotChoosedCharacter = (): void => {
-    toastr["info"]("Choose character to guess.");
+    toastr.info("Choose character to guess.");
 };
 
 export const sendNotificationAboutOpponentJoinedToTheGame = (): void => {
-    toastr["success"]("Your opponent has joined your game.");
+    toastr.success("Your opponent has joined your game.");
 };
 
 export const sendNotificationAboutGameRestart = (): void => {
-    toastr["success"]("The game has been restarted.");
+    toastr.success("The game has been restarted.");
 };
 
 export const sendNotificationAboutIncorrectPassword = (): void => {
-    toastr["warning"]('Incorrect password');
+    toastr.warning('Incorrect password');
 };
 
