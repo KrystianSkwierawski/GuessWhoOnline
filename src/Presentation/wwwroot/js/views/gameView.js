@@ -66,11 +66,11 @@ const secondsToMMSS = (secs) => {
         .join(":");
 };
 export const changeCharacterStatusToRejected = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.png"/> alt="${CharacterStatus.rejected}"`;
+    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.webp" alt="${CharacterStatus.rejected}"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const changeCharacterStatusToSuspect = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.png"/> alt=${CharacterStatus.suspect}`;
+    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.webp" alt="${CharacterStatus.suspect}"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const removeCharacterStatus = (characterButtonElement) => {
@@ -85,7 +85,7 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
     const markup = `
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
-            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" />
+            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" alt="${characterName}"/>
             <button class="btn btn-primary endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
         </div>
