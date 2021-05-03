@@ -16,10 +16,9 @@ import { GameSounds } from './models/GameSounds.js';
 const setMuteOrUbmuteSoundsButton = () => {
     if (localStorage.soundsAreMuted === 'true') {
         homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
+        return;
     }
-    else {
-        homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
-    }
+    homeView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
 };
 document.addEventListener('DOMContentLoaded', () => {
     GameSounds.startUp();
