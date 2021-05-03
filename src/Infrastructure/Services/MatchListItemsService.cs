@@ -28,7 +28,7 @@ namespace Infrastructure.Services
         {
             MatchListItem match = _matches.FirstOrDefault(x => x.Url == url);
 
-            if (match != null)
+            if (match is not null)
             {
                 _matches.Remove(match);
             }
@@ -43,7 +43,7 @@ namespace Infrastructure.Services
         {
             MatchListItem match = _matches.FirstOrDefault(x => x.Url == url);
 
-            if (match != null)
+            if (match is not null)
             {
                 match.NumberOfConnections++;
             }
@@ -53,7 +53,7 @@ namespace Infrastructure.Services
         {
             MatchListItem match = _matches.FirstOrDefault(x => x.Url == url);
 
-            if (match != null)
+            if (match is not null)
             {
                 match.NumberOfConnections--;
             }
@@ -65,7 +65,7 @@ namespace Infrastructure.Services
 
             MatchListItem match = _matches.FirstOrDefault(x => x.Url == url);
 
-            if (match != null)
+            if (match is not null)
             {
                 o_numberOfConnections = match.NumberOfConnections;
             }
