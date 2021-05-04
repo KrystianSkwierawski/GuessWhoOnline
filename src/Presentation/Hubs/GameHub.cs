@@ -182,6 +182,7 @@ namespace Presentation.Hubs
 
         private async Task AddUserInformationsToTheGame(Game game)
         {
+            //Add informations about first and second player
             if (game.FirstTurnPlayerId == null)
             {
                 game.FirstTurnPlayerId = Context.ConnectionId;
@@ -191,6 +192,7 @@ namespace Presentation.Hubs
                 game.SecondTurnPlayerId = Context.ConnectionId;
             }
 
+            //Add informations about current and next turn player
             if (game.CurrentTurnPlayerId == null)
             {
                 game.CurrentTurnPlayerId = Context.ConnectionId;
@@ -455,8 +457,11 @@ namespace Presentation.Hubs
                 }
 
                 game.FirstTurnPlayerId = null;
+
+                return;
             }
-            else if (Context.ConnectionId == game.SecondTurnPlayerId)
+
+            if (Context.ConnectionId == game.SecondTurnPlayerId)
             {
                 if (game.CurrentTurnPlayerId == game.SecondTurnPlayerId)
                 {
@@ -468,10 +473,10 @@ namespace Presentation.Hubs
                 }
 
                 game.SecondTurnPlayerId = null;
+
+                return;
             }
         }
-
-
         private async Task LeaveGroupIfGamesContainsConnectionId()
         {
             bool groupExist = CheckIfGroupExist(Context.ConnectionId);
