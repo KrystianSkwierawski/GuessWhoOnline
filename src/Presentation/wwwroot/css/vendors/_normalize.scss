@@ -12,6 +12,10 @@ html {
     -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+main{
+    overflow-x: hidden;
+}
+
 /**
  * Remove default margin.
  */
