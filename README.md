@@ -19,7 +19,7 @@ Two-player character guessing game. The idea for the project came from the desir
  * HTML5
  
 ## Status
-Project is finished.
+Project in progress.
 
 ## Contact to co-workers
 Graphic designer: wiktoria.dominika.skorek@gmail.com
