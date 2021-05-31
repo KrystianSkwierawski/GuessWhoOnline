@@ -14,6 +14,9 @@ html {
   -webkit-text-size-adjust: 100%;
   /* 2 */ }
 
+main {
+  overflow-x: hidden; }
+
 /**
  * Remove default margin.
  */
@@ -807,8 +810,30 @@ th {
   min-height: 100vh;
   width: 100vw;
   display: flex;
-  background-image: linear-gradient(to right, #5499c7, #2980b9);
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
+  .home::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    left: 0;
+    background-size: cover;
+    background-image: url(../../images/background-home.webp);
+    z-index: -1; }
+  .home::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    left: 0;
+    background-size: cover;
+    background-image: linear-gradient(to right, #5499c7, #2980b9);
+    z-index: -2; }
   .home .home-container {
     display: flex;
     flex-direction: column;

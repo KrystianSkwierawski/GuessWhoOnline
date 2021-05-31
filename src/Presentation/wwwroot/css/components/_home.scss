@@ -5,8 +5,34 @@
     min-height: 100vh;
     width: 100vw;
     display: flex;
-    background-image: linear-gradient(to right, #5499c7, #2980b9);
     justify-content: center;
+    position: relative;
+
+    &::before {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        left: 0;
+        background-size: cover;
+        background-image: url(../../images/background-home.webp);
+        z-index: -1;
+    }
+
+    &::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 0;
+        left: 0;
+        background-size: cover;
+        background-image: linear-gradient(to right, #5499c7, #2980b9);
+        z-index: -2;
+    }
 
     .home-container {
         display: flex;
