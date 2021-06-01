@@ -10,10 +10,13 @@
     flex-direction: column;
     overflow: auto;
     padding: 5px;
+    background-image: linear-gradient(to right, #5499c7, #2980b9);
 
     @include respond-to(medium) {
         width: 30vw;
         height: 20%;
+        background-image: none;
+        background-color: transparent;
     }
 }
 
@@ -44,28 +47,33 @@
 }
 
 .send-messages__send-message-input {
-    background-color: white;
-    color: black;
     height: auto;
     max-height: 30px;
     align-self: flex-end;
-    padding: 5px;
+    padding: 10px;
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: .50rem;
+    background-color: #73BBF4;
+    border: none;
+    color: black;
 }
 
 .send-messages__send-message-button {
     @include reset-button;
     align-self: flex-end;
-    color: #007bff;
+    color: #FF9D1F;
     margin-bottom: 5px;
+    margin-right: .5rem;
+    margin-left: .5rem;
+    font-size: 1.3rem;
 }
 
 .chat-communicator__hide-communicator-button {
     pointer-events: auto;
     position: absolute;
-    right: 0;
+    right: .5rem;
     top: 0;
 
     @include reset-button;

@@ -83,7 +83,7 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
             <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" alt="${characterName}"/>
-            <button class="btn btn-primary endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
+            <button class="btn endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
         </div>
     `;
@@ -145,11 +145,25 @@ const addCharacterOptionFromGamePanel__characterType = (characterName) => {
 export const stickyRoundTime = () => {
     const scrollY = window.scrollY - 20;
     const finishTurnButtonTop = elements.gamePanel__finishTurnButton.offsetTop;
+    const stickyClass = "game-panel__round-time_sticky";
+    if (scrollY < finishTurnButtonTop) {
+        elements.gamePanel__roundTime.classList.remove(stickyClass);
+        return;
+    }
+    const gameStatus = getGameStatus();
+    if (gameStatus === GameStatus.oponnentTurn || gameStatus === GameStatus.yourTurn) {
+        elements.gamePanel__roundTime.classList.add(stickyClass);
+    }
+};
+export const stickyGameStatus = () => {
+    const scrollY = window.scrollY - 20;
+    const finishTurnButtonTop = elements.gamePanel__gameStatus.offsetTop;
+    const stickyClass = "game-panel__game-status_sticky";
     if (scrollY > finishTurnButtonTop) {
-        elements.gamePanel__roundTime.classList.add('game-panel__round-time_sticky');
+        elements.gamePanel__gameStatus.classList.add(stickyClass);
     }
     else {
-        elements.gamePanel__roundTime.classList.remove('game-panel__round-time_sticky');
+        elements.gamePanel__gameStatus.classList.remove(stickyClass);
     }
 };
 export const getSendMessages__sendMessageInputValue = () => {

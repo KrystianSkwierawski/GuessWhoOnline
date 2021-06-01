@@ -23,6 +23,7 @@ const setMuteOrUbmuteSoundsButton = () => {
 document.addEventListener('DOMContentLoaded', () => {
     GameSounds.startUp();
     GameSounds.autoPlayGameBackgroundMusic();
+    gameView.stickyGameStatus();
     gameView.stickyRoundTime();
     setMuteOrUbmuteSoundsButton();
 });
@@ -88,6 +89,7 @@ Array.from(elements.characterButtons).forEach(characterButton => {
     });
 });
 document.addEventListener('scroll', () => {
+    gameView.stickyGameStatus();
     gameView.stickyRoundTime();
 });
 elements.sendMessages__sendMessageButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {

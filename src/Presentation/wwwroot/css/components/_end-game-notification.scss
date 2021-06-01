@@ -9,25 +9,35 @@
     background-color: white;
     border-radius: 8px;
     padding: 20px;
-    z-index: 1;
+    z-index: 3;
 
     @include respond-to(small) {
         width: 35%;
     }
 
-    /*button,*/ a {
+    a {
         color: white;
     }
 }
 
-/*.endgame-notification__restart-game-button {
-    background-color: #007bff;
-    border-color: #007bff;
+.endgame-notification__vote-to-restart-game-button {
+    background-color: #FF9D1F;
+    border-color: white;
+    color: white;
+
+    &:hover{
+        opacity: 0.9;
+    }
 }
-*/
-.endgame-notification__exit-button { 
-    background-color: #dc3545;
-    border-color: #dc3545;
+
+.endgame-notification__exit-button {
+    background-color: white;
+    color: black !important;
+    border-color: black;
+
+    &:hover {
+        opacity: 0.9;
+    }
 }
 
 .endgame-notification__status{
@@ -35,8 +45,12 @@
     background: none;
 }
 
-.endgame-notification__character-img{
-    $width: 40%;
-    width: $width;
-    height: $width;
+.endgame-notification__character-img {
+    margin-bottom: 1rem;
+    width: 80%;
+    height: auto;
+
+    @include respond-to(medium) {
+        width: 60%;
+    }
 }

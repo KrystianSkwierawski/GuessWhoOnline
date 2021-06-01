@@ -18,6 +18,7 @@ const setMuteOrUbmuteSoundsButton = (): void => {
 document.addEventListener('DOMContentLoaded', (): void => {
     GameSounds.startUp();
     GameSounds.autoPlayGameBackgroundMusic();
+    gameView.stickyGameStatus();
     gameView.stickyRoundTime();
     setMuteOrUbmuteSoundsButton();
 });
@@ -103,6 +104,7 @@ Array.from(elements.characterButtons).forEach(characterButton => {
 });
 
 document.addEventListener('scroll', (): void => {
+    gameView.stickyGameStatus();
     gameView.stickyRoundTime();
 });
 

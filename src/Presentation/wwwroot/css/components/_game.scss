@@ -5,11 +5,7 @@
     flex-direction: column;
     text-align: center;
     overflow: hidden;
-    background-color: #131339;
-
-    * {
-        background-color: #131339;
-    }
+    background-image: linear-gradient(to right, #5499c7, #2980b9);
 
     & .disabled {
         pointer-events: none;
@@ -49,11 +45,6 @@
         background: none;
     }
 }
-
-/*.game button{
-    @include reset-button;
-}
-*/
 
 @keyframes dots {
     to {

@@ -447,9 +447,7 @@ th {
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  background-color: #131339; }
-  .game * {
-    background-color: #131339; }
+  background-image: linear-gradient(to right, #5499c7, #2980b9); }
   .game .disabled {
     pointer-events: none; }
 
@@ -483,10 +481,6 @@ th {
   .mute-or-unmute-sounds-button i {
     background: none; }
 
-/*.game button{
-    @include reset-button;
-}
-*/
 @keyframes dots {
   to {
     right: -100%; } }
@@ -537,7 +531,13 @@ th {
       height: auto; } }
 
 .game-panel__finish-turn-button {
-  border-radius: 12px; }
+  border-radius: 12px;
+  background-color: #FF9D1F;
+  color: white;
+  border: 2px solid white; }
+  .game-panel__finish-turn-button:hover {
+    opacity: 0.7;
+    color: white; }
 
 .game-panel__round-time {
   margin-top: 5%;
@@ -548,60 +548,77 @@ th {
   .game-panel__round-time_sticky {
     position: fixed;
     left: 50%;
-    top: -20px;
-    transform: translateX(-50%);
+    top: 4rem;
+    transform: translate(-50%, -50%);
     z-index: 3;
+    margin-top: 3rem;
     background-color: transparent;
-    color: red;
-    font-size: 1.618rem; } }
+    color: #B34782;
+    font-weight: bold;
+    font-size: 1.618rem;
+    text-shadow: 1px 1px white; } }
 
 .game-panel__character-type {
   margin-top: 5%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%; }
+  width: 80%;
+  background-color: transparent;
+  border: 2px solid white;
+  background-color: white;
+  color: black;
+  border-radius: .25rem;
+  padding: 2px; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__character-type {
       width: 50%; } }
 
 .game-panel__check-character-type-button {
   margin-top: 1rem;
-  width: 80%; }
+  width: 80%;
+  background-color: #FF9D1F;
+  color: white;
+  border: 2px solid white; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__check-character-type-button {
       width: 50%; } }
+  .game-panel__check-character-type-button:hover {
+    opacity: 0.7;
+    color: white; }
 
 .game-panel__start-game-button {
   border-radius: 12px;
   height: auto;
   width: 80%;
   margin-bottom: 1rem;
-  pointer-events: auto; }
+  pointer-events: auto;
+  background-color: #B34782;
+  color: white; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__start-game-button {
       width: 50%; } }
+  .game-panel__start-game-button:hover {
+    opacity: 0.9; }
 
 .question-mark-icon {
-  color: #F4B853;
+  color: white;
   background-color: transparent; }
 
 .game-panel__game-status {
-  overflow: hidden;
-  font-size: 15px;
-  color: red; }
-  .game-panel__game-status span {
-    position: relative;
-    background: none; }
-  .game-panel__game-status span::before {
-    background-color: #131339;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    content: '';
-    animation: dots 2s steps(3, start) infinite; }
+  transition: transform .3s;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #B34782; }
+
+@media screen and (max-width: 768px) {
+  .game-panel__game-status_sticky {
+    position: fixed;
+    left: 50%;
+    top: 3rem;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-shadow: 1px 1px white; } }
 
 .chat-communicator {
   width: 100%;
@@ -614,11 +631,14 @@ th {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: 5px; }
+  padding: 5px;
+  background-image: linear-gradient(to right, #5499c7, #2980b9); }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .chat-communicator {
       width: 30vw;
-      height: 20%; } }
+      height: 20%;
+      background-image: none;
+      background-color: transparent; } }
 
 .chat-communicator__messages {
   width: calc(100% - 20px);
@@ -641,27 +661,32 @@ th {
   margin-left: 10px; }
 
 .send-messages__send-message-input {
-  background-color: white;
-  color: black;
   height: auto;
   max-height: 30px;
   align-self: flex-end;
-  padding: 5px;
+  padding: 10px;
   width: 100%;
   margin-top: 5px;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  border-radius: .50rem;
+  background-color: #73BBF4;
+  border: none;
+  color: black; }
 
 .send-messages__send-message-button {
   border: 0;
   background: none;
   align-self: flex-end;
-  color: #007bff;
-  margin-bottom: 5px; }
+  color: #FF9D1F;
+  margin-bottom: 5px;
+  margin-right: .5rem;
+  margin-left: .5rem;
+  font-size: 1.3rem; }
 
 .chat-communicator__hide-communicator-button {
   pointer-events: auto;
   position: absolute;
-  right: 0;
+  right: .5rem;
   top: 0;
   border: 0;
   background: none; }
@@ -708,6 +733,8 @@ th {
   left: 0; }
 
 .character-button {
+  border: 0;
+  background: none;
   padding: 0;
   height: 100%;
   width: 100%; }
@@ -743,30 +770,38 @@ th {
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  z-index: 1;
-  /*button,*/ }
+  z-index: 3; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .endgame-notification {
       width: 35%; } }
   .endgame-notification a {
     color: white; }
 
-/*.endgame-notification__restart-game-button {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-*/
+.endgame-notification__vote-to-restart-game-button {
+  background-color: #FF9D1F;
+  border-color: white;
+  color: white; }
+  .endgame-notification__vote-to-restart-game-button:hover {
+    opacity: 0.9; }
+
 .endgame-notification__exit-button {
-  background-color: #dc3545;
-  border-color: #dc3545; }
+  background-color: white;
+  color: black !important;
+  border-color: black; }
+  .endgame-notification__exit-button:hover {
+    opacity: 0.9; }
 
 .endgame-notification__status {
   color: black;
   background: none; }
 
 .endgame-notification__character-img {
-  width: 40%;
-  height: 40%; }
+  margin-bottom: 1rem;
+  width: 80%;
+  height: auto; }
+  @media screen and (min-height: 550px) and (min-width: 768px) {
+    .endgame-notification__character-img {
+      width: 60%; } }
 
 .game-pause-notification {
   flex-direction: column;
