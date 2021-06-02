@@ -102,6 +102,7 @@
     color: black;
     border-radius: .25rem;
     padding: 2px;
+    cursor: pointer;
 
     @include respond-to(medium) {
         width: 50%;
