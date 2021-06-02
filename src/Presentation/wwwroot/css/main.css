@@ -709,7 +709,9 @@ th {
   width: 80vw;
   align-self: center;
   position: relative;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  background-color: #73BBF4;
+  border-radius: .25rem; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .character {
       margin-left: 10px;

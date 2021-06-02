@@ -19,6 +19,8 @@
     align-self: center;
     position: relative;
     margin-bottom: 40px;
+    background-color: #73BBF4;
+    border-radius: .25rem;
 
     @include respond-to(medium) {
         margin-left: 10px;
