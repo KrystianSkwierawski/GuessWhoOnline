@@ -849,18 +849,21 @@ th {
   width: 100vw;
   display: flex;
   justify-content: center;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .home::before {
     content: "";
-    height: 100%;
-    width: 100%;
+    height: 300vh;
+    width: 300vw;
     position: absolute;
     top: 0;
     z-index: 0;
     left: 0;
-    background-size: cover;
-    background-image: url(../../images/background-home.webp);
-    z-index: -1; }
+    background: url(../../images/background-home.webp);
+    z-index: -1;
+    animation: question-marks-animation 350s infinite linear alternate;
+    background-repeat: repeat;
+    background-attachment: scroll; }
   .home::after {
     content: "";
     height: 100%;
@@ -872,6 +875,10 @@ th {
     background-size: cover;
     background-image: linear-gradient(to right, #5499c7, #2980b9);
     z-index: -2; }
+
+@keyframes question-marks-animation {
+  to {
+    transform: translate(-100vw, -200vh); } }
   .home .home-container {
     display: flex;
     flex-direction: column;
