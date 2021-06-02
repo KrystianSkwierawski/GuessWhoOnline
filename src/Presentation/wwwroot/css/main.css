@@ -4,7 +4,6 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400&display=swap");
 html {
   font-family: sans-serif;
@@ -447,7 +446,8 @@ th {
   flex-direction: column;
   text-align: center;
   overflow: hidden;
-  background-image: linear-gradient(to right, #5499c7, #2980b9); }
+  background-image: linear-gradient(to right, #5499c7, #2980b9);
+  font-family: 'Fredoka One', cursive; }
   .game .disabled {
     pointer-events: none; }
 
