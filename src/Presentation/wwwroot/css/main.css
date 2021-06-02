@@ -527,7 +527,7 @@ th {
   height: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__your-character-img {
-      width: 50%;
+      width: 45%;
       height: auto; } }
 
 .game-panel__finish-turn-button {
@@ -857,7 +857,6 @@ th {
     width: 300vw;
     position: absolute;
     top: 0;
-    z-index: 0;
     left: 0;
     background: url(../../images/background-home.webp);
     z-index: -1;
