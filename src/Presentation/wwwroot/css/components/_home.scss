@@ -7,8 +7,6 @@
     position: relative;
     overflow: hidden;
 
-
-
     &::before {
         content: "";
         height: 300vh;
@@ -64,8 +62,8 @@
     }
 
     & * {
-        font-family: 'Fredoka One', cursive;
         font-size: font-scale(2);
+        font-family: 'Fredoka One', cursive;
 
         @include respond-to(small) {
             font-size: font-scale(3);

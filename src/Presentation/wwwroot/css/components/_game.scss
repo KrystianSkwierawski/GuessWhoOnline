@@ -1,13 +1,12 @@
 ﻿.game {
-    color: white;
     width: 100%;
     height: auto;
     flex-direction: column;
     text-align: center;
     overflow: hidden;
-    background-image: linear-gradient(to right, #5499c7, #2980b9);
     font-family: 'Fredoka One', cursive;
-
+    background-image: linear-gradient(to right, #5499c7, #2980b9);
+    color: white;
 
     & .disabled {
         pointer-events: none;
@@ -16,15 +15,15 @@
 
 .show-chat-communicator-button {
     @include reset-button;
+    height: 45px;
+    width: 45px;
     font-size: 15px;
     position: fixed;
     right: 2%;
-    background-color: #EE7A38;
     bottom: 2%;
     border-radius: 60%;
-    height: 45px;
+    background-color: #EE7A38;
     z-index: 2;
-    width: 45px;
 
     i {
         background: none;
@@ -33,15 +32,15 @@
 
 .mute-or-unmute-sounds-button {
     @include reset-button;
+    width: 45px;
+    height: 45px;
     position: fixed;
     right: 2%;
     font-size: 15px;
-    background-color: #EE7A38;
     top: 2%;
     border-radius: 60%;
-    height: 45px;
     z-index: 2;
-    width: 45px;
+    background-color: #EE7A38;
 
     i {
         background: none;

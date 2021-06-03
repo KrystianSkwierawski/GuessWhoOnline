@@ -1,10 +1,10 @@
 ﻿.game-board {
-    @include respond-to(medium) {    
-        order: -1;
+    @include respond-to(medium) {
         height: auto;
+        width: 70%;
         min-height: 100vh;
         justify-content: center;
-        width: 70%;
+        order: -1;
         display: flex;
         flex-direction: column;
     }

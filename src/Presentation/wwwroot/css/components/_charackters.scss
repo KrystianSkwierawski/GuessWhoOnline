@@ -19,8 +19,9 @@
     align-self: center;
     position: relative;
     margin-bottom: 40px;
-    background-color: #73BBF4;
     border-radius: .25rem;
+    background-color: #73BBF4;
+
 
     @include respond-to(medium) {
         margin-left: 10px;
@@ -49,9 +50,9 @@
 
 .character-button {
     @include reset-button;
-    padding: 0;
     height: 100%;
     width: 100%;
+    padding: 0;
 }
 
 .character-status {
@@ -60,7 +61,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
     opacity: 0.7;
     background-color: transparent;
+    z-index: 1;
 }

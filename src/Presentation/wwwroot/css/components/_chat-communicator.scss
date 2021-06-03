@@ -1,7 +1,7 @@
 ﻿.chat-communicator {
     width: 100%;
-    pointer-events: auto;
     height: 30%;
+    pointer-events: auto;
     position: fixed;
     z-index: 3;
     right: 0;
@@ -47,34 +47,34 @@
 }
 
 .send-messages__send-message-input {
+    width: 100%;
     height: auto;
     max-height: 30px;
     align-self: flex-end;
     padding: 10px;
-    width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: .50rem;
-    background-color: #73BBF4;
     border: none;
+    background-color: #73BBF4;
     color: black;
 }
 
 .send-messages__send-message-button {
     @include reset-button;
     align-self: flex-end;
-    color: #FF9D1F;
     margin-bottom: 5px;
     margin-right: .5rem;
     margin-left: .5rem;
     font-size: 1.3rem;
+    color: #FF9D1F;
 }
 
 .chat-communicator__hide-communicator-button {
+    @include reset-button;
+
     pointer-events: auto;
     position: absolute;
     right: .5rem;
     top: 0;
-
-    @include reset-button;
 }

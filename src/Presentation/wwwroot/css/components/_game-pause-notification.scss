@@ -1,14 +1,14 @@
 ﻿.game-pause-notification {
-    flex-direction: column;
     height: auto;
     width: 90%;
+    flex-direction: column;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
     border-radius: 8px;
     padding: 20px;
+    background-color: white;
     z-index: 1;
 
     @include respond-to(medium) {
@@ -16,14 +16,13 @@
     }
 
     p:nth-child(1) {
-        background-color: transparent;
         font-size: font-scale(2);
+        background-color: transparent;
         color: black;
     }
 
     #game-pause-notification__status {
         @include dots-animation(white);
-
         font-size: font-scale(1);
         color: black;
         background: none;

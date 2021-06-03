@@ -7,9 +7,10 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    box-shadow: 2px 2px 20px;
     border-radius: 8px;
+    box-shadow: 2px 2px 20px;
+    background-color: white;
+
 
     @include respond-to(small) {
         width: 60%;

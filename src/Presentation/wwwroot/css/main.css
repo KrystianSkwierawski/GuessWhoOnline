@@ -358,18 +358,18 @@ th {
   padding: 0; }
 
 .find-match {
-  flex-direction: column;
-  display: none;
   height: 91%;
   width: 90%;
+  flex-direction: column;
+  display: none;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   padding: 2%;
   box-shadow: 2px 2px 20px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  background-color: white; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .find-match {
       width: 60%;
@@ -381,23 +381,23 @@ th {
     .find-match ul li {
       list-style: none;
       margin-top: 10px;
-      background-color: white;
-      box-shadow: 1px 1px 3px; }
+      box-shadow: 1px 1px 3px;
+      background-color: white; }
     .find-match ul li a {
-      color: black;
-      text-decoration: none;
-      display: block;
       height: 100%;
       width: 100%;
-      padding: 5px; }
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+      color: black; }
     .find-match ul li button {
       border: 0;
       background: none;
-      color: black;
       height: 100%;
       width: 100%;
       text-align: left;
-      padding: 5px; }
+      padding: 5px;
+      color: black; }
 
 .find-match__back-button {
   border: 0;
@@ -412,9 +412,9 @@ th {
 .find-match__top-container {
   display: flex;
   justify-content: space-between;
-  color: black;
   padding-left: 10px;
-  padding-right: 10px; }
+  padding-right: 10px;
+  color: black; }
 
 .find-match__refresh-list {
   border: 0;
@@ -429,9 +429,9 @@ th {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  border-radius: 8px;
   box-shadow: 2px 2px 20px;
-  border-radius: 8px; }
+  background-color: white; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .create-match {
       width: 60%; } }
@@ -440,44 +440,44 @@ th {
   display: block; }
 
 .game {
-  color: white;
   width: 100%;
   height: auto;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
+  font-family: 'Fredoka One', cursive;
   background-image: linear-gradient(to right, #5499c7, #2980b9);
-  font-family: 'Fredoka One', cursive; }
+  color: white; }
   .game .disabled {
     pointer-events: none; }
 
 .show-chat-communicator-button {
   border: 0;
   background: none;
+  height: 45px;
+  width: 45px;
   font-size: 15px;
   position: fixed;
   right: 2%;
-  background-color: #EE7A38;
   bottom: 2%;
   border-radius: 60%;
-  height: 45px;
-  z-index: 2;
-  width: 45px; }
+  background-color: #EE7A38;
+  z-index: 2; }
   .show-chat-communicator-button i {
     background: none; }
 
 .mute-or-unmute-sounds-button {
   border: 0;
   background: none;
+  width: 45px;
+  height: 45px;
   position: fixed;
   right: 2%;
   font-size: 15px;
-  background-color: #EE7A38;
   top: 2%;
   border-radius: 60%;
-  height: 45px;
   z-index: 2;
-  width: 45px; }
+  background-color: #EE7A38; }
   .mute-or-unmute-sounds-button i {
     background: none; }
 
@@ -490,21 +490,21 @@ th {
   height: auto; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel {
+      height: 80vh;
+      width: 30vw;
       position: fixed;
       overflow: auto;
       right: 0;
-      top: 0;
-      height: 80vh;
-      width: 30vw; }
+      top: 0; }
       .game-panel::-webkit-scrollbar {
         display: none; } }
   .game-panel .game-panel__menu {
     padding-top: 20px; }
     @media screen and (min-height: 550px) and (min-width: 768px) {
       .game-panel .game-panel__menu {
-        padding-top: 20%;
         height: 100%;
         width: 100%;
+        padding-top: 20%;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -532,9 +532,9 @@ th {
 
 .game-panel__finish-turn-button {
   border-radius: 12px;
-  background-color: #FF9D1F;
+  border: 2px solid white;
   color: white;
-  border: 2px solid white; }
+  background-color: #FF9D1F; }
   .game-panel__finish-turn-button:hover {
     opacity: 0.7;
     color: white; }
@@ -550,38 +550,38 @@ th {
     left: 50%;
     top: 4rem;
     transform: translate(-50%, -50%);
-    z-index: 3;
     margin-top: 3rem;
     background-color: transparent;
-    color: #B34782;
     font-weight: bold;
     font-size: 1.618rem;
-    text-shadow: 1px 1px white; } }
+    text-shadow: 1px 1px white;
+    color: #B34782;
+    z-index: 3; } }
 
 .game-panel__character-type {
+  width: 80%;
   margin-top: 5%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
   background-color: transparent;
   border: 2px solid white;
-  background-color: white;
-  color: black;
   border-radius: .25rem;
   padding: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  background-color: white;
+  color: black; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__character-type {
       width: 50%; } }
 
 .game-panel__check-character-type-button {
-  margin-top: 1rem;
   width: 80%;
-  background-color: #FF9D1F;
+  font-size: 1.2rem;
+  margin-top: 1rem;
   color: white;
   border: 2px solid white;
-  font-size: 1.2rem; }
+  background-color: #FF9D1F; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-panel__check-character-type-button {
       width: 50%; } }
@@ -590,9 +590,9 @@ th {
     color: white; }
 
 .game-panel__start-game-button {
-  border-radius: 12px;
   height: auto;
   width: 80%;
+  border-radius: 12px;
   margin-bottom: 1rem;
   pointer-events: auto;
   background-color: #B34782;
@@ -608,10 +608,10 @@ th {
   background-color: transparent; }
 
 .game-panel__game-status {
+  color: #B34782;
   transition: transform .3s;
   font-size: 1.3rem;
-  font-weight: bold;
-  color: #B34782; }
+  font-weight: bold; }
 
 @media screen and (max-width: 768px) {
   .game-panel__game-status_sticky {
@@ -619,13 +619,13 @@ th {
     left: 50%;
     top: 3rem;
     transform: translate(-50%, -50%);
-    z-index: 3;
-    text-shadow: 1px 1px white; } }
+    text-shadow: 1px 1px white;
+    z-index: 3; } }
 
 .chat-communicator {
   width: 100%;
-  pointer-events: auto;
   height: 30%;
+  pointer-events: auto;
   position: fixed;
   z-index: 3;
   right: 0;
@@ -663,35 +663,35 @@ th {
   margin-left: 10px; }
 
 .send-messages__send-message-input {
+  width: 100%;
   height: auto;
   max-height: 30px;
   align-self: flex-end;
   padding: 10px;
-  width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: .50rem;
-  background-color: #73BBF4;
   border: none;
+  background-color: #73BBF4;
   color: black; }
 
 .send-messages__send-message-button {
   border: 0;
   background: none;
   align-self: flex-end;
-  color: #FF9D1F;
   margin-bottom: 5px;
   margin-right: .5rem;
   margin-left: .5rem;
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  color: #FF9D1F; }
 
 .chat-communicator__hide-communicator-button {
+  border: 0;
+  background: none;
   pointer-events: auto;
   position: absolute;
   right: .5rem;
-  top: 0;
-  border: 0;
-  background: none; }
+  top: 0; }
 
 .charackters {
   height: auto;
@@ -712,8 +712,8 @@ th {
   align-self: center;
   position: relative;
   margin-bottom: 40px;
-  background-color: #73BBF4;
-  border-radius: .25rem; }
+  border-radius: .25rem;
+  background-color: #73BBF4; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .character {
       margin-left: 10px;
@@ -739,9 +739,9 @@ th {
 .character-button {
   border: 0;
   background: none;
-  padding: 0;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  padding: 0; }
 
 .character-status {
   height: 100%;
@@ -749,31 +749,31 @@ th {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
   opacity: 0.7;
-  background-color: transparent; }
+  background-color: transparent;
+  z-index: 1; }
 
 @media screen and (min-height: 550px) and (min-width: 768px) {
   .game-board {
-    order: -1;
     height: auto;
+    width: 70%;
     min-height: 100vh;
     justify-content: center;
-    width: 70%;
+    order: -1;
     display: flex;
     flex-direction: column; } }
 
 .endgame-notification {
-  flex-direction: column;
-  height: auto;
   width: 70%;
+  height: auto;
+  flex-direction: column;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   border-radius: 8px;
   padding: 20px;
+  background-color: white;
   z-index: 3; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .endgame-notification {
@@ -800,31 +800,31 @@ th {
   background: none; }
 
 .endgame-notification__character-img {
-  margin-bottom: 1rem;
   width: 80%;
-  height: auto; }
+  height: auto;
+  margin-bottom: 1rem; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .endgame-notification__character-img {
       width: 60%; } }
 
 .game-pause-notification {
-  flex-direction: column;
   height: auto;
   width: 90%;
+  flex-direction: column;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
   border-radius: 8px;
   padding: 20px;
+  background-color: white;
   z-index: 1; }
   @media screen and (min-height: 550px) and (min-width: 768px) {
     .game-pause-notification {
       width: 35%; } }
   .game-pause-notification p:nth-child(1) {
-    background-color: transparent;
     font-size: 1.618rem;
+    background-color: transparent;
     color: black; }
   .game-pause-notification #game-pause-notification__status {
     overflow: hidden;
@@ -897,8 +897,8 @@ th {
     color: white;
     border: 3px solid white; }
   .home * {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.618rem; }
+    font-size: 1.618rem;
+    font-family: 'Fredoka One', cursive; }
     @media screen and (min-height: 550px) and (min-width: 576px) {
       .home * {
         font-size: 2.61792rem; } }
@@ -908,10 +908,10 @@ th {
   filter: blur(4px); }
 
 .home-header {
-  margin-top: 5%;
-  display: flex;
   height: auto;
   width: 100%;
+  margin-top: 5%;
+  display: flex;
   flex-direction: column; }
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .home-header {
@@ -919,9 +919,9 @@ th {
       justify-content: center; } }
   .home-header h1 {
     text-align: center;
-    color: white;
     margin: 2%;
-    font-size: 2.61792rem; }
+    font-size: 2.61792rem;
+    color: white; }
     @media screen and (min-height: 550px) and (min-width: 576px) {
       .home-header h1 {
         align-self: center; } }
@@ -939,10 +939,10 @@ th {
 
 .home-main__show-find-match-button, .home-main__show-create-match-button {
   margin-top: 3%;
-  align-self: center;
   height: auto;
-  padding: 3%;
-  width: 80%; }
+  width: 80%;
+  align-self: center;
+  padding: 3%; }
 
 .home-bottom {
   height: auto;
@@ -951,16 +951,16 @@ th {
   justify-content: center; }
 
 .home-bottom__show-informations-about-game-button, .home-bottom__mute-or-unmute-sounds-button {
-  margin: 5%;
   height: auto;
-  padding: 2%;
-  width: 20%; }
+  width: 20%;
+  margin: 5%;
+  padding: 2%; }
 
 .informations-about-game {
-  display: none;
-  height: 91%;
-  overflow: auto;
   width: 90%;
+  height: 91%;
+  display: none;
+  overflow: auto;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -998,9 +998,9 @@ th {
   font-size: 1.618rem; }
 
 .github-link {
-  color: black;
   display: block;
-  text-align: center; }
+  text-align: center;
+  color: black; }
   .github-link i {
     font-size: 2.61792rem; }
 
