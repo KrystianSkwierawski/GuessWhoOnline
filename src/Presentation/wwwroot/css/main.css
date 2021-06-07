@@ -399,13 +399,6 @@ th {
       padding: 5px;
       color: black; }
 
-.find-match__back-button {
-  border: 0;
-  background: none;
-  background-color: #007bff;
-  color: white;
-  height: auto; }
-
 .find-match_active {
   display: flex; }
 
@@ -435,6 +428,14 @@ th {
   @media screen and (min-height: 550px) and (min-width: 576px) {
     .create-match {
       width: 60%; } }
+
+.create-match-button {
+  background-color: #FF9D1F;
+  border-color: white;
+  color: white; }
+  .create-match-button:hover {
+    border: 2px solid black;
+    opacity: 0.9; }
 
 .create-match_active {
   display: block; }
@@ -786,11 +787,12 @@ th {
   border-color: white;
   color: white; }
   .endgame-notification__vote-to-restart-game-button:hover {
-    opacity: 0.9; }
+    opacity: 0.9;
+    border: 2px solid black; }
 
 .endgame-notification__exit-button {
   background-color: white;
-  color: black !important;
+  color: black;
   border-color: black; }
   .endgame-notification__exit-button:hover {
     opacity: 0.9; }

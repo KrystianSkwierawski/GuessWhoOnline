@@ -11,8 +11,8 @@
             <h1>Guess Who Online</h1>
         </div>
         <div class="home-main">
-            <button class="home-main__show-find-match-button" aria-label="find match">Find match</button>
-            <button class="home-main__show-create-match-button" aria-label="create match">Create match</button>
+            <button class="home-main__show-find-match-button" aria-label="find match">Find game</button>
+            <button class="home-main__show-create-match-button" aria-label="create match">Create game</button>
         </div>
         <div class="home-bottom">
             <button class="home-bottom__show-informations-about-game-button" aria-label="show informations about game"><i class="fas fa-question"></i></button>
@@ -28,7 +28,7 @@
 
         <div class="form-row py-2">
             <div class="col mb-2">
-                <label for="name">Name match</label>
+                <label for="name">Name</label>
                 <input class="form-control name-match-input"
                        id="name"
                        type="text"
@@ -38,7 +38,7 @@
 
         <div class="form-row py-2">
             <div class="col mb-2">
-                <label for="password">Password match</label>
+                <label for="password">Password</label>
                 <input class="form-control password-match-input"
                        id="password"
                        type="password" />
@@ -47,10 +47,10 @@
 
         <div class="form-row">
             <div class="col text-center mb-2">
-                <button type="button" class="btn btn-primary px-4 py-2 create-match__back-button" aria-label="back">Back</button>
+                <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button" aria-label="back">Back</button>
             </div>
             <div class="col text-center">
-                <button class="btn btn-primary px-4 py-2 create-match-button" aria-label="create">Create</button>
+                <button class="btn px-4 py-2 create-match-button" aria-label="create">Create</button>
             </div>
         </div>
     </div>
@@ -58,14 +58,14 @@
 
 <div class="find-match">
     <div class="find-match__top-container">
-        <h2>Match list</h2>
+        <h2>Games</h2>
         <button class="find-match__refresh-list" aria-label="refresh"><i class="fas fa-sync"></i></button>
     </div>
     <ul class="match-list">
         
     </ul>
 
-    <button class="find-match__back-button btn" aria-label="back">Back</button>
+    <button class="find-match__back-button btn btn-dark" aria-label="back">Back</button>
 </div>
 
 <div class="informations-about-game">

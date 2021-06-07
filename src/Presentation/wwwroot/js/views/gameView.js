@@ -84,7 +84,7 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
             <p class="endgame-notification__status">${gameSatus}</p>
             <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" alt="${characterName}"/>
             <button class="btn endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
-            <a class="btn endgame-notification__exit-button my-2" href="/">Exit</a>   
+            <a class="btn btn-dark my-2" href="/">Exit</a>   
         </div>
     `;
     elements.game.insertAdjacentHTML('beforeend', markup);

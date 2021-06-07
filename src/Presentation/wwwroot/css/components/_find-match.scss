@@ -50,14 +50,6 @@
     }
 }
 
-.find-match__back-button {
-    @include reset-button;
-
-    background-color: #007bff;
-    color: white;
-    height: auto;
-}
-
 .find-match_active {
     display: flex;
 }

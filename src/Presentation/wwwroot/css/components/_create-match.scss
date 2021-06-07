@@ -17,6 +17,17 @@
     }
 }
 
+.create-match-button {
+    background-color: #FF9D1F;
+    border-color: white;
+    color: white;
+    
+    &:hover {
+        border: 2px solid black;
+        opacity: 0.9;
+    }
+}
+
 .create-match_active {
-    display: block;  
+    display: block;
 }
