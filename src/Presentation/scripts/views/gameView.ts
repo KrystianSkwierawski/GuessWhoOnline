@@ -269,9 +269,13 @@ const resetCharacterTypeElement = (): void => {
     unhideCharacterTypeOptions();
 };
 
-export const restartGamePanel = (): void => {
+const resetYourCharacter = (): void => {
     (<HTMLImageElement>elements.gamePanel__yourCharacterImg).src = "/images/square.webp";
     (<HTMLEmbedElement>elements.gamePanel__yourCharacterName).textContent = "";
+};
+
+export const restartGamePanel = (): void => {
+    resetYourCharacter();
     updateGamePanel__roundTime(60);
     resetCharacterTypeElement();
 };
