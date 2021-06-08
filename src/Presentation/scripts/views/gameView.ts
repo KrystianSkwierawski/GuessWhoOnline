@@ -175,13 +175,13 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, 
 };
 
 const removeCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
-    const optionElement: any = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
-    elements.gamePanel__characterType.removeChild(optionElement);
+    const optionElement: HTMLOptionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
+    optionElement.hidden = true;
 };
 
 const addCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
-    const markup: string = `<option value="${characterName}" id="character-type_${characterName}">${characterName}</option>`;
-    elements.gamePanel__characterType.insertAdjacentHTML('beforeend', markup);
+    const optionElement: HTMLOptionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
+    optionElement.hidden = false;
 };
 
 export const stickyRoundTime = (): void => {
@@ -253,12 +253,20 @@ export const restartGameBoard = (): void => {
     });
 };
 
+const resetCharacterTypeElement = (): void => {
+    const defaultCharacterTypeIndex: number = 0;
+    (<HTMLSelectElement>elements.gamePanel__characterType).selectedIndex = defaultCharacterTypeIndex;
+
+    elements.characterTypeOptions.forEach((option: HTMLOptionElement) => {
+        option.hidden = false;
+    });
+};
+
 export const restartGamePanel = (): void => {
     (<HTMLImageElement>elements.gamePanel__yourCharacterImg).src = "/images/square.webp";
     (<HTMLEmbedElement>elements.gamePanel__yourCharacterName).textContent = "";
-    const defaultCharacterTypeIndex: number = 0;
-    (<HTMLSelectElement>elements.gamePanel__characterType).selectedIndex = defaultCharacterTypeIndex;
     updateGamePanel__roundTime(60);
+    resetCharacterTypeElement();
 };
 
 

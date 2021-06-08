@@ -136,11 +136,11 @@ export const changeCharacterStatus = (characterButtonElement, characterName) => 
 };
 const removeCharacterOptionFromGamePanel__characterType = (characterName) => {
     const optionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
-    elements.gamePanel__characterType.removeChild(optionElement);
+    optionElement.hidden = true;
 };
 const addCharacterOptionFromGamePanel__characterType = (characterName) => {
-    const markup = `<option value="${characterName}" id="character-type_${characterName}">${characterName}</option>`;
-    elements.gamePanel__characterType.insertAdjacentHTML('beforeend', markup);
+    const optionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
+    optionElement.hidden = false;
 };
 export const stickyRoundTime = () => {
     const scrollY = window.scrollY - 20;
@@ -196,11 +196,17 @@ export const restartGameBoard = () => {
         parentNodeElement.removeChild(characterStatus);
     });
 };
+const resetCharacterTypeElement = () => {
+    const defaultCharacterTypeIndex = 0;
+    elements.gamePanel__characterType.selectedIndex = defaultCharacterTypeIndex;
+    elements.characterTypeOptions.forEach((option) => {
+        option.hidden = false;
+    });
+};
 export const restartGamePanel = () => {
     elements.gamePanel__yourCharacterImg.src = "/images/square.webp";
     elements.gamePanel__yourCharacterName.textContent = "";
-    const defaultCharacterTypeIndex = 0;
-    elements.gamePanel__characterType.selectedIndex = defaultCharacterTypeIndex;
     updateGamePanel__roundTime(60);
+    resetCharacterTypeElement();
 };
 //# sourceMappingURL=gameView.js.map

@@ -9,18 +9,19 @@
             <p class="game-panel__game-status">Wait for opponent<span>. . .</span></p>
 
             <p>Your character:</p>
-            <img class="game-panel__your-character-img" src="/images/square.webp" alt="your character"/>
+            <img class="game-panel__your-character-img" src="/images/square.webp" alt="your character" />
             <p class="game-panel__your-character-name">Name</p>
 
             <p class="game-panel__round-time">2:00</p>
             <button class="btn game-panel__finish-turn-button" aria-label="finish turn">Finish turn</button>
 
-            <select class="game-panel__character-type" name="character-type" id="character-type">
+            <select class="game-panel__character-type" name="character-type" id="character-type"  data-characternames="@Model.CharactersNames.ToString()"> 
                 <option disabled selected>Guess opponent character</option>
 
                 @foreach (var characterName in Model.CharactersNames)
                 {
-    <option value="@characterName" id="character-type_@characterName">@characterName</option>}
+                    <option class="character-type__option" value="@characterName" id="character-type_@characterName">@characterName</option>
+}
             </select>
             <button class="game-panel__check-character-type-button btn" aria-label="guess">Guess <i class="question-mark-icon fas fa-question"></i></button>
         </div>
@@ -33,10 +34,10 @@
             {
                 string characterPath = $"../images/characters/{characterName}.webp";
 
-<div class="character">
-    <button class="character-button" aria-label="@characterName"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
-    <p class="character-name">@characterName</p>
-</div>            }
+                <div class="character">
+                    <button class="character-button" aria-label="@characterName"><img class="character-img" src="@characterPath" alt="@characterName" /></button>
+                    <p class="character-name">@characterName</p>
+                </div>      }
 
         </div>
 
