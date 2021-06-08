@@ -116,7 +116,7 @@ export const remvoeTheNotificationAboutPausingTheGame = () => {
 export const changeCharacterStatus = (characterButtonElement, characterName) => {
     const characterStatusElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
     if (!characterStatusElement) { //if character has no status
-        removeCharacterOptionFromGamePanel__characterType(characterName);
+        hideCharacterOptionFromGamePanel__characterType(characterName);
         changeCharacterStatusToRejected(characterButtonElement);
         return;
     }
@@ -126,7 +126,7 @@ export const changeCharacterStatus = (characterButtonElement, characterName) => 
         //remove old character status
         removeCharacterStatus(characterButtonElement);
         changeCharacterStatusToSuspect(characterButtonElement);
-        addCharacterOptionFromGamePanel__characterType(characterName);
+        unhideCharacterOptionFromGamePanel__characterType(characterName);
         return;
     }
     if (isSuspect) {
@@ -134,11 +134,11 @@ export const changeCharacterStatus = (characterButtonElement, characterName) => 
         return;
     }
 };
-const removeCharacterOptionFromGamePanel__characterType = (characterName) => {
+const hideCharacterOptionFromGamePanel__characterType = (characterName) => {
     const optionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
     optionElement.hidden = true;
 };
-const addCharacterOptionFromGamePanel__characterType = (characterName) => {
+const unhideCharacterOptionFromGamePanel__characterType = (characterName) => {
     const optionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
     optionElement.hidden = false;
 };
@@ -196,12 +196,18 @@ export const restartGameBoard = () => {
         parentNodeElement.removeChild(characterStatus);
     });
 };
-const resetCharacterTypeElement = () => {
+const setDeafultCharacterType = () => {
     const defaultCharacterTypeIndex = 0;
     elements.gamePanel__characterType.selectedIndex = defaultCharacterTypeIndex;
+};
+const unhideCharacterTypeOptions = () => {
     elements.characterTypeOptions.forEach((option) => {
         option.hidden = false;
     });
+};
+const resetCharacterTypeElement = () => {
+    setDeafultCharacterType();
+    unhideCharacterTypeOptions();
 };
 export const restartGamePanel = () => {
     elements.gamePanel__yourCharacterImg.src = "/images/square.webp";

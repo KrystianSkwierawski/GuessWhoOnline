@@ -151,7 +151,7 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, 
     const characterStatusElement: HTMLEmbedElement = characterButtonElement.querySelector(`.${elementStrings.characterStatus}`);
 
     if (!characterStatusElement) { //if character has no status
-        removeCharacterOptionFromGamePanel__characterType(characterName);
+        hideCharacterOptionFromGamePanel__characterType(characterName);
         changeCharacterStatusToRejected(characterButtonElement);
         return;
     }
@@ -164,7 +164,7 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, 
         removeCharacterStatus(characterButtonElement);
         changeCharacterStatusToSuspect(characterButtonElement);
 
-        addCharacterOptionFromGamePanel__characterType(characterName);
+        unhideCharacterOptionFromGamePanel__characterType(characterName);
         return;
     }
 
@@ -174,12 +174,12 @@ export const changeCharacterStatus = (characterButtonElement: HTMLEmbedElement, 
     }
 };
 
-const removeCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
+const hideCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
     const optionElement: HTMLOptionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
     optionElement.hidden = true;
 };
 
-const addCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
+const unhideCharacterOptionFromGamePanel__characterType = (characterName: string): void => {
     const optionElement: HTMLOptionElement = elements.gamePanel__characterType.querySelector(`#character-type_${characterName}`);
     optionElement.hidden = false;
 };
@@ -253,13 +253,20 @@ export const restartGameBoard = (): void => {
     });
 };
 
-const resetCharacterTypeElement = (): void => {
+const setDeafultCharacterType = (): void => {
     const defaultCharacterTypeIndex: number = 0;
     (<HTMLSelectElement>elements.gamePanel__characterType).selectedIndex = defaultCharacterTypeIndex;
+};
 
+const unhideCharacterTypeOptions = (): void => {
     elements.characterTypeOptions.forEach((option: HTMLOptionElement) => {
         option.hidden = false;
     });
+};
+
+const resetCharacterTypeElement = (): void => {
+    setDeafultCharacterType();
+    unhideCharacterTypeOptions();
 };
 
 export const restartGamePanel = (): void => {
