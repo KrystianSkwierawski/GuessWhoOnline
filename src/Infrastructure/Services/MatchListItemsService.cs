@@ -19,6 +19,19 @@ namespace Infrastructure.Services
             return _matches;
         }
 
+        public void RemoveEmptyMatches()
+        {
+            IEnumerable<MatchListItem> emptyMatches = _matches.Where(x => x.NumberOfConnections == 0);
+
+            if (emptyMatches.Count() == 0)         
+                return;          
+
+            foreach (var emptyMatch in emptyMatches)
+            {
+                _matches.Remove(emptyMatch);
+            }
+        }
+
         public void AddMatchListItem(MatchListItem match)
         {
             _matches.Add(match);

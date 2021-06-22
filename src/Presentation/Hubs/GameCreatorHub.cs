@@ -20,6 +20,8 @@ namespace Presentation.Hubs
 
         public async Task GetMatchListItems()
         {
+            await _mediator.Send(new RemoveEmptyMatchesCommand());
+
             List<MatchListItem> matchListItems = await _mediator.Send(new GetAllMatchListItemsQuery());
 
             await Clients.Client(Context.ConnectionId).SendAsync("RecieveAndRenderListOfMatches", matchListItems);

@@ -12,6 +12,7 @@ namespace Application.Common.Interfaces
         public void AddConnection(string url);
         public void RemoveConnection(string url);
         public int GetNumberOfConnections(string url);
+        public void RemoveEmptyMatches();
 
     }
 }

@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
 });
 
 elements.homeMain__showFindMatchButton.addEventListener('click', async (): Promise<void> => {
-    await gameCreatorHub.refreshListOfGames()
+    await gameCreatorHub.refreshListOfGames();
 
     homeView.showFindMatchContainer();
     homeView.hideCreateMatchContainer();
