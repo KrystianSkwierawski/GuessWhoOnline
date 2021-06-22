@@ -10,7 +10,7 @@ namespace Application.MatchListItems.Queries
         public string Url { get; set; }
         public class GetNumberOfConnectionsByUrlQueryHandler : IRequestHandler<GetNumberOfConnectionsByUrlQuery, int>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public GetNumberOfConnectionsByUrlQueryHandler(IMatchListItemsService matchListItemsService)
             {

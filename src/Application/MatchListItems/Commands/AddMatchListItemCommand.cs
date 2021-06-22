@@ -11,7 +11,7 @@ namespace Application.MatchListItems.Commands
         public MatchListItem MatchListItem { get; set; }
         public class AddMatchListItemCommandHandler : IRequestHandler<AddMatchListItemCommand>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public AddMatchListItemCommandHandler(IMatchListItemsService matchListItemsService)
             {

@@ -10,7 +10,7 @@ namespace Application.MatchListItems.Commands
         public string Url { get; set; }
         public class RemoveConnectionCommandHandler : IRequestHandler<RemoveConnectionCommand>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public RemoveConnectionCommandHandler(IMatchListItemsService matchListItemsService)
             {

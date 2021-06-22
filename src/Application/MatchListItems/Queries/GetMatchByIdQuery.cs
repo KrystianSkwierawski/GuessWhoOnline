@@ -11,7 +11,7 @@ namespace Application.MatchListItems.Queries
         public string Id { get; set; }
         public class GetMatchByIdQueryHandler : IRequestHandler<GetMatchByIdQuery, MatchListItem>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public GetMatchByIdQueryHandler(IMatchListItemsService matchListItemsService)
             {

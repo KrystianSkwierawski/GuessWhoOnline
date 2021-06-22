@@ -10,7 +10,7 @@ namespace Application.MatchListItems.Commands
         public string Url { get; set; }
         public class RemoveMatchByUrlCommandHandler : IRequestHandler<RemoveMatchByUrlCommand>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public RemoveMatchByUrlCommandHandler(IMatchListItemsService matchListItemsService)
             {

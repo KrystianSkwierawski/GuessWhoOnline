@@ -10,7 +10,7 @@ namespace Application.CharacterNames.Queries
     {
         public class GetCharacterNamesQueryHandler : IRequestHandler<GetCharacterNamesQuery, List<string>>
         {
-            ICharactersService _charactersService;
+            private readonly ICharactersService _charactersService;
 
             public GetCharacterNamesQueryHandler(ICharactersService charactersService)
             {

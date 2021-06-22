@@ -10,7 +10,7 @@ namespace Application.MatchListItems.Commands
         public string Url { get; set; }
         public class AddConnectionCommandHandler : IRequestHandler<AddConnectionCommand>
         {
-            IMatchListItemsService _matchListItemsService;
+            private readonly IMatchListItemsService _matchListItemsService;
 
             public AddConnectionCommandHandler(IMatchListItemsService matchListItemsService)
             {
