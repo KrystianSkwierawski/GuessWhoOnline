@@ -3,7 +3,6 @@ Two-player character guessing game. The idea for the project came from the desir
  
 ![gueswhoonline](https://user-images.githubusercontent.com/52860350/123094098-c8f3c300-d42c-11eb-99b3-48368754a398.jpg)
 
-
  ## Main technologies: 
 
 ### Back-end
