@@ -3,9 +3,24 @@
     public class MatchListItem
     {
         public string Id { get; set; }
+
         public string Url { get; set; }
-        public string Name { get; set; }
+
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if(value.Length > 85)
+                {
+                    _name = value.Substring(0, 82) + "...";
+                }
+            }
+        }
+
         public string Password { get; set; }
+
         public int NumberOfConnections { get; set; }
     }
 }
