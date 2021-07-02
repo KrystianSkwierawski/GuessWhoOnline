@@ -1,8 +1,8 @@
-# GuessWhoOnline
+# <p align="center"><img src="https://user-images.githubusercontent.com/52860350/123124502-074aab80-d448-11eb-8935-c19e64621ea0.png" alt="guesswhoonline"/></p>
 Two-player character guessing game. The idea for the project came from the desire to play the <a href="https://en.wikipedia.org/wiki/Guess_Who%3F">classic board game of Guess Who</a>. During the project I learned <a href="https://www.typescriptlang.org/">TypeScript</a> and practiced <a href="https://sass-lang.com/">Sass</a>.
  
-![image](https://user-images.githubusercontent.com/52860350/120314313-6569f000-c2db-11eb-9155-f675af9e312d.png)
-![image](https://user-images.githubusercontent.com/52860350/120608405-75a3db80-c451-11eb-926b-a0489e0cfec7.png)
+![gueswhoonline](https://user-images.githubusercontent.com/52860350/123094098-c8f3c300-d42c-11eb-99b3-48368754a398.jpg)
+
 
  ## Main technologies: 
 
@@ -22,9 +22,8 @@ Two-player character guessing game. The idea for the project came from the desir
 Project in progress.
 
 ## Contact to co-workers
-Graphic designer: wiktoria.dominika.skorek@gmail.com
-
-Sound technician: bartek.budek@op.pl
+* Graphic designer: wiktoria.dominika.skorek@gmail.com
+* Sound technician: bartek.budek@op.pl
  
  
 
