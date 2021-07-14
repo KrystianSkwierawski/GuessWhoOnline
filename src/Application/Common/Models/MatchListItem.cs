@@ -15,7 +15,10 @@
                 if(value.Length > 85)
                 {
                     _name = value.Substring(0, 82) + "...";
+                    return;
                 }
+
+                _name = value;
             }
         }
 
