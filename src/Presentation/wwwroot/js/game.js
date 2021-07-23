@@ -107,7 +107,7 @@ elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awa
 }));
 const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
     const message = gameView.getSendMessages__sendMessageInputValue();
-    const inputIsNotEmpty = message.trim() ? true : false;
+    const inputIsNotEmpty = !!message.trim();
     const gameStatus = gameView.getGameStatus();
     if (inputIsNotEmpty && gameStatus !== GameStatus.waitForOpponent) {
         const sender = "You";

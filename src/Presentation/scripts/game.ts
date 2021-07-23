@@ -126,7 +126,7 @@ elements.sendMessages__sendMessageInput.addEventListener('keypress', async (): P
 
 const trySendMessage = async (): Promise<void> => {
     const message: string = gameView.getSendMessages__sendMessageInputValue();
-    const inputIsNotEmpty = message.trim() ? true : false;
+    const inputIsNotEmpty: boolean = !!message.trim();
     const gameStatus: string = gameView.getGameStatus();
 
     if (inputIsNotEmpty && gameStatus !== GameStatus.waitForOpponent) {
