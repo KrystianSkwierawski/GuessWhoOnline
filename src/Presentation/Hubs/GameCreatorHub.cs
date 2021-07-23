@@ -31,7 +31,7 @@ namespace Presentation.Hubs
         {
             MatchListItem match = await _mediator.Send(new GetMatchByIdQuery { Id = id });
 
-            bool isPasswordCorrect = (match.Password == password) ? true : false;
+            bool isPasswordCorrect = match.Password == password;
             if (isPasswordCorrect)
             {
                 await Clients.Caller.SendAsync("RecieveMatchUrl", match.Url);
@@ -44,7 +44,7 @@ namespace Presentation.Hubs
         public async Task CreateMatch(MatchListItem match)
         {
             List<MatchListItem> matchListItems = await _mediator.Send(new GetAllMatchListItemsQuery());
-            bool matchDoesNotExist = (matchListItems.FirstOrDefault(x => x.Id == match.Id) == null) ? true : false;
+            bool matchDoesNotExist = matchListItems.FirstOrDefault(x => x.Id == match.Id) == null;
 
             if (matchDoesNotExist)
             {

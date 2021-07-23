@@ -52,8 +52,8 @@ const addEventListenerToMatchButton = (matchId) => {
 export const addMatchToMatchList = (match) => {
     const gameUrl = getMatchFullUrl(match.url);
     let markup = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
-    const gameIsFull = (match.numberOfConnections === 2) ? true : false;
-    const gameHasPassword = (match.password === "") ? false : true;
+    const gameIsFull = match.numberOfConnections === 2;
+    const gameHasPassword = !!match.password;
     if (gameHasPassword) {
         markup = `<li><button id="${match.id}">${match.name} ${match.numberOfConnections}/2  <i class="fas fa-lock"></i></button></li>`;
         elements.matchList.insertAdjacentHTML('afterbegin', markup);

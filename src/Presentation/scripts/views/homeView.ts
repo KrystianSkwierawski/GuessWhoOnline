@@ -59,9 +59,9 @@ export const addMatchToMatchList = (match: MatchListItem): void => {
     const gameUrl: string = getMatchFullUrl(match.url);
     let markup: string = `<li><a href="${gameUrl}">${match.name} ${match.numberOfConnections}/2 </a></li>`;
 
-    const gameIsFull: boolean = (match.numberOfConnections === 2) ? true : false;
+    const gameIsFull: boolean = match.numberOfConnections === 2;
 
-    const gameHasPassword: boolean = (match.password === "") ? false : true;
+    const gameHasPassword: boolean = !!match.password;
 
     if (gameHasPassword) {
         markup = `<li><button id="${match.id}">${match.name} ${match.numberOfConnections}/2  <i class="fas fa-lock"></i></button></li>`;

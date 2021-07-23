@@ -69,7 +69,7 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
 const checkCharacterType = async (): Promise<void> => {
     const selectedCharacterType: string = gameView.getCharacterTypeValue();
 
-    const userSelectedAnyCharacter: boolean = (selectedCharacterType === 'Guess opponent character') ? false : true;
+    const userSelectedAnyCharacter: boolean = selectedCharacterType !== 'Guess opponent character';
     if (userSelectedAnyCharacter) {
         await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
         return;
@@ -116,7 +116,7 @@ elements.sendMessages__sendMessageButton.addEventListener('click', async (): Pro
 elements.sendMessages__sendMessageInput.addEventListener('keypress', async (): Promise<void> => {
     GameSounds.playKeyboardClickSound();
     const enterKey = 13;
-    const clickedEnterKey = ((<KeyboardEvent>event).keyCode === enterKey && !(<KeyboardEvent>event).shiftKey) ? true : false;
+    const clickedEnterKey: boolean = ((<KeyboardEvent>event).keyCode === enterKey && !(<KeyboardEvent>event).shiftKey);
 
     if (clickedEnterKey) {
         await trySendMessage();

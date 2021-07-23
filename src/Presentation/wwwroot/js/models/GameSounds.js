@@ -1,7 +1,7 @@
 export class GameSounds {
     static startUp() {
         this.gameBackgroundMusic.volume = 0.5;
-        this.soundsAreMuted = (localStorage.soundsAreMuted === 'false') ? false : true;
+        this.soundsAreMuted = localStorage.soundsAreMuted === 'true';
         localStorage.soundsAreMuted = this.soundsAreMuted;
     }
     static playTiktokTimerSound() {

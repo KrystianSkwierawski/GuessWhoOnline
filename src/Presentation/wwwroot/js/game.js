@@ -62,7 +62,7 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
 });
 const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {
     const selectedCharacterType = gameView.getCharacterTypeValue();
-    const userSelectedAnyCharacter = (selectedCharacterType === 'Guess opponent character') ? false : true;
+    const userSelectedAnyCharacter = selectedCharacterType !== 'Guess opponent character';
     if (userSelectedAnyCharacter) {
         yield gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
         return;
@@ -99,7 +99,7 @@ elements.sendMessages__sendMessageButton.addEventListener('click', () => __await
 elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awaiter(void 0, void 0, void 0, function* () {
     GameSounds.playKeyboardClickSound();
     const enterKey = 13;
-    const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey) ? true : false;
+    const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey);
     if (clickedEnterKey) {
         yield trySendMessage();
         gameView.clearSendMessages__sendMessagesInputValue();

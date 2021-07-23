@@ -33,7 +33,7 @@ namespace Presentation.Hubs
 
             await AddConnection(groupName);
 
-            bool firstConnection = (game is null) ? true : false;
+            bool firstConnection = game is null;
             if (firstConnection)
             {
                 _games.Add(new Game() { Id = groupName });
@@ -55,12 +55,12 @@ namespace Presentation.Hubs
         private bool CheckIfGameIsFull(string groupName)
         {
             int numberOfConnections = _matchListItemsService.GetNumberOfConnections(groupName);
-            return (numberOfConnections == 2) ? true : false;
+            return numberOfConnections == 2;
         }
 
         private bool CheckIfGameIsPaused(string gameStatus)
         {
-            return (gameStatus != null && gameStatus != GameStatus.Ended) ? true : false;
+            return (gameStatus != null) && (gameStatus != GameStatus.Ended);
         }
 
         private async Task AddConnection(string groupName)
@@ -74,7 +74,7 @@ namespace Presentation.Hubs
 
         private async Task SendNotificationAboutOpponentJoinedToTheGameIfGroupExist(string gameId)
         {
-            bool groupExist = (_groups.ContainsValue(gameId)) ? true : false;
+            bool groupExist = _groups.ContainsValue(gameId);
             if (groupExist)
             {
                 await Clients.Group(gameId).SendAsync("SendNotificationAboutOpponentJoinedToTheGame");
@@ -145,7 +145,7 @@ namespace Presentation.Hubs
 
             game.VotesToRestartGame++;
 
-            bool bothPlayersVotedToRestartGame = (game.VotesToRestartGame == 2) ? true : false;
+            bool bothPlayersVotedToRestartGame = game.VotesToRestartGame == 2;
             if (bothPlayersVotedToRestartGame)
             {
                 await RestartGame(game);
@@ -333,7 +333,7 @@ namespace Presentation.Hubs
             string loser = null, winner = null;
             string currentTurnPlayerStatus = "", nextTurnPlayerStatus = "";
 
-            bool correctAnswer = (nextTurnPlayerCharacter == characterType) ? true : false;
+            bool correctAnswer = nextTurnPlayerCharacter == characterType;
 
             if (correctAnswer)
             {
@@ -385,7 +385,7 @@ namespace Presentation.Hubs
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            bool userIsPlayer = (_groups.ContainsKey(Context.ConnectionId)) ? true : false;
+            bool userIsPlayer = _groups.ContainsKey(Context.ConnectionId);
 
             if (userIsPlayer)
             {
@@ -428,7 +428,7 @@ namespace Presentation.Hubs
         private bool CheckIfGameIsEmpty(string gameId)
         {
             int numberOfConnectionsInCurrentGroup = _groups.Where(x => x.Value == gameId).Count();
-            return (numberOfConnectionsInCurrentGroup == 0) ? true : false;
+            return numberOfConnectionsInCurrentGroup == 0;
         }
 
         private async Task PuaseTheGame(Game game)
@@ -492,7 +492,7 @@ namespace Presentation.Hubs
 
         private bool CheckIfGroupExist(string connectionId)
         {
-            return _groups.ContainsKey(connectionId) ? true : false;
+            return _groups.ContainsKey(connectionId);
         }
     }
 }
