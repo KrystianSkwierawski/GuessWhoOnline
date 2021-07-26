@@ -13,8 +13,8 @@ namespace Application.UnitTests.MatchListItems.Queries
 {
     public class GetNumberOfConnectionsByUrlQueryHandlerTests
     {
-       [Fact]
-       public async Task ShouldReturnNumberOfConnections()
+        [Fact]
+        public async Task ShouldReturnNumberOfConnections()
         {
             //Arrange
             IMatchListItemsService matchListItemService = new MatchListItemsService();
@@ -31,7 +31,7 @@ namespace Application.UnitTests.MatchListItems.Queries
             var handler = new GetNumberOfConnectionsByUrlQueryHandler(matchListItemService);
 
             //Act
-            int numberOfConnections = await handler.Handle(new GetNumberOfConnectionsByUrlQuery { Url = matchListItem.Url}, CancellationToken.None);
+            int numberOfConnections = await handler.Handle(new GetNumberOfConnectionsByUrlQuery { Url = matchListItem.Url }, CancellationToken.None);
 
             //Assert
             numberOfConnections.Should().Be(numberOfConnectionsToAdd);

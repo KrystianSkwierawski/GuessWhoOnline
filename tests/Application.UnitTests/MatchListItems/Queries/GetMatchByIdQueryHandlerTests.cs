@@ -25,7 +25,7 @@ namespace Application.UnitTests.MatchListItems.Queries
             var handler = new GetMatchByIdQueryHandler(matchListItemService);
 
             //Act
-            MatchListItem result = await handler.Handle(new GetMatchByIdQuery { Id = matchListItem.Id}, CancellationToken.None);
+            MatchListItem result = await handler.Handle(new GetMatchByIdQuery { Id = matchListItem.Id }, CancellationToken.None);
 
             //Assert
             result.Should().NotBeNull();

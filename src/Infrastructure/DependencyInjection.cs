@@ -8,14 +8,14 @@ namespace Infrastructure
     public static class DependencyInjection
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
-        {         
+        {
             services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
             {
                 ProgressBar = false,
                 PositionClass = ToastPositions.TopRight,
             });
             services.AddSingleton<ICharactersService, CharactersService>();
-            services.AddSingleton<IMatchListItemsService ,MatchListItemsService>();
+            services.AddSingleton<IMatchListItemsService, MatchListItemsService>();
             services.AddSignalR();
 
             return services;

@@ -6,7 +6,7 @@ namespace Infrastructure.Services
 {
     public class CharactersService : ICharactersService
     {
-        private List<string> _characterNames = new List<string>();
+        private readonly List<string> _characterNames = new List<string>();
 
         public CharactersService()
         {

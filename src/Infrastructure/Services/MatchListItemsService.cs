@@ -7,7 +7,7 @@ namespace Infrastructure.Services
 {
     public class MatchListItemsService : IMatchListItemsService
     {
-        private List<MatchListItem> _matches;
+        private readonly List<MatchListItem> _matches;
 
         public MatchListItemsService()
         {
@@ -23,8 +23,8 @@ namespace Infrastructure.Services
         {
             IEnumerable<MatchListItem> emptyMatches = _matches.Where(x => x.NumberOfConnections == 0);
 
-            if (emptyMatches.Count() == 0)         
-                return;          
+            if (emptyMatches.Count() == 0)
+                return;
 
             foreach (var emptyMatch in emptyMatches)
             {

@@ -11,7 +11,7 @@ namespace Presentation.Areas.User.Controllers
     [Area("User")]
     public class GameController : BaseController
     {
-        IMediator _mediator;
+        readonly IMediator _mediator;
 
         public GameController(IMediator mediator)
         {
@@ -25,7 +25,7 @@ namespace Presentation.Areas.User.Controllers
             {
                 Id = id,
                 CharactersNames = await _mediator.Send(new GetCharacterNamesQuery()),
-                NumberOfConnections = await _mediator.Send(new GetNumberOfConnectionsByUrlQuery { Url = id}),
+                NumberOfConnections = await _mediator.Send(new GetNumberOfConnectionsByUrlQuery { Url = id }),
             };
 
             return View("Index", gameViewModel);

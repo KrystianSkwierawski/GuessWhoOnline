@@ -10,7 +10,7 @@ using static Application.MatchListItems.Commands.AddMatchListItemCommand;
 
 namespace Application.UnitTests.MatchListItems.Commands
 {
-    public  class AddMatchListItemCommandHandlerTests
+    public class AddMatchListItemCommandHandlerTests
     {
         [Fact]
         public async Task ShouldAddMatchListItem()
@@ -23,7 +23,7 @@ namespace Application.UnitTests.MatchListItems.Commands
             var handler = new AddMatchListItemCommandHandler(matchListItemService);
 
             //Act
-            await handler.Handle(new AddMatchListItemCommand {MatchListItem = matchListItem }, CancellationToken.None);
+            await handler.Handle(new AddMatchListItemCommand { MatchListItem = matchListItem }, CancellationToken.None);
 
             //Assert
             MatchListItem result = matchListItemService.GetMatchById(matchListItem.Id);

@@ -1,6 +1,5 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
-using Domain.Common;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
@@ -11,9 +10,9 @@ namespace Presentation.Hubs
 {
     public class GameHub : Hub
     {
-        static Dictionary<string, string> _groups = new Dictionary<string, string>();
-        static List<Game> _games = new List<Game>();
-        IMatchListItemsService _matchListItemsService;
+        static readonly Dictionary<string, string> _groups = new Dictionary<string, string>();
+        static readonly List<Game> _games = new List<Game>();
+        readonly IMatchListItemsService _matchListItemsService;
 
         public GameHub(IMatchListItemsService matchListItemsService)
         {

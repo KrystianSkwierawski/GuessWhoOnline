@@ -11,7 +11,7 @@ namespace Presentation.Hubs
 {
     public class GameCreatorHub : Hub
     {
-        IMediator _mediator;
+        readonly IMediator _mediator;
 
         public GameCreatorHub(IMediator mediator)
         {

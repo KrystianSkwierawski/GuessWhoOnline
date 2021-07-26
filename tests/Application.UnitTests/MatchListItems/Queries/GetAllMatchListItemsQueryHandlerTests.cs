@@ -21,7 +21,7 @@ namespace Application.UnitTests.MatchListItems.Queries
             //Arrange
             IMatchListItemsService matchListItemService = new MatchListItemsService();
 
-            MatchListItem matchListItem = new MatchListItem { Id = Guid.NewGuid().ToString()};
+            MatchListItem matchListItem = new MatchListItem { Id = Guid.NewGuid().ToString() };
             matchListItemService.AddMatchListItem(matchListItem);
 
             var handler = new GetAllMatchListItemsQueryHandler(matchListItemService);

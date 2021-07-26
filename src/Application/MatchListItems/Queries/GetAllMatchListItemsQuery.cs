@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Application.MatchListItems.Queries
 {
     public class GetAllMatchListItemsQuery : IRequest<List<MatchListItem>>
-    {      
+    {
         public class GetAllMatchListItemsQueryHandler : IRequestHandler<GetAllMatchListItemsQuery, List<MatchListItem>>
         {
             private readonly IMatchListItemsService _matchListItemsService;

@@ -14,7 +14,7 @@ namespace Application.UnitTests.CharacterNames.Queries
     {
         [Fact]
         public async Task ShouldReturnCharacterNames()
-        {          
+        {
             //Arrange
             var handler = new GetCharacterNamesQueryHandler(new CharactersService());
 
