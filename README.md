@@ -41,7 +41,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  ### Other
  * Trello
  * JustColorPicker
- * VisualStudio
+ * Visual Studio
  * Git
  
 ## Status
