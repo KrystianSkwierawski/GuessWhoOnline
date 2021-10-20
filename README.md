@@ -38,6 +38,12 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  * Sass
  * HTML5
  
+ ### Other
+ * Trello
+ * JustColorPicker
+ * VisualStudio
+ * Git
+ 
 ## Status
 Project in progress.
 
