@@ -48,7 +48,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
 Project in progress.
 
 ## Contact to co-workers
-* Graphic designer: wiktoria.dominika.skorek@gmail.com
+* Graphic designer: <a href="https://www.linkedin.com/in/wiktoria-sk%C3%B3rek/">Wiktoria Skórek</a>
 * Sound technician: bartek.budek@op.pl
  
  
