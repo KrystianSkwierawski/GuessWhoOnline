@@ -1,6 +1,6 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/52860350/123124502-074aab80-d448-11eb-8935-c19e64621ea0.png" alt="guesswhoonline"/></p>
 
-## What is GuessWhoOnline
+## What is the GuessWhoOnline
 Two-player character guessing game. 
 
 ## Why was the game created?
