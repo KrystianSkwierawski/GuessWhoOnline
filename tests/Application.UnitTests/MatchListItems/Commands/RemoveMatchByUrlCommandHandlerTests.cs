@@ -19,7 +19,13 @@ namespace Application.UnitTests.MatchListItems.Commands
             //Arrange
             IMatchListItemsService matchListItemService = new MatchListItemsService();
 
-            MatchListItem matchListItem = new MatchListItem { Url = Guid.NewGuid().ToString() };
+            MatchListItem matchListItem = new MatchListItem
+            {
+                Id = Guid.NewGuid().ToString(),
+                Url = Guid.NewGuid().ToString(),
+                Name = "Game",
+                Password = "123",
+            };
 
             var handler = new RemoveMatchByUrlCommandHandler(matchListItemService);
 

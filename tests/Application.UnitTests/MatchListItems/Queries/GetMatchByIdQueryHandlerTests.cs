@@ -19,7 +19,13 @@ namespace Application.UnitTests.MatchListItems.Queries
             //Arrange
             IMatchListItemsService matchListItemService = new MatchListItemsService();
 
-            MatchListItem matchListItem = new MatchListItem { Id = Guid.NewGuid().ToString() };
+            MatchListItem matchListItem = new MatchListItem
+            {
+                Id = Guid.NewGuid().ToString(),
+                Url = Guid.NewGuid().ToString(),
+                Name = "Game",
+                Password = "123",
+            };
             matchListItemService.AddMatchListItem(matchListItem);
 
             var handler = new GetMatchByIdQueryHandler(matchListItemService);

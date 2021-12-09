@@ -23,7 +23,10 @@ namespace Application.UnitTests.MatchListItems.Commands
 
             MatchListItem matchListItem = new MatchListItem
             {
+                Id = Guid.NewGuid().ToString(),
                 Url = Guid.NewGuid().ToString(),
+                Name = "Game",
+                Password = "123",
                 NumberOfConnections = startNumberOfConnections
             };
             matchListItemService.AddMatchListItem(matchListItem);

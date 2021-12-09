@@ -24,7 +24,7 @@ namespace Application.UnitTests.CharacterNames.Queries
             //Assert
 
             //The test result depends on the files in the characters folder.
-            //Add some webp files to "Application.UnitTests\bin\Debug\net5.0\wwwroot\images\characters".
+            //Add some webp files to "Application.UnitTests\bin\Debug\net5.0\wwwroot\assets\images\characters".
             characterNames.Should().NotBeNull();
             characterNames.Should().HaveCount(1);
             characterNames.First().Should().Be("test");

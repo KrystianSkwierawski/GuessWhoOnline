@@ -19,7 +19,14 @@ namespace Application.UnitTests.MatchListItems.Queries
             //Arrange
             IMatchListItemsService matchListItemService = new MatchListItemsService();
 
-            MatchListItem matchListItem = new MatchListItem { Url = Guid.NewGuid().ToString(), NumberOfConnections = 0 };
+            MatchListItem matchListItem = new MatchListItem
+            {
+                Id = Guid.NewGuid().ToString(),
+                Url = Guid.NewGuid().ToString(),
+                Name = "Game",
+                Password = "123",
+                NumberOfConnections = 0
+            };
             matchListItemService.AddMatchListItem(matchListItem);
 
             int numberOfConnectionsToAdd = new Random().Next(0, 10);

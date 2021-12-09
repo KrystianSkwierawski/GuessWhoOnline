@@ -1,5 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using Application.Common.Models;
+using Application.Common.Validators;
+using FluentValidation;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,6 +36,8 @@ namespace Infrastructure.Services
 
         public void AddMatchListItem(MatchListItem match)
         {
+            new MatchListItemValidator().ValidateAndThrow(match);
+
             _matches.Add(match);
         }
 
