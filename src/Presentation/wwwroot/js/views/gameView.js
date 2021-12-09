@@ -44,7 +44,7 @@ export const ShowGamePanel__startGameButton = () => {
     elements.gamePanel__startGameButton.classList.remove('d-none');
 };
 export const setYourCharacterImg = (characterName) => {
-    elements.gamePanel__yourCharacterImg.src = `/images/characters/${characterName}.webp`;
+    elements.gamePanel__yourCharacterImg.src = `/assets/images/characters/${characterName}.webp`;
 };
 export const updateGamePanel__roundTime = (time) => {
     const o_timeString = secondsToMMSS(time);
@@ -59,11 +59,11 @@ const secondsToMMSS = (secs) => {
         .join(":");
 };
 export const changeCharacterStatusToRejected = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/images/character-statuses/rejected.webp" alt="${CharacterStatus.rejected}"/>`;
+    const markup = `<img class="character-status" id="${CharacterStatus.rejected}" src="/assets/images/character-statuses/rejected.webp" alt="${CharacterStatus.rejected}"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const changeCharacterStatusToSuspect = (characterButtonElement) => {
-    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/images/character-statuses/suspect.webp" alt="${CharacterStatus.suspect}"/>`;
+    const markup = `<img class="character-status" id="${CharacterStatus.suspect}" src="/assets/images/character-statuses/suspect.webp" alt="${CharacterStatus.suspect}"/>`;
     characterButtonElement.insertAdjacentHTML('beforeend', markup);
 };
 export const removeCharacterStatus = (characterButtonElement) => {
@@ -78,7 +78,7 @@ export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) =
     const markup = `
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
-            <img class="endgame-notification__character-img d-block mx-auto" src="/images/characters/${characterName}.webp" alt="${characterName}"/>
+            <img class="endgame-notification__character-img d-block mx-auto" src="/assets/images/characters/${characterName}.webp" alt="${characterName}"/>
             <button class="btn endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn btn-dark my-2" href="/">Exit</a>   
         </div>
@@ -206,7 +206,7 @@ const resetCharacterTypeElement = () => {
     unhideCharacterTypeOptions();
 };
 const resetYourCharacter = () => {
-    elements.gamePanel__yourCharacterImg.src = "/images/square.webp";
+    elements.gamePanel__yourCharacterImg.src = "/assets/images/square.webp";
     elements.gamePanel__yourCharacterName.textContent = "";
 };
 export const restartGamePanel = () => {

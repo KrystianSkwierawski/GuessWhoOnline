@@ -45,9 +45,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\pages\" />
+    <Folder Include="wwwroot\styles\css\" />
+    <Folder Include="wwwroot\styles\scss\pages\" />
     <Folder Include="wwwroot\js\models\" />
-    <Folder Include="wwwroot\sounds\" />
+    <Folder Include="wwwroot\assets\sounds\" />
   </ItemGroup>
 
 </Project>

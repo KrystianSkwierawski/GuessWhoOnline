@@ -88,13 +88,13 @@ export class GameSounds {
         this.soundsAreMuted = false;
     }
 }
-GameSounds.gameBackgroundMusic = new Audio('/sounds/game-background-music.mp3');
-GameSounds.homeBackgroundMusic = new Audio('/sounds/home-background-music.mp3');
-GameSounds.tikTokTimerSound = new Audio('/sounds/timer-sound-15s.mp3');
-GameSounds.endRoundSound = new Audio('/sounds/end-round.mp3');
-GameSounds.loseSound = new Audio('/sounds/lose.mp3');
-GameSounds.winSound = new Audio('/sounds/win.mp3');
-GameSounds.keyboardClickPath = '/sounds/keyboard-click.mp3';
-GameSounds.characterSelectPath = '/sounds/character-select.mp3';
-GameSounds.characterHoverPath = '/sounds/character-hover.mp3';
+GameSounds.gameBackgroundMusic = new Audio('/assets/sounds/game-background-music.mp3');
+GameSounds.homeBackgroundMusic = new Audio('/assets/sounds/home-background-music.mp3');
+GameSounds.tikTokTimerSound = new Audio('/assets/sounds/timer-sound-15s.mp3');
+GameSounds.endRoundSound = new Audio('/assets/sounds/end-round.mp3');
+GameSounds.loseSound = new Audio('/assets/sounds/lose.mp3');
+GameSounds.winSound = new Audio('/assets/sounds/win.mp3');
+GameSounds.keyboardClickPath = '/assets/sounds/keyboard-click.mp3';
+GameSounds.characterSelectPath = '/assets/sounds/character-select.mp3';
+GameSounds.characterHoverPath = '/assets/sounds/character-hover.mp3';
 //# sourceMappingURL=GameSounds.js.map

@@ -20,7 +20,7 @@ namespace Infrastructure.Services
 
         void StartUp()
         {
-            string charactersPath = @"./wwwroot/images/characters";
+            string charactersPath = @"./wwwroot/assets/images/characters";
 
             DirectoryInfo directoryInfo = new DirectoryInfo(charactersPath);
             FileInfo[] files = directoryInfo.GetFiles("*.webp");

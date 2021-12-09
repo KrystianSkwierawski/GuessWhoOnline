@@ -1,15 +1,15 @@
 ﻿export class GameSounds {
     static soundsAreMuted: boolean;
-    private static gameBackgroundMusic: HTMLAudioElement = new Audio('/sounds/game-background-music.mp3');
-    private static homeBackgroundMusic: HTMLAudioElement = new Audio('/sounds/home-background-music.mp3');
-    private static tikTokTimerSound: HTMLAudioElement = new Audio('/sounds/timer-sound-15s.mp3');
-    private static endRoundSound: HTMLAudioElement = new Audio('/sounds/end-round.mp3');
-    private static loseSound: HTMLAudioElement = new Audio('/sounds/lose.mp3');
-    private static winSound: HTMLAudioElement = new Audio('/sounds/win.mp3');
+    private static gameBackgroundMusic: HTMLAudioElement = new Audio('/assets/sounds/game-background-music.mp3');
+    private static homeBackgroundMusic: HTMLAudioElement = new Audio('/assets/sounds/home-background-music.mp3');
+    private static tikTokTimerSound: HTMLAudioElement = new Audio('/assets/sounds/timer-sound-15s.mp3');
+    private static endRoundSound: HTMLAudioElement = new Audio('/assets/sounds/end-round.mp3');
+    private static loseSound: HTMLAudioElement = new Audio('/assets/sounds/lose.mp3');
+    private static winSound: HTMLAudioElement = new Audio('/assets/sounds/win.mp3');
 
-    static keyboardClickPath: string = '/sounds/keyboard-click.mp3';
-    static characterSelectPath: string = '/sounds/character-select.mp3';
-    static characterHoverPath: string = '/sounds/character-hover.mp3';
+    static keyboardClickPath: string = '/assets/sounds/keyboard-click.mp3';
+    static characterSelectPath: string = '/assets/sounds/character-select.mp3';
+    static characterHoverPath: string = '/assets/sounds/character-hover.mp3';
 
     static startUp(): void {
         this.gameBackgroundMusic.volume = 0.5;
