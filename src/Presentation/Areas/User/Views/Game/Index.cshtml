@@ -34,10 +34,11 @@
             {
                 string characterPath = $"../assets/images/characters/{characterName}.webp";
 
-                <div class="character">
+                <div class="character character-@characterName">
                     <button class="character-button" aria-label="@characterName"><img class="character-img" loading="lazy" src="@characterPath" alt="@characterName" /></button>
                     <p class="character-name">@characterName</p>
-                </div>}
+                </div>
+            }
 
         </div>
 
@@ -47,7 +48,6 @@
         <button class="chat-communicator__hide-communicator-button" aria-label="hide chat"><i class="fas fa-minus"></i></button>
 
         <div class="chat-communicator__messages">
-
         </div>
 
         <div class="send-messages">

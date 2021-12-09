@@ -44,6 +44,11 @@ export const ShowGamePanel__startGameButton = () => {
     elements.gamePanel__startGameButton.classList.remove('d-none');
 };
 export const setYourCharacterImg = (characterName) => {
+    if (window.pepesMode) {
+        const pepeSrc = document.querySelector(`.character-${characterName} .character-img`).src;
+        elements.gamePanel__yourCharacterImg.src = pepeSrc;
+        return;
+    }
     elements.gamePanel__yourCharacterImg.src = `/assets/images/characters/${characterName}.webp`;
 };
 export const updateGamePanel__roundTime = (time) => {
@@ -75,10 +80,17 @@ export const getCharacterTypeValue = () => {
     return e.options[e.selectedIndex].text;
 };
 export const renderTheNotificationAboutEndTheGame = (gameSatus, characterName) => {
+    let imageSrc;
+    if (window.pepesMode) {
+        imageSrc = document.querySelector(`.character-${characterName} .character-img`).src;
+    }
+    else {
+        imageSrc = `/assets/images/characters/${characterName}.webp`;
+    }
     const markup = `
         <div class="endgame-notification">     
             <p class="endgame-notification__status">${gameSatus}</p>
-            <img class="endgame-notification__character-img d-block mx-auto" src="/assets/images/characters/${characterName}.webp" alt="${characterName}"/>
+            <img class="endgame-notification__character-img d-block mx-auto" src="${imageSrc}" alt="${characterName}"/>
             <button class="btn endgame-notification__vote-to-restart-game-button">Vote to reastart the game</button>
             <a class="btn btn-dark my-2" href="/">Exit</a>   
         </div>

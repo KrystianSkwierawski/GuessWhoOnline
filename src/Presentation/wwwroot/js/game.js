@@ -124,4 +124,14 @@ export const addEventListenerToVoteToRestartGameButton = () => {
         gameView.disableVoteToRestartGameButton();
     }));
 };
+window.pepesPls = () => {
+    //This is just a joke and will only work if you type pepePls() in the console
+    const characters = document.querySelectorAll('.character .character-img');
+    const pepes = ["https://cdn.betterttv.net/emote/5b457bbd0485f43277cecac0/3x", "https://cdn.betterttv.net/emote/5d63e543375afb1da9a68a5a/3x", "https://cdn.betterttv.net/emote/5a5e0e8d80f53146a54a516b/3x", "https://cdn.betterttv.net/emote/57850b9df1bf2c1003a88644/3x", "https://cdn.betterttv.net/emote/5ec059009af1ea16863b2dec/3x", "https://cdn.betterttv.net/emote/5a16ee718c22a247ead62d4a/3x", "https://cdn.betterttv.net/emote/5ec39a9db289582eef76f733/3x", "https://cdn.betterttv.net/emote/5eaa12a074046462f768344b/3x", "https://cdn.betterttv.net/emote/5a16ee718c22a247ead62d4a/3x", "https://cdn.betterttv.net/emote/5d922afbc0652668c9e52ead/3x", "https://cdn.betterttv.net/emote/5980af4e3a1ac5330e89dc76/3x", "https://cdn.betterttv.net/emote/5a6edb51f730010d194bdd46/3x", "https://cdn.betterttv.net/emote/59b73909b27c823d5b1f6052/3x", "https://cdn.betterttv.net/emote/5d324913ff6ed36801311fd2/3x", "https://cdn.betterttv.net/emote/5d0d7140ca4f4b50240ff6b4/3x", "https://cdn.betterttv.net/emote/5d38aaa592fc550c2d5996b8/3x", "https://cdn.betterttv.net/emote/5c548025009a2e73916b3a37/3x", "https://cdn.betterttv.net/emote/5e0fa9d40550d42106b8a489/3x", "https://cdn.betterttv.net/emote/5aca62163e290877a25481ad/3x", "https://cdn.betterttv.net/emote/5b77ac3af7bddc567b1d5fb2/3x", "https://cdn.betterttv.net/emote/59f27b3f4ebd8047f54dee29/3x", "https://cdn.betterttv.net/emote/5590b223b344e2c42a9e28e3/3x", "https://cdn.betterttv.net/emote/58ae8407ff7b7276f8e594f2/3x", "https://cdn.betterttv.net/emote/56e9f494fff3cc5c35e5287e/3x"];
+    characters.forEach((character, index) => {
+        character.src = pepes[index];
+    });
+    window.pepesMode = true;
+    console.log("Enjoy your pepes :)");
+};
 //# sourceMappingURL=game.js.map
