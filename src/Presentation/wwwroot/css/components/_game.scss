@@ -15,8 +15,8 @@
 
 .show-chat-communicator-button {
     @include reset-button;
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     font-size: 15px;
     position: fixed;
     right: 2%;
@@ -32,8 +32,8 @@
 
 .mute-or-unmute-sounds-button {
     @include reset-button;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     position: fixed;
     right: 2%;
     font-size: 15px;
@@ -41,6 +41,11 @@
     border-radius: 60%;
     z-index: 2;
     background-color: #EE7A38;
+    display: none;
+
+    @include respond-to(small) {
+        display: block;
+    }
 
     i {
         background: none;

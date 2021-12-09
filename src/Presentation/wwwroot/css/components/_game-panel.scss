@@ -152,7 +152,7 @@
 }
 
 .game-panel__game-status {
-    color: #B34782;
+    color: #7D365A;
     transition: transform .3s;
     font-size: 1.3rem;
     font-weight: bold;
@@ -164,7 +164,7 @@
         left: 50%;
         top: 3rem;
         transform: translate(-50%, -50%);
-        text-shadow: 1px 1px white;
+        text-shadow: 1px 1px black;
         z-index: 3;
     }
 }

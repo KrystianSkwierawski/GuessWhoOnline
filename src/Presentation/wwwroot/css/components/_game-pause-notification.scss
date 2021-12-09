@@ -16,15 +16,14 @@
     }
 
     p:nth-child(1) {
-        font-size: font-scale(2);
         background-color: transparent;
+        font-size: 1.1rem;
         color: black;
     }
 
     #game-pause-notification__status {
         @include dots-animation(white);
-        font-size: font-scale(1);
-        color: black;
+        color: #474554;
         background: none;
     }
 }

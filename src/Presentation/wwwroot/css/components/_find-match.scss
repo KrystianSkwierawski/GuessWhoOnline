@@ -62,7 +62,7 @@
     color: black;
 }
 
-.find-match__refresh-list{
-    @include reset-button;   
+.find-match__refresh-list {
+    @include reset-button;
+    color: #343a40;
 }
-

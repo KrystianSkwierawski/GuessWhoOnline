@@ -69,7 +69,7 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', (): void => {
 const checkCharacterType = async (): Promise<void> => {
     const selectedCharacterType: string = gameView.getCharacterTypeValue();
 
-    const userSelectedAnyCharacter: boolean = selectedCharacterType !== 'Guess opponent character';
+    const userSelectedAnyCharacter: boolean = selectedCharacterType !== 'Guess a opponent character';
     if (userSelectedAnyCharacter) {
         await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
         return;

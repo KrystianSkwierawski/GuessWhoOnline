@@ -14,13 +14,7 @@ export const getGameIdInputValue = (): string => {
 };
 
 export const setGameStatus = (status: string): void => {
-    let markup: string = status;
-
-    if (status === GameStatus.waitForOpponent || status === GameStatus.waitForStart || status === GameStatus.opponentIsSelectingCharacter) {
-        markup = `${status}<span> . . .</span>`;
-    }
-
-    (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = markup;
+    (<HTMLEmbedElement>elements.gamePanel__gameStatus).innerHTML = status;
 };
 
 export const showGameStatus = (): void => {
@@ -132,8 +126,8 @@ export const removeTheNotificationAboutEndTheGame = (): void => {
 export const renderTheNotificationAboutPausingTheGame = (): void => {
     const markup: string = `  
         <div class="game-pause-notification">
-            <p>The game is paused, because opponent player left the game</p>
-            <p id="game-pause-notification__status">wait for opponent<span> . . .</span></p>
+            <p>The game was paused because the opponent player left the game, wait opponent to rejoin or leave the game.</p>
+            <p id="game-pause-notification__status">Waiting for the opponent<span> . . .</span></p>
         </div>
     `;
 
