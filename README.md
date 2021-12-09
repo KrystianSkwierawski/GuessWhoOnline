@@ -1,6 +1,6 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/52860350/123124502-074aab80-d448-11eb-8935-c19e64621ea0.png" alt="guesswhoonline"/></p>
 
-## What is QuessWhoOnline
+## What is the GuessWhoOnline?
 Two-player character guessing game. 
 
 ## Why was the game created?
@@ -24,7 +24,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
 ![gueswhoonline](https://user-images.githubusercontent.com/52860350/123094098-c8f3c300-d42c-11eb-99b3-48368754a398.jpg)
 
 
- ## Main technologies: 
+ ## Tools: 
 
 ### Back-end
  * C#
@@ -38,11 +38,17 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  * Sass
  * HTML5
  
+ ### Other
+ * Trello
+ * JustColorPicker
+ * Visual Studio
+ * Git
+ 
 ## Status
 Project in progress.
 
 ## Contact to co-workers
-* Graphic designer: wiktoria.dominika.skorek@gmail.com
+* Graphic designer: <a href="https://www.linkedin.com/in/wiktoria-sk%C3%B3rek/">Wiktoria Skórek</a>
 * Sound technician: bartek.budek@op.pl
  
  
