@@ -50,7 +50,8 @@ elements.createMatch_backButton.addEventListener('click', () => {
     homeView.hideCreateMatchContainer();
     homeView.removeBlurFromHome();
 });
-elements.createMatchForm.addEventListener('submit', () => __awaiter(void 0, void 0, void 0, function* () {
+elements.createMatchForm.addEventListener('submit', (e) => __awaiter(void 0, void 0, void 0, function* () {
+    e.preventDefault();
     const game = yield createGameObject();
     yield gameCreatorHub.createMatch(game);
     navigateToMatchUrl(game.url);

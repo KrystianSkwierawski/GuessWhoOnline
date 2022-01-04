@@ -53,7 +53,9 @@ elements.createMatch_backButton.addEventListener('click', (): void => {
     homeView.removeBlurFromHome();
 });
 
-elements.createMatchForm.addEventListener('submit', async (): Promise<void> => {
+elements.createMatchForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
     const game: MatchListItem = await createGameObject();
 
     await gameCreatorHub.createMatch(game);
