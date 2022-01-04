@@ -36,9 +36,10 @@ export const hideInformationsAboutGame = () => {
     elements.informationsAboutGame.classList.remove('informations-about-game_active');
 };
 
+
 export const getNameMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.nameMatchInput).value;
-};
+}
 
 export const getPasswordMatchInputValue = (): string => {
     return (<HTMLInputElement>elements.passwordMatchInput).value;

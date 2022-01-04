@@ -42,8 +42,7 @@
     hideInformationsAboutGameButton: document.querySelector('.hide-informations-about-game-button'),
     homeBottom__muteOrUnmuteSoundsButton: document.querySelector('.home-bottom__mute-or-unmute-sounds-button'),
     homeBottom__muteOrUnmuteSoundsIcon: document.querySelector('.home-bottom__mute-or-unmute-sounds-icon'),
-    characterTypeOptions: document.querySelectorAll('.character-type__option'),
-    createMatchForm: document.querySelector('.create-match-form')
+    characterTypeOptions: document.querySelectorAll('.character-type__option')
 };
 
 export const elementStrings = {

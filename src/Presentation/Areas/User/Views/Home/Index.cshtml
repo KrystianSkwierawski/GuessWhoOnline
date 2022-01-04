@@ -19,40 +19,36 @@
 
 <div class="create-match">
     <div class="container mb-2">
-        <form  class="create-match-form">
-            <input class="id-match-input" type="hidden" />
-            <input class="url-match-input" type="hidden" />
+        <input class="id-match-input" type="hidden" />
+        <input class="url-match-input" type="hidden" />
 
-            <div class="form-row py-2">
-                <div class="col mb-2">
-                    <label for="name">Name*</label>
-                    <input class="form-control name-match-input"
-                           id="name"
-                           type="text"
-                           maxlength=80
-                           required />
-                </div>
+        <div class="form-row py-2">
+            <div class="col mb-2">
+                <label for="name">Name</label>
+                <input class="form-control name-match-input"
+                       id="name"
+                       type="text"
+                       required />
             </div>
+        </div>
 
-            <div class="form-row py-2">
-                <div class="col mb-2">
-                    <label for="password">Password</label>
-                    <input class="form-control password-match-input"
-                           id="password"
-                           maxlength=80
-                           type="password" />
-                </div>
+        <div class="form-row py-2">
+            <div class="col mb-2">
+                <label for="password">Password</label>
+                <input class="form-control password-match-input"
+                       id="password"
+                       type="password" />
             </div>
+        </div>
 
-            <div class="form-row">
-                <div class="col text-center mb-2">
-                    <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button" aria-label="back">Back</button>
-                </div>
-                <div class="col text-center">
-                    <button type="submit" class="btn px-4 py-2 create-match-button" aria-label="create">Create</button>
-                </div>
+        <div class="form-row">
+            <div class="col text-center mb-2">
+                <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button" aria-label="back">Back</button>
             </div>
-        </form>
+            <div class="col text-center">
+                <button class="btn px-4 py-2 create-match-button" aria-label="create">Create</button>
+            </div>
+        </div>
     </div>
 </div>
 
