@@ -2,4 +2,4 @@
 
 @import 'abstracts/_variables.scss', 'abstracts/_functions.scss', 'abstracts/_mixins.scss';
 
-@import 'components/_find-match.scss', 'components/_create-match.scss', 'components/_game.scss', 'components/_game-panel.scss', 'components/_chat-communicator.scss', './components/_charackters.scss', 'components/_game-board.scss', 'components/_end-game-notification.scss', 'components/_game-pause-notification.scss', 'components/_home.scss', 'components/_home-header.scss', 'components/_home-main.scss', 'components/_home-bottom.scss', 'components/_informations-about-game.scss';
+@import 'components/_find-match.scss', 'components/_create-match.scss', 'pages/_game.scss', 'layout/_game-panel.scss', 'layout/_chat-communicator.scss', 'layout/_charackters.scss', 'layout/_game-board.scss', 'components/_end-game-notification.scss', 'components/_game-pause-notification.scss', 'pages/_home.scss', 'layout/_home-header.scss', 'layout/_home-main.scss', 'layout/_home-bottom.scss', 'components/_informations-about-game.scss';
