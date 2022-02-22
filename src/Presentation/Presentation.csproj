@@ -5,27 +5,10 @@
     <UserSecretsId>aspnet-Project-6D10CD9E-7473-4339-B931-3C64BF14F627</UserSecretsId>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
   </PropertyGroup>
-
+	
   <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Remove="scripts\gameCreatorHub.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="scripts\gameCreatorHub.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-    <None Include="scripts\gameCreatorHub.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +20,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.2">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -45,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\styles\css\" />
-    <Folder Include="wwwroot\js\models\" />
     <Folder Include="wwwroot\assets\sounds\" />
   </ItemGroup>
 

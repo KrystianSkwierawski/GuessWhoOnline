@@ -3,25 +3,25 @@ import { finishTheTurn } from '../gameHub.js';
 import { GameSounds } from './GameSounds.js';
 
 export class Timer {
-    #roundTimeInSeconds: number;
-    #remainingTime: number;
-    #timerId: number;
+    _roundTimeInSeconds: number;
+    _remainingTime: number;
+    _timerId: number;
 
     constructor(roundTimeInSeconds: number = 120, remainingTime = roundTimeInSeconds) {
-        this.#roundTimeInSeconds = roundTimeInSeconds;
-        this.#remainingTime = remainingTime;
+        this._roundTimeInSeconds = roundTimeInSeconds;
+        this._remainingTime = remainingTime;
     }
 
     resetTimer(): void {
-        this.#remainingTime = this.#roundTimeInSeconds;
-        updateGamePanel__roundTime(this.#remainingTime);  
+        this._remainingTime = this._roundTimeInSeconds;
+        updateGamePanel__roundTime(this._remainingTime);  
     }
 
     startTimer(): void {
-        this.#timerId = setInterval(async (): Promise<void> => { 
-            const endOfTheTime: boolean = this.#remainingTime === 0;
+        this._timerId = setInterval(async (): Promise<void> => { 
+            const endOfTheTime: boolean = this._remainingTime === 0;
 
-            if (this.#remainingTime === 15) {
+            if (this._remainingTime === 15) {
                 GameSounds.playTiktokTimerSound();
             }
 
@@ -30,12 +30,12 @@ export class Timer {
                 return;
             }
 
-            this.#remainingTime -= 1;
-            updateGamePanel__roundTime(this.#remainingTime);        
+            this._remainingTime -= 1;
+            updateGamePanel__roundTime(this._remainingTime);        
         }, 1000);
     }
 
     stopTimer(): void {
-        clearInterval(this.#timerId);
+        clearInterval(this._timerId);
     }
 } 

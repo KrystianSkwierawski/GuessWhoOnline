@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import { elements, elementStrings } from './views/base.js';
 import * as gameView from './views/gameView.js';
 import * as gameHub from './gameHub.js';
@@ -14,7 +5,7 @@ import * as GameStatus from './models/GameStatus.js';
 import { GameSounds } from './models/GameSounds.js';
 import * as notificationSender from './views/notificationSender.js';
 const setMuteOrUbmuteSoundsButton = () => {
-    if (localStorage.soundsAreMuted === 'true') {
+    if (localStorage["soundsAreMuted"] === 'true') {
         gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
         return;
     }
@@ -37,18 +28,18 @@ elements.chatCommunicator__hideCommunicatorButton.addEventListener('click', () =
 elements.gamePanel__startGameButton.addEventListener('click', () => {
     gameHub.startGame();
 });
-elements.gamePanel__finishTurnButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+elements.gamePanel__finishTurnButton.addEventListener('click', async () => {
     const status = gameView.getGameStatus();
     if (status === GameStatus.yourTurn) {
         gameHub.finishTheTurn();
     }
-}));
-elements.gamePanel__checkCharacterTypeButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+});
+elements.gamePanel__checkCharacterTypeButton.addEventListener('click', async () => {
     const status = gameView.getGameStatus();
     if (status === GameStatus.yourTurn) {
-        yield checkCharacterType();
+        await checkCharacterType();
     }
-}));
+});
 elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
     if (GameSounds.soundsAreMuted) {
         gameView.changeMuteOrUnmuteSoundsButtonToVoloumeUp();
@@ -60,15 +51,15 @@ elements.muteOrUnmuteSoundsButton.addEventListener('click', () => {
     GameSounds.muteSounds();
     GameSounds.pauseGameBackgroundMusic();
 });
-const checkCharacterType = () => __awaiter(void 0, void 0, void 0, function* () {
+const checkCharacterType = async () => {
     const selectedCharacterType = gameView.getCharacterTypeValue();
     const userSelectedAnyCharacter = selectedCharacterType !== 'Guess a opponent character';
     if (userSelectedAnyCharacter) {
-        yield gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
+        await gameHub.checkCharacterTypeAndEndTheGame(selectedCharacterType);
         return;
     }
     notificationSender.sendNotificationAboutNotChoosedCharacter();
-});
+};
 Array.from(elements.characterButtons).forEach(characterButton => {
     characterButton.addEventListener('click', (e) => {
         GameSounds.playCharacterSelectSound();
@@ -92,20 +83,20 @@ document.addEventListener('scroll', () => {
     gameView.stickyGameStatus();
     gameView.stickyRoundTime();
 });
-elements.sendMessages__sendMessageButton.addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
-    yield trySendMessage();
+elements.sendMessages__sendMessageButton.addEventListener('click', async () => {
+    await trySendMessage();
     gameView.clearSendMessages__sendMessagesInputValue();
-}));
-elements.sendMessages__sendMessageInput.addEventListener('keypress', () => __awaiter(void 0, void 0, void 0, function* () {
+});
+elements.sendMessages__sendMessageInput.addEventListener('keypress', async () => {
     GameSounds.playKeyboardClickSound();
     const enterKey = 13;
     const clickedEnterKey = (event.keyCode === enterKey && !event.shiftKey);
     if (clickedEnterKey) {
-        yield trySendMessage();
+        await trySendMessage();
         gameView.clearSendMessages__sendMessagesInputValue();
     }
-}));
-const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
+});
+const trySendMessage = async () => {
     const message = gameView.getSendMessages__sendMessageInputValue();
     const inputIsNotEmpty = !!message.trim();
     const gameStatus = gameView.getGameStatus();
@@ -113,16 +104,16 @@ const trySendMessage = () => __awaiter(void 0, void 0, void 0, function* () {
         const sender = "You";
         gameView.renderMessage(message, sender);
         gameView.scrollMessagesContainerToBottom();
-        yield gameHub.sendMessageToOpponent(message);
+        await gameHub.sendMessageToOpponent(message);
     }
-});
+};
 window.addEventListener('resize', gameView.scrollMessagesContainerToBottom);
 export const addEventListenerToVoteToRestartGameButton = () => {
-    document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    document.querySelector(`.${elementStrings.endgameNotification__voteToRestartGameButton}`).addEventListener('click', async () => {
         notificationSender.sendVotingNotificationsToRestartTheGame();
         gameHub.voteToRestartGame();
         gameView.disableVoteToRestartGameButton();
-    }));
+    });
 };
 window.pepesPls = () => {
     //This is just a joke and will only work if you type pepePls() in the console

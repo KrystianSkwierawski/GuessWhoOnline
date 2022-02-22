@@ -6,7 +6,7 @@ import { GameSounds } from './models/GameSounds.js';
 import * as notificationSender from './views/notificationSender.js';
 
 const setMuteOrUbmuteSoundsButton = (): void => {
-    if (localStorage.soundsAreMuted === 'true') {
+    if (localStorage["soundsAreMuted"] === 'true') {
         gameView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
 
         return;

@@ -6,7 +6,7 @@ import { getMatchFullUrl, MatchListItem } from './models/MatchListItem.js';
 import { GameSounds } from './models/GameSounds.js';
 
 const setMuteOrUbmuteSoundsButton = (): void => {
-    if (localStorage.soundsAreMuted === 'true') {
+    if (localStorage["soundsAreMuted"] === 'true') {
         homeView.changeMuteOrUnmuteSoundsIconToVoloumeMute();
 
         return;

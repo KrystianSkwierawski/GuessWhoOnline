@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import { elements } from './base.js';
 import { getMatchFullUrl } from '../models/MatchListItem.js';
 import { tryJoinMatch } from '../gameCreatorHub.js';
@@ -42,12 +33,12 @@ export const getPasswordMatchInputValue = () => {
     return elements.passwordMatchInput.value;
 };
 const addEventListenerToMatchButton = (matchId) => {
-    document.getElementById(matchId).addEventListener('click', () => __awaiter(void 0, void 0, void 0, function* () {
+    document.getElementById(matchId).addEventListener('click', async () => {
         const password = prompt('Password:');
         if (password) {
-            yield tryJoinMatch(matchId, password);
+            await tryJoinMatch(matchId, password);
         }
-    }));
+    });
 };
 export const addMatchToMatchList = (match) => {
     const gameUrl = getMatchFullUrl(match.url);

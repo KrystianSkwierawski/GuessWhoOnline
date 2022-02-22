@@ -1,8 +1,8 @@
 export class GameSounds {
     static startUp() {
         this.gameBackgroundMusic.volume = 0.5;
-        this.soundsAreMuted = localStorage.soundsAreMuted === 'true';
-        localStorage.soundsAreMuted = this.soundsAreMuted;
+        this.soundsAreMuted = localStorage["soundsAreMuted"] === 'true';
+        localStorage["soundsAreMuted"] = this.soundsAreMuted;
     }
     static playTiktokTimerSound() {
         if (!this.soundsAreMuted) {
@@ -80,11 +80,11 @@ export class GameSounds {
         }
     }
     static muteSounds() {
-        localStorage.soundsAreMuted = true;
+        localStorage["soundsAreMuted"] = true;
         this.soundsAreMuted = true;
     }
     static unmuteSounds() {
-        localStorage.soundsAreMuted = false;
+        localStorage["soundsAreMuted"] = false;
         this.soundsAreMuted = false;
     }
 }

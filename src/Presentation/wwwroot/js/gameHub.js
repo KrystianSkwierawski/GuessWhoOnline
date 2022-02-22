@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import * as gameView from './views/gameView.js';
 import { Timer } from './models/Timer.js';
 import { GameSounds } from './models/GameSounds.js';
@@ -100,33 +91,31 @@ hub.on("DisableGamePanel", () => {
 hub.on("RecieveGameStatus", (status) => {
     gameView.setGameStatus(status);
 });
-hub.start().then(function () {
-    return __awaiter(this, void 0, void 0, function* () {
-        const gameId = gameView.getGameIdInputValue();
-        yield tryJoinGame(gameId);
-    });
+hub.start().then(async function () {
+    const gameId = gameView.getGameIdInputValue();
+    await tryJoinGame(gameId);
 }).catch(function (err) {
     return console.error(err.toString());
 });
-const tryJoinGame = (gameId) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('TryJoinGame', gameId);
-});
-export const selectCharacter = (gameId, characterName) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('SelectCharacter', gameId, characterName);
-});
-export const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('StartTheGame');
-});
-export const finishTheTurn = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('FinishTheTurn');
-});
-export const checkCharacterTypeAndEndTheGame = (characterType) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
-});
-export const sendMessageToOpponent = (message) => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('SendMessageToOpponent', message);
-});
-export const voteToRestartGame = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield hub.invoke('VoteToRestartGame');
-});
+const tryJoinGame = async (gameId) => {
+    await hub.invoke('TryJoinGame', gameId);
+};
+export const selectCharacter = async (gameId, characterName) => {
+    await hub.invoke('SelectCharacter', gameId, characterName);
+};
+export const startGame = async () => {
+    await hub.invoke('StartTheGame');
+};
+export const finishTheTurn = async () => {
+    await hub.invoke('FinishTheTurn');
+};
+export const checkCharacterTypeAndEndTheGame = async (characterType) => {
+    await hub.invoke('CheckCharacterTypeAndEndTheGame', characterType);
+};
+export const sendMessageToOpponent = async (message) => {
+    await hub.invoke('SendMessageToOpponent', message);
+};
+export const voteToRestartGame = async () => {
+    await hub.invoke('VoteToRestartGame');
+};
 //# sourceMappingURL=gameHub.js.map

@@ -1,4 +1,4 @@
-﻿namespace Domain.Common
+﻿namespace Application.Common.GameStatus
 {
     public static class GameStatus
     {

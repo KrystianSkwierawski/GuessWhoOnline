@@ -13,8 +13,8 @@
 
     static startUp(): void {
         this.gameBackgroundMusic.volume = 0.5;
-        this.soundsAreMuted = localStorage.soundsAreMuted === 'true';
-        localStorage.soundsAreMuted = this.soundsAreMuted;
+        this.soundsAreMuted = localStorage["soundsAreMuted"] === 'true';
+        localStorage["soundsAreMuted"] = this.soundsAreMuted;
     }
 
     static playTiktokTimerSound(): void {
@@ -109,12 +109,12 @@
     }
 
     static muteSounds(): void {
-        localStorage.soundsAreMuted = true;
+        localStorage["soundsAreMuted"] = true;
         this.soundsAreMuted = true;
     }
 
     static unmuteSounds(): void {
-        localStorage.soundsAreMuted = false;
+        localStorage["soundsAreMuted"] = false;
         this.soundsAreMuted = false;
     }
 }
