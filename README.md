@@ -24,8 +24,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
 ![gueswhoonline](https://user-images.githubusercontent.com/52860350/123094098-c8f3c300-d42c-11eb-99b3-48368754a398.jpg)
 
 
- ## Tools: 
-
+ ## Tools
 ### Back-end
  * C#
  * .NET 5.0
