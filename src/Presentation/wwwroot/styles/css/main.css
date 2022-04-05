@@ -636,7 +636,7 @@ th {
   .game-panel__round-time_sticky {
     position: fixed;
     left: 50%;
-    top: 4rem;
+    top: 6rem;
     transform: translate(-50%, -50%);
     margin-top: 3rem;
     background-color: transparent;
@@ -720,7 +720,7 @@ th {
   .game-panel__game-status_sticky {
     position: fixed;
     left: 50%;
-    top: 3rem;
+    top: 4rem;
     transform: translate(-50%, -50%);
     text-shadow: 1px 1px black;
     z-index: 3;
