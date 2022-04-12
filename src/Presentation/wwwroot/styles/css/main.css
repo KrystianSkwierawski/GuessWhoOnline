@@ -490,7 +490,6 @@ th {
   color: white;
 }
 .create-match-button:hover {
-  border: 2px solid black;
   opacity: 0.9;
 }
 
@@ -1093,8 +1092,6 @@ th {
 
 .home-header__logo {
   align-self: center;
-  height: auto;
-  width: auto;
 }
 
 .home-main {

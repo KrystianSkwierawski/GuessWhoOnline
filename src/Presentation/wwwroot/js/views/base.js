@@ -57,4 +57,3 @@ export const elementStrings = {
     endgameNotification__voteToRestartGameButton: 'endgame-notification__vote-to-restart-game-button',
     endgameNotification: 'endgame-notification',
 };
-//# sourceMappingURL=base.js.map

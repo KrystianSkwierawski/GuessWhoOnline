@@ -88,4 +88,3 @@ export const changeMuteOrUnmuteSoundsButtonToVoloumeUp = () => {
     elements.homeBottom__muteOrUnmuteSoundsIcon.classList.remove('fa-volume-mute');
     elements.homeBottom__muteOrUnmuteSoundsIcon.classList.add('fa-volume-up');
 };
-//# sourceMappingURL=homeView.js.map

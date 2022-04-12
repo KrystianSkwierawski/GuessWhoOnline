@@ -226,4 +226,3 @@ export const restartGamePanel = () => {
     updateGamePanel__roundTime(60);
     resetCharacterTypeElement();
 };
-//# sourceMappingURL=gameView.js.map

@@ -3,7 +3,7 @@
 <div class="home">
     <div class="home-container">
         <div class="home-header">
-            <img class="home-header__logo" src="~/assets/images/logo.webp" alt="logo" />
+            <img class="home-header__logo" height="200" width="200" src="~/assets/images/logo.svg" alt="logo" />
             <h1>Guess Who Online</h1>
         </div>
         <div class="home-main">
@@ -39,18 +39,14 @@
                     <label for="password">Password</label>
                     <input class="form-control password-match-input"
                            id="password"
-                           maxlength=80                           
+                           maxlength=80
                            type="password" />
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="col text-center mb-2">
-                    <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button" aria-label="back">Back</button>
-                </div>
-                <div class="col text-center">
-                    <button type="submit" class="btn px-4 py-2 create-match-button" aria-label="create">Create</button>
-                </div>
+            <div class="text-center form-row">
+                <button type="button" class="btn btn-dark px-4 py-2 create-match__back-button" aria-label="back">Back</button>
+                <button type="submit" class="btn px-4 py-2 create-match-button" aria-label="create">Create</button>
             </div>
         </form>
     </div>

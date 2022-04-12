@@ -118,4 +118,3 @@ export const sendMessageToOpponent = async (message) => {
 export const voteToRestartGame = async () => {
     await hub.invoke('VoteToRestartGame');
 };
-//# sourceMappingURL=gameHub.js.map

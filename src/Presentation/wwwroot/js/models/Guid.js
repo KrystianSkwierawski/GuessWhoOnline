@@ -4,4 +4,3 @@ export const newGuid = function () {
         return v.toString(16);
     });
 };
-//# sourceMappingURL=Guid.js.map

@@ -89,4 +89,3 @@ elements.homeBottom__muteOrUnmuteSoundsButton.addEventListener('click', () => {
     GameSounds.muteSounds();
     GameSounds.pauseHomeBackgroundMusic();
 });
-//# sourceMappingURL=home.js.map

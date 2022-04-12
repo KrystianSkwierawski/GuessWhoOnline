@@ -97,4 +97,3 @@ GameSounds.winSound = new Audio('/assets/sounds/win.mp3');
 GameSounds.keyboardClickPath = '/assets/sounds/keyboard-click.mp3';
 GameSounds.characterSelectPath = '/assets/sounds/character-select.mp3';
 GameSounds.characterHoverPath = '/assets/sounds/character-hover.mp3';
-//# sourceMappingURL=GameSounds.js.map

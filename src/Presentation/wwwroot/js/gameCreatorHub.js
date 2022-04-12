@@ -26,4 +26,3 @@ export const refreshListOfGames = async () => {
 export const tryJoinMatch = async (id, password) => {
     await hub.invoke('TryJoinMatch', id, password);
 };
-//# sourceMappingURL=gameCreatorHub.js.map

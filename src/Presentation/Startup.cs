@@ -7,7 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Hubs;
-using System.Linq;
+using System;
+using WebMarkupMin.AspNetCore5;
 
 namespace Presentation
 {
@@ -27,6 +28,15 @@ namespace Presentation
             services.AddRazorPages();
             services.AddInfrastructure();
             services.AddApplication();
+
+            // HTML minification (https://github.com/Taritsyn/WebMarkupMin)
+            services.AddWebMarkupMin()
+             .AddHtmlMinification()
+             .AddXmlMinification()
+             .AddHttpCompression();
+
+            // Bundling, minification and Sass transpilation (https://github.com/ligershark/WebOptimizer)
+            services.AddWebOptimizer(false, true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,20 +53,31 @@ namespace Presentation
                 app.UseHsts();
             }
 
+
+            app.UseHttpsRedirection();
+
             app.UseRouting();
+
+
+            app.UseWebMarkupMin();
+            app.UseWebOptimizer();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromDays(30)
+                    };
+                }
+            });
 
             app.UseNToastNotify();
 
-            const string cacheMaxAge = "604800";
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                OnPrepareResponse = ctx =>
-                {
-                    ctx.Context.Response.Headers.Append(
-                         "Cache-Control",
-                         $"public, max-age={cacheMaxAge}");
-                }
-            });
 
             app.UseEndpoints(endpoints =>
             {

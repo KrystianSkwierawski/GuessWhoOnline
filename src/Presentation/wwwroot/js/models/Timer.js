@@ -28,4 +28,3 @@ export class Timer {
         clearInterval(this._timerId);
     }
 }
-//# sourceMappingURL=Timer.js.map

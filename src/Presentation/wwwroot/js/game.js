@@ -125,4 +125,3 @@ window.pepesPls = () => {
     window.pepesMode = true;
     console.log("Enjoy your pepes :)");
 };
-//# sourceMappingURL=game.js.map

@@ -4,4 +4,3 @@ export const getMatchFullUrl = function (matchId) {
     const o_fullUrl = `${protocol}//${domain}/game/${matchId}`;
     return o_fullUrl;
 };
-//# sourceMappingURL=MatchListItem.js.map
