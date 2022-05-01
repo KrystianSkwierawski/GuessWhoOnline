@@ -46,7 +46,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
 ## Status
 ### Project in progress.<br>
 
-Demo of the incoming new characters map: <br>
+#### Demo of the incoming new characters map <br>
 ![279093661_2804724753166049_886391846379956715_n-removebg-preview](https://user-images.githubusercontent.com/52860350/166100416-069423f8-004b-4525-9771-17b23331a344.png)
 ![279406234_973947649966538_6264928349953514246_n-removebg-preview](https://user-images.githubusercontent.com/52860350/166100428-9e59eb83-e7c0-4e02-92d9-bb37c7cb6c8e.png)
 ![output-onlinepngtools](https://user-images.githubusercontent.com/52860350/166137948-58eb2f97-befb-499a-8e89-7992880c31e3.png)
