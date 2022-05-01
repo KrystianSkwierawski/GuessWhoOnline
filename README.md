@@ -44,7 +44,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  * Git
  
 ## Status
-### Project in progress.<br>
+### Project is in progress.<br>
 
 #### Demo of the incoming new characters map <br>
 ![279093661_2804724753166049_886391846379956715_n-removebg-preview](https://user-images.githubusercontent.com/52860350/166100416-069423f8-004b-4525-9771-17b23331a344.png)
