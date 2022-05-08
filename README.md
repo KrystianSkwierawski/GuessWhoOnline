@@ -29,7 +29,6 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  * C#
  * .NET 5.0
  * SignalR
- * MediatR
  * xUnit
 
 ### Front-end
