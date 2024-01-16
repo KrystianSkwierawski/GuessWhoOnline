@@ -43,7 +43,7 @@ During the project, I learned <a href="https://www.typescriptlang.org/">TypeScri
  * Git
  
 ## Status
-The project(demo) is finished
+The project(demo) is finished.
 
 ## Contact to co-workers
 * Graphic designer: <a href="https://www.linkedin.com/in/wiktoria-sk%C3%B3rek/">Wiktoria Skórek</a>
